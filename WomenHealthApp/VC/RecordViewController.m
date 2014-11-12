@@ -25,7 +25,7 @@
 {
     [super loadView];
     
-    self.title = @"我的记录";
+    self.title = @"我的记录";;
 }
 
 - (void)viewDidLoad {
