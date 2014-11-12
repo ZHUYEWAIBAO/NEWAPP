@@ -12,7 +12,9 @@
 #import "ShoppingViewController.h"
 #import "SetViewController.h"
 #import "UITabbarCommonViewController.h"
-
+/**
+ *  ceshi
+ */
 @interface AppDelegate ()
 
 @end
