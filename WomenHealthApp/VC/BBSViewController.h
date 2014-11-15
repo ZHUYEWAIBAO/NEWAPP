@@ -8,6 +8,11 @@
 
 #import "BasicVC.h"
 
-@interface BBSViewController : BasicVC
+@interface BBSViewController : BasicVC<UIScrollViewDelegate,UITableViewDataSource,UITableViewDelegate>
+
+@property (weak, nonatomic) IBOutlet UIScrollView *addScrollview;
+
+
+@property (weak, nonatomic) IBOutlet UITableView *bbsTableView;
 
 @end
