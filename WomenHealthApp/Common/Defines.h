@@ -16,7 +16,7 @@
 #import "CommonMethod.h"
 #import "UIButton+WebCache.h"
 #import "UIImageView+WebCache.h"
-
+#import "WHSinger.h"
 #ifndef YueDongApp_Defines_h
 #define YueDongApp_Defines_h
 

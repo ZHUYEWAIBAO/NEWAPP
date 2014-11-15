@@ -241,7 +241,7 @@
 + (void)setTabbarViewHidden
 {
     
-//    //amend by yijing.niu
+    //amend by yijing.niu
 //    UITabbarCommonViewController *controller=nil;
 //    UIViewController *centerView=G.mSideBarVC.centerViewController;
 //    if ([centerView isKindOfClass:[UITabbarCommonViewController class]])
@@ -265,33 +265,33 @@
 //    {
 //        return;
 //    }
-//    //end
-//    
-////    UITabbarCommonViewController *controller =(UITabbarCommonViewController *) G.mSideBarVC.centerViewController;
-//    if (![controller isKindOfClass:[UITabbarCommonViewController class]]) {
-//        return;
-//    }
-//    [controller.mTabbarView setHidden:YES];
-//    CGRect cFrame = controller.mContentView.frame;
-//    
-//    //判断mContentView的高度是否等于屏幕高度，如果等于就返回，不等于就加Tabbar高度
-//    if (IOS7&&cFrame.size.height==SCREEN_SIZE.height) {
-//
-//        return;
-//
-//    }
-//    if (!IOS7&&cFrame.size.height==SCREEN_SIZE.height-20) {
-//        return;
-//    }
-//    cFrame.size.height += TABBAR_HEIGHT;
-//    controller.mContentView.frame = cFrame;
+    //end
+    
+    UITabbarCommonViewController *controller =(UITabbarCommonViewController *)[WHSinger share].customTabbr;
+    if (![controller isKindOfClass:[UITabbarCommonViewController class]]) {
+        return;
+    }
+    [controller.mTabbarView setHidden:YES];
+    CGRect cFrame = controller.mContentView.frame;
+    
+    //判断mContentView的高度是否等于屏幕高度，如果等于就返回，不等于就加Tabbar高度
+    if (IOS7&&cFrame.size.height==SCREEN_SIZE.height) {
+
+        return;
+
+    }
+    if (!IOS7&&cFrame.size.height==SCREEN_SIZE.height-20) {
+        return;
+    }
+    cFrame.size.height += TABBAR_HEIGHT;
+    controller.mContentView.frame = cFrame;
 
 }
 
 //设置底部tabbar显示
 + (void)setTabbarViewShow
 {
-//    //amend by yijing.niu
+    //amend by yijing.niu
 //    UITabbarCommonViewController *controller=nil;
 //    UIViewController *centerView=G.mSideBarVC.centerViewController;
 //    if ([centerView isKindOfClass:[UITabbarCommonViewController class]])
@@ -315,26 +315,26 @@
 //    {
 //        return;
 //    }
-//    //end
-//    
-////    UITabbarCommonViewController *controller=(UITabbarCommonViewController *) G.mSideBarVC.centerViewController;
-////    if (![controller isKindOfClass:[UITabbarCommonViewController class]]) {
-////        return;
-////    }
-//    
-//
-//    [controller.mTabbarView setHidden:NO];
-//    CGRect cFrame = controller.mContentView.frame;
-//    
-//    //判断mContentView的高度是否等于屏幕高度，如果不等于就返回，等于就减去Tabbar高度
-//    if (IOS7&&cFrame.size.height!=SCREEN_SIZE.height) {
-//        return;
-//    }
-//    if (!IOS7&&cFrame.size.height!=SCREEN_SIZE.height-20) {
-//        return;
-//    }
-//    cFrame.size.height -= TABBAR_HEIGHT;
-//    controller.mContentView.frame = cFrame;
+    //end
+    
+    UITabbarCommonViewController *controller=(UITabbarCommonViewController *) [WHSinger share].customTabbr;
+    if (![controller isKindOfClass:[UITabbarCommonViewController class]]) {
+        return;
+    }
+    
+
+    [controller.mTabbarView setHidden:NO];
+    CGRect cFrame = controller.mContentView.frame;
+    
+    //判断mContentView的高度是否等于屏幕高度，如果不等于就返回，等于就减去Tabbar高度
+    if (IOS7&&cFrame.size.height!=SCREEN_SIZE.height) {
+        return;
+    }
+    if (!IOS7&&cFrame.size.height!=SCREEN_SIZE.height-20) {
+        return;
+    }
+    cFrame.size.height -= TABBAR_HEIGHT;
+    controller.mContentView.frame = cFrame;
 }
 
 - (void)didReceiveMemoryWarning

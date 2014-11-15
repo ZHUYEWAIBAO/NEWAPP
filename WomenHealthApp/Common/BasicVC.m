@@ -7,7 +7,7 @@
 //
 
 #import "BasicVC.h"
-
+#import "UITabbarCommonViewController.h"
 
 @interface BasicVC ()
 
@@ -64,9 +64,24 @@
     
     //返回按钮
     [self setTheBackItemButton];
+    [self setTabBarHiddenAction];
     self.view.backgroundColor =[UIColor colorWithRed:243/255.0f green:240/255.0f blue:234/255.0f alpha:1];
 }
 
+
+-(void)setTabBarHiddenAction
+{
+    BasicVC *control=(BasicVC *)[self.navigationController.viewControllers firstObject];
+    if (![control isKindOfClass:[BasicVC class]]) {
+        return;
+    }
+    
+    if (control == self) {
+        [UITabbarCommonViewController setTabbarViewShow];
+    }else{
+        [UITabbarCommonViewController setTabbarViewHidden];
+    }
+}
 #pragma mark -
 #pragma mark 定义返回按钮
 /**
@@ -76,28 +91,25 @@
 {
     UIImage* backImg;
     //自定义返回按钮
-    if (IOS7) {
-        backImg = [[UIImage imageWithContentFileName:@"nav_back_bt.png"] resizableImageWithCapInsets:UIEdgeInsetsMake(0, 20, 0, 0)resizingMode:UIImageResizingModeStretch];
-
-        UIBarButtonItem* backItem=[[UIBarButtonItem alloc] initWithTitle:@"返回" style:UIBarButtonItemStylePlain target:self action:nil];
-
-        [backItem setBackButtonBackgroundImage:backImg forState:UIControlStateNormal barMetrics:UIBarMetricsDefault];
-        
-        self.navigationItem.backBarButtonItem = backItem;
-    }
-    else{
-        backImg = [[UIImage imageWithContentFileName:@"nav_back_bt.png"] resizableImageWithCapInsets:UIEdgeInsetsMake(0, 20, 0, 0)resizingMode:UIImageResizingModeStretch];
-        UIBarButtonItem* backItem=[[UIBarButtonItem alloc] initWithTitle:@"     " style:UIBarButtonItemStylePlain target:self action:nil];
+    if ([[[UIDevice currentDevice] systemVersion] floatValue] >= 7.0) {
+        backImg=[[UIImage imageWithContentFileName:@"nav_back_bt.png"] resizableImageWithCapInsets:UIEdgeInsetsMake(0, 0, 0, 0)resizingMode:UIImageResizingModeStretch];
+        //        UIButton *bt=[UIButton buttonWithType:UIButtonTypeCustom];
+        //        [bt setBackgroundImage:backImg forState:UIControlStateNormal];
+        //        bt.frame=CGRectMake(0, 0, 25, 25);
+        UIBarButtonItem* backItem=[[UIBarButtonItem alloc] initWithTitle:@" " style:UIBarButtonItemStylePlain target:self action:nil];
         
         [backItem setBackButtonBackgroundImage:backImg forState:UIControlStateNormal barMetrics:UIBarMetricsDefault];
-        
+        //        UIBarButtonItem *backItem=[[UIBarButtonItem alloc]initWithCustomView:bt];
         self.navigationItem.backBarButtonItem = backItem;
-
+    }else{
+        backImg=[[UIImage imageWithContentFileName:@"back_bt.png"] resizableImageWithCapInsets:UIEdgeInsetsMake(0, 15, 0, 0)resizingMode:UIImageResizingModeStretch];
+        UIBarButtonItem* backItem=[[UIBarButtonItem alloc] initWithTitle:@" " style:UIBarButtonItemStylePlain target:self action:nil];
+        
+        [backItem setBackButtonBackgroundImage:backImg forState:UIControlStateNormal barMetrics:UIBarMetricsDefault];
+        backItem.enabled=YES;
+        self.navigationItem.backBarButtonItem = backItem;
     }
-
-
 }
-
 
 -(void)setViewLayer:(UIView *)view andCornerRadius:(float)radius andBorderColor:(UIColor *)color andBorderWidth:(float)width
 {
