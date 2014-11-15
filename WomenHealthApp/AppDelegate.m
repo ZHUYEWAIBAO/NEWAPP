@@ -7,14 +7,13 @@
 //
 
 #import "AppDelegate.h"
+#import "FirstRecordVC.h"
 #import "RecordViewController.h"
 #import "BBSViewController.h"
 #import "ShoppingViewController.h"
 #import "SetViewController.h"
 #import "UITabbarCommonViewController.h"
-/**
- *  ceshi
- */
+
 @interface AppDelegate ()
 
 @end
@@ -31,7 +30,14 @@
     UITabbarCommonViewController *tabCtrl = [[UITabbarCommonViewController alloc]initWithNibName:@"UITabbarCommonViewController" bundle:nil];
 
     //记录
-    UINavigationController *record_vc = [RecordViewController navigationControllerContainSelf];
+    UINavigationController *record_vc;
+    if ([COMMONDSHARE getTheLocalAddressKey]) {
+        record_vc = [RecordViewController navigationControllerContainSelf];
+    }
+    else{
+        record_vc = [FirstRecordVC navigationControllerContainSelf];
+    }
+    
     //圈子
     UINavigationController *bbs_vc = [BBSViewController navigationControllerContainSelf];
     //购物

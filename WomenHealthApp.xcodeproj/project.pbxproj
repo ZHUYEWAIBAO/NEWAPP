@@ -17,6 +17,11 @@
 		BA40181F1A13A55A003443AC /* set_btn.png in Resources */ = {isa = PBXBuildFile; fileRef = BA4018171A13A55A003443AC /* set_btn.png */; };
 		BA491B711A0523CE0065DB16 /* UINavigationBar+customBar.m in Sources */ = {isa = PBXBuildFile; fileRef = BA491B701A0523CE0065DB16 /* UINavigationBar+customBar.m */; };
 		BA491B741A0524290065DB16 /* top_bg.png in Resources */ = {isa = PBXBuildFile; fileRef = BA491B731A0524290065DB16 /* top_bg.png */; };
+		BA4FB3271A14CB9E00DFECC4 /* FirstRecordVC.m in Sources */ = {isa = PBXBuildFile; fileRef = BA4FB3251A14CB9E00DFECC4 /* FirstRecordVC.m */; };
+		BA4FB3281A14CB9E00DFECC4 /* FirstRecordVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = BA4FB3261A14CB9E00DFECC4 /* FirstRecordVC.xib */; };
+		BA4FB32B1A14D9B800DFECC4 /* Record_chose_btn.png in Resources */ = {isa = PBXBuildFile; fileRef = BA4FB3291A14D9B800DFECC4 /* Record_chose_btn.png */; };
+		BA4FB32C1A14D9B800DFECC4 /* Record_save_btn.png in Resources */ = {isa = PBXBuildFile; fileRef = BA4FB32A1A14D9B800DFECC4 /* Record_save_btn.png */; };
+		BA5634FA1A15FC8100283A11 /* CustomItoast.m in Sources */ = {isa = PBXBuildFile; fileRef = BA5634F91A15FC8100283A11 /* CustomItoast.m */; };
 		BA59D73019F884560098BDCF /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = BA59D72F19F884560098BDCF /* main.m */; };
 		BA59D73319F884560098BDCF /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = BA59D73219F884560098BDCF /* AppDelegate.m */; };
 		BA59D73B19F884570098BDCF /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = BA59D73A19F884570098BDCF /* Images.xcassets */; };
@@ -65,6 +70,9 @@
 		BA59D83119F8AAF90098BDCF /* ShoppingViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = BA59D82F19F8AAF90098BDCF /* ShoppingViewController.xib */; };
 		BA59D83B19F8ABAB0098BDCF /* SetViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BA59D83919F8ABAB0098BDCF /* SetViewController.m */; };
 		BA59D83C19F8ABAB0098BDCF /* SetViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = BA59D83A19F8ABAB0098BDCF /* SetViewController.xib */; };
+		BAA689861A15E81600B201A0 /* OrderCellDetailView.m in Sources */ = {isa = PBXBuildFile; fileRef = BAA689851A15E81600B201A0 /* OrderCellDetailView.m */; };
+		BAA689891A15E8AE00B201A0 /* Record_cancel_btn.png in Resources */ = {isa = PBXBuildFile; fileRef = BAA689871A15E8AE00B201A0 /* Record_cancel_btn.png */; };
+		BAA6898A1A15E8AE00B201A0 /* Record_sure_btn.png in Resources */ = {isa = PBXBuildFile; fileRef = BAA689881A15E8AE00B201A0 /* Record_sure_btn.png */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -89,6 +97,13 @@
 		BA491B6F1A0523CE0065DB16 /* UINavigationBar+customBar.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UINavigationBar+customBar.h"; sourceTree = "<group>"; };
 		BA491B701A0523CE0065DB16 /* UINavigationBar+customBar.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UINavigationBar+customBar.m"; sourceTree = "<group>"; };
 		BA491B731A0524290065DB16 /* top_bg.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = top_bg.png; sourceTree = "<group>"; };
+		BA4FB3241A14CB9E00DFECC4 /* FirstRecordVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FirstRecordVC.h; sourceTree = "<group>"; };
+		BA4FB3251A14CB9E00DFECC4 /* FirstRecordVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FirstRecordVC.m; sourceTree = "<group>"; };
+		BA4FB3261A14CB9E00DFECC4 /* FirstRecordVC.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = FirstRecordVC.xib; sourceTree = "<group>"; };
+		BA4FB3291A14D9B800DFECC4 /* Record_chose_btn.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Record_chose_btn.png; sourceTree = "<group>"; };
+		BA4FB32A1A14D9B800DFECC4 /* Record_save_btn.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Record_save_btn.png; sourceTree = "<group>"; };
+		BA5634F81A15FC8100283A11 /* CustomItoast.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CustomItoast.h; sourceTree = "<group>"; };
+		BA5634F91A15FC8100283A11 /* CustomItoast.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CustomItoast.m; sourceTree = "<group>"; };
 		BA59D72A19F884560098BDCF /* WomenHealthApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = WomenHealthApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		BA59D72E19F884560098BDCF /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		BA59D72F19F884560098BDCF /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
@@ -184,6 +199,10 @@
 		BA59D83819F8ABAB0098BDCF /* SetViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SetViewController.h; sourceTree = "<group>"; };
 		BA59D83919F8ABAB0098BDCF /* SetViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SetViewController.m; sourceTree = "<group>"; };
 		BA59D83A19F8ABAB0098BDCF /* SetViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SetViewController.xib; sourceTree = "<group>"; };
+		BAA689841A15E81600B201A0 /* OrderCellDetailView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OrderCellDetailView.h; sourceTree = "<group>"; };
+		BAA689851A15E81600B201A0 /* OrderCellDetailView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OrderCellDetailView.m; sourceTree = "<group>"; };
+		BAA689871A15E8AE00B201A0 /* Record_cancel_btn.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Record_cancel_btn.png; sourceTree = "<group>"; };
+		BAA689881A15E8AE00B201A0 /* Record_sure_btn.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Record_sure_btn.png; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -207,6 +226,17 @@
 		BA491B5E1A0519B80065DB16 /* Record */ = {
 			isa = PBXGroup;
 			children = (
+				BAA689871A15E8AE00B201A0 /* Record_cancel_btn.png */,
+				BAA689881A15E8AE00B201A0 /* Record_sure_btn.png */,
+				BA4FB3291A14D9B800DFECC4 /* Record_chose_btn.png */,
+				BA4FB32A1A14D9B800DFECC4 /* Record_save_btn.png */,
+			);
+			name = Record;
+			sourceTree = "<group>";
+		};
+		BA491B721A0524110065DB16 /* other */ = {
+			isa = PBXGroup;
+			children = (
 				BA4018101A13A55A003443AC /* buy_btn_selected.png */,
 				BA4018111A13A55A003443AC /* buy_btn.png */,
 				BA4018121A13A55A003443AC /* circle_btn_selected.png */,
@@ -215,13 +245,6 @@
 				BA4018151A13A55A003443AC /* record_btn.png */,
 				BA4018161A13A55A003443AC /* set_btn_selected.png */,
 				BA4018171A13A55A003443AC /* set_btn.png */,
-			);
-			name = Record;
-			sourceTree = "<group>";
-		};
-		BA491B721A0524110065DB16 /* other */ = {
-			isa = PBXGroup;
-			children = (
 				BA491B731A0524290065DB16 /* top_bg.png */,
 			);
 			name = other;
@@ -252,7 +275,7 @@
 				BA59D73219F884560098BDCF /* AppDelegate.m */,
 				BA59D76B19F894620098BDCF /* Libs */,
 				BA59D75919F894620098BDCF /* Common */,
-				BA59D7EA19F894750098BDCF /* View */,
+				BAA689831A15E80C00B201A0 /* View */,
 				BA59D80119F8947E0098BDCF /* Model */,
 				BA59D7C819F894750098BDCF /* VC */,
 				BA59D80219F8948D0098BDCF /* Resources */,
@@ -314,6 +337,8 @@
 				BA59D76819F894620098BDCF /* UIImage+imageContent.m */,
 				BA59D76919F894620098BDCF /* UITableViewCell+Category.h */,
 				BA59D76A19F894620098BDCF /* UITableViewCell+Category.m */,
+				BA5634F81A15FC8100283A11 /* CustomItoast.h */,
+				BA5634F91A15FC8100283A11 /* CustomItoast.m */,
 			);
 			path = Common;
 			sourceTree = "<group>";
@@ -429,13 +454,6 @@
 			path = VC;
 			sourceTree = "<group>";
 		};
-		BA59D7EA19F894750098BDCF /* View */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = View;
-			sourceTree = "<group>";
-		};
 		BA59D80119F8947E0098BDCF /* Model */ = {
 			isa = PBXGroup;
 			children = (
@@ -473,6 +491,9 @@
 				BA59D82019F8AA110098BDCF /* RecordViewController.h */,
 				BA59D82119F8AA110098BDCF /* RecordViewController.m */,
 				BA59D82219F8AA110098BDCF /* RecordViewController.xib */,
+				BA4FB3241A14CB9E00DFECC4 /* FirstRecordVC.h */,
+				BA4FB3251A14CB9E00DFECC4 /* FirstRecordVC.m */,
+				BA4FB3261A14CB9E00DFECC4 /* FirstRecordVC.xib */,
 			);
 			name = Record;
 			sourceTree = "<group>";
@@ -514,6 +535,15 @@
 				BA491B5E1A0519B80065DB16 /* Record */,
 			);
 			path = 2x;
+			sourceTree = "<group>";
+		};
+		BAA689831A15E80C00B201A0 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				BAA689841A15E81600B201A0 /* OrderCellDetailView.h */,
+				BAA689851A15E81600B201A0 /* OrderCellDetailView.m */,
+			);
+			path = View;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -596,16 +626,21 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				BA4FB32B1A14D9B800DFECC4 /* Record_chose_btn.png in Resources */,
 				BA40181E1A13A55A003443AC /* set_btn_selected.png in Resources */,
 				BA59D83C19F8ABAB0098BDCF /* SetViewController.xib in Resources */,
 				BA4018191A13A55A003443AC /* buy_btn.png in Resources */,
+				BA4FB32C1A14D9B800DFECC4 /* Record_save_btn.png in Resources */,
 				BA491B741A0524290065DB16 /* top_bg.png in Resources */,
 				BA59D83119F8AAF90098BDCF /* ShoppingViewController.xib in Resources */,
 				BA59D82419F8AA110098BDCF /* RecordViewController.xib in Resources */,
 				BA40181D1A13A55A003443AC /* record_btn.png in Resources */,
 				BA59D82B19F8AAC30098BDCF /* BBSViewController.xib in Resources */,
 				BA40181A1A13A55A003443AC /* circle_btn_selected.png in Resources */,
+				BAA689891A15E8AE00B201A0 /* Record_cancel_btn.png in Resources */,
+				BA4FB3281A14CB9E00DFECC4 /* FirstRecordVC.xib in Resources */,
 				BA59D73B19F884570098BDCF /* Images.xcassets in Resources */,
+				BAA6898A1A15E8AE00B201A0 /* Record_sure_btn.png in Resources */,
 				BA40181C1A13A55A003443AC /* record_btn_selected.png in Resources */,
 				BA59D81E19F8A6400098BDCF /* UITabbarCommonViewController.xib in Resources */,
 				BA4018181A13A55A003443AC /* buy_btn_selected.png in Resources */,
@@ -637,6 +672,7 @@
 				BA59D7C719F894620098BDCF /* SVProgressHUD.m in Sources */,
 				BA59D7AE19F894620098BDCF /* NSAlert+MKNetworkKitAdditions.m in Sources */,
 				BA59D83B19F8ABAB0098BDCF /* SetViewController.m in Sources */,
+				BA5634FA1A15FC8100283A11 /* CustomItoast.m in Sources */,
 				BA59D73019F884560098BDCF /* main.m in Sources */,
 				BA59D7BB19F894620098BDCF /* SDWebImageCompat.m in Sources */,
 				BA59D83019F8AAF90098BDCF /* ShoppingViewController.m in Sources */,
@@ -656,6 +692,7 @@
 				BA59D7B019F894620098BDCF /* NSDate+RFC1123.m in Sources */,
 				BA59D7BE19F894620098BDCF /* SDWebImageDownloaderOperation.m in Sources */,
 				BA59D7B119F894620098BDCF /* NSDictionary+RequestEncoding.m in Sources */,
+				BAA689861A15E81600B201A0 /* OrderCellDetailView.m in Sources */,
 				BA59D7A719F894620098BDCF /* CommonMethod.m in Sources */,
 				BA59D7C019F894620098BDCF /* SDWebImagePrefetcher.m in Sources */,
 				BA59D82319F8AA110098BDCF /* RecordViewController.m in Sources */,
@@ -663,6 +700,7 @@
 				BA59D7BF19F894620098BDCF /* SDWebImageManager.m in Sources */,
 				BA59D7B919F894620098BDCF /* NSData+ImageContentType.m in Sources */,
 				BA59D7B319F894620098BDCF /* UIAlertView+MKNetworkKitAdditions.m in Sources */,
+				BA4FB3271A14CB9E00DFECC4 /* FirstRecordVC.m in Sources */,
 				BA59D7AD19F894620098BDCF /* UITableViewCell+Category.m in Sources */,
 				BA491B711A0523CE0065DB16 /* UINavigationBar+customBar.m in Sources */,
 				BA59D7B419F894620098BDCF /* UIImageView+MKNetworkKitAdditions.m in Sources */,
@@ -771,30 +809,34 @@
 		BA59D74E19F884570098BDCF /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				ASSETCATALOG_COMPILER_APPICON_NAME = "AppIcon-2";
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = "LaunchImage-2";
 				CODE_SIGN_IDENTITY = "iPhone Developer: zhang zhiyong (5RUGM4A2HF)";
 				GCC_PREFIX_HEADER = WomenHealthApp/WomenHealthApp.pch;
 				INFOPLIST_FILE = WomenHealthApp/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				ONLY_ACTIVE_ARCH = YES;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "2aab2d78-d142-4fd6-9119-540a44a88d4c";
+				VALID_ARCHS = "arm64 armv7 armv7s";
 			};
 			name = Debug;
 		};
 		BA59D74F19F884570098BDCF /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				ASSETCATALOG_COMPILER_APPICON_NAME = "AppIcon-2";
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = "LaunchImage-2";
 				CODE_SIGN_IDENTITY = "iPhone Developer: zhang zhiyong (5RUGM4A2HF)";
 				GCC_PREFIX_HEADER = WomenHealthApp/WomenHealthApp.pch;
 				INFOPLIST_FILE = WomenHealthApp/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				ONLY_ACTIVE_ARCH = NO;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "2aab2d78-d142-4fd6-9119-540a44a88d4c";
+				VALID_ARCHS = "arm64 armv7 armv7s";
 			};
 			name = Release;
 		};

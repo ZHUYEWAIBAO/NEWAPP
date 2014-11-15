@@ -16,6 +16,7 @@
 #import "CommonMethod.h"
 #import "UIButton+WebCache.h"
 #import "UIImageView+WebCache.h"
+#import "CustomItoast.h"
 
 #ifndef YueDongApp_Defines_h
 #define YueDongApp_Defines_h
@@ -47,6 +48,9 @@
 
 //全局变量
 #define GLOBALSHARE [Global share]
+
+//公共方法
+#define COMMONDSHARE [CommonMethod share]
 
 //用户中心
 #define USERINFO [UserInfo share]

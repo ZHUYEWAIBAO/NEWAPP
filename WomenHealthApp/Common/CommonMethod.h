@@ -44,4 +44,21 @@ UIImage * UIImageScaleToSize(UIImage *img, CGSize size);
 
 @interface CommonMethod : NSObject
 
++(CommonMethod *)share;
+/**
+ *  本地保存有记录过经期
+ */
+- (void)saveTheRecordKey:(NSString *)recordKey;
+- (NSString *)getTheLocalAddressKey;
+
+/**
+ *  获取当前月份的天数
+ *
+ *  @param year  当前年数
+ *  @param month 当前月数
+ *
+ *  @return 当前月份的天数
+ */
+- (NSInteger)getDayNumberWithYear:(NSInteger)year month:(NSInteger)month;
+
 @end
