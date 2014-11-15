@@ -47,9 +47,9 @@
     
     NSArray *ctrs = [NSArray arrayWithObjects:record_vc,bbs_vc,shopping_vc,set_vc,nil];
     
-    NSArray *imgs = [NSArray  arrayWithObjects:[UIImage imageWithContentFileName:@"record_btn.png"],[UIImage imageWithContentFileName:@"circle_btn.png"],[UIImage imageWithContentFileName:@"buy_btn.png"],[UIImage imageWithContentFileName:@"set_btn.png"],nil];
+    NSArray *imgs = [NSArray  arrayWithObjects:[UIImage imageWithContentFileName:@"new_record_btn.png"],[UIImage imageWithContentFileName:@"new_circle_btn.png"],[UIImage imageWithContentFileName:@"new_buy_btn.png"],[UIImage imageWithContentFileName:@"new_set_btn.png"],nil];
     
-    NSArray *sImgs = [NSArray arrayWithObjects:[UIImage imageWithContentFileName:@"record_btn_selected.png"],[UIImage imageWithContentFileName:@"circle_btn_selected.png"],[UIImage imageWithContentFileName:@"buy_btn_selected.png"],[UIImage imageWithContentFileName:@"set_btn_selected.png"],nil];
+    NSArray *sImgs = [NSArray arrayWithObjects:[UIImage imageWithContentFileName:@"new_record_btn_selected.png"],[UIImage imageWithContentFileName:@"new_circle_btn_selected.png"],[UIImage imageWithContentFileName:@"new_buy_btn_selected.png"],[UIImage imageWithContentFileName:@"new_set_btn_selected.png"],nil];
     
     
     NSArray *tits = [NSArray arrayWithObjects:@"记录",@"圈子",@"购物",@"设置",nil];
