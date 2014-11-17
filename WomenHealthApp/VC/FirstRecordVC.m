@@ -7,6 +7,7 @@
 //
 
 #import "FirstRecordVC.h"
+#import "RecordViewController.h"
 
 #define TAG_CHOOSE 100
 #define TAG_CANCEL 101
@@ -286,10 +287,13 @@
             
         case TAG_SAVE:{
             
-            if (![self ifCanSaveTheDate]) {
+            if ([self ifCanSaveTheDate]) {
                 NSString *recordKey = [NSString stringWithFormat:@"%ld-%ld-%ld-%@-%@",currentYear,currentMonth,currentDay,currentMenstrual,currentCycle];
                 [COMMONDSHARE saveTheRecordKey:recordKey];
             }
+            
+            RecordViewController *vc = [[RecordViewController alloc]initWithNibName:@"RecordViewController" bundle:nil];
+            [self.navigationController pushViewController:vc animated:YES];
         }
             break;
             

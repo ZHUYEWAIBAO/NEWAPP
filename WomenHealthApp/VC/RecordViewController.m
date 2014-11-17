@@ -15,6 +15,7 @@
  */
 
 #import "RecordViewController.h"
+#import "RecordDetailVC.h"
 
 @interface RecordViewController ()
 
@@ -33,12 +34,24 @@
 {
     [super loadView];
     
-    self.title = @"我的记录";;;
+    self.title = @"我的记录";
 }
 
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view from its nib.
+    
+    UIButton *rightButton=[[UIButton alloc]initWithFrame:CGRectMake(0, 0, 30, 30)];
+    [rightButton addTarget:self action:@selector(recordDetailAction:) forControlEvents:UIControlEventTouchUpInside];
+    [rightButton setBackgroundImage:[UIImage imageWithContentFileName:@"Record_detail_btn.png"] forState:UIControlStateNormal];
+    UIBarButtonItem *rightButtonItem=[[UIBarButtonItem alloc]initWithCustomView:rightButton];
+    self.navigationItem.rightBarButtonItem = rightButtonItem;
+}
+
+- (void)recordDetailAction:(id)sender
+{
+    RecordDetailVC *vc = [[RecordDetailVC alloc]initWithNibName:@"RecordDetailVC" bundle:nil];
+    [self.navigationController pushViewController:vc animated:YES];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -46,14 +59,5 @@
     // Dispose of any resources that can be recreated.
 }
 
-/*
-#pragma mark - Navigation
-
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
-}
-*/
 
 @end
