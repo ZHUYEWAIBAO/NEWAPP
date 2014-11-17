@@ -52,6 +52,8 @@
     NSArray *sImgs = [NSArray arrayWithObjects:[UIImage imageWithContentFileName:@"new_record_btn_selected.png"],[UIImage imageWithContentFileName:@"new_circle_btn_selected.png"],[UIImage imageWithContentFileName:@"new_buy_btn_selected.png"],[UIImage imageWithContentFileName:@"new_set_btn_selected.png"],nil];
     
     
+    
+    
     NSArray *tits = [NSArray arrayWithObjects:@"记录",@"圈子",@"购物",@"设置",nil];
     
     tabCtrl.viewControllers = ctrs;
@@ -59,6 +61,8 @@
     tabCtrl.selectImages = sImgs;
     tabCtrl.titles = tits;
 
+    [WHSinger share].customTabbr =tabCtrl;
+    
     self.window.rootViewController = tabCtrl;
     
     [self.window makeKeyAndVisible];

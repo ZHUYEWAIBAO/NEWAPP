@@ -1,9 +1,9 @@
 //
-//  Defines.h
-//  YueDongApp
+//  NewDefines.h
+//  WomenHealthApp
 //
-//  Created by 朱 青 on 14-7-28.
-//  Copyright (c) 2014年 朱 青. All rights reserved.
+//  Created by 朱 青 on 14-11-15.
+//  Copyright (c) 2014年 WomenHealthApp. All rights reserved.
 //
 
 #import "UIImage+imageContent.h"
@@ -17,9 +17,10 @@
 #import "UIButton+WebCache.h"
 #import "UIImageView+WebCache.h"
 #import "CustomItoast.h"
+#import "WHSinger.h"
 
-#ifndef YueDongApp_Defines_h
-#define YueDongApp_Defines_h
+#ifndef WomenHealthApp_NewDefines_h
+#define WomenHealthApp_NewDefines_h
 
 //在release版本禁止输出NSLog内容
 //发布版本时注释 #define IOS_DEBUG
@@ -80,3 +81,4 @@
 #define TEST_NETWORK_ENGINE ([totalTestNetworkEngine share])
 
 #endif
+

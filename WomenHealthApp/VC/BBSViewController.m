@@ -8,6 +8,8 @@
 
 #import "BBSViewController.h"
 #import "bbsTableCell.h"
+#import "BbsSearchVC.h"
+#import "BbsFenLeiVC.h"
 @interface BBSViewController (){
     
     IBOutlet UIPageControl *pageControl;
@@ -103,11 +105,17 @@
 
 
 -(void)searchClick{
+
+    
+    [self presentViewController:[BbsSearchVC navigationControllerContainSelf] animated:YES completion:nil];
     
     
 }
 
 -(void)addClick{
+    BbsFenLeiVC *vc =[[BbsFenLeiVC alloc]initWithNibName:@"BbsFenLeiVC" bundle:nil];
+    [self.navigationController pushViewController:vc animated:YES];
+
     
     
 }
