@@ -38,9 +38,11 @@
  
     
 //    _detailContentView = [[RecordDetailContentView alloc]initWithFrame:CGRectMake(0, 162, SCREEN_SIZE.width, 0)];
+    _detailContentView  =(RecordDetailContentView *)[[[NSBundle mainBundle] loadNibNamed:@"RecordDetailContentView" owner:self options:nil] lastObject];
 //    _detailContentView.backgroundColor = [UIColor blackColor];
-//    [self.headView addSubview:_detailContentView];
-    
+    [self.headView addSubview:_detailContentView];
+    [_detailContentView setFrame:CGRectMake(0, 162, _detailContentView.frame.size.width, 88)];
+        _detailContentView.hidden =YES;
 
 
     
@@ -62,9 +64,11 @@
 {
     if (isShowContentView) {
         [self contentViewReturnToTop];
+        _detailContentView.hidden =YES;
     }
     else{
         [self contentViewShow];
+        _detailContentView.hidden =NO;
     }
 }
 
@@ -74,7 +78,7 @@
     [UIView animateWithDuration:0.2f animations:^{
  
         [_detailContentView setHidden:NO];
-        [_detailContentView setFrame:CGRectMake(0, 162, _detailContentView.frame.size.width, 88)];
+//        [_detailContentView setFrame:CGRectMake(0, 162, _detailContentView.frame.size.width, 88)];
         
         [_headView setFrame:CGRectMake(0, _headView.frame.origin.y, _headView.frame.size.width, 250)];
         //箭头旋转
@@ -90,7 +94,7 @@
     [UIView animateWithDuration:0.2f animations:^{
         
        
-        [_detailContentView setFrame:CGRectMake(0, 162, _detailContentView.frame.size.width, 0)];
+//        [_detailContentView setFrame:CGRectMake(0, 162, _detailContentView.frame.size.width, 0)];
         
         [_headView setFrame:CGRectMake(0, _headView.frame.origin.y, _headView.frame.size.width, 162)];
         //箭头旋转

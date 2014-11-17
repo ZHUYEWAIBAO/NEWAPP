@@ -16,7 +16,7 @@
 
 #import "RecordViewController.h"
 #import "RecordDetailVC.h"
-
+#import "calendarView.h"
 @interface RecordViewController ()
 
 @end
@@ -46,6 +46,15 @@
     [rightButton setBackgroundImage:[UIImage imageWithContentFileName:@"Record_detail_btn.png"] forState:UIControlStateNormal];
     UIBarButtonItem *rightButtonItem=[[UIBarButtonItem alloc]initWithCustomView:rightButton];
     self.navigationItem.rightBarButtonItem = rightButtonItem;
+    
+    
+    
+    calendarView *tempView =(calendarView *)[[[NSBundle mainBundle] loadNibNamed:@"calendarView" owner:self options:nil] lastObject];
+
+    tempView.frame=CGRectMake(0, 110, tempView.frame.size.width, tempView.frame.size.height);
+    [self.view addSubview:tempView];
+    
+    
 }
 
 - (void)recordDetailAction:(id)sender
