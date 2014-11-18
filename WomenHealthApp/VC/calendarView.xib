@@ -18,7 +18,7 @@
                     <nil key="highlightedColor"/>
                 </label>
                 <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="yT4-Ql-zYK">
-                    <rect key="frame" x="13" y="15" width="20" height="20"/>
+                    <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
                     <state key="normal" image="last_month_btn.png">
                         <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                     </state>
@@ -28,7 +28,7 @@
                     </connections>
                 </button>
                 <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="vNd-b7-iem">
-                    <rect key="frame" x="292" y="14" width="20" height="22"/>
+                    <rect key="frame" x="268" y="0.0" width="50" height="50"/>
                     <state key="normal" image="next_month_btn.png">
                         <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                     </state>
@@ -49,7 +49,7 @@
             <connections>
                 <outlet property="titleLab" destination="JoC-tr-s7A" id="iGo-f7-aEJ"/>
             </connections>
-            <point key="canvasLocation" x="-48" y="326"/>
+            <point key="canvasLocation" x="103" y="359"/>
         </view>
     </objects>
     <resources>
