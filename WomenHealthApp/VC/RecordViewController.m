@@ -30,6 +30,7 @@
     UINavigationController *nav = [[UINavigationController alloc]initWithRootViewController:vc];
     return nav;
 }
+ooooo
 
 - (void)loadView
 {
