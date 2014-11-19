@@ -9,7 +9,7 @@
 #import "BasicVC.h"
 #import "RecordDetailContentView.h"
 
-@interface RecordDetailVC : BasicVC
+@interface RecordDetailVC : BasicVC<UITableViewDataSource,UITableViewDelegate>
 
 @property (weak, nonatomic) IBOutlet UITableView *detailTableView;
 @property (weak, nonatomic) IBOutlet UIImageView *contentArrowImgView;

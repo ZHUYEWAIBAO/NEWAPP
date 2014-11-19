@@ -8,11 +8,18 @@
 
 #import "RecordDetailVC.h"
 #import "RecordDetailCell.h"
-
+#import "RecordViewItem.h"
 @interface RecordDetailVC ()
 {
     UIView *sectionView;
     BOOL isShowContentView;
+    UIView *STView;
+    RecordViewItem *detail;
+    
+    UIView *STViewTwo;
+    RecordViewItem *detailTwo;
+
+    
 }
 @end
 
@@ -47,9 +54,56 @@
 
     
     self.detailTableView.tableHeaderView = self.headView;
+    
+    
+    
+    STView = [[UIView alloc]initWithFrame:self.view.bounds];
+    [STView setBackgroundColor:[UIColor colorWithRed:0.3 green:0.3 blue:0.3 alpha:0.7]];
+    UITapGestureRecognizer *tapDismssges =[[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(dismissWindow)];
+    [STView addGestureRecognizer:tapDismssges];
+    
+    STViewTwo = [[UIView alloc]initWithFrame:self.view.bounds];
+    [STViewTwo setBackgroundColor:[UIColor colorWithRed:0.3 green:0.3 blue:0.3 alpha:0.7]];
+    UITapGestureRecognizer *tapDismssgesTwo =[[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(dismissWindow)];
+    [STViewTwo addGestureRecognizer:tapDismssgesTwo];
+    
+    
+    detail =(RecordViewItem *)[[[NSBundle mainBundle] loadNibNamed:@"RecordViewItem" owner:self options:nil] firstObject];
+    detail.layer.cornerRadius =5.0f;
+    
+    [detail setFrame:CGRectMake(100, 50, detail.frame.size.width, detail.frame.size.height)];
+    detail.center =CGPointMake(160, SCREEN_SIZE.height/2);
+    [STView.subviews enumerateObjectsUsingBlock:^(id obj, NSUInteger idx, BOOL *stop) {
+        [obj removeFromSuperview];
+    }];
+    [STView addSubview:detail];
+    
+    
+    
+    detailTwo =(RecordViewItem *)[[[NSBundle mainBundle] loadNibNamed:@"RecordViewItem" owner:self options:nil] lastObject];
+    detailTwo.layer.cornerRadius =5.0f;
+    
+    [detailTwo setFrame:CGRectMake(100, 50, detail.frame.size.width, detail.frame.size.height)];
+    detailTwo.center =CGPointMake(160, SCREEN_SIZE.height/2);
+    [STViewTwo.subviews enumerateObjectsUsingBlock:^(id obj, NSUInteger idx, BOOL *stop) {
+        [obj removeFromSuperview];
+    }];
+    [STViewTwo addSubview:detailTwo];
  
 }
+-(void)dismissWindow{
+    
+//    [UIView animateWithDuration:0.2 delay:0.0 options:UIViewAnimationOptionCurveEaseInOut animations:^{
+//        CATransform3D transform = CATransform3DMakeScale(0.1, 0.1, 1);
+//        STView.layer.transform = transform;
+//    } completion:^(BOOL finished) {
+    
+        [STView removeFromSuperview];
+    [STViewTwo removeFromSuperview];
+        
+//    }];
 
+}
 - (void)recordDetailSureAction:(id)sender
 {
     
@@ -149,7 +203,85 @@
     return cell;
     
 }
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
+    
+    
+    NSLog(@"%li",(long)indexPath.row);
 
+    
+    switch (indexPath.row) {
+        case 0:{
+            
+           
+            detail.titleNameLab.text =@"爱爱";
+           
+
+            [[[UIApplication sharedApplication] keyWindow] addSubview:STView];
+            CAKeyframeAnimation *popAnimation = [CAKeyframeAnimation animationWithKeyPath:@"transform"];
+            popAnimation.duration = 0.2;
+            popAnimation.values = @[[NSValue valueWithCATransform3D:CATransform3DMakeScale(0.001f, 0.001f, 1.0f)],[NSValue valueWithCATransform3D:CATransform3DIdentity]];
+            //    popAnimation.keyTimes = @[@0.2f, @1.0f];
+            //    popAnimation.timingFunctions = @[[CAMediaTimingFunction functionWithName:kCAMediaTimingFunctionEaseInEaseOut],
+            //                                     [CAMediaTimingFunction functionWithName:kCAMediaTimingFunctionEaseInEaseOut],
+            //                                     [CAMediaTimingFunction functionWithName:kCAMediaTimingFunctionEaseInEaseOut]];
+            [detail.layer addAnimation:popAnimation forKey:nil];
+  
+            break;
+        }
+        case 1:{
+            
+
+            detail.titleNameLab.text =@"体温";
+
+            [[[UIApplication sharedApplication] keyWindow] addSubview:STView];
+            CAKeyframeAnimation *popAnimation = [CAKeyframeAnimation animationWithKeyPath:@"transform"];
+            popAnimation.duration = 0.2;
+            popAnimation.values = @[[NSValue valueWithCATransform3D:CATransform3DMakeScale(0.001f, 0.001f, 1.0f)],[NSValue valueWithCATransform3D:CATransform3DIdentity]];
+            //    popAnimation.keyTimes = @[@0.2f, @1.0f];
+            //    popAnimation.timingFunctions = @[[CAMediaTimingFunction functionWithName:kCAMediaTimingFunctionEaseInEaseOut],
+            //                                     [CAMediaTimingFunction functionWithName:kCAMediaTimingFunctionEaseInEaseOut],
+            //                                     [CAMediaTimingFunction functionWithName:kCAMediaTimingFunctionEaseInEaseOut]];
+            [detail.layer addAnimation:popAnimation forKey:nil];
+            
+            break;
+        }
+        case 2:{
+            
+
+            
+            [[[UIApplication sharedApplication] keyWindow] addSubview:STViewTwo];
+            CAKeyframeAnimation *popAnimation = [CAKeyframeAnimation animationWithKeyPath:@"transform"];
+            popAnimation.duration = 0.2;
+            popAnimation.values = @[[NSValue valueWithCATransform3D:CATransform3DMakeScale(0.001f, 0.001f, 1.0f)],[NSValue valueWithCATransform3D:CATransform3DIdentity]];
+            //    popAnimation.keyTimes = @[@0.2f, @1.0f];
+            //    popAnimation.timingFunctions = @[[CAMediaTimingFunction functionWithName:kCAMediaTimingFunctionEaseInEaseOut],
+            //                                     [CAMediaTimingFunction functionWithName:kCAMediaTimingFunctionEaseInEaseOut],
+            //                                     [CAMediaTimingFunction functionWithName:kCAMediaTimingFunctionEaseInEaseOut]];
+            [detailTwo.layer addAnimation:popAnimation forKey:nil];
+
+            
+            break;
+        }
+        case 3:{
+            detail.titleNameLab.text =@"体重";
+
+            [[[UIApplication sharedApplication] keyWindow] addSubview:STView];
+            CAKeyframeAnimation *popAnimation = [CAKeyframeAnimation animationWithKeyPath:@"transform"];
+            popAnimation.duration = 0.2;
+            popAnimation.values = @[[NSValue valueWithCATransform3D:CATransform3DMakeScale(0.001f, 0.001f, 1.0f)],[NSValue valueWithCATransform3D:CATransform3DIdentity]];
+            //    popAnimation.keyTimes = @[@0.2f, @1.0f];
+            //    popAnimation.timingFunctions = @[[CAMediaTimingFunction functionWithName:kCAMediaTimingFunctionEaseInEaseOut],
+            //                                     [CAMediaTimingFunction functionWithName:kCAMediaTimingFunctionEaseInEaseOut],
+            //                                     [CAMediaTimingFunction functionWithName:kCAMediaTimingFunctionEaseInEaseOut]];
+            [detail.layer addAnimation:popAnimation forKey:nil];
+            break;
+        }
+        default:
+            break;
+    }
+    
+    
+}
 - (UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section
 {
 
@@ -173,6 +305,7 @@
     
     return sectionView;
 }
+
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
