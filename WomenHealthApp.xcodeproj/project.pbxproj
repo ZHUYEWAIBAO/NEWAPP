@@ -41,6 +41,8 @@
 		657B415A1A1732270057F5AE /* line@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 657B41511A1732270057F5AE /* line@2x.png */; };
 		657B415B1A1732270057F5AE /* publish_btn@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 657B41521A1732270057F5AE /* publish_btn@2x.png */; };
 		657B415C1A1732270057F5AE /* publish_btn_selected@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 657B41531A1732270057F5AE /* publish_btn_selected@2x.png */; };
+		65CD13A81A1C7116000A4F8E /* SVProgressHUD.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 65CD13A51A1C7116000A4F8E /* SVProgressHUD.bundle */; };
+		65CD13A91A1C7116000A4F8E /* SVProgressHUD.m in Sources */ = {isa = PBXBuildFile; fileRef = 65CD13A71A1C7116000A4F8E /* SVProgressHUD.m */; };
 		65D8BBD81A1735AE00E7F68C /* BbsSearchVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 65D8BBD61A1735AE00E7F68C /* BbsSearchVC.m */; };
 		65D8BBD91A1735AE00E7F68C /* BbsSearchVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 65D8BBD71A1735AE00E7F68C /* BbsSearchVC.xib */; };
 		65D8BBDD1A1736E300E7F68C /* search_bg@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 65D8BBDA1A1736E300E7F68C /* search_bg@2x.png */; };
@@ -114,8 +116,6 @@
 		BA59D7C319F894620098BDCF /* UIImage+MultiFormat.m in Sources */ = {isa = PBXBuildFile; fileRef = BA59D79D19F894620098BDCF /* UIImage+MultiFormat.m */; };
 		BA59D7C419F894620098BDCF /* UIImage+WebP.m in Sources */ = {isa = PBXBuildFile; fileRef = BA59D79F19F894620098BDCF /* UIImage+WebP.m */; };
 		BA59D7C519F894620098BDCF /* UIImageView+WebCache.m in Sources */ = {isa = PBXBuildFile; fileRef = BA59D7A119F894620098BDCF /* UIImageView+WebCache.m */; };
-		BA59D7C619F894620098BDCF /* SVProgressHUD.bundle in Resources */ = {isa = PBXBuildFile; fileRef = BA59D7A319F894620098BDCF /* SVProgressHUD.bundle */; };
-		BA59D7C719F894620098BDCF /* SVProgressHUD.m in Sources */ = {isa = PBXBuildFile; fileRef = BA59D7A519F894620098BDCF /* SVProgressHUD.m */; };
 		BA59D81D19F8A6400098BDCF /* UITabbarCommonViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BA59D81B19F8A6400098BDCF /* UITabbarCommonViewController.m */; };
 		BA59D81E19F8A6400098BDCF /* UITabbarCommonViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = BA59D81C19F8A6400098BDCF /* UITabbarCommonViewController.xib */; };
 		BA59D82319F8AA110098BDCF /* RecordViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BA59D82119F8AA110098BDCF /* RecordViewController.m */; };
@@ -199,6 +199,10 @@
 		657B41511A1732270057F5AE /* line@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "line@2x.png"; sourceTree = "<group>"; };
 		657B41521A1732270057F5AE /* publish_btn@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "publish_btn@2x.png"; sourceTree = "<group>"; };
 		657B41531A1732270057F5AE /* publish_btn_selected@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "publish_btn_selected@2x.png"; sourceTree = "<group>"; };
+		65CD13A41A1C7116000A4F8E /* SVProgressHUD-Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "SVProgressHUD-Prefix.pch"; sourceTree = "<group>"; };
+		65CD13A51A1C7116000A4F8E /* SVProgressHUD.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = SVProgressHUD.bundle; sourceTree = "<group>"; };
+		65CD13A61A1C7116000A4F8E /* SVProgressHUD.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SVProgressHUD.h; sourceTree = "<group>"; };
+		65CD13A71A1C7116000A4F8E /* SVProgressHUD.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SVProgressHUD.m; sourceTree = "<group>"; };
 		65D8BBD51A1735AE00E7F68C /* BbsSearchVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BbsSearchVC.h; sourceTree = "<group>"; };
 		65D8BBD61A1735AE00E7F68C /* BbsSearchVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BbsSearchVC.m; sourceTree = "<group>"; };
 		65D8BBD71A1735AE00E7F68C /* BbsSearchVC.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = BbsSearchVC.xib; sourceTree = "<group>"; };
@@ -326,9 +330,6 @@
 		BA59D79F19F894620098BDCF /* UIImage+WebP.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImage+WebP.m"; sourceTree = "<group>"; };
 		BA59D7A019F894620098BDCF /* UIImageView+WebCache.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImageView+WebCache.h"; sourceTree = "<group>"; };
 		BA59D7A119F894620098BDCF /* UIImageView+WebCache.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImageView+WebCache.m"; sourceTree = "<group>"; };
-		BA59D7A319F894620098BDCF /* SVProgressHUD.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = SVProgressHUD.bundle; sourceTree = "<group>"; };
-		BA59D7A419F894620098BDCF /* SVProgressHUD.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SVProgressHUD.h; sourceTree = "<group>"; };
-		BA59D7A519F894620098BDCF /* SVProgressHUD.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SVProgressHUD.m; sourceTree = "<group>"; };
 		BA59D81A19F8A6400098BDCF /* UITabbarCommonViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UITabbarCommonViewController.h; sourceTree = "<group>"; };
 		BA59D81B19F8A6400098BDCF /* UITabbarCommonViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UITabbarCommonViewController.m; sourceTree = "<group>"; };
 		BA59D81C19F8A6400098BDCF /* UITabbarCommonViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = UITabbarCommonViewController.xib; sourceTree = "<group>"; };
@@ -448,6 +449,17 @@
 				657B41531A1732270057F5AE /* publish_btn_selected@2x.png */,
 			);
 			path = center;
+			sourceTree = "<group>";
+		};
+		65CD13A31A1C7116000A4F8E /* SVProgressHUD */ = {
+			isa = PBXGroup;
+			children = (
+				65CD13A41A1C7116000A4F8E /* SVProgressHUD-Prefix.pch */,
+				65CD13A51A1C7116000A4F8E /* SVProgressHUD.bundle */,
+				65CD13A61A1C7116000A4F8E /* SVProgressHUD.h */,
+				65CD13A71A1C7116000A4F8E /* SVProgressHUD.m */,
+			);
+			path = SVProgressHUD;
 			sourceTree = "<group>";
 		};
 		65EE0A311A17897400F6F38E /* fenlei */ = {
@@ -621,9 +633,9 @@
 		BA59D76B19F894620098BDCF /* Libs */ = {
 			isa = PBXGroup;
 			children = (
+				65CD13A31A1C7116000A4F8E /* SVProgressHUD */,
 				BA59D76C19F894620098BDCF /* MKNetworkKit */,
 				BA59D78419F894620098BDCF /* SDWebImage */,
-				BA59D7A219F894620098BDCF /* SVProgressHUD */,
 			);
 			path = Libs;
 			sourceTree = "<group>";
@@ -706,16 +718,6 @@
 				BA59D7A119F894620098BDCF /* UIImageView+WebCache.m */,
 			);
 			path = SDWebImage;
-			sourceTree = "<group>";
-		};
-		BA59D7A219F894620098BDCF /* SVProgressHUD */ = {
-			isa = PBXGroup;
-			children = (
-				BA59D7A319F894620098BDCF /* SVProgressHUD.bundle */,
-				BA59D7A419F894620098BDCF /* SVProgressHUD.h */,
-				BA59D7A519F894620098BDCF /* SVProgressHUD.m */,
-			);
-			path = SVProgressHUD;
 			sourceTree = "<group>";
 		};
 		BA59D7C819F894750098BDCF /* VC */ = {
@@ -935,6 +937,7 @@
 				657B41591A1732270057F5AE /* image_default@2x.png in Resources */,
 				657B41561A1732270057F5AE /* flag@2x.png in Resources */,
 				657B41401A172B3B0057F5AE /* addview1.jpg in Resources */,
+				65CD13A81A1C7116000A4F8E /* SVProgressHUD.bundle in Resources */,
 				65EE0A381A17897400F6F38E /* fourbtns_btn@2x.png in Resources */,
 				65D8BBE41A173A3600E7F68C /* BbsFenLeiVC.xib in Resources */,
 				65D8BBE81A17465800E7F68C /* nav_back_bt.png in Resources */,
@@ -1003,7 +1006,6 @@
 				657B41421A172B3B0057F5AE /* addview3.jpg in Resources */,
 				657B41471A172D630057F5AE /* bbsTableCell.xib in Resources */,
 				BA59D81E19F8A6400098BDCF /* UITabbarCommonViewController.xib in Resources */,
-				BA59D7C619F894620098BDCF /* SVProgressHUD.bundle in Resources */,
 				BA13C1B01A1793EE003B1313 /* top_bg.png in Resources */,
 				65EE0A3B1A17897400F6F38E /* plus_btn@2x.png in Resources */,
 				BA95CB0E1A19CE9D00FAE262 /* Record_detail_zhengzhuang_logo.png in Resources */,
@@ -1037,7 +1039,6 @@
 				65D8BBE31A173A3600E7F68C /* BbsFenLeiVC.m in Sources */,
 				BA59D73319F884560098BDCF /* AppDelegate.m in Sources */,
 				BA59D7AB19F894620098BDCF /* RequestNetworkEngine.m in Sources */,
-				BA59D7C719F894620098BDCF /* SVProgressHUD.m in Sources */,
 				657B41461A172D630057F5AE /* bbsTableCell.m in Sources */,
 				BA59D7AE19F894620098BDCF /* NSAlert+MKNetworkKitAdditions.m in Sources */,
 				BA59D83B19F8ABAB0098BDCF /* SetViewController.m in Sources */,
@@ -1047,6 +1048,7 @@
 				BA59D7BB19F894620098BDCF /* SDWebImageCompat.m in Sources */,
 				BA59D83019F8AAF90098BDCF /* ShoppingViewController.m in Sources */,
 				BA59D7BA19F894620098BDCF /* SDImageCache.m in Sources */,
+				65CD13A91A1C7116000A4F8E /* SVProgressHUD.m in Sources */,
 				BA59D81D19F8A6400098BDCF /* UITabbarCommonViewController.m in Sources */,
 				BA59D7C319F894620098BDCF /* UIImage+MultiFormat.m in Sources */,
 				BA59D7C219F894620098BDCF /* UIImage+GIF.m in Sources */,
