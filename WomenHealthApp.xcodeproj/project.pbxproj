@@ -43,6 +43,7 @@
 		657B415C1A1732270057F5AE /* publish_btn_selected@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 657B41531A1732270057F5AE /* publish_btn_selected@2x.png */; };
 		65CD13AF1A1C72B0000A4F8E /* SVProgressHUD.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 65CD13AC1A1C72B0000A4F8E /* SVProgressHUD.bundle */; };
 		65CD13B01A1C72B0000A4F8E /* SVProgressHUD.m in Sources */ = {isa = PBXBuildFile; fileRef = 65CD13AE1A1C72B0000A4F8E /* SVProgressHUD.m */; };
+		65CD13B31A1C792F000A4F8E /* sssss.m in Sources */ = {isa = PBXBuildFile; fileRef = 65CD13B21A1C792F000A4F8E /* sssss.m */; };
 		65D8BBD81A1735AE00E7F68C /* BbsSearchVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 65D8BBD61A1735AE00E7F68C /* BbsSearchVC.m */; };
 		65D8BBD91A1735AE00E7F68C /* BbsSearchVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 65D8BBD71A1735AE00E7F68C /* BbsSearchVC.xib */; };
 		65D8BBDD1A1736E300E7F68C /* search_bg@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 65D8BBDA1A1736E300E7F68C /* search_bg@2x.png */; };
@@ -203,6 +204,8 @@
 		65CD13AC1A1C72B0000A4F8E /* SVProgressHUD.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = SVProgressHUD.bundle; sourceTree = "<group>"; };
 		65CD13AD1A1C72B0000A4F8E /* SVProgressHUD.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SVProgressHUD.h; sourceTree = "<group>"; };
 		65CD13AE1A1C72B0000A4F8E /* SVProgressHUD.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SVProgressHUD.m; sourceTree = "<group>"; };
+		65CD13B11A1C792F000A4F8E /* sssss.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = sssss.h; sourceTree = "<group>"; };
+		65CD13B21A1C792F000A4F8E /* sssss.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = sssss.m; sourceTree = "<group>"; };
 		65D8BBD51A1735AE00E7F68C /* BbsSearchVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BbsSearchVC.h; sourceTree = "<group>"; };
 		65D8BBD61A1735AE00E7F68C /* BbsSearchVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BbsSearchVC.m; sourceTree = "<group>"; };
 		65D8BBD71A1735AE00E7F68C /* BbsSearchVC.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = BbsSearchVC.xib; sourceTree = "<group>"; };
@@ -785,6 +788,8 @@
 				BA95CB021A19A8AD00FAE262 /* RecordDetailCell.h */,
 				BA95CB031A19A8AD00FAE262 /* RecordDetailCell.m */,
 				BA95CB041A19A8AD00FAE262 /* RecordDetailCell.xib */,
+				65CD13B11A1C792F000A4F8E /* sssss.h */,
+				65CD13B21A1C792F000A4F8E /* sssss.m */,
 			);
 			name = Record;
 			sourceTree = "<group>";
@@ -1045,6 +1050,7 @@
 				BA5634FA1A15FC8100283A11 /* CustomItoast.m in Sources */,
 				BA59D73019F884560098BDCF /* main.m in Sources */,
 				65EE0A411A178CF300F6F38E /* EGORefreshTableHeaderView.m in Sources */,
+				65CD13B31A1C792F000A4F8E /* sssss.m in Sources */,
 				BA59D7BB19F894620098BDCF /* SDWebImageCompat.m in Sources */,
 				BA59D83019F8AAF90098BDCF /* ShoppingViewController.m in Sources */,
 				BA59D7BA19F894620098BDCF /* SDImageCache.m in Sources */,

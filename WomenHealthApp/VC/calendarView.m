@@ -5,14 +5,6 @@
 //  Created by Daniel on 14-11-13.
 //  Copyright (c) 2014年 Daniel. All rights reserved.
 //
-/**
- *  ssssssss
-    qqqqqq
- */
-/**
- *  <#Description#>
- */
-
 #import "calendarView.h"
 #import "UIColor+RGBCo.h"
 @implementation calendarView{
