@@ -74,6 +74,7 @@
 		BA13C1AE1A1793EE003B1313 /* new_set_btn_selected.png in Resources */ = {isa = PBXBuildFile; fileRef = BA13C1A51A1793EE003B1313 /* new_set_btn_selected.png */; };
 		BA13C1AF1A1793EE003B1313 /* new_set_btn.png in Resources */ = {isa = PBXBuildFile; fileRef = BA13C1A61A1793EE003B1313 /* new_set_btn.png */; };
 		BA13C1B01A1793EE003B1313 /* top_bg.png in Resources */ = {isa = PBXBuildFile; fileRef = BA13C1A71A1793EE003B1313 /* top_bg.png */; };
+		BA47EBFF1A1C7B5D00ACBA05 /* ddddTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = BA47EBFE1A1C7B5D00ACBA05 /* ddddTableViewCell.m */; };
 		BA491B711A0523CE0065DB16 /* UINavigationBar+customBar.m in Sources */ = {isa = PBXBuildFile; fileRef = BA491B701A0523CE0065DB16 /* UINavigationBar+customBar.m */; };
 		BA4FB3271A14CB9E00DFECC4 /* FirstRecordVC.m in Sources */ = {isa = PBXBuildFile; fileRef = BA4FB3251A14CB9E00DFECC4 /* FirstRecordVC.m */; };
 		BA4FB3281A14CB9E00DFECC4 /* FirstRecordVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = BA4FB3261A14CB9E00DFECC4 /* FirstRecordVC.xib */; };
@@ -245,6 +246,8 @@
 		BA13C1A61A1793EE003B1313 /* new_set_btn.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = new_set_btn.png; sourceTree = "<group>"; };
 		BA13C1A71A1793EE003B1313 /* top_bg.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = top_bg.png; sourceTree = "<group>"; };
 		BA13C1B11A17999D003B1313 /* NewDefines.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NewDefines.h; sourceTree = "<group>"; };
+		BA47EBFD1A1C7B5D00ACBA05 /* ddddTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ddddTableViewCell.h; sourceTree = "<group>"; };
+		BA47EBFE1A1C7B5D00ACBA05 /* ddddTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ddddTableViewCell.m; sourceTree = "<group>"; };
 		BA491B6F1A0523CE0065DB16 /* UINavigationBar+customBar.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UINavigationBar+customBar.h"; sourceTree = "<group>"; };
 		BA491B701A0523CE0065DB16 /* UINavigationBar+customBar.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UINavigationBar+customBar.m"; sourceTree = "<group>"; };
 		BA4FB3241A14CB9E00DFECC4 /* FirstRecordVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FirstRecordVC.h; sourceTree = "<group>"; };
@@ -785,6 +788,8 @@
 				BA95CB021A19A8AD00FAE262 /* RecordDetailCell.h */,
 				BA95CB031A19A8AD00FAE262 /* RecordDetailCell.m */,
 				BA95CB041A19A8AD00FAE262 /* RecordDetailCell.xib */,
+				BA47EBFD1A1C7B5D00ACBA05 /* ddddTableViewCell.h */,
+				BA47EBFE1A1C7B5D00ACBA05 /* ddddTableViewCell.m */,
 			);
 			name = Record;
 			sourceTree = "<group>";
@@ -1038,6 +1043,7 @@
 				BA59D7B819F894620098BDCF /* MKAnnotationView+WebCache.m in Sources */,
 				65D8BBE31A173A3600E7F68C /* BbsFenLeiVC.m in Sources */,
 				BA59D73319F884560098BDCF /* AppDelegate.m in Sources */,
+				BA47EBFF1A1C7B5D00ACBA05 /* ddddTableViewCell.m in Sources */,
 				BA59D7AB19F894620098BDCF /* RequestNetworkEngine.m in Sources */,
 				657B41461A172D630057F5AE /* bbsTableCell.m in Sources */,
 				BA59D7AE19F894620098BDCF /* NSAlert+MKNetworkKitAdditions.m in Sources */,
