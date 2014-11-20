@@ -36,9 +36,3 @@
 
 @end
 
-//统一测试地址
-@interface totalTestNetworkEngine : RequestNetworkEngine
-
-+(totalTestNetworkEngine*)share;
-
-@end

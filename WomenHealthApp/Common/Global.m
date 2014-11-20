@@ -17,9 +17,8 @@
 
         //服务器地址
         self.SERVER_HOST = REAL_SERVER_HOST; //正式地址 (不能改)
-        
-        self.SERVER_HOST_TEST = TEST_SERVER_HOST;
-        
+    
+        self.CIRCLE_BIGMENU_PATH = @"/api/dz/index.php";
         
         self.ORDER_SCAN_PATH = @"/app.php/order/get_order/";
         

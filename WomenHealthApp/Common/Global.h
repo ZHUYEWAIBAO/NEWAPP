@@ -8,16 +8,17 @@
 
 #import <Foundation/Foundation.h>
 
-#define REAL_SERVER_HOST @"app.yuedo.com.cn"
-#define TEST_SERVER_HOST @"app.yuedo.com.cn"
+#define REAL_SERVER_HOST @"123.57.46.174"
 
 @interface Global : NSObject
 
 //正式服务器地址
 @property (nonatomic,strong) NSString * SERVER_HOST;
 
-//测试服务器地址
-@property (nonatomic,strong) NSString * SERVER_HOST_TEST;
+//=======================圈子模块=============================
+//圈子大分类
+@property (nonatomic,strong) NSString * CIRCLE_BIGMENU_PATH;
+//===========================================================
 
 //=======================订单模块=============================
 //单个订单
