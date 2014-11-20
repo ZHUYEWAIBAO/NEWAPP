@@ -102,19 +102,4 @@
 
 @end
 
-@implementation totalTestNetworkEngine
 
-+(totalTestNetworkEngine *)share
-{
-    static dispatch_once_t pred;
-    static totalTestNetworkEngine *shared = nil;
-    dispatch_once(&pred, ^{
-        shared = [[totalTestNetworkEngine alloc]initWithHostName: GLOBALSHARE.SERVER_HOST_TEST];
-        [shared useCache];
-    });
-    return shared;
-    
-}
-
-
-@end

@@ -10,11 +10,13 @@
 #import "bbsTableCell.h"
 #import "BbsSearchVC.h"
 #import "BbsFenLeiVC.h"
-@interface BBSViewController (){
-    
-    IBOutlet UIPageControl *pageControl;
-    
+#import "CycleScrollView.h"
+@interface BBSViewController ()
+{
+
+    UIView *sectionView;
 }
+@property (nonatomic , strong) CycleScrollView *mainScorllView;
 
 @end
 
@@ -39,44 +41,46 @@
     
     //将自定义的视图作为导航条leftBarButtonItem
     UIButton *searchBtn = [UIButton buttonWithType:UIButtonTypeCustom];
-    searchBtn.frame = CGRectMake(10,2.0,35,35);
+    searchBtn.frame = CGRectMake(0,0,30,30);
     [searchBtn setImage:[UIImage imageWithContentFileName:@"search_btn"] forState:UIControlStateNormal];
-    [searchBtn addTarget:self action:@selector(searchClick) forControlEvents:UIControlEventTouchUpInside];
     [searchBtn setImage:[UIImage imageWithContentFileName:@"serarch_btn_selected"] forState:UIControlStateHighlighted];
+    [searchBtn addTarget:self action:@selector(searchClick) forControlEvents:UIControlEventTouchUpInside];
+
     UIBarButtonItem *leftItem = [[UIBarButtonItem alloc] initWithCustomView:searchBtn];
     self.navigationItem.leftBarButtonItem = leftItem;
     
     UIButton *addBtn = [UIButton buttonWithType:UIButtonTypeCustom];
-    addBtn.frame = CGRectMake(10,2.0,35,35);
+    addBtn.frame = CGRectMake(0,0,30,30);
     [addBtn setImage:[UIImage imageWithContentFileName:@"add_btn"] forState:UIControlStateNormal];
     [addBtn setImage:[UIImage imageWithContentFileName:@"add_btn_selected"] forState:UIControlStateHighlighted];
     [addBtn addTarget:self action:@selector(addClick) forControlEvents:UIControlEventTouchUpInside];
     UIBarButtonItem *rightItem = [[UIBarButtonItem alloc] initWithCustomView:addBtn];
     self.navigationItem.rightBarButtonItem = rightItem;
     
-    
-    
-    
-    for (int i =0; i<4; i++) {
-        
-        UIButton *tempBtn =[[UIButton alloc] initWithFrame:CGRectMake(320*i, 0, 320, 150)];
-        [tempBtn setImage:[UIImage imageNamed:[NSString stringWithFormat:@"addview%i.jpg",i]] forState:UIControlStateNormal];
-        
-        [self.addScrollview addSubview:tempBtn];
+    NSMutableArray *viewsArray = [@[] mutableCopy];
+    NSArray *colorArray = @[[UIColor cyanColor],[UIColor blueColor],[UIColor greenColor],[UIColor yellowColor],[UIColor purpleColor]];
+    for (int i = 0; i < 5; ++i) {
+        UILabel *tempLabel = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, 320, 126)];
+        tempLabel.backgroundColor = [(UIColor *)[colorArray objectAtIndex:i] colorWithAlphaComponent:0.5];
+        [viewsArray addObject:tempLabel];
     }
-    self.addScrollview.contentSize =CGSizeMake(320*4, 0);
-    self.addScrollview.bounces =NO;
-    self.addScrollview.pagingEnabled =YES;
-    self.addScrollview.delegate =self;
     
+    self.mainScorllView = [[CycleScrollView alloc] initWithFrame:CGRectMake(0, 0, 320, 126) animationDuration:3];
 
-    pageControl.numberOfPages =4;
-    [self.view addSubview:pageControl];
-    
-    
-    
-    // Do any additional setup after loading the view from its nib.
+    self.mainScorllView.fetchContentViewAtIndex = ^UIView *(NSInteger pageIndex){
+        return viewsArray[pageIndex];
+    };
+    self.mainScorllView.totalPagesCount = ^NSInteger(void){
+        return 5;
+    };
+    self.mainScorllView.TapActionBlock = ^(NSInteger pageIndex){
+        NSLog(@"点击了第%ld个",pageIndex);
+    };
+
+    self.bbsTableView.tableHeaderView = self.mainScorllView;
+    self.bbsTableView.tableFooterView = self.footView;
 }
+
 #pragma mark tableview
 -(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
     
@@ -85,13 +89,10 @@
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
-    
-
-    static NSString *indertifier =@"bbsTableCell";
-    
-    bbsTableCell *cell =[tableView dequeueReusableCellWithIdentifier:indertifier];
+  
+    bbsTableCell *cell =[tableView dequeueReusableCellWithIdentifier:[bbsTableCell cellIdentifier]];
     if (cell ==nil) {
-        cell =(bbsTableCell *)[[[NSBundle mainBundle] loadNibNamed:@"bbsTableCell" owner:self options:nil] lastObject];
+        cell = (bbsTableCell *)[[[NSBundle mainBundle] loadNibNamed:@"bbsTableCell" owner:self options:nil] lastObject];
     }
     
 
@@ -100,9 +101,34 @@
 }
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
     
-    return 76;
+    NSArray *nibArr = [[NSBundle mainBundle] loadNibNamed:@"bbsTableCell" owner:self options:nil];
+    bbsTableCell *cell = [nibArr objectAtIndex:0];
+    return cell.frame.size.height;
+ 
 }
 
+- (UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section
+{
+    
+    if (nil == sectionView) {
+        sectionView = [[UIView alloc]initWithFrame:CGRectMake(0, 0, SCREEN_SIZE.width, 30)];
+        sectionView.backgroundColor = [UIColor colorWithRed:243/255.0f green:240/255.0f blue:234/255.0f alpha:1];
+
+    }
+    UILabel *sectionLabel = (UILabel *)[sectionView viewWithTag:1000];
+    //Title
+    if (sectionLabel == nil) {
+        sectionLabel = [[UILabel alloc]initWithFrame:CGRectMake(10, 0, 120, 20)];
+        sectionLabel.textAlignment = NSTextAlignmentLeft;
+        sectionLabel.backgroundColor = [UIColor clearColor];
+        sectionLabel.font = [UIFont systemFontOfSize:12.0f];
+        sectionLabel.textColor = [UIColor darkGrayColor];
+        sectionLabel.text = @"加入的圈子(2)";
+        [sectionLabel setTag:1000];
+        [sectionView addSubview:sectionLabel];
+    }
+    return sectionView;
+}
 
 -(void)searchClick{
 
@@ -119,23 +145,10 @@
     
     
 }
--(void)scrollViewDidScroll:(UIScrollView *)scrollView{
-    int page =scrollView.contentOffset.x/320;
-    pageControl.currentPage =page;
-}
+
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
 }
-
-/*
-#pragma mark - Navigation
-
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
-}
-*/
 
 @end

@@ -17,10 +17,37 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    
     self.title =@"圈子分类";
     
-    // Do any additional setup after loading the view from its nib.
+    [self getTheFirstCategory];
+}
+
+- (void)getTheFirstCategory
+{
+
+    [SVProgressHUD showWithMaskType:SVProgressHUDMaskTypeClear];
+    
+    [NETWORK_ENGINE requestWithPath:GLOBALSHARE.CIRCLE_BIGMENU_PATH Params:self.params CompletionHandler:^(MKNetworkOperation *completedOperation) {
+        
+        NSDictionary *dic = [completedOperation responseDecodeToDic];
+        
+        NSDictionary *statusDic = [dic objectForKey:@"status"];
+        if ([@"1" isEqualToString:CHECK_VALUE([statusDic objectForKey:@"statu"])]){
+            
+
+//            [SVProgressHUD dismiss];
+        }
+        else{
+            [SVProgressHUD showErrorWithStatus:CHECK_VALUE([statusDic objectForKey:@"msg"])];
+        }
+      
+        
+    } ErrorHandler:^(MKNetworkOperation *completedOperation, NSError *error) {
+     
+        [SVProgressHUD showErrorWithStatus:@"服务器忙，请稍候再试"];
+        
+    }];
+
 }
 
 #pragma mark tableview
@@ -44,21 +71,22 @@
     return cell;
     
 }
+
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
     
     
-    [UIView animateWithDuration:0.5 animations:^{
-        
-        self.fenleiTable.frame =CGRectMake(-100, 50, 320, 518);
-        
-    }];
-    
-    
-    [UIView animateWithDuration:0.5 animations:^{
-        
-        self.fenLeiRightTable.frame =CGRectMake(50, 50, 270, 518);
-        
-    }];
+//    [UIView animateWithDuration:0.5 animations:^{
+//        
+//        self.fenleiTable.frame =CGRectMake(-100, 50, 320, 518);
+//        
+//    }];
+//    
+//    
+//    [UIView animateWithDuration:0.5 animations:^{
+//        
+//        self.fenLeiRightTable.frame =CGRectMake(50, 50, 270, 518);
+//        
+//    }];
     
     
 
@@ -78,15 +106,5 @@
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
 }
-
-/*
-#pragma mark - Navigation
-
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
-}
-*/
 
 @end

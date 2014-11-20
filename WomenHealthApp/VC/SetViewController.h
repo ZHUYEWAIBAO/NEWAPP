@@ -10,4 +10,14 @@
 
 @interface SetViewController : BasicVC
 
+
+/**
+ *  设置页面TableView
+ */
+@property (weak,nonatomic) IBOutlet UITableView *setTableView;
+
+@property (strong,nonatomic) IBOutlet UIView *loginView;
+
+@property (strong,nonatomic) NSMutableArray *setDataArray;
+
 @end

@@ -10,9 +10,10 @@
 
 @interface BBSViewController : BasicVC<UIScrollViewDelegate,UITableViewDataSource,UITableViewDelegate>
 
-@property (weak, nonatomic) IBOutlet UIScrollView *addScrollview;
-
-
 @property (weak, nonatomic) IBOutlet UITableView *bbsTableView;
+
+@property (strong, nonatomic) IBOutlet UIView *footView;
+
+@property (strong, nonatomic) NSMutableArray *circleArray;
 
 @end
