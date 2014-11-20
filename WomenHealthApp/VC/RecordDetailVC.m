@@ -98,7 +98,7 @@
 //        STView.layer.transform = transform;
 //    } completion:^(BOOL finished) {
     
-        [STView removeFromSuperview];
+    [STView removeFromSuperview];
     [STViewTwo removeFromSuperview];
         
 //    }];
