@@ -73,6 +73,8 @@
 		65D8BBE41A173A3600E7F68C /* BbsFenLeiVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 65D8BBE21A173A3600E7F68C /* BbsFenLeiVC.xib */; };
 		65D8BBE61A1744DE00E7F68C /* bar_icon_search2.png in Resources */ = {isa = PBXBuildFile; fileRef = 65D8BBE51A1744DE00E7F68C /* bar_icon_search2.png */; };
 		65D8BBE81A17465800E7F68C /* nav_back_bt.png in Resources */ = {isa = PBXBuildFile; fileRef = 65D8BBE71A17465800E7F68C /* nav_back_bt.png */; };
+		65E0C9CE1A1DEAE6005FD5B8 /* pickerCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 65E0C9CD1A1DEAE6005FD5B8 /* pickerCell.m */; };
+		65E0C9D01A1DEAF4005FD5B8 /* pickerCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 65E0C9CF1A1DEAF4005FD5B8 /* pickerCell.xib */; };
 		65EE0A2B1A17845E00F6F38E /* WHSinger.m in Sources */ = {isa = PBXBuildFile; fileRef = 65EE0A2A1A17845E00F6F38E /* WHSinger.m */; };
 		65EE0A2F1A1788F000F6F38E /* BbsFenLeiCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 65EE0A2D1A1788F000F6F38E /* BbsFenLeiCell.m */; };
 		65EE0A301A1788F000F6F38E /* BbsFenLeiCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 65EE0A2E1A1788F000F6F38E /* BbsFenLeiCell.xib */; };
@@ -257,6 +259,9 @@
 		65D8BBE21A173A3600E7F68C /* BbsFenLeiVC.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = BbsFenLeiVC.xib; sourceTree = "<group>"; };
 		65D8BBE51A1744DE00E7F68C /* bar_icon_search2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = bar_icon_search2.png; sourceTree = "<group>"; };
 		65D8BBE71A17465800E7F68C /* nav_back_bt.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = nav_back_bt.png; sourceTree = "<group>"; };
+		65E0C9CC1A1DEAE6005FD5B8 /* pickerCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = pickerCell.h; sourceTree = "<group>"; };
+		65E0C9CD1A1DEAE6005FD5B8 /* pickerCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = pickerCell.m; sourceTree = "<group>"; };
+		65E0C9CF1A1DEAF4005FD5B8 /* pickerCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = pickerCell.xib; sourceTree = "<group>"; };
 		65EE0A291A17845E00F6F38E /* WHSinger.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WHSinger.h; sourceTree = "<group>"; };
 		65EE0A2A1A17845E00F6F38E /* WHSinger.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WHSinger.m; sourceTree = "<group>"; };
 		65EE0A2C1A1788F000F6F38E /* BbsFenLeiCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BbsFenLeiCell.h; sourceTree = "<group>"; };
@@ -851,6 +856,9 @@
 				65CD13B71A1C8BF7000A4F8E /* RecordViewItem.h */,
 				65CD13B81A1C8BF7000A4F8E /* RecordViewItem.m */,
 				65CD13BA1A1C8C8C000A4F8E /* RecordViewItem.xib */,
+				65E0C9CC1A1DEAE6005FD5B8 /* pickerCell.h */,
+				65E0C9CD1A1DEAE6005FD5B8 /* pickerCell.m */,
+				65E0C9CF1A1DEAF4005FD5B8 /* pickerCell.xib */,
 				BA66EBB51A19F76300F4A00B /* RecordDetailContentView.h */,
 				BA66EBB61A19F76300F4A00B /* RecordDetailContentView.m */,
 				BA66EBB81A19F78000F4A00B /* RecordDetailContentView.xib */,
@@ -1017,6 +1025,7 @@
 				657B41381A1729160057F5AE /* add_logo@2x.png in Resources */,
 				BA95CB111A19DF7800FAE262 /* Record_detail_detail_text_selected.png in Resources */,
 				BA95CAF41A198B8C00FAE262 /* Record_detail_btn.png in Resources */,
+				65E0C9D01A1DEAF4005FD5B8 /* pickerCell.xib in Resources */,
 				65134CFE1A1A24F50011BCF7 /* next_month_btn@2x.png in Resources */,
 				65CD13D91A1C96FB000A4F8E /* love_clear_btn@2x.png in Resources */,
 				BA13C1AB1A1793EE003B1313 /* new_circle_btn.png in Resources */,
@@ -1173,6 +1182,7 @@
 				BA59D7C419F894620098BDCF /* UIImage+WebP.m in Sources */,
 				BA59D7BF19F894620098BDCF /* SDWebImageManager.m in Sources */,
 				BA59D7B919F894620098BDCF /* NSData+ImageContentType.m in Sources */,
+				65E0C9CE1A1DEAE6005FD5B8 /* pickerCell.m in Sources */,
 				BA59D7B319F894620098BDCF /* UIAlertView+MKNetworkKitAdditions.m in Sources */,
 				BA4FB3271A14CB9E00DFECC4 /* FirstRecordVC.m in Sources */,
 				BA59D7AD19F894620098BDCF /* UITableViewCell+Category.m in Sources */,

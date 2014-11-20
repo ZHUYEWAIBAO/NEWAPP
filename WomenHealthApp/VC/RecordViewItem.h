@@ -14,9 +14,15 @@
 
 @property (weak, nonatomic) IBOutlet UILabel *titleNameLab;
 
+@property (weak, nonatomic) IBOutlet UILabel *tishiLab;
 
 @property (weak, nonatomic) IBOutlet UIPickerView *pickerView;
 
 
 
+@property (weak, nonatomic) IBOutlet UIScrollView *alterScrollview;
+
 @end
+
+
+

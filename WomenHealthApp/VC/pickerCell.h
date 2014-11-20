@@ -8,6 +8,9 @@
 
 #import <Foundation/Foundation.h>
 
-@interface pickerCell : NSObject
+@interface pickerCell : UIView
 
+@property (weak, nonatomic) IBOutlet UIImageView *heartimg;
+
+@property (weak, nonatomic) IBOutlet UILabel *titleLab;
 @end

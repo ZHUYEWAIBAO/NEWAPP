@@ -9,6 +9,7 @@
 #import "RecordDetailVC.h"
 #import "RecordDetailCell.h"
 #import "RecordViewItem.h"
+#import "pickerCell.h"
 @interface RecordDetailVC ()
 {
     UIView *sectionView;
@@ -18,13 +19,34 @@
     
     UIView *STViewTwo;
     RecordViewItem *detailTwo;
+    
+    NSArray *aiaiAry ;
+    NSArray *tiwenAry0;
+    NSArray *tiwenAry1;
+    
+    NSMutableArray *tizhongAry0;
+    NSMutableArray *tizhongAry1;
+    
+    NSInteger pickerChose;
 
     
 }
 @end
 
 @implementation RecordDetailVC
-
+-(void)loadView{
+    [super loadView];
+    aiaiAry =@[@"没带套套",@"带了套套"];
+    tiwenAry0 =@[@"46",@"37",@"36"];
+    tiwenAry1=@[@".40C",@".41C",@".42C",@".43C",@".44C"];
+    tizhongAry0 =[NSMutableArray array];
+    
+    for (int i=30; i<100; i++) {
+        [tizhongAry0 addObject:[NSString stringWithFormat:@"%i",i]];
+        
+    }
+    tizhongAry1 =[NSMutableArray arrayWithObjects:@".0kg",@".5kg", nil];
+}
 - (void)viewDidLoad {
     [super viewDidLoad];
     
@@ -214,8 +236,9 @@
             
            
             detail.titleNameLab.text =@"爱爱";
-           
-
+           detail.tishiLab.text =@"";
+            pickerChose =0;
+            [detail.pickerView reloadAllComponents];
             [[[UIApplication sharedApplication] keyWindow] addSubview:STView];
             CAKeyframeAnimation *popAnimation = [CAKeyframeAnimation animationWithKeyPath:@"transform"];
             popAnimation.duration = 0.2;
@@ -232,7 +255,9 @@
             
 
             detail.titleNameLab.text =@"体温";
-
+            detail.tishiLab.text =@"记录体温能够帮助你监控生理周期状况,有利于避孕和备孕哦！测口腔温度哦！";
+            pickerChose =1;
+            [detail.pickerView reloadAllComponents];
             [[[UIApplication sharedApplication] keyWindow] addSubview:STView];
             CAKeyframeAnimation *popAnimation = [CAKeyframeAnimation animationWithKeyPath:@"transform"];
             popAnimation.duration = 0.2;
@@ -247,8 +272,13 @@
         }
         case 2:{
             
-
+            pickerChose =2;
+            [detailTwo.pickerView reloadAllComponents];
+            UIView *view =[[UIView alloc] initWithFrame:CGRectMake(0, 330, 100, 100)];
+            view.backgroundColor =[UIColor blackColor];
             
+            [detailTwo.alterScrollview addSubview:view];
+            [detailTwo.alterScrollview setContentSize:CGSizeMake(280, 600)];
             [[[UIApplication sharedApplication] keyWindow] addSubview:STViewTwo];
             CAKeyframeAnimation *popAnimation = [CAKeyframeAnimation animationWithKeyPath:@"transform"];
             popAnimation.duration = 0.2;
@@ -264,7 +294,9 @@
         }
         case 3:{
             detail.titleNameLab.text =@"体重";
-
+            detail.tishiLab.text =@"";
+            pickerChose =3;
+            [detail.pickerView reloadAllComponents];
             [[[UIApplication sharedApplication] keyWindow] addSubview:STView];
             CAKeyframeAnimation *popAnimation = [CAKeyframeAnimation animationWithKeyPath:@"transform"];
             popAnimation.duration = 0.2;
@@ -305,8 +337,170 @@
     
     return sectionView;
 }
+/**
+ if (pickerChose ==0) {
+ return 1;
+ }else if(pickerChose ==1){
+ 
+ 
+ }else if(pickerChose ==2){
+ 
+ 
+ }else if(pickerChose ==3){
+ 
+ 
+ }
+ */
+#pragma mark PICKVIEW
+// returns the number of 'columns' to display.
+- (NSInteger)numberOfComponentsInPickerView:(UIPickerView *)pickerView{
+    if (pickerChose ==0) {
+        return 1;
+    }else if(pickerChose ==1){
+        return 2;
+        
+    }else if(pickerChose ==2){
+        
+        
+    }else if(pickerChose ==3){
+        return 2;
+        
+    }
+        
+    return 1;
+}
+
+// returns the # of rows in each component..
+- (NSInteger)pickerView:(UIPickerView *)pickerView numberOfRowsInComponent:(NSInteger)component{
+    
+    if (pickerChose ==0) {
+        return 2;
+    }else if(pickerChose ==1){
+        if (component==0) {
+            return tiwenAry0.count;
+        }else{
+            return tiwenAry1.count;
+        }
+        
+    }else if(pickerChose ==2){
+        
+        
+    }else if(pickerChose ==3){
+        if (component==0) {
+            return tizhongAry0.count;
+        }else{
+            return tizhongAry1.count;
+        }
+        
+    }
+    return 2;
+}
+-(NSString *)pickerView:(UIPickerView *)pickerView titleForRow:(NSInteger)row forComponent:(NSInteger)component
+{
+    if (pickerChose ==0) {
+
+        
+    }else if(pickerChose ==1){
+        
+        if (component==0) {
+            return [tiwenAry0 objectAtIndex:row];
+        }else{
+            return [tiwenAry1 objectAtIndex:row];
+        }
+        
+    }else if(pickerChose ==2){
+        
+        
+    }else if(pickerChose ==3){
+        
+        if (component==0) {
+            return [tizhongAry0 objectAtIndex:row];
+        }else{
+            return [tizhongAry1 objectAtIndex:row];
+        }
+    }
+    
+    return @"";
+}
+- (void)pickerView:(UIPickerView *)pickerView didSelectRow:(NSInteger)row inComponent:(NSInteger)component{
+    
+    if (pickerChose ==0) {
+        
+        pickerCell *tempView  =(pickerCell *)[pickerView viewForRow:row forComponent:component];
+        tempView.titleLab.text =[aiaiAry objectAtIndex:row];
+        tempView.titleLab.textColor = FENSERGB;
+        tempView.heartimg.image =[UIImage imageWithContentFileName:@"no_love_logo"];
+        
+        
+    }else if(pickerChose ==1){
+        pickerCell *tempView  =(pickerCell *)[pickerView viewForRow:row forComponent:component];
+        
+        if (component==0) {
+            tempView.titleLab.text  =[tiwenAry0 objectAtIndex:row];
+        }else{
+            tempView.titleLab.text =[tiwenAry1 objectAtIndex:row];
+        }        tempView.titleLab.textColor = FENSERGB;
+
+        
+        
+    }else if(pickerChose ==2){
+        
+        
+    }else if(pickerChose ==3){
+        
+        pickerCell *tempView  =(pickerCell *)[pickerView viewForRow:row forComponent:component];
+        
+        if (component==0) {
+            tempView.titleLab.text  =[tizhongAry0 objectAtIndex:row];
+        }else{
+            tempView.titleLab.text =[tizhongAry1 objectAtIndex:row];
+        }        tempView.titleLab.textColor = FENSERGB;
+        
+        
+    }
 
 
+   
+    
+}
+
+- (UIView *)pickerView:(UIPickerView *)pickerView viewForRow:(NSInteger)row forComponent:(NSInteger)component reusingView:(UIView *)view{
+    
+    if (pickerChose ==0) {
+        pickerCell *tempView =(pickerCell *)[[[NSBundle mainBundle] loadNibNamed:@"pickerCell" owner:self options:nil] firstObject];
+        tempView.titleLab.text =[aiaiAry objectAtIndex:row];
+        if (row ==0) {
+            tempView.heartimg.image =[UIImage imageWithContentFileName:@"no_love_logo"];
+            tempView.titleLab.textColor = FENSERGB;
+        }
+        tempView.heartimg.image =[UIImage imageWithContentFileName:@"yes_love_logo"];
+        return tempView;
+    }else if(pickerChose ==1){
+    
+        pickerCell *tempView =(pickerCell *)[[[NSBundle mainBundle] loadNibNamed:@"pickerCell" owner:self options:nil] firstObject];
+        if (component==0) {
+            tempView.titleLab.text  =[tiwenAry0 objectAtIndex:row];
+        }else{
+            tempView.titleLab.text =[tiwenAry1 objectAtIndex:row];
+        }
+        tempView.heartimg.hidden =YES;
+        return tempView;
+        
+    }else if(pickerChose ==3){
+        
+        pickerCell *tempView =(pickerCell *)[[[NSBundle mainBundle] loadNibNamed:@"pickerCell" owner:self options:nil] firstObject];
+        if (component==0) {
+            tempView.titleLab.text  =[tizhongAry0 objectAtIndex:row];
+        }else{
+            tempView.titleLab.text =[tizhongAry1 objectAtIndex:row];
+        }
+        tempView.heartimg.hidden =YES;
+        return tempView;
+    }
+ 
+    return nil;
+
+}
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
