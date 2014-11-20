@@ -152,7 +152,6 @@
 		BA59D83019F8AAF90098BDCF /* ShoppingViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BA59D82E19F8AAF90098BDCF /* ShoppingViewController.m */; };
 		BA59D83119F8AAF90098BDCF /* ShoppingViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = BA59D82F19F8AAF90098BDCF /* ShoppingViewController.xib */; };
 		BA59D83B19F8ABAB0098BDCF /* SetViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BA59D83919F8ABAB0098BDCF /* SetViewController.m */; };
-		BA59D83C19F8ABAB0098BDCF /* SetViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = BA59D83A19F8ABAB0098BDCF /* SetViewController.xib */; };
 		BA66EBB41A19F04100F4A00B /* Record_detail_zhangkai_btn.png in Resources */ = {isa = PBXBuildFile; fileRef = BA66EBB31A19F04100F4A00B /* Record_detail_zhangkai_btn.png */; };
 		BA66EBB71A19F76300F4A00B /* RecordDetailContentView.m in Sources */ = {isa = PBXBuildFile; fileRef = BA66EBB61A19F76300F4A00B /* RecordDetailContentView.m */; };
 		BA66EBB91A19F78000F4A00B /* RecordDetailContentView.xib in Resources */ = {isa = PBXBuildFile; fileRef = BA66EBB81A19F78000F4A00B /* RecordDetailContentView.xib */; };
@@ -405,7 +404,6 @@
 		BA59D82F19F8AAF90098BDCF /* ShoppingViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ShoppingViewController.xib; sourceTree = "<group>"; };
 		BA59D83819F8ABAB0098BDCF /* SetViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SetViewController.h; sourceTree = "<group>"; };
 		BA59D83919F8ABAB0098BDCF /* SetViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SetViewController.m; sourceTree = "<group>"; };
-		BA59D83A19F8ABAB0098BDCF /* SetViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SetViewController.xib; sourceTree = "<group>"; };
 		BA66EBB31A19F04100F4A00B /* Record_detail_zhangkai_btn.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Record_detail_zhangkai_btn.png; sourceTree = "<group>"; };
 		BA66EBB51A19F76300F4A00B /* RecordDetailContentView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RecordDetailContentView.h; sourceTree = "<group>"; };
 		BA66EBB61A19F76300F4A00B /* RecordDetailContentView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RecordDetailContentView.m; sourceTree = "<group>"; };
@@ -928,7 +926,6 @@
 			children = (
 				BA59D83819F8ABAB0098BDCF /* SetViewController.h */,
 				BA59D83919F8ABAB0098BDCF /* SetViewController.m */,
-				BA59D83A19F8ABAB0098BDCF /* SetViewController.xib */,
 				BA1BB62F1A1D84C9000742EC /* SetTableViewCell.h */,
 				BA1BB6301A1D84C9000742EC /* SetTableViewCell.m */,
 				BA1BB6311A1D84C9000742EC /* SetTableViewCell.xib */,
@@ -1038,7 +1035,6 @@
 			files = (
 				BA4FB32B1A14D9B800DFECC4 /* Record_chose_btn.png in Resources */,
 				BA95CB121A19DF7800FAE262 /* Record_detail_detail_text.png in Resources */,
-				BA59D83C19F8ABAB0098BDCF /* SetViewController.xib in Resources */,
 				BA4FB32C1A14D9B800DFECC4 /* Record_save_btn.png in Resources */,
 				657B41591A1732270057F5AE /* image_default@2x.png in Resources */,
 				657B41561A1732270057F5AE /* flag@2x.png in Resources */,
@@ -1054,7 +1050,6 @@
 				65CD13D91A1C96FB000A4F8E /* love_clear_btn@2x.png in Resources */,
 				BA13C1AB1A1793EE003B1313 /* new_circle_btn.png in Resources */,
 				65134D001A1A24F50011BCF7 /* pailuanri_logo@2x.png in Resources */,
-				BA59D83C19F8ABAB0098BDCF /* SetViewController.xib in Resources */,
 				BA13C1AF1A1793EE003B1313 /* new_set_btn.png in Resources */,
 				65EE0A371A17897400F6F38E /* delete_btn@2x.png in Resources */,
 				657B41581A1732270057F5AE /* hot_logo@2x.png in Resources */,
