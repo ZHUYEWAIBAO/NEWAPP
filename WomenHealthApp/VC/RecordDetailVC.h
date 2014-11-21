@@ -8,8 +8,8 @@
 
 #import "BasicVC.h"
 #import "RecordDetailContentView.h"
-
-@interface RecordDetailVC : BasicVC<UITableViewDataSource,UITableViewDelegate,UIPickerViewDataSource,UIPickerViewDelegate>
+#import "RecordViewItem.h"
+@interface RecordDetailVC : BasicVC<UITableViewDataSource,UITableViewDelegate,UIPickerViewDataSource,UIPickerViewDelegate,RecordItemProtocal>
 
 @property (weak, nonatomic) IBOutlet UITableView *detailTableView;
 @property (weak, nonatomic) IBOutlet UIImageView *contentArrowImgView;
@@ -19,5 +19,7 @@
 
 @property (strong, nonatomic) NSMutableArray *dataArray;
 @property (strong, nonatomic) NSMutableArray *imageArray;
+
+
 
 @end

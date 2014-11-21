@@ -21,13 +21,23 @@
     RecordViewItem *detailTwo;
     
     NSArray *aiaiAry ;
-    NSArray *tiwenAry0;
-    NSArray *tiwenAry1;
+    NSMutableArray *tiwenAry0;
+    NSMutableArray *tiwenAry1;
     
     NSMutableArray *tizhongAry0;
     NSMutableArray *tizhongAry1;
     
     NSInteger pickerChose;
+    
+    NSMutableDictionary *totalDic;// 存储所有数据的
+    
+    NSInteger aiaiIndex;
+    
+    NSInteger  tiwenRow0;
+    NSInteger  tiwenRow1;
+    
+    NSInteger  tizhongRow0;
+    NSInteger  tizhongRow1;
 
     
 }
@@ -36,19 +46,62 @@
 @implementation RecordDetailVC
 -(void)loadView{
     [super loadView];
-    aiaiAry =@[@"没带套套",@"带了套套"];
-    tiwenAry0 =@[@"46",@"37",@"36"];
-    tiwenAry1=@[@".40C",@".41C",@".42C",@".43C",@".44C"];
-    tizhongAry0 =[NSMutableArray array];
+    totalDic =[NSMutableDictionary dictionaryWithDictionary:[[NSUserDefaults standardUserDefaults] objectForKey:@"totalDic"]];
+    if (totalDic ==nil) {
+        totalDic =[NSMutableDictionary dictionary];
+        aiaiIndex =0;
+        [totalDic setObject:[NSNumber numberWithInt:aiaiIndex] forKey:@"aiaiIndex"];
+        
+        tiwenRow0 =0;
+        tiwenRow1 =50;
+        
+        [totalDic setObject:[NSNumber numberWithInt:tiwenRow0] forKey:@"tiwenRow0"];
+        [totalDic setObject:[NSNumber numberWithInt:tiwenRow1] forKey:@"tiwenRow1"];
+        
+        
+        tizhongRow0 =30;
+        tizhongRow1 =0;
+        [totalDic setObject:[NSNumber numberWithInt:tizhongRow0] forKey:@"tizhongRow0"];
+        [totalDic setObject:[NSNumber numberWithInt:tizhongRow1] forKey:@"tizhongRow1"];
+        
+        [[NSUserDefaults standardUserDefaults] setObject:totalDic forKey:@"totalDic"];
+    }else{
+        //  do nothing
+    }
+
     
-    for (int i=30; i<100; i++) {
+    
+    
+    
+    
+    aiaiAry =@[@"没带套套",@"带了套套"];
+    tiwenAry0 =[NSMutableArray array];
+    tiwenAry1 =[NSMutableArray array];
+    tizhongAry0 =[NSMutableArray array];
+    tizhongAry1 =[NSMutableArray array];
+    for (int i=35; i<44; i++) {
+        [tiwenAry0 addObject:[NSString stringWithFormat:@"%i",i]];
+    }
+    for (int i=0; i<100; i++) {
+        [tiwenAry1 addObject:[NSString stringWithFormat:@".%i℃",i]];
+    }
+    
+    
+    for (int i=20; i<150; i++) {
         [tizhongAry0 addObject:[NSString stringWithFormat:@"%i",i]];
         
     }
-    tizhongAry1 =[NSMutableArray arrayWithObjects:@".0kg",@".5kg", nil];
+
+    for (int i=0; i<10; i++) {
+        [tizhongAry1 addObject:[NSString stringWithFormat:@".%iKG",i]];
+        
+    }
 }
 - (void)viewDidLoad {
     [super viewDidLoad];
+    
+
+
     
     UIButton *rightButton=[[UIButton alloc]initWithFrame:CGRectMake(0, 0, 30, 30)];
     [rightButton addTarget:self action:@selector(recordDetailSureAction:) forControlEvents:UIControlEventTouchUpInside];
@@ -80,19 +133,19 @@
     
     
     STView = [[UIView alloc]initWithFrame:self.view.bounds];
-    [STView setBackgroundColor:[UIColor colorWithRed:0.3 green:0.3 blue:0.3 alpha:0.7]];
+    [STView setBackgroundColor:[UIColor colorWithRed:0.3 green:0.3 blue:0.3 alpha:0.3]];
     UITapGestureRecognizer *tapDismssges =[[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(dismissWindow)];
     [STView addGestureRecognizer:tapDismssges];
     
     STViewTwo = [[UIView alloc]initWithFrame:self.view.bounds];
-    [STViewTwo setBackgroundColor:[UIColor colorWithRed:0.3 green:0.3 blue:0.3 alpha:0.7]];
+    [STViewTwo setBackgroundColor:[UIColor colorWithRed:0.3 green:0.3 blue:0.3 alpha:0.3]];
     UITapGestureRecognizer *tapDismssgesTwo =[[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(dismissWindow)];
     [STViewTwo addGestureRecognizer:tapDismssgesTwo];
     
     
     detail =(RecordViewItem *)[[[NSBundle mainBundle] loadNibNamed:@"RecordViewItem" owner:self options:nil] firstObject];
     detail.layer.cornerRadius =5.0f;
-    
+    detail.delegete =self;
     [detail setFrame:CGRectMake(100, 50, detail.frame.size.width, detail.frame.size.height)];
     detail.center =CGPointMake(160, SCREEN_SIZE.height/2);
     [STView.subviews enumerateObjectsUsingBlock:^(id obj, NSUInteger idx, BOOL *stop) {
@@ -104,18 +157,74 @@
     
     detailTwo =(RecordViewItem *)[[[NSBundle mainBundle] loadNibNamed:@"RecordViewItem" owner:self options:nil] lastObject];
     detailTwo.layer.cornerRadius =5.0f;
-    
+    detailTwo.delegete =self;
     [detailTwo setFrame:CGRectMake(100, 50, detail.frame.size.width, detail.frame.size.height)];
     detailTwo.center =CGPointMake(160, SCREEN_SIZE.height/2);
     [STViewTwo.subviews enumerateObjectsUsingBlock:^(id obj, NSUInteger idx, BOOL *stop) {
         [obj removeFromSuperview];
     }];
     [STViewTwo addSubview:detailTwo];
+    
+
+
  
 }
+#pragma mark recordProtocal
+-(void)didSelDismss{
+    totalDic =[NSMutableDictionary dictionaryWithDictionary:[[NSUserDefaults standardUserDefaults] objectForKey:@"totalDic"]];
+    if (pickerChose ==0) {
+        aiaiIndex =0;
+        [totalDic setObject:[NSNumber numberWithInt:aiaiIndex] forKey:@"aiaiIndex"];
+    }else if(pickerChose ==1){
+        
+        
+        tiwenRow0 =0;
+        tiwenRow1 =50;
+        
+        [totalDic setObject:[NSNumber numberWithInt:tiwenRow0] forKey:@"tiwenRow0"];
+        [totalDic setObject:[NSNumber numberWithInt:tiwenRow1] forKey:@"tiwenRow1"];
+        
+    }else if(pickerChose ==2){
+        
+        
+        
+        
+    }else if(pickerChose ==3){
+        
+        tizhongRow0 =30;
+        tizhongRow1 =0;
+        [totalDic setObject:[NSNumber numberWithInt:tizhongRow0] forKey:@"tizhongRow0"];
+        [totalDic setObject:[NSNumber numberWithInt:tizhongRow1] forKey:@"tizhongRow1"];
+        
+        
+    }
+
+    
+    [[NSUserDefaults standardUserDefaults] setObject:totalDic forKey:@"totalDic"];
+    
+    [self dismissWindow];
+}
+-(void)comfirmSelect{
+    /**
+     *  保存数据
+     */
+    totalDic =[NSMutableDictionary dictionaryWithDictionary:[[NSUserDefaults standardUserDefaults] objectForKey:@"totalDic"]];
+    
+    
+    [totalDic setObject:[NSNumber numberWithInt:aiaiIndex] forKey:@"aiaiIndex"];
+    [totalDic setObject:[NSNumber numberWithInt:tiwenRow0] forKey:@"tiwenRow0"];
+    [totalDic setObject:[NSNumber numberWithInt:tiwenRow1] forKey:@"tiwenRow1"];
+    [totalDic setObject:[NSNumber numberWithInt:tizhongRow0] forKey:@"tizhongRow0"];
+    [totalDic setObject:[NSNumber numberWithInt:tizhongRow1] forKey:@"tizhongRow1"];
+    
+    [[NSUserDefaults standardUserDefaults] setObject:totalDic forKey:@"totalDic"];
+    
+    [self dismissWindow];
+}
+
 -(void)dismissWindow{
     
-//    [UIView animateWithDuration:0.2 delay:0.0 options:UIViewAnimationOptionCurveEaseInOut animations:^{
+//    [UIView animateWithDuration:1 delay:0.0 options:UIViewAnimationOptionCurveEaseInOut animations:^{
 //        CATransform3D transform = CATransform3DMakeScale(0.1, 0.1, 1);
 //        STView.layer.transform = transform;
 //    } completion:^(BOOL finished) {
@@ -229,7 +338,7 @@
     
     
     NSLog(@"%li",(long)indexPath.row);
-
+     NSDictionary *dataDic = [[NSUserDefaults standardUserDefaults] objectForKey:@"totalDic"];
     
     switch (indexPath.row) {
         case 0:{
@@ -239,6 +348,18 @@
            detail.tishiLab.text =@"";
             pickerChose =0;
             [detail.pickerView reloadAllComponents];
+
+            dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.3 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+                
+                [detail.pickerView selectRow:[[dataDic objectForKey:@"aiaiIndex"] integerValue] inComponent:0 animated:YES];
+                pickerCell *tempView  =(pickerCell *)[detail.pickerView viewForRow:[[dataDic objectForKey:@"aiaiIndex"] integerValue] forComponent:0];
+                tempView.titleLab.text =[aiaiAry objectAtIndex:[[dataDic objectForKey:@"aiaiIndex"] integerValue]];
+                tempView.titleLab.textColor = FENSERGB;
+                tempView.heartimg.image =[UIImage imageWithContentFileName:@"no_love_logo"];
+            });
+            
+            
+            
             [[[UIApplication sharedApplication] keyWindow] addSubview:STView];
             CAKeyframeAnimation *popAnimation = [CAKeyframeAnimation animationWithKeyPath:@"transform"];
             popAnimation.duration = 0.2;
@@ -258,6 +379,22 @@
             detail.tishiLab.text =@"记录体温能够帮助你监控生理周期状况,有利于避孕和备孕哦！测口腔温度哦！";
             pickerChose =1;
             [detail.pickerView reloadAllComponents];
+            [detail.pickerView selectRow:[[dataDic objectForKey:@"tiwenRow0"] integerValue]  inComponent:0 animated:YES];
+             [detail.pickerView selectRow:[[dataDic objectForKey:@"tiwenRow1"] integerValue]  inComponent:1 animated:YES];
+            dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.3 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+                pickerCell *tempView  =(pickerCell *)[detail.pickerView viewForRow:[[dataDic objectForKey:@"tiwenRow0"] integerValue] forComponent:0];
+                
+
+                tempView.titleLab.text  =[tiwenAry0 objectAtIndex:[[dataDic objectForKey:@"tiwenRow0"] integerValue]];
+                tempView.titleLab.textColor = FENSERGB;
+                
+                 pickerCell *tempView1  =(pickerCell *)[detail.pickerView viewForRow:[[dataDic objectForKey:@"tiwenRow1"] integerValue] forComponent:1];
+
+                tempView1.titleLab.text =[tiwenAry1 objectAtIndex:[[dataDic objectForKey:@"tiwenRow1"] integerValue]];
+                tempView1.titleLab.textColor = FENSERGB;
+
+});
+            
             [[[UIApplication sharedApplication] keyWindow] addSubview:STView];
             CAKeyframeAnimation *popAnimation = [CAKeyframeAnimation animationWithKeyPath:@"transform"];
             popAnimation.duration = 0.2;
@@ -274,11 +411,7 @@
             
             pickerChose =2;
             [detailTwo.pickerView reloadAllComponents];
-            UIView *view =[[UIView alloc] initWithFrame:CGRectMake(0, 330, 100, 100)];
-            view.backgroundColor =[UIColor blackColor];
-            
-            [detailTwo.alterScrollview addSubview:view];
-            [detailTwo.alterScrollview setContentSize:CGSizeMake(280, 600)];
+            [detailTwo.alterScrollview setContentSize:CGSizeMake(280, 680)];
             [[[UIApplication sharedApplication] keyWindow] addSubview:STViewTwo];
             CAKeyframeAnimation *popAnimation = [CAKeyframeAnimation animationWithKeyPath:@"transform"];
             popAnimation.duration = 0.2;
@@ -290,6 +423,8 @@
             [detailTwo.layer addAnimation:popAnimation forKey:nil];
 
             
+
+            
             break;
         }
         case 3:{
@@ -297,6 +432,22 @@
             detail.tishiLab.text =@"";
             pickerChose =3;
             [detail.pickerView reloadAllComponents];
+            [detail.pickerView selectRow:[[dataDic objectForKey:@"tizhongRow0"] integerValue]  inComponent:0 animated:YES];
+            [detail.pickerView selectRow:[[dataDic objectForKey:@"tizhongRow1"] integerValue]  inComponent:1 animated:YES];
+            dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.3 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+                pickerCell *tempView  =(pickerCell *)[detail.pickerView viewForRow:[[dataDic objectForKey:@"tizhongRow0"] integerValue] forComponent:0];
+                
+                
+                tempView.titleLab.text  =[tizhongAry0 objectAtIndex:[[dataDic objectForKey:@"tizhongRow0"] integerValue]];
+                tempView.titleLab.textColor = FENSERGB;
+                
+                pickerCell *tempView1  =(pickerCell *)[detail.pickerView viewForRow:[[dataDic objectForKey:@"tizhongRow1"] integerValue] forComponent:1];
+                
+                tempView1.titleLab.text =[tizhongAry1 objectAtIndex:[[dataDic objectForKey:@"tizhongRow1"] integerValue]];
+                tempView1.titleLab.textColor = FENSERGB;
+                
+            });
+            
             [[[UIApplication sharedApplication] keyWindow] addSubview:STView];
             CAKeyframeAnimation *popAnimation = [CAKeyframeAnimation animationWithKeyPath:@"transform"];
             popAnimation.duration = 0.2;
@@ -424,12 +575,16 @@
 }
 - (void)pickerView:(UIPickerView *)pickerView didSelectRow:(NSInteger)row inComponent:(NSInteger)component{
     
+
+    
+    
     if (pickerChose ==0) {
         
         pickerCell *tempView  =(pickerCell *)[pickerView viewForRow:row forComponent:component];
         tempView.titleLab.text =[aiaiAry objectAtIndex:row];
         tempView.titleLab.textColor = FENSERGB;
         tempView.heartimg.image =[UIImage imageWithContentFileName:@"no_love_logo"];
+        aiaiIndex =row;
         
         
     }else if(pickerChose ==1){
@@ -437,9 +592,16 @@
         
         if (component==0) {
             tempView.titleLab.text  =[tiwenAry0 objectAtIndex:row];
+            tiwenRow0 =row;
         }else{
             tempView.titleLab.text =[tiwenAry1 objectAtIndex:row];
-        }        tempView.titleLab.textColor = FENSERGB;
+            tiwenRow1 =row;
+        }
+        tempView.titleLab.textColor = FENSERGB;
+        
+        
+        
+        
 
         
         
@@ -452,9 +614,12 @@
         
         if (component==0) {
             tempView.titleLab.text  =[tizhongAry0 objectAtIndex:row];
+            tizhongRow0 =row;
         }else{
             tempView.titleLab.text =[tizhongAry1 objectAtIndex:row];
-        }        tempView.titleLab.textColor = FENSERGB;
+            tizhongRow1 =row;
+        }
+        tempView.titleLab.textColor = FENSERGB;
         
         
     }
@@ -469,10 +634,7 @@
     if (pickerChose ==0) {
         pickerCell *tempView =(pickerCell *)[[[NSBundle mainBundle] loadNibNamed:@"pickerCell" owner:self options:nil] firstObject];
         tempView.titleLab.text =[aiaiAry objectAtIndex:row];
-        if (row ==0) {
-            tempView.heartimg.image =[UIImage imageWithContentFileName:@"no_love_logo"];
-            tempView.titleLab.textColor = FENSERGB;
-        }
+
         tempView.heartimg.image =[UIImage imageWithContentFileName:@"yes_love_logo"];
         return tempView;
     }else if(pickerChose ==1){
