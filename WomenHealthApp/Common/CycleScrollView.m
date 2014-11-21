@@ -63,7 +63,7 @@
         self.currentPageIndex = 0;
         
         self.pageControl = [[UIPageControl alloc]initWithFrame:CGRectMake(220, self.bounds.size.height - 35, 100, 37)];
-        [self.pageControl setCurrentPageIndicatorTintColor:[UIColor redColor]];
+        [self.pageControl setCurrentPageIndicatorTintColor:RGBACOLOR(254, 111, 117, 1.0)];
         [self.pageControl setPageIndicatorTintColor:[UIColor whiteColor]];
         [self addSubview:self.pageControl];
         

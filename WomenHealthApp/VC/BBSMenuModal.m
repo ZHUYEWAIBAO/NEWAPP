@@ -18,6 +18,7 @@
     modal.bbsName = CHECK_VALUE([dic objectForKey:@"name"]);
     modal.bbsDescription = CHECK_VALUE([dic objectForKey:@"description"]);
     modal.bbsIcon = CHECK_VALUE([dic objectForKey:@"icon"]);
+    modal.bbs_is_attention = CHECK_VALUE([dic objectForKey:@"is_attention"]);
     
     return modal;
 }

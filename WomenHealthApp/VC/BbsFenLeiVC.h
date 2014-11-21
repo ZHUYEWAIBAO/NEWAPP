@@ -11,11 +11,15 @@
 @interface BbsFenLeiVC : BasicVC<UITableViewDataSource,UITableViewDelegate>
 
 @property (weak, nonatomic) IBOutlet UITableView *menuBigTableView;
+@property (weak, nonatomic) IBOutlet UITableView *secondMenuTableView;
+@property (strong, nonatomic) IBOutlet UIView *secondMenuView;
+
+@property (weak, nonatomic) IBOutlet UIView *headView;
+
+@property (strong, nonatomic) IBOutlet UIImageView *cateArrowImgV;
 
 @property (strong, nonatomic) NSMutableArray *bigMenuArray;
 
 @property (strong, nonatomic) NSMutableArray *subMenuArray;
-
-@property (weak, nonatomic) IBOutlet UITableView *fenLeiRightTable;
 
 @end

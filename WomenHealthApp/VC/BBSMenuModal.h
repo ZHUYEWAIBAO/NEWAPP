@@ -14,6 +14,7 @@
 @property (strong, nonatomic) NSString *bbsName;
 @property (strong, nonatomic) NSString *bbsDescription;
 @property (strong, nonatomic) NSString *bbsIcon;
+@property (strong, nonatomic) NSString *bbs_is_attention;
 
 + (BBSMenuModal *)parseDicToMenuListObject:(NSDictionary*)dic;
 

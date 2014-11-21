@@ -10,4 +10,8 @@
 
 @interface BbsFenLeiCell : UITableViewCell
 
+@property (weak, nonatomic) IBOutlet UILabel *bbsTitleLabel;
+@property (weak, nonatomic) IBOutlet UILabel *bbsSubLabel;
+@property (weak, nonatomic) IBOutlet UIImageView *bbsimageView;
+
 @end

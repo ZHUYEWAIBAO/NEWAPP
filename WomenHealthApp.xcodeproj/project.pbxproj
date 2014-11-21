@@ -178,6 +178,10 @@
 		BAA689891A15E8AE00B201A0 /* Record_cancel_btn.png in Resources */ = {isa = PBXBuildFile; fileRef = BAA689871A15E8AE00B201A0 /* Record_cancel_btn.png */; };
 		BAA6898A1A15E8AE00B201A0 /* Record_sure_btn.png in Resources */ = {isa = PBXBuildFile; fileRef = BAA689881A15E8AE00B201A0 /* Record_sure_btn.png */; };
 		BAB630821A1DF3EE00E3F62D /* BBSMenuModal.m in Sources */ = {isa = PBXBuildFile; fileRef = BAB630811A1DF3EE00E3F62D /* BBSMenuModal.m */; };
+		BAD0AE631A1ECD1900F2D001 /* SetViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = BAD0AE621A1ECD1900F2D001 /* SetViewController.xib */; };
+		BAD0AE661A1ED12900F2D001 /* Set_people_head_image.png in Resources */ = {isa = PBXBuildFile; fileRef = BAD0AE651A1ED12900F2D001 /* Set_people_head_image.png */; };
+		BAD0AE6A1A1F19EC00F2D001 /* Circle_menu_cateArrow.png in Resources */ = {isa = PBXBuildFile; fileRef = BAD0AE691A1F19EC00F2D001 /* Circle_menu_cateArrow.png */; };
+		BAD0AE6C1A1F1AB200F2D001 /* nav_back_bt@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BAD0AE6B1A1F1AB200F2D001 /* nav_back_bt@2x.png */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -439,6 +443,10 @@
 		BAA689881A15E8AE00B201A0 /* Record_sure_btn.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Record_sure_btn.png; sourceTree = "<group>"; };
 		BAB630801A1DF3EE00E3F62D /* BBSMenuModal.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BBSMenuModal.h; sourceTree = "<group>"; };
 		BAB630811A1DF3EE00E3F62D /* BBSMenuModal.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BBSMenuModal.m; sourceTree = "<group>"; };
+		BAD0AE621A1ECD1900F2D001 /* SetViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SetViewController.xib; sourceTree = "<group>"; };
+		BAD0AE651A1ED12900F2D001 /* Set_people_head_image.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Set_people_head_image.png; sourceTree = "<group>"; };
+		BAD0AE691A1F19EC00F2D001 /* Circle_menu_cateArrow.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Circle_menu_cateArrow.png; sourceTree = "<group>"; };
+		BAD0AE6B1A1F1AB200F2D001 /* nav_back_bt@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "nav_back_bt@2x.png"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -557,6 +565,7 @@
 		65EE0A311A17897400F6F38E /* fenlei */ = {
 			isa = PBXGroup;
 			children = (
+				BAD0AE691A1F19EC00F2D001 /* Circle_menu_cateArrow.png */,
 				65EE0A321A17897400F6F38E /* delete_btn@2x.png */,
 				65EE0A331A17897400F6F38E /* fourbtns_btn@2x.png */,
 				65EE0A341A17897400F6F38E /* menu_btn@2x.png */,
@@ -618,6 +627,7 @@
 		BA491B721A0524110065DB16 /* other */ = {
 			isa = PBXGroup;
 			children = (
+				BAD0AE6B1A1F1AB200F2D001 /* nav_back_bt@2x.png */,
 				BA13C19F1A1793EE003B1313 /* new_buy_btn_selected.png */,
 				BA13C1A01A1793EE003B1313 /* new_buy_btn.png */,
 				BA13C1A11A1793EE003B1313 /* new_circle_btn_selected.png */,
@@ -934,6 +944,7 @@
 			children = (
 				BA59D83819F8ABAB0098BDCF /* SetViewController.h */,
 				BA59D83919F8ABAB0098BDCF /* SetViewController.m */,
+				BAD0AE621A1ECD1900F2D001 /* SetViewController.xib */,
 				BA1BB62F1A1D84C9000742EC /* SetTableViewCell.h */,
 				BA1BB6301A1D84C9000742EC /* SetTableViewCell.m */,
 				BA1BB6311A1D84C9000742EC /* SetTableViewCell.xib */,
@@ -944,6 +955,7 @@
 		BA59D84E19F8AEE40098BDCF /* 2x */ = {
 			isa = PBXGroup;
 			children = (
+				BAD0AE641A1ED0F800F2D001 /* Setting */,
 				65CD13BC1A1C96FA000A4F8E /* record */,
 				657B41301A1729100057F5AE /* BBSview */,
 				BA491B721A0524110065DB16 /* other */,
@@ -959,6 +971,14 @@
 				BAA689851A15E81600B201A0 /* OrderCellDetailView.m */,
 			);
 			path = View;
+			sourceTree = "<group>";
+		};
+		BAD0AE641A1ED0F800F2D001 /* Setting */ = {
+			isa = PBXGroup;
+			children = (
+				BAD0AE651A1ED12900F2D001 /* Set_people_head_image.png */,
+			);
+			name = Setting;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -1073,6 +1093,7 @@
 				BA95CB0C1A19CE9D00FAE262 /* Record_detail_tiwen_logo.png in Resources */,
 				657B41391A1729160057F5AE /* search_btn@2x.png in Resources */,
 				65CD13D21A1C96FB000A4F8E /* date_btn_selected@2x.png in Resources */,
+				BAD0AE6A1A1F19EC00F2D001 /* Circle_menu_cateArrow.png in Resources */,
 				65EE0A391A17897400F6F38E /* menu_btn@2x.png in Resources */,
 				BA59D83119F8AAF90098BDCF /* ShoppingViewController.xib in Resources */,
 				65D8BBDF1A1736E300E7F68C /* search_empty_icon@2x.png in Resources */,
@@ -1090,6 +1111,7 @@
 				BA95CB061A19A8AD00FAE262 /* RecordDetailCell.xib in Resources */,
 				65CD13D81A1C96FB000A4F8E /* end_logo@2x.png in Resources */,
 				BA59D82B19F8AAC30098BDCF /* BBSViewController.xib in Resources */,
+				BAD0AE661A1ED12900F2D001 /* Set_people_head_image.png in Resources */,
 				BAA689891A15E8AE00B201A0 /* Record_cancel_btn.png in Resources */,
 				65134CFD1A1A24F50011BCF7 /* last_month_btn_selected@2x.png in Resources */,
 				BA4FB3281A14CB9E00DFECC4 /* FirstRecordVC.xib in Resources */,
@@ -1125,6 +1147,7 @@
 				65CD13D41A1C96FB000A4F8E /* detail_text@2x.png in Resources */,
 				BA95CAF21A19889B00FAE262 /* RecordDetailVC.xib in Resources */,
 				BA95CAF81A19952B00FAE262 /* Record_detail_date_btn.png in Resources */,
+				BAD0AE6C1A1F1AB200F2D001 /* nav_back_bt@2x.png in Resources */,
 				65134D021A1A24F50011BCF7 /* record_btn_selected@2x.png in Resources */,
 				BA13C1AD1A1793EE003B1313 /* new_record_btn.png in Resources */,
 				65EE0A3A1A17897400F6F38E /* menu_btn_selected@2x.png in Resources */,
@@ -1139,6 +1162,7 @@
 				BA95CB0E1A19CE9D00FAE262 /* Record_detail_zhengzhuang_logo.png in Resources */,
 				65D8BBD91A1735AE00E7F68C /* BbsSearchVC.xib in Resources */,
 				65CD13DD1A1C96FB000A4F8E /* shouqi_btn@2x.png in Resources */,
+				BAD0AE631A1ECD1900F2D001 /* SetViewController.xib in Resources */,
 				BA1BB6331A1D84C9000742EC /* SetTableViewCell.xib in Resources */,
 				65EE0A301A1788F000F6F38E /* BbsFenLeiCell.xib in Resources */,
 				657B41371A1729160057F5AE /* add_btn@2x.png in Resources */,
