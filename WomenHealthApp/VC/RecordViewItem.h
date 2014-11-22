@@ -30,6 +30,7 @@
 
 @property (weak, nonatomic) IBOutlet UIScrollView *alterScrollview;
 
+@property (weak, nonatomic) IBOutlet UIView *altetSubView;
 
 - (IBAction)cancel:(id)sender;
 

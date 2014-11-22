@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="6250" systemVersion="13F34" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="6250" systemVersion="14A389" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none">
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6244"/>
@@ -9,7 +9,9 @@
             <connections>
                 <outlet property="contentArrowImgView" destination="CPY-ck-rhn" id="uJq-hS-SgQ"/>
                 <outlet property="detailTableView" destination="Jwu-Yb-E3D" id="5Oe-Ta-vID"/>
+                <outlet property="endSwitch" destination="c8p-i6-x0G" id="6b0-lH-dFZ"/>
                 <outlet property="headView" destination="ht7-Vx-or3" id="CpM-lC-W8D"/>
+                <outlet property="starSwitch" destination="xl6-5k-45S" id="xrW-2b-LT5"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
         </placeholder>
@@ -70,6 +72,9 @@
                         <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" id="xl6-5k-45S">
                             <rect key="frame" x="257" y="6" width="51" height="31"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <connections>
+                                <action selector="startSwitchClick:" destination="-1" eventType="valueChanged" id="TYu-OW-LHJ"/>
+                            </connections>
                         </switch>
                     </subviews>
                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -96,6 +101,9 @@
                         <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" id="c8p-i6-x0G">
                             <rect key="frame" x="257" y="6" width="51" height="31"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <connections>
+                                <action selector="endSwitchClick:" destination="-1" eventType="valueChanged" id="q75-IS-JFb"/>
+                            </connections>
                         </switch>
                     </subviews>
                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -139,7 +147,7 @@
             </subviews>
             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
-            <point key="canvasLocation" x="544" y="0.0"/>
+            <point key="canvasLocation" x="505" y="58"/>
         </view>
     </objects>
     <resources>

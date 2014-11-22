@@ -22,17 +22,36 @@
     
     [super awakeFromNib];
     
-    self.ZZAry= [[NSUserDefaults standardUserDefaults] objectForKey:@"zhengZhuangAry"];
-    if (self.ZZAry ==nil) {
+    self.ZZAry=[NSMutableArray arrayWithArray:[[NSUserDefaults standardUserDefaults] objectForKey:@"zhengZhuangAry"]];
+    if ([[NSUserDefaults standardUserDefaults] objectForKey:@"zhengZhuangAry"] ==nil) {
         self.ZZAry =[NSMutableArray array];
         
     }else{
-        [self.subviews enumerateObjectsUsingBlock:^(id obj, NSUInteger idx, BOOL *stop) {
-           
+        [self.altetSubView.subviews enumerateObjectsUsingBlock:^(id obj, NSUInteger idx, BOOL *stop) {
+            if ([obj class] ==[UIButton class] &&[ZZAry containsObject:[NSNumber numberWithInt: (((UIButton *)obj).tag)]] ) {
+
+                [(UIButton *)obj setTitle:((UIButton *)obj).titleLabel.text forState:UIControlStateSelected];
+                [(UIButton *)obj setTitleColor:FENSERGB forState:UIControlStateNormal];
+                [(UIButton *)obj setBackgroundImage:[UIImage imageWithContentFileName:@"type_active_btn"] forState:UIControlStateNormal];
+            }
+            
+            
             
         }];
-
     }
+//        NSLog(@"%@",self.altetSubView.subviews);
+    
+//        for (int i=0; i<ZZAry.count; i++) {
+//
+//            UIButton *btn =(UIButton *)[self.altetSubView viewWithTag:(int)[ZZAry objectAtIndex:i]];
+//            btn.selected =NO;
+//            [btn setTitle:btn.titleLabel.text forState:UIControlStateNormal];
+//            [btn setTitleColor:FENSERGB forState:UIControlStateSelected];
+//            [btn setBackgroundImage:[UIImage imageWithContentFileName:@"type_active_btn"] forState:UIControlStateNormal];
+//        }
+//        
+//
+//    }
 }
 
 
@@ -41,10 +60,9 @@
     NSLog(@"1");
     for (int i=1000; i<=1014; i++) {
         UIButton *btn =(UIButton *)[self viewWithTag:i];
-        btn.selected =NO;
         [btn setTitle:btn.titleLabel.text forState:UIControlStateNormal];
-        [btn setTitleColor:[UIColor lightGrayColor] forState:UIControlStateNormal];
-        [btn setBackgroundImage:[UIImage imageWithContentFileName:@"type_normal_btn"] forState:UIControlStateNormal];
+        [btn setTitleColor:FENSERGB forState:UIControlStateNormal];
+        [btn setBackgroundImage:[UIImage imageWithContentFileName:@"type_active_btn"] forState:UIControlStateNormal];
     }
     
     
@@ -55,6 +73,7 @@
     }
     
     [ZZAry removeAllObjects];
+    [[NSUserDefaults standardUserDefaults] setObject:ZZAry forKey:@"zhengZhuangAry"];
 
     
 }

@@ -31,15 +31,18 @@
     
     NSMutableDictionary *totalDic;// 存储所有数据的
     
-    NSInteger aiaiIndex;
+    int aiaiIndex;
     
-    NSInteger  tiwenRow0;
-    NSInteger  tiwenRow1;
+    int  tiwenRow0;
+    int  tiwenRow1;
     
-    NSInteger  tizhongRow0;
-    NSInteger  tizhongRow1;
+    int  tizhongRow0;
+    int  tizhongRow1;
 
     
+    __weak IBOutlet UISwitch *starSwitch;
+    
+    __weak IBOutlet UISwitch *endSwitch;
 }
 @end
 
@@ -47,7 +50,8 @@
 -(void)loadView{
     [super loadView];
     totalDic =[NSMutableDictionary dictionaryWithDictionary:[[NSUserDefaults standardUserDefaults] objectForKey:@"totalDic"]];
-    if (totalDic ==nil) {
+    
+    if ([[NSUserDefaults standardUserDefaults] objectForKey:@"totalDic"] ==nil) {
         totalDic =[NSMutableDictionary dictionary];
         aiaiIndex =0;
         [totalDic setObject:[NSNumber numberWithInt:aiaiIndex] forKey:@"aiaiIndex"];
@@ -67,6 +71,7 @@
         [[NSUserDefaults standardUserDefaults] setObject:totalDic forKey:@"totalDic"];
     }else{
         //  do nothing
+        NSLog(@"%@",totalDic);
     }
 
     
@@ -100,9 +105,6 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-
-
-    
     UIButton *rightButton=[[UIButton alloc]initWithFrame:CGRectMake(0, 0, 30, 30)];
     [rightButton addTarget:self action:@selector(recordDetailSureAction:) forControlEvents:UIControlEventTouchUpInside];
     [rightButton setBackgroundImage:[UIImage imageWithContentFileName:@"Record_detail_sure_btn.png"] forState:UIControlStateNormal];
@@ -125,12 +127,12 @@
     [self.headView addSubview:_detailContentView];
     [_detailContentView setFrame:CGRectMake(0, 162, _detailContentView.frame.size.width, 88)];
         _detailContentView.hidden =YES;
-
-
-    
     self.detailTableView.tableHeaderView = self.headView;
     
-    
+    starSwitch.on =[[NSUserDefaults standardUserDefaults] boolForKey:@"startSwitchClick"];
+    endSwitch.on =[[NSUserDefaults standardUserDefaults] boolForKey:@"startSwitchClicktwo"];
+
+
     
     STView = [[UIView alloc]initWithFrame:self.view.bounds];
     [STView setBackgroundColor:[UIColor colorWithRed:0.3 green:0.3 blue:0.3 alpha:0.3]];
@@ -172,6 +174,7 @@
 #pragma mark recordProtocal
 -(void)didSelDismss{
     totalDic =[NSMutableDictionary dictionaryWithDictionary:[[NSUserDefaults standardUserDefaults] objectForKey:@"totalDic"]];
+    
     if (pickerChose ==0) {
         aiaiIndex =0;
         [totalDic setObject:[NSNumber numberWithInt:aiaiIndex] forKey:@"aiaiIndex"];
@@ -218,6 +221,7 @@
     [totalDic setObject:[NSNumber numberWithInt:tizhongRow1] forKey:@"tizhongRow1"];
     
     [[NSUserDefaults standardUserDefaults] setObject:totalDic forKey:@"totalDic"];
+    NSLog(@"%@",totalDic);
     
     [self dismissWindow];
 }
@@ -340,6 +344,11 @@
     NSLog(@"%li",(long)indexPath.row);
      NSDictionary *dataDic = [[NSUserDefaults standardUserDefaults] objectForKey:@"totalDic"];
     
+    aiaiIndex =[[dataDic objectForKey:@"aiaiIndex"] intValue];
+    tiwenRow0=  [[dataDic objectForKey:@"tiwenRow0"] intValue];
+    tiwenRow0=  [[dataDic objectForKey:@"tiwenRow0"] intValue];
+    tizhongRow0=  [[dataDic objectForKey:@"tizhongRow0"] intValue];
+    tizhongRow1=  [[dataDic objectForKey:@"tizhongRow1"] intValue];
     switch (indexPath.row) {
         case 0:{
             
@@ -351,9 +360,10 @@
 
             dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.3 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
                 
-                [detail.pickerView selectRow:[[dataDic objectForKey:@"aiaiIndex"] integerValue] inComponent:0 animated:YES];
-                pickerCell *tempView  =(pickerCell *)[detail.pickerView viewForRow:[[dataDic objectForKey:@"aiaiIndex"] integerValue] forComponent:0];
-                tempView.titleLab.text =[aiaiAry objectAtIndex:[[dataDic objectForKey:@"aiaiIndex"] integerValue]];
+                [detail.pickerView selectRow:[[dataDic objectForKey:@"aiaiIndex"] intValue] inComponent:0 animated:YES];
+
+                pickerCell *tempView  =(pickerCell *)[detail.pickerView viewForRow:[[dataDic objectForKey:@"aiaiIndex"] intValue] forComponent:0];
+                tempView.titleLab.text =[aiaiAry objectAtIndex:[[dataDic objectForKey:@"aiaiIndex"] intValue]];
                 tempView.titleLab.textColor = FENSERGB;
                 tempView.heartimg.image =[UIImage imageWithContentFileName:@"no_love_logo"];
             });
@@ -379,18 +389,21 @@
             detail.tishiLab.text =@"记录体温能够帮助你监控生理周期状况,有利于避孕和备孕哦！测口腔温度哦！";
             pickerChose =1;
             [detail.pickerView reloadAllComponents];
-            [detail.pickerView selectRow:[[dataDic objectForKey:@"tiwenRow0"] integerValue]  inComponent:0 animated:YES];
-             [detail.pickerView selectRow:[[dataDic objectForKey:@"tiwenRow1"] integerValue]  inComponent:1 animated:YES];
+            [detail.pickerView selectRow:[[dataDic objectForKey:@"tiwenRow0"] intValue]  inComponent:0 animated:YES];
+             [detail.pickerView selectRow:[[dataDic objectForKey:@"tiwenRow1"] intValue]  inComponent:1 animated:YES];
+
+            
+            
             dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.3 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
-                pickerCell *tempView  =(pickerCell *)[detail.pickerView viewForRow:[[dataDic objectForKey:@"tiwenRow0"] integerValue] forComponent:0];
+                pickerCell *tempView  =(pickerCell *)[detail.pickerView viewForRow:[[dataDic objectForKey:@"tiwenRow0"] intValue] forComponent:0];
                 
 
-                tempView.titleLab.text  =[tiwenAry0 objectAtIndex:[[dataDic objectForKey:@"tiwenRow0"] integerValue]];
+                tempView.titleLab.text  =[tiwenAry0 objectAtIndex:[[dataDic objectForKey:@"tiwenRow0"] intValue]];
                 tempView.titleLab.textColor = FENSERGB;
                 
-                 pickerCell *tempView1  =(pickerCell *)[detail.pickerView viewForRow:[[dataDic objectForKey:@"tiwenRow1"] integerValue] forComponent:1];
+                 pickerCell *tempView1  =(pickerCell *)[detail.pickerView viewForRow:[[dataDic objectForKey:@"tiwenRow1"] intValue] forComponent:1];
 
-                tempView1.titleLab.text =[tiwenAry1 objectAtIndex:[[dataDic objectForKey:@"tiwenRow1"] integerValue]];
+                tempView1.titleLab.text =[tiwenAry1 objectAtIndex:[[dataDic objectForKey:@"tiwenRow1"] intValue]];
                 tempView1.titleLab.textColor = FENSERGB;
 
 });
@@ -432,19 +445,21 @@
             detail.tishiLab.text =@"";
             pickerChose =3;
             [detail.pickerView reloadAllComponents];
-            [detail.pickerView selectRow:[[dataDic objectForKey:@"tizhongRow0"] integerValue]  inComponent:0 animated:YES];
-            [detail.pickerView selectRow:[[dataDic objectForKey:@"tizhongRow1"] integerValue]  inComponent:1 animated:YES];
+            [detail.pickerView selectRow:[[dataDic objectForKey:@"tizhongRow0"] intValue]  inComponent:0 animated:YES];
+            [detail.pickerView selectRow:[[dataDic objectForKey:@"tizhongRow1"] intValue]  inComponent:1 animated:YES];
             dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.3 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
-                pickerCell *tempView  =(pickerCell *)[detail.pickerView viewForRow:[[dataDic objectForKey:@"tizhongRow0"] integerValue] forComponent:0];
+                pickerCell *tempView  =(pickerCell *)[detail.pickerView viewForRow:[[dataDic objectForKey:@"tizhongRow0"] intValue] forComponent:0];
                 
                 
-                tempView.titleLab.text  =[tizhongAry0 objectAtIndex:[[dataDic objectForKey:@"tizhongRow0"] integerValue]];
+                tempView.titleLab.text  =[tizhongAry0 objectAtIndex:[[dataDic objectForKey:@"tizhongRow0"] intValue]];
                 tempView.titleLab.textColor = FENSERGB;
                 
-                pickerCell *tempView1  =(pickerCell *)[detail.pickerView viewForRow:[[dataDic objectForKey:@"tizhongRow1"] integerValue] forComponent:1];
+                pickerCell *tempView1  =(pickerCell *)[detail.pickerView viewForRow:[[dataDic objectForKey:@"tizhongRow1"] intValue] forComponent:1];
                 
-                tempView1.titleLab.text =[tizhongAry1 objectAtIndex:[[dataDic objectForKey:@"tizhongRow1"] integerValue]];
+                tempView1.titleLab.text =[tizhongAry1 objectAtIndex:[[dataDic objectForKey:@"tizhongRow1"] intValue]];
                 tempView1.titleLab.textColor = FENSERGB;
+                
+
                 
             });
             
@@ -584,7 +599,7 @@
         tempView.titleLab.text =[aiaiAry objectAtIndex:row];
         tempView.titleLab.textColor = FENSERGB;
         tempView.heartimg.image =[UIImage imageWithContentFileName:@"no_love_logo"];
-        aiaiIndex =row;
+        aiaiIndex = (int)row;
         
         
     }else if(pickerChose ==1){
@@ -592,10 +607,10 @@
         
         if (component==0) {
             tempView.titleLab.text  =[tiwenAry0 objectAtIndex:row];
-            tiwenRow0 =row;
+            tiwenRow0 =(int)row;
         }else{
             tempView.titleLab.text =[tiwenAry1 objectAtIndex:row];
-            tiwenRow1 =row;
+            tiwenRow1 =(int)row;
         }
         tempView.titleLab.textColor = FENSERGB;
         
@@ -614,10 +629,10 @@
         
         if (component==0) {
             tempView.titleLab.text  =[tizhongAry0 objectAtIndex:row];
-            tizhongRow0 =row;
+            tizhongRow0 =(int)row;
         }else{
             tempView.titleLab.text =[tizhongAry1 objectAtIndex:row];
-            tizhongRow1 =row;
+            tizhongRow1 =(int)row;
         }
         tempView.titleLab.textColor = FENSERGB;
         
@@ -668,4 +683,15 @@
     // Dispose of any resources that can be recreated.
 }
 
+- (IBAction)startSwitchClick:(id)sender {
+    
+    [[NSUserDefaults standardUserDefaults] setBool:((UISwitch *)sender).on forKey:@"startSwitchClick"];
+    
+    
+    
+}
+
+- (IBAction)endSwitchClick:(id)sender {
+     [[NSUserDefaults standardUserDefaults] setBool:((UISwitch *)sender).on forKey:@"startSwitchClicktwo"];
+}
 @end

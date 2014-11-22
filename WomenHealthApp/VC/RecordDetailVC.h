@@ -20,6 +20,9 @@
 @property (strong, nonatomic) NSMutableArray *dataArray;
 @property (strong, nonatomic) NSMutableArray *imageArray;
 
+- (IBAction)startSwitchClick:(id)sender;
+
+- (IBAction)endSwitchClick:(id)sender;
 
 
 @end

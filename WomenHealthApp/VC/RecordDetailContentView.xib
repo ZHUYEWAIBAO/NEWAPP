@@ -29,6 +29,9 @@
                     <state key="normal" title="轻度" backgroundImage="Record_detail_detail_text_selected.png">
                         <color key="titleShadowColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                     </state>
+                    <connections>
+                        <action selector="tocalClcik:" destination="p6c-aV-fGF" eventType="touchUpInside" id="Z7f-go-IPf"/>
+                    </connections>
                 </button>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="bqS-hs-CrM">
                     <rect key="frame" x="115" y="11" width="35" height="22"/>
@@ -38,6 +41,9 @@
                         <color key="titleColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                         <color key="titleShadowColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                     </state>
+                    <connections>
+                        <action selector="tocalClcik:" destination="p6c-aV-fGF" eventType="touchUpInside" id="Hp2-zM-oP3"/>
+                    </connections>
                 </button>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="BTs-Vn-QAa">
                     <rect key="frame" x="168" y="11" width="35" height="22"/>
@@ -47,6 +53,9 @@
                         <color key="titleColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                         <color key="titleShadowColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                     </state>
+                    <connections>
+                        <action selector="tocalClcik:" destination="p6c-aV-fGF" eventType="touchUpInside" id="NQU-cC-ZIT"/>
+                    </connections>
                 </button>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="8Xr-5S-a70">
                     <rect key="frame" x="62" y="55" width="35" height="22"/>
@@ -55,6 +64,9 @@
                     <state key="normal" title="很少" backgroundImage="Record_detail_detail_text_selected.png">
                         <color key="titleShadowColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                     </state>
+                    <connections>
+                        <action selector="tocalClcikTwo:" destination="p6c-aV-fGF" eventType="touchUpInside" id="CEy-WM-cPB"/>
+                    </connections>
                 </button>
                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" id="iJf-2m-6Ng" customClass="LineImageView">
                     <rect key="frame" x="0.0" y="87" width="320" height="1"/>
@@ -75,6 +87,9 @@
                         <color key="titleColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                         <color key="titleShadowColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                     </state>
+                    <connections>
+                        <action selector="tocalClcikTwo:" destination="p6c-aV-fGF" eventType="touchUpInside" id="0ba-e4-uNz"/>
+                    </connections>
                 </button>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="OMY-dS-Dmy">
                     <rect key="frame" x="221" y="55" width="35" height="22"/>
@@ -84,6 +99,9 @@
                         <color key="titleColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                         <color key="titleShadowColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                     </state>
+                    <connections>
+                        <action selector="tocalClcikTwo:" destination="p6c-aV-fGF" eventType="touchUpInside" id="9Kp-Fh-FIs"/>
+                    </connections>
                 </button>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="P4K-CT-ZKj">
                     <rect key="frame" x="274" y="55" width="35" height="22"/>
@@ -93,6 +111,9 @@
                         <color key="titleColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                         <color key="titleShadowColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                     </state>
+                    <connections>
+                        <action selector="tocalClcikTwo:" destination="p6c-aV-fGF" eventType="touchUpInside" id="71Y-dw-Ysq"/>
+                    </connections>
                 </button>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="PXm-mZ-d76">
                     <rect key="frame" x="168" y="55" width="35" height="22"/>
@@ -102,10 +123,24 @@
                         <color key="titleColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                         <color key="titleShadowColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                     </state>
+                    <connections>
+                        <action selector="tocalClcikTwo:" destination="p6c-aV-fGF" eventType="touchUpInside" id="rdX-kv-Iyc"/>
+                    </connections>
                 </button>
             </subviews>
             <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+            <connections>
+                <outlet property="typeBtn0" destination="0Un-bb-M8h" id="ZmH-nf-HeX"/>
+                <outlet property="typeBtn1" destination="bqS-hs-CrM" id="4yY-Lf-QEw"/>
+                <outlet property="typeBtn2" destination="BTs-Vn-QAa" id="FK6-u1-nhf"/>
+                <outlet property="typeBtnNew0" destination="8Xr-5S-a70" id="dDi-KK-SdX"/>
+                <outlet property="typeBtnNew1" destination="Lsw-m9-pYO" id="1k0-SI-w7h"/>
+                <outlet property="typeBtnNew2" destination="PXm-mZ-d76" id="vnE-VM-zGi"/>
+                <outlet property="typeBtnNew3" destination="OMY-dS-Dmy" id="CNS-V6-xiQ"/>
+                <outlet property="typeBtnNew4" destination="P4K-CT-ZKj" id="qbq-28-v8M"/>
+            </connections>
+            <point key="canvasLocation" x="182" y="338"/>
         </view>
     </objects>
     <resources>
