@@ -133,6 +133,9 @@
             [lineImgV setBackgroundColor:RGBACOLOR(199, 199, 204, 1.0)];
         }
         
+        [cell.bbsArrowImageView setHidden:NO];
+        [cell.bbsEditBtn setHidden:YES];
+        
         if (isShowSecMenu==NO) {
             BBSMenuModal *modal = [self.bigMenuArray objectAtIndex:indexPath.row];
             
@@ -172,7 +175,8 @@
         cell.bbsTitleLabel.text = modal.bbsName;
         cell.bbsSubLabel.text = modal.bbsDescription;
         
-      
+        [cell.bbsArrowImageView setHidden:YES];
+        [cell.bbsEditBtn setHidden:NO];
         
         return cell;
     }
@@ -252,6 +256,43 @@
     
     //保存已选中行数
 //    indexRow=path.row;
+}
+
+- (void)getTheCircleWithFid:(NSString *)fid
+{
+    //测试固定写成2
+    [SVProgressHUD showWithMaskType:SVProgressHUDMaskTypeClear];
+    
+    [NETWORK_ENGINE requestWithPath:[GLOBALSHARE.CIRCLE_BIGMENU_PATH stringByAppendingFormat:@"?mod=collect&action=add&fid=%@&uid=%@",@"2",@"1"]  Params:self.params CompletionHandler:^(MKNetworkOperation *completedOperation) {
+        
+        [self.subMenuArray removeAllObjects];
+        
+        NSDictionary *dic = [completedOperation responseDecodeToDic];
+        
+        NSDictionary *statusDic = [dic objectForKey:@"status"];
+        NSDictionary *dataDic = [dic objectForKey:@"data"];
+        if ([@"1" isEqualToString:CHECK_VALUE([statusDic objectForKey:@"statu"])]){
+            
+//            NSArray *array = CHECK_ARRAY_VALUE([dataDic objectForKey:@"forumlist"]);
+//            
+//            for (NSDictionary *subDic in array) {
+//                BBSMenuModal *modal = [BBSMenuModal parseDicToMenuListObject:subDic];
+//                [self.subMenuArray addObject:modal];
+//            }
+//            [self.secondMenuTableView reloadData];
+            [SVProgressHUD dismiss];
+        }
+        else{
+            [SVProgressHUD showErrorWithStatus:CHECK_VALUE([statusDic objectForKey:@"msg"])];
+        }
+        
+        
+    } ErrorHandler:^(MKNetworkOperation *completedOperation, NSError *error) {
+        
+        [SVProgressHUD showErrorWithStatus:@"服务器忙，请稍候再试"];
+        
+    }];
+
 }
 
 - (void)didReceiveMemoryWarning

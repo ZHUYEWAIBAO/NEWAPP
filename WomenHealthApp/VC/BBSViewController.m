@@ -60,12 +60,12 @@
     NSMutableArray *viewsArray = [@[] mutableCopy];
     NSArray *colorArray = @[[UIColor cyanColor],[UIColor blueColor],[UIColor greenColor],[UIColor yellowColor],[UIColor purpleColor]];
     for (int i = 0; i < 5; ++i) {
-        UILabel *tempLabel = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, 320, 126)];
+        UILabel *tempLabel = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, 320, 120)];
         tempLabel.backgroundColor = [(UIColor *)[colorArray objectAtIndex:i] colorWithAlphaComponent:0.5];
         [viewsArray addObject:tempLabel];
     }
     
-    self.mainScorllView = [[CycleScrollView alloc] initWithFrame:CGRectMake(0, 0, 320, 126) animationDuration:3];
+    self.mainScorllView = [[CycleScrollView alloc] initWithFrame:CGRectMake(0, 0, 320, 120) animationDuration:3];
 
     self.mainScorllView.fetchContentViewAtIndex = ^UIView *(NSInteger pageIndex){
         return viewsArray[pageIndex];
@@ -82,7 +82,7 @@
 }
 
 #pragma mark tableview
--(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
+- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
     
     return 7;
     
@@ -99,6 +99,7 @@
     return cell;
     
 }
+
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
     
     NSArray *nibArr = [[NSBundle mainBundle] loadNibNamed:@"bbsTableCell" owner:self options:nil];
@@ -112,8 +113,7 @@
     
     if (nil == sectionView) {
         sectionView = [[UIView alloc]initWithFrame:CGRectMake(0, 0, SCREEN_SIZE.width, 30)];
-        sectionView.backgroundColor = [UIColor colorWithRed:243/255.0f green:240/255.0f blue:234/255.0f alpha:1];
-
+        sectionView.backgroundColor = RGBACOLOR(243, 240, 234, 1.0);
     }
     UILabel *sectionLabel = (UILabel *)[sectionView viewWithTag:1000];
     //Title
@@ -130,20 +130,18 @@
     return sectionView;
 }
 
--(void)searchClick{
-
-    
+- (void)searchClick
+{
     [self presentViewController:[BbsSearchVC navigationControllerContainSelf] animated:YES completion:nil];
-    
     
 }
 
--(void)addClick{
-    BbsFenLeiVC *vc =[[BbsFenLeiVC alloc]initWithNibName:@"BbsFenLeiVC" bundle:nil];
+- (void)addClick
+{
+    
+    BbsFenLeiVC *vc = [[BbsFenLeiVC alloc]initWithNibName:@"BbsFenLeiVC" bundle:nil];
     [self.navigationController pushViewController:vc animated:YES];
 
-    
-    
 }
 
 - (void)didReceiveMemoryWarning {

@@ -13,5 +13,7 @@
 @property (weak, nonatomic) IBOutlet UILabel *bbsTitleLabel;
 @property (weak, nonatomic) IBOutlet UILabel *bbsSubLabel;
 @property (weak, nonatomic) IBOutlet UIImageView *bbsimageView;
+@property (weak, nonatomic) IBOutlet UIImageView *bbsArrowImageView;
+@property (weak, nonatomic) IBOutlet UIButton *bbsEditBtn;
 
 @end

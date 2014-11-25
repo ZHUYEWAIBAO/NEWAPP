@@ -7,7 +7,16 @@
 //
 
 #import "BasicVC.h"
+#import "CycleScrollView.h"
 
 @interface ShoppingViewController : BasicVC
+
+@property (weak, nonatomic) IBOutlet UITableView *shopTableView;
+
+@property (strong, nonatomic) IBOutlet UIView *headView;
+
+@property (strong, nonatomic) NSMutableArray *shopArray;
+
+@property (strong, nonatomic) CycleScrollView *mainScorllView;
 
 @end

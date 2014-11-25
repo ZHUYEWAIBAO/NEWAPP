@@ -52,7 +52,7 @@
     if (self) {
         // Initialization code
         self.autoresizesSubviews = YES;
-        self.scrollView = [[UIScrollView alloc] initWithFrame:CGRectMake(0, 0, SCREEN_SIZE.width, 120)];
+        self.scrollView = [[UIScrollView alloc] initWithFrame:self.bounds];
         self.scrollView.autoresizingMask = 0xFF;
         self.scrollView.contentMode = UIViewContentModeCenter;
         self.scrollView.contentSize = CGSizeMake(3 * CGRectGetWidth(self.scrollView.frame), CGRectGetHeight(self.scrollView.frame));
@@ -66,10 +66,6 @@
         [self.pageControl setCurrentPageIndicatorTintColor:RGBACOLOR(254, 111, 117, 1.0)];
         [self.pageControl setPageIndicatorTintColor:[UIColor whiteColor]];
         [self addSubview:self.pageControl];
-        
-        UIImageView *imageView = [[UIImageView alloc]initWithFrame:CGRectMake(0, 120, SCREEN_SIZE.width, 6)];
-        [imageView setImage:[UIImage imageWithContentFileName:@"line"]];
-        [self addSubview:imageView];
         
         self.backgroundColor = [UIColor clearColor];
     }
