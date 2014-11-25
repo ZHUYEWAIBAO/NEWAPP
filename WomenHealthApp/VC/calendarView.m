@@ -32,7 +32,7 @@
     NSLog(@"今天是这个月的第-----%lu",(unsigned long)[self getDayFromDate:todayDate]);
     NSLog(@"这个月的第1天是星期-----%lu",(unsigned long)[self getTheFirstDayThisMounth:todayDate]);
     
-    NSInteger firstDayXingQi =(unsigned long)[self getTheFirstDayThisMounth:todayDate];
+    int firstDayXingQi =(int)[self getTheFirstDayThisMounth:todayDate];
     if (firstDayXingQi ==0) {
         firstDayXingQi =7;
     }
@@ -44,7 +44,7 @@
             calendarItemBtn *temp =[[calendarItemBtn alloc] initWithFrame:CGRectMake(46*j-1,46*i+65, 46 , 46)];
             if((7*i+j) >=(firstDayXingQi-1)  &&  (7*i+j)<totayDays+(firstDayXingQi-1)){
                 
-                [temp setTitle:[NSString stringWithFormat:@"%lu",(unsigned long)(7*i+j)+1-(firstDayXingQi-1)] forState:UIControlStateNormal];
+                [temp setTitle:[NSString stringWithFormat:@"%i",(7*i+j)+1-(firstDayXingQi-1)] forState:UIControlStateNormal];
 
                 
             }else{
@@ -61,13 +61,18 @@
             [[temp layer] setCornerRadius:1];
             [[temp layer] setBorderColor:[UIColor NewcolorWithRed:246 green:224 blue:225 alpha:1].CGColor];
             
-            
+            /**
+             *  今天几号
+             */
             if ((7*i+j)+1-(firstDayXingQi-1) ==(unsigned long)[self getDayFromDate:todayDate]) {
                 
                 didSelectBtn =temp;
                 [temp setBackgroundImage:[UIImage imageWithContentFileName:@"today_active@2x.png"] forState:UIControlStateNormal];
             }
             
+            /**
+             *  排卵日
+             */
             if ((7*i+j)%30+1 ==18) {
                 UIImageView *tempImg =[[UIImageView alloc] initWithFrame:CGRectMake(5, 25, 14, 14)];
                 tempImg.image =[UIImage imageNamed:@"pailuanri_logo.png"];
@@ -77,6 +82,7 @@
             [self addSubview:temp];
             
             [daysAry addObject:temp];
+        
             
         }
     }
@@ -96,14 +102,17 @@
     [self addSubview:lineView2];
     
 }
+
 -(void)didSelect:(id)sender{
+    
+    
     calendarItemBtn *btn =(calendarItemBtn *)sender;
     [didSelectBtn setBackgroundImage:[UIImage imageWithContentFileName:@""] forState:UIControlStateNormal];
     
     [btn setBackgroundImage:[UIImage imageWithContentFileName:@"today_active@2x.png"] forState:UIControlStateNormal];
     
     didSelectBtn =btn;
-    NSLog(@"%li",(long)btn.tag);
+    NSLog(@"%i",(int)btn.tag);
 }
 - (IBAction)leftBtnClick:(id)sender {
 
@@ -157,7 +166,7 @@
     
     NSLog(@"这个月的第1天是星期-----%lu",(unsigned long)[self getTheFirstDayThisMounth:todayDate]);
     
-    NSInteger firstDayXingQi =(unsigned long)[self getTheFirstDayThisMounth:todayDate];
+    int firstDayXingQi =(int)[self getTheFirstDayThisMounth:todayDate];
     if (firstDayXingQi ==0) {
         firstDayXingQi =7;
     }
@@ -168,7 +177,7 @@
             //            calendarItemBtn *temp =[[calendarItemBtn alloc] initWithFrame:CGRectMake(46*j-1,46*i+65, 46 , 46)];
             if((7*i+j) >=(firstDayXingQi-1)  &&  (7*i+j)<totayDays+(firstDayXingQi-1)){
                 
-                [temp setTitle:[NSString stringWithFormat:@"%lu",(unsigned long)(7*i+j)+1-(firstDayXingQi-1)] forState:UIControlStateNormal];
+                [temp setTitle:[NSString stringWithFormat:@"%i",(7*i+j)+1-(firstDayXingQi-1)] forState:UIControlStateNormal];
                 
             }else{
                 [temp setTitle:@"" forState:UIControlStateNormal];
@@ -255,14 +264,14 @@
 /**
  *  判断今天所在这个月有几天
  */
--(NSInteger )getNumberForDate:(NSDate *)todayDate{
+-(NSInteger )getNumberForDate:(NSDate *)todayDateNew{
     
 
     
     NSCalendar *c = [NSCalendar currentCalendar];
     NSRange days = [c rangeOfUnit:NSDayCalendarUnit
                            inUnit:NSMonthCalendarUnit
-                          forDate:todayDate];
+                          forDate:todayDateNew];
     NSLog(@"%lu",(unsigned long)days.length);
     
     return days.length;
