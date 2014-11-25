@@ -27,7 +27,8 @@
 
 @interface calendarItemBtn : UIButton
 
+@property(nonatomic,strong) UIView *lineView;
 
-
+@property(nonatomic,strong) UIImageView *tempImg;
 
 @end

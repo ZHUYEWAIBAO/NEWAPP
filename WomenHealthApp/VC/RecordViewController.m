@@ -57,6 +57,7 @@
     [self.view addSubview:tempView];
     
     
+    NSLog(@"%@",[[NSUserDefaults standardUserDefaults] objectForKey:@"RecordId"]);
 }
 
 - (void)recordDetailAction:(id)sender
