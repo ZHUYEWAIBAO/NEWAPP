@@ -48,6 +48,7 @@
         UILabel *tempLabel = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, 320, 120)];
         tempLabel.backgroundColor = [(UIColor *)[colorArray objectAtIndex:i] colorWithAlphaComponent:0.5];
         [viewsArray addObject:tempLabel];
+        
     }
     
     self.mainScorllView = [[CycleScrollView alloc] initWithFrame:CGRectMake(0, 0, 320, 120) animationDuration:3];

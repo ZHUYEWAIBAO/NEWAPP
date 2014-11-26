@@ -58,20 +58,20 @@
     currentMonth = 1;
     currentDay = 1;
     //经期天数默认5天
-    currentMenstrual = @"5天";
+    currentMenstrual = @"5";
     //周期天数默认28天
-    currentCycle = @"28天";
+    currentCycle = @"28";
     
     dispatch_queue_t quene =dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0);
     dispatch_async(quene, ^{
        
         for (int i = 2; i <= 14; i++) {
-            NSString *menstrualStr = [NSString stringWithFormat:@"%d天",i];
+            NSString *menstrualStr = [NSString stringWithFormat:@"%d",i];
             [menstrualArray addObject:menstrualStr];
         }
         
         for (int j = 15; j <= 100; j++) {
-            NSString *cycleStr = [NSString stringWithFormat:@"%d天",j];
+            NSString *cycleStr = [NSString stringWithFormat:@"%d",j];
             [cycleArray addObject:cycleStr];
         }
         
@@ -202,10 +202,10 @@
         
     }
     else if (currentTextField == self.menstrualTextField){
-        return [menstrualArray objectAtIndex:row];
+        return [NSString stringWithFormat:@"%@天",[menstrualArray objectAtIndex:row]];
     }
     else{
-        return [cycleArray objectAtIndex:row];
+        return [NSString stringWithFormat:@"%@天",[cycleArray objectAtIndex:row]];
     }
     
     return @"";

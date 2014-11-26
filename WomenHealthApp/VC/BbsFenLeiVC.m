@@ -270,7 +270,7 @@
         NSDictionary *dic = [completedOperation responseDecodeToDic];
         
         NSDictionary *statusDic = [dic objectForKey:@"status"];
-        NSDictionary *dataDic = [dic objectForKey:@"data"];
+//        NSDictionary *dataDic = [dic objectForKey:@"data"];
         if ([@"1" isEqualToString:CHECK_VALUE([statusDic objectForKey:@"statu"])]){
             
 //            NSArray *array = CHECK_ARRAY_VALUE([dataDic objectForKey:@"forumlist"]);

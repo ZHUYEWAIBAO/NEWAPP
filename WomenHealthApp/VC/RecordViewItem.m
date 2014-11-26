@@ -28,7 +28,7 @@
         
     }else{
         [self.altetSubView.subviews enumerateObjectsUsingBlock:^(id obj, NSUInteger idx, BOOL *stop) {
-            if ([obj class] ==[UIButton class] &&[ZZAry containsObject:[NSNumber numberWithInt: (((UIButton *)obj).tag)]] ) {
+            if ([obj class] ==[UIButton class] &&[ZZAry containsObject:[NSNumber numberWithInteger: (((UIButton *)obj).tag)]] ) {
 
                 [(UIButton *)obj setTitle:((UIButton *)obj).titleLabel.text forState:UIControlStateSelected];
                 [(UIButton *)obj setTitleColor:FENSERGB forState:UIControlStateNormal];
@@ -99,14 +99,14 @@
     UIButton *btn =(UIButton *)sender;
     if (btn.selected ==YES) {
         btn.selected =NO;
-        [ZZAry removeObject:[NSNumber numberWithInt:btn.tag]];
+        [ZZAry removeObject:[NSNumber numberWithInteger:btn.tag]];
         [btn setTitle:btn.titleLabel.text forState:UIControlStateNormal];
         [btn setTitleColor:[UIColor lightGrayColor] forState:UIControlStateNormal];
         [btn setBackgroundImage:[UIImage imageWithContentFileName:@"type_normal_btn"] forState:UIControlStateNormal];
 
     }else{
         btn.selected =YES;
-        [ZZAry addObject:[NSNumber numberWithInt:btn.tag]];
+        [ZZAry addObject:[NSNumber numberWithInteger:btn.tag]];
         [btn setTitle:btn.titleLabel.text forState:UIControlStateSelected];
         [btn setTitleColor:FENSERGB forState:UIControlStateSelected];
         [btn setBackgroundImage:[UIImage imageWithContentFileName:@"type_active_btn"] forState:UIControlStateNormal];

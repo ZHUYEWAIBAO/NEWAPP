@@ -9,6 +9,7 @@
 #import "SetViewController.h"
 #import "SettingDataModel.h"
 #import "SetTableViewCell.h"
+#import "AboutUsVC.h"
 
 @interface SetViewController ()<UIActionSheetDelegate>
 {
@@ -150,6 +151,8 @@
             
         case 105:{
             //关于我们
+            AboutUsVC *vc = [[AboutUsVC alloc]initWithNibName:@"AboutUsVC" bundle:nil];
+            [self.navigationController pushViewController:vc animated:YES];
       
         }
             break;
