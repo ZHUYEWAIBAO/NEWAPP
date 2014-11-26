@@ -288,7 +288,24 @@
         case TAG_SAVE:{
             
             if ([self ifCanSaveTheDate]) {
-                NSString *recordKey = [NSString stringWithFormat:@"%ld-%ld-%ld-%@-%@",currentYear,currentMonth,currentDay,currentMenstrual,currentCycle];
+                
+                NSString *month;
+                NSString *day;
+                if (currentMonth < 10) {
+                    month = [NSString stringWithFormat:@"0%ld",currentMonth];
+                }
+                else{
+                    month = [NSString stringWithFormat:@"%ld",currentMonth];
+                }
+                
+                if (currentDay < 10) {
+                    day = [NSString stringWithFormat:@"0%ld",currentDay];
+                }
+                else{
+                    day = [NSString stringWithFormat:@"%ld",currentDay];
+                }
+                NSString *time = [NSString stringWithFormat:@"%ld%@%@000000",currentYear,month,day];
+                NSString *recordKey = [NSString stringWithFormat:@"%@_%@_%@",[self getTheWomanTime:time],currentMenstrual,currentCycle];
                 [COMMONDSHARE saveTheRecordKey:recordKey];
             }
             
@@ -322,6 +339,25 @@
     
     return YES;
 }
+
+- (NSString *)getTheWomanTime:(NSString *)time
+{
+    
+    NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
+    [formatter setDateStyle:NSDateFormatterMediumStyle];
+    [formatter setTimeStyle:NSDateFormatterShortStyle];
+    [formatter setDateFormat:@"yyyyMMddHHmmss"]; // ----------设置你想要的格式,hh与HH的区别:分别表示12小时制,24小时制
+    
+    NSTimeZone *timeZone = [NSTimeZone timeZoneWithName:@"Asia/Shanghai"];
+    [formatter setTimeZone:timeZone];
+    
+    NSDate *date = [formatter dateFromString:time];
+    
+    NSString *timeSp = [NSString stringWithFormat:@"%ld", (long)[date timeIntervalSince1970]];
+ 
+    return timeSp;
+}
+
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
