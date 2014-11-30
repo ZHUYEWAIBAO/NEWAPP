@@ -58,7 +58,7 @@
     weixianqiDayAry =[NSMutableArray array];
     paiRuanDateAry =[NSMutableArray array];
     currenYuejingDayAry =[NSMutableArray array];
-    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(reloadDataCl) name:@"reloadDataCl" object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(reloadDataCl:) name:@"reloadDataCl" object:nil];
     
     /**
      *  假设     2014-11-3_3_24
@@ -198,19 +198,35 @@
     
 }
 
--(void)reloadDataCl{
+-(void)reloadDataCl:(NSNotification *)notification{
+
+    NSNumber *yesOrNo =[notification object];
+    
+    if ([yesOrNo intValue] ==1) {
+        if ([currenYuejingDayAry containsObject:[CMSinger share].singerDate]) {
+            
+            [self setNeedsDisplay];
+            return ;
+        }
+        
+        
+        for (int iii =0; iii<durationDay; iii++) {
+            [currenYuejingDayAry addObject:[self getTheDate:[CMSinger share].singerDate afterDays:iii+1]];
+            
+        }
+    }else if([yesOrNo intValue] ==0){
+        //如果是结束传递过来
+        
+        for (int iii =0; iii<durationDay; iii++) {
+            [currenYuejingDayAry removeObject:[self getTheDate:[CMSinger share].singerDate afterDays:iii+1]];
+        }
+        
+    }else{
+        [currenYuejingDayAry addObject:[self getTheDate:[CMSinger share].singerDate afterDays:1]];
+    }
+
 
     
-    if ([currenYuejingDayAry containsObject:[CMSinger share].singerDate]) {
-        
-        [self setNeedsDisplay];
-        return ;
-    }
-    for (int iii =0; iii<durationDay; iii++) {
-        [currenYuejingDayAry addObject:[self getTheDate:[CMSinger share].singerDate afterDays:iii+1]];
-
-    }
-
     [[NSUserDefaults standardUserDefaults] setObject:currenYuejingDayAry forKey:@"addYueJingAry"];
     [[NSUserDefaults standardUserDefaults] synchronize];
     

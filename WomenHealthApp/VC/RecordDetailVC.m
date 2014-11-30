@@ -289,8 +289,15 @@
     [[NSUserDefaults standardUserDefaults] synchronize];
     
     
-    if (starSwitch.isOn) {
-        [[NSNotificationCenter defaultCenter] postNotificationName:@"reloadDataCl" object:nil];
+    if (starSwitch.isOn==YES &&endSwitch.isOn ==NO) {
+        [[NSNotificationCenter defaultCenter] postNotificationName:@"reloadDataCl" object:[NSNumber numberWithInt:1]];
+    }
+    
+    if (starSwitch.isOn==NO &&endSwitch.isOn ==YES) {
+        [[NSNotificationCenter defaultCenter] postNotificationName:@"reloadDataCl" object:[NSNumber numberWithInt:0]];
+    }
+    if (starSwitch.isOn==YES &&endSwitch.isOn ==YES) {
+        [[NSNotificationCenter defaultCenter] postNotificationName:@"reloadDataCl" object:[NSNumber numberWithInt:-1]];
     }
     
     [self .navigationController popViewControllerAnimated:YES];
