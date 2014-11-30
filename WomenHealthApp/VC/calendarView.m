@@ -7,6 +7,7 @@
 //
 #import "calendarView.h"
 #import "UIColor+RGBCo.h"
+#import "RecordDetailVC.h"
 #define YUEJINGQICOLOR [UIColor NewcolorWithRed:247 green:95 blue:106 alpha:1]
 #define YUCEJINGQICOLOR  [UIColor NewcolorWithRed:252  green:209 blue:155 alpha:1]
 #define ANQUANQICOLOR   [UIColor colorWithRed:142/255.0f green:229/255.0f blue:146/255.0f alpha:1]
@@ -37,67 +38,90 @@
     
     int paiRuanDay;   //拍卵日  13
     
-    int nextOrLastBtnNumber;
+
     
     NSDate *dataDate;
+    
+    NSMutableArray *yueJingDayAry;  //未来一年的月经日子数据都放在这个数组里面
+    NSMutableArray *weixianqiDayAry; //记录未来一年的危险期日期
+    NSMutableArray *paiRuanDateAry; // 记录未来一年的排卵日;
+    NSMutableArray *currenYuejingDayAry;//  这次的月经时间 红色 其余粉色
+    
+    NSDate *currentDate; // 当前选择的月份的第一天
+    
 }
 
 
 -(void)awakeFromNib{
 
+    yueJingDayAry =[NSMutableArray array];
+    weixianqiDayAry =[NSMutableArray array];
+    paiRuanDateAry =[NSMutableArray array];
+    currenYuejingDayAry =[NSMutableArray array];
     /**
      *  假设     2014-11-3_3_24
      */
     //  20141111111111_3_24
     NSArray *dataAry =[[[NSUserDefaults standardUserDefaults] objectForKey:@"RecordId"] componentsSeparatedByString:@"_"];
     NSString *timeStr =[dataAry objectAtIndex:0];
-    NSDate *confromTimesp = [NSDate dateWithTimeIntervalSince1970:[timeStr doubleValue]];
+    NSDate *confromTimesp = [NSDate dateWithTimeIntervalSince1970:[timeStr doubleValue]+100];
+    confromTimesp =[self getTheDate:confromTimesp afterDays:1];
+
+    currentDate =[self getTheDate:confromTimesp afterDays:1-(int)[self getDayFromDate:confromTimesp]];
     
-    nextOrLastBtnNumber =0;
+
     /**
      *  NSDate *confromTimesp = [NSDate dateWithTimeIntervalSince1970:1296035591];
      */
     
-    dataDate =confromTimesp;//解析得来的时间  用户保存的
-    yueJingDay =(int)[self getDayFromDate:dataDate]; //这次开始时间
-     durationDay =[[dataAry objectAtIndex:1] intValue];//月经持续时间
-     zhouqiDay =[[dataAry objectAtIndex:2] intValue];//周期时间
-    
-     yueJingEndDay =(int) [self getDayFromDate:[self getTheDate:dataDate afterDays:durationDay-1]];  //5 这次月经结束时间
+    durationDay =[[dataAry objectAtIndex:1] intValue];//月经持续时间
+    zhouqiDay =[[dataAry objectAtIndex:2] intValue];//周期时间
+    NSDate *paiRuanDate =[self getTheDate:confromTimesp afterDays:10]; //第一个排卵日
     
     
+    /**
+     *  迭代一年时间
+     */
+    //红色的线
+    for (int ii =0; ii<durationDay; ii++) {
+        
+        [currenYuejingDayAry addObject:[self getTheDate:confromTimesp afterDays:ii]];
+    }
     
-     nextYuceStartDay =(int) [self getDayFromDate:[self getTheDate:dataDate afterDays:zhouqiDay]];//27  下次月经开始时间
-     nextYuceEndDay =(int) [self getDayFromDate:[self getTheDate:dataDate afterDays:zhouqiDay+durationDay-1]]; //29 下次月经结束时间
-    
-    
-     weiXianStarDay =(int)[self getDayFromDate:[self getTheDate:dataDate afterDays:zhouqiDay-14-5]]; //8  危险期开始时间
-     weixianEndDay =(int)[self getDayFromDate:[self getTheDate:dataDate afterDays:zhouqiDay-14+4]];//17   危险期结束时间
-    
-    paiRuanDay =(int)[self getDayFromDate:[self getTheDate:dataDate afterDays:zhouqiDay-14]];
-    //其余都是安全期
+    for (int timeNumber =-12*2; timeNumber <12*1; timeNumber++) {
+        
+        //所有的排卵日
+        [paiRuanDateAry addObject:[self getTheDate:paiRuanDate afterDays:zhouqiDay*timeNumber]];
+        
+        for (int tempp =0; tempp <durationDay; tempp++) {
+            
+            //所有预测的月经期
+            [yueJingDayAry addObject:[self getTheDate:[self getTheDate:confromTimesp afterDays:timeNumber*zhouqiDay]  afterDays:tempp]];
+        }
+        
+        //所有的危险期
+        for (int tempxx =0; tempxx <9; tempxx++) {
+            [weixianqiDayAry addObject:[self getTheDate:[self getTheDate:paiRuanDate afterDays:timeNumber*zhouqiDay-5]  afterDays:tempxx]];
+        }
+        
+    }
+
     
     daysAry =[NSMutableArray array];
-    todayDate = dataDate;
     formater =[[NSDateFormatter alloc]init];
     [formater setDateFormat:@"yyyy年MM月"];
-    NSString *TodayStr =[formater stringFromDate:todayDate];
-    NSLog(@"今天是星期几--------%lu",(unsigned long)[self getWeekdayFromDate:todayDate]);
-    NSLog(@"这个月总共有-------%lu",(unsigned long)[self getNumberForDate:todayDate]);
-    NSInteger totayDays =(unsigned long)[self getNumberForDate:todayDate];
-    NSLog(@"今天是这个月的第-----%lu",(unsigned long)[self getDayFromDate:todayDate]);
-    NSLog(@"这个月的第1天是星期-----%lu",(unsigned long)[self getTheFirstDayThisMounth:todayDate]);
+    NSString *TodayStr =[formater stringFromDate:confromTimesp];
+//    NSLog(@"今天是星期几--------%lu",(unsigned long)[self getWeekdayFromDate:todayDate]);
+//    NSLog(@"这个月总共有-------%lu",(unsigned long)[self getNumberForDate:todayDate]);
+    NSInteger totayDays =(unsigned long)[self getNumberForDate:currentDate];
+//    NSLog(@"今天是这个月的第-----%lu",(unsigned long)[self getDayFromDate:todayDate]);
+//    NSLog(@"这个月的第1天是星期-----%lu",(unsigned long)[self getTheFirstDayThisMounth:todayDate]);
     
-    
-    
-    int firstDayXingQi =(int)[self getTheFirstDayThisMounth:todayDate];
+    int firstDayXingQi =(int)[self getTheFirstDayThisMounth:currentDate];
     if (firstDayXingQi ==0) {
         firstDayXingQi =7;
     }
-    
-
     self.titleLab.text =TodayStr;
-    
     
     for (int i=0; i<6; i++) {
         for (int j=0; j<7; j++) {
@@ -105,24 +129,37 @@
             calendarItemBtn *temp =[[calendarItemBtn alloc] initWithFrame:CGRectMake(46*j-1,46*i+65, 46 , 46)];
             if((7*i+j) >=(firstDayXingQi-1)  &&  (7*i+j)<totayDays+(firstDayXingQi-1)){
                 
-                [temp setTitle:[NSString stringWithFormat:@"%i",(7*i+j)+1-(firstDayXingQi-1)] forState:UIControlStateNormal];
                 
-                if (impotrNum >=yueJingDay &&impotrNum <=yueJingEndDay) {
-                    temp.lineView.backgroundColor =YUEJINGQICOLOR;
-                }
-               else if (impotrNum >=weiXianStarDay &&impotrNum <=weixianEndDay) {
-                    temp.lineView.backgroundColor =YIYUNQICOLOR;
-                }
-                else if (impotrNum >=nextYuceStartDay &&impotrNum <=nextYuceEndDay) {
+                [temp setTitle:[NSString stringWithFormat:@"%i",impotrNum] forState:UIControlStateNormal];
+                NSDate *panduanDate =[self getTheDate:currentDate afterDays:impotrNum];
+                if ([yueJingDayAry containsObject:panduanDate]) {
+                    
                     temp.lineView.backgroundColor =YUCEJINGQICOLOR;
+                    
+                    if ([currenYuejingDayAry containsObject:panduanDate]) {
+                        temp.lineView.backgroundColor =YUEJINGQICOLOR;
+                    }
+                    
+                }else if([weixianqiDayAry containsObject:panduanDate]){
+                    
+                    temp.lineView.backgroundColor =YIYUNQICOLOR;
                 }else{
                     temp.lineView.backgroundColor =ANQUANQICOLOR;
+                    
+                }
+                
+                
+                
+                if ([paiRuanDateAry containsObject:panduanDate]) {
+                    temp.tempImg.image =[UIImage imageNamed:@"pailuanri_logo.png"];
+                }else{
+                    temp.tempImg.image =[UIImage imageNamed:@""];
                 }
                 
                 
             }else{
                  [temp setTitle:@"" forState:UIControlStateNormal];
-                temp.lineView.backgroundColor =[UIColor clearColor];
+                 temp.lineView.backgroundColor =[UIColor clearColor];
             }
             
             //244 227 229
@@ -131,10 +168,6 @@
             temp.titleLabel.font =[UIFont systemFontOfSize:14];
             [temp setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
             temp.backgroundColor =[UIColor whiteColor];
-//            [[temp layer] setBorderWidth:0.4f];
-//            [[temp layer] setCornerRadius:1];
-//            [[temp layer] setBorderColor:[UIColor NewcolorWithRed:246 green:224 blue:225 alpha:1].CGColor];
-            
             /**
              *  今天几号
              */
@@ -143,17 +176,7 @@
                 didSelectBtn =temp;
                 [temp setBackgroundImage:[UIImage imageWithContentFileName:@"today_active@2x.png"] forState:UIControlStateNormal];
             }
-            
-            /**
-             *  排卵日
-             */
-            if (impotrNum==paiRuanDay) {
-//                UIImageView *tempImg =[[UIImageView alloc] initWithFrame:CGRectMake(5, 25, 14, 14)];
-                temp.tempImg.image =[UIImage imageNamed:@"pailuanri_logo.png"];
-//                [temp addSubview:tempImg];
-            }else{
-                temp.tempImg.image =[UIImage imageNamed:@""];
-            }
+
             
             [self addSubview:temp];
             
@@ -163,64 +186,57 @@
         }
     }
 
-    /**
-     月经期
-     
-     */
-    UIView *lineView = [[UIView alloc] initWithFrame:CGRectMake(0, 65+46*2-3, 3*46, 4)];
-    lineView.backgroundColor =YUEJINGQICOLOR;
-//    [self addSubview:lineView];
-    
-    /**
-     预测经期
-     
-     */
-    UIView *lineView1 = [[UIView alloc] initWithFrame:CGRectMake(46*3, 65+46*5-3, 46*3, 4)];
-    lineView1.backgroundColor =YUCEJINGQICOLOR;
-//    [self addSubview:lineView1];
-//
-//
-    //安全期
-    UIView *lineView2 = [[UIView alloc] initWithFrame:CGRectMake(46*3-1, 65+46-4+46*3, 320-46*3+3, 4)];
-    lineView2.backgroundColor =ANQUANQICOLOR;
-//    [self addSubview:lineView2];
-    
-    //  226  165  84  危险期
-    
-    UIView *lineView3 = [[UIView alloc] initWithFrame:CGRectMake(0, 65-3+46*3, 320, 4)];
-    lineView3.backgroundColor =YIYUNQICOLOR;
-//    [self addSubview:lineView3];
     
     
 }
 
 -(void)didSelect:(id)sender{
-    
+
     
     calendarItemBtn *btn =(calendarItemBtn *)sender;
+    
+    NSDate *panduanDate =[self getTheDate:currentDate afterDays:[btn.titleLabel.text intValue]-1];
+    if([self.CPdelegede respondsToSelector:@selector(setCurrentdate:)]){
+        
+        [self.CPdelegede setCurrentdate:panduanDate];
+    }
+    
+    if (didSelectBtn.tag ==btn.tag) {
+        
+        if ([self.CPdelegede respondsToSelector:@selector(gotoRecordDetailwith:)]) {
+            [self.CPdelegede gotoRecordDetailwith:panduanDate];
+        }
+        
+        return ;
+    }
     [didSelectBtn setBackgroundImage:[UIImage imageWithContentFileName:@""] forState:UIControlStateNormal];
     
     [btn setBackgroundImage:[UIImage imageWithContentFileName:@"today_active@2x.png"] forState:UIControlStateNormal];
     
     didSelectBtn =btn;
-    NSLog(@"%i",(int)btn.tag);
+ 
+    
+    NSLog(@"%@",panduanDate);
+    
+    
     
 }
 - (IBAction)leftBtnClick:(id)sender {
 
+    
     NSCalendar *calendar = [[NSCalendar alloc] initWithCalendarIdentifier:NSGregorianCalendar];
     NSDateComponents *comps = nil;
-    comps = [calendar components:NSYearCalendarUnit|NSMonthCalendarUnit|NSDayCalendarUnit fromDate:todayDate];
+    comps = [calendar components:NSYearCalendarUnit|NSMonthCalendarUnit|NSDayCalendarUnit fromDate:currentDate];
     NSDateComponents *adcomps = [[NSDateComponents alloc] init];
     [adcomps setYear:0];
     [adcomps setMonth:-1];
     [adcomps setDay:0];
-    todayDate = [calendar dateByAddingComponents:adcomps toDate:todayDate options:0];
+    currentDate = [calendar dateByAddingComponents:adcomps toDate:currentDate options:0];
     [formater setDateFormat:@"yyyy年MM月"];
-    NSString *TodayStr =[formater stringFromDate:todayDate];
+    NSString *TodayStr =[formater stringFromDate:currentDate];
     
     self.titleLab.text =TodayStr;
-    nextOrLastBtnNumber --;
+
     [self calanderReloadData];
 
     
@@ -232,16 +248,16 @@
     
     NSCalendar *calendar = [[NSCalendar alloc] initWithCalendarIdentifier:NSGregorianCalendar];
     NSDateComponents *comps = nil;
-    comps = [calendar components:NSYearCalendarUnit|NSMonthCalendarUnit|NSDayCalendarUnit fromDate:todayDate];
+    comps = [calendar components:NSYearCalendarUnit|NSMonthCalendarUnit|NSDayCalendarUnit fromDate:currentDate];
     NSDateComponents *adcomps = [[NSDateComponents alloc] init];
     [adcomps setYear:0];
     [adcomps setMonth:+1];
     [adcomps setDay:0];
-    todayDate = [calendar dateByAddingComponents:adcomps toDate:todayDate options:0];
+    currentDate = [calendar dateByAddingComponents:adcomps toDate:currentDate options:0];
     [formater setDateFormat:@"yyyy年MM月"];
-    NSString *TodayStr =[formater stringFromDate:todayDate];
+    NSString *TodayStr =[formater stringFromDate:currentDate];
     self.titleLab.text =TodayStr;
-    nextOrLastBtnNumber++;
+
     [self calanderReloadData];
     
 }
@@ -251,58 +267,10 @@
 -(void)calanderReloadData{
 
 
-    //FIXME:   算法不对 只是为了界面好看
-    NSDate *tempDate ;
-   tempDate= [self getTheDate:dataDate afterDays:zhouqiDay*(nextOrLastBtnNumber+1)];
-    if (nextOrLastBtnNumber ==0) {
-        tempDate =dataDate;
-        yueJingDay =(int)[self getDayFromDate:dataDate]; //这次开始时间
-        
-        yueJingEndDay =(int) [self getDayFromDate:[self getTheDate:dataDate afterDays:durationDay-1]];  //5 这次月经结束时间
-        
-        
-        
-        nextYuceStartDay =(int) [self getDayFromDate:[self getTheDate:dataDate afterDays:zhouqiDay]];//27  下次月经开始时间
-        nextYuceEndDay =(int) [self getDayFromDate:[self getTheDate:dataDate afterDays:zhouqiDay+durationDay-1]]; //29 下次月经结束时间
-        
-        
-        weiXianStarDay =(int)[self getDayFromDate:[self getTheDate:dataDate afterDays:zhouqiDay-14-5]]; //8  危险期开始时间
-        weixianEndDay =(int)[self getDayFromDate:[self getTheDate:dataDate afterDays:zhouqiDay-14+4]];//17   危险期结束时间
-        
-        paiRuanDay =(int)[self getDayFromDate:[self getTheDate:dataDate afterDays:zhouqiDay-14]];
+    NSInteger totayDays =(unsigned long)[self getNumberForDate:currentDate];
 
-    }else{
-        yueJingDay =(int)[self getDayFromDate:tempDate]; //这次开始时间
-        
-        yueJingEndDay =(int) [self getDayFromDate:[self getTheDate:tempDate afterDays:durationDay-1]];  //5 这次月经结束时间
-        
-        nextYuceStartDay =yueJingDay;
-        nextYuceEndDay =yueJingDay+durationDay; //29 下次月经结束时间
-        if (nextYuceStartDay<15) {
-            paiRuanDay =nextYuceEndDay+zhouqiDay -14;
-            //其余都是安全期
-            weiXianStarDay =paiRuanDay-5; //8  危险期开始时间
-            weixianEndDay =paiRuanDay+4;//17   危险期结束时间
-        }else{
-            paiRuanDay =nextYuceStartDay-14;
-            //其余都是安全期
-            weiXianStarDay =paiRuanDay-5; //8  危险期开始时间
-            weixianEndDay =paiRuanDay+4;//17   危险期结束时间
-        }
-        
-        todayDate =tempDate;
-    }
     
-    
-    NSLog(@"今天是星期几--------%lu",(unsigned long)[self getWeekdayFromDate:todayDate]);
-    NSLog(@"这个月总共有-------%lu",(unsigned long)[self getNumberForDate:todayDate]);
-    NSInteger totayDays =(unsigned long)[self getNumberForDate:todayDate];
-    
-    NSLog(@"今天是这个月的第-----%lu",(unsigned long)[self getDayFromDate:todayDate]);
-    
-    NSLog(@"这个月的第1天是星期-----%lu",(unsigned long)[self getTheFirstDayThisMounth:todayDate]);
-    
-    int firstDayXingQi =(int)[self getTheFirstDayThisMounth:todayDate];
+    int firstDayXingQi =(int)[self getTheFirstDayThisMounth:currentDate];
     if (firstDayXingQi ==0) {
         firstDayXingQi =7;
     }
@@ -310,31 +278,35 @@
         for (int j=0; j<7; j++) {
             
             calendarItemBtn *temp =[daysAry objectAtIndex:7*i+j];
-            //            calendarItemBtn *temp =[[calendarItemBtn alloc] initWithFrame:CGRectMake(46*j-1,46*i+65, 46 , 46)];
             int impotrNum =(7*i+j)+1-(firstDayXingQi-1);
             if((7*i+j) >=(firstDayXingQi-1)  &&  (7*i+j)<totayDays+(firstDayXingQi-1)){
-                
-                
-                [temp setTitle:[NSString stringWithFormat:@"%i",(7*i+j)+1-(firstDayXingQi-1)] forState:UIControlStateNormal];
-                if (impotrNum >=yueJingDay &&impotrNum <=yueJingEndDay) {
-                    if(nextOrLastBtnNumber >0){
-                        
-                        temp.lineView.backgroundColor =YUCEJINGQICOLOR;
-                    }else{
+
+                [temp setTitle:[NSString stringWithFormat:@"%i",impotrNum] forState:UIControlStateNormal];
+                NSDate *panduanDate =[self getTheDate:currentDate afterDays:impotrNum];
+                if ([yueJingDayAry containsObject:panduanDate]) {
+                    
+                    temp.lineView.backgroundColor =YUCEJINGQICOLOR;
+                    
+                    if ([currenYuejingDayAry containsObject:panduanDate]) {
                         temp.lineView.backgroundColor =YUEJINGQICOLOR;
                     }
                     
-                }
-                else if (impotrNum >=weiXianStarDay &&impotrNum <=weixianEndDay) {
-                    temp.lineView.backgroundColor =YIYUNQICOLOR;
-                }
-                else if (impotrNum >=nextYuceStartDay &&impotrNum <=nextYuceEndDay) {
+                }else if([weixianqiDayAry containsObject:panduanDate]){
                     
-                    temp.lineView.backgroundColor =YUCEJINGQICOLOR;
+                    temp.lineView.backgroundColor =YIYUNQICOLOR;
                 }else{
                     temp.lineView.backgroundColor =ANQUANQICOLOR;
+                    
                 }
                 
+               
+   
+                if ([paiRuanDateAry containsObject:panduanDate]) {
+                    temp.tempImg.image =[UIImage imageNamed:@"pailuanri_logo.png"];
+                }else{
+                    temp.tempImg.image =[UIImage imageNamed:@""];
+                }
+      
                 
             }else{
                 [temp setTitle:@"" forState:UIControlStateNormal];
@@ -347,12 +319,8 @@
             temp.titleLabel.font =[UIFont systemFontOfSize:14];
             [temp setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
             temp.backgroundColor =[UIColor whiteColor];
-//            [[temp layer] setBorderWidth:0.5f];
-//            [[temp layer] setCornerRadius:1];
-//            [[temp layer] setBorderColor:[UIColor NewcolorWithRed:246 green:224 blue:225 alpha:1].CGColor];
-            
-            
-            if ((7*i+j)+1-(firstDayXingQi-1) ==(unsigned long)[self getDayFromDate:todayDate]) {
+
+            if ((7*i+j)+1-(firstDayXingQi-1) ==(unsigned long)[self getDayFromDate:currentDate]) {
                 
                 didSelectBtn =temp;
                 [temp setBackgroundImage:[UIImage imageWithContentFileName:@"today_active@2x.png"] forState:UIControlStateNormal];
@@ -360,30 +328,7 @@
                 
                 [temp setBackgroundImage:[UIImage imageWithContentFileName:@""] forState:UIControlStateNormal];
             }
-            
-            if (impotrNum==paiRuanDay &&impotrNum >0) {
-                //                UIImageView *tempImg =[[UIImageView alloc] initWithFrame:CGRectMake(5, 25, 14, 14)];
-                temp.tempImg.image =[UIImage imageNamed:@"pailuanri_logo.png"];
-                //                [temp addSubview:tempImg];
-            }else{
-                
-                temp.tempImg.image =[UIImage imageNamed:@""];
-                
-                if (impotrNum==paiRuanDay &&impotrNum <0) {
-                    
-                    paiRuanDay =impotrNum +zhouqiDay;
-                    weiXianStarDay =paiRuanDay -5;
-                    weixianEndDay =paiRuanDay +4;
-                }
-                
-            }
-            
-            if (nextOrLastBtnNumber <0) {
-                [temp setBackgroundImage:[UIImage imageWithContentFileName:@""] forState:UIControlStateNormal];
-                temp.tempImg.image =[UIImage imageNamed:@""];
-                temp.lineView.backgroundColor =[UIColor clearColor];
 
-            }
             
         }
     }
@@ -391,6 +336,7 @@
 }
 /**
  *  判断 date是星期几
+ 
  *
  */
 - (NSUInteger)getWeekdayFromDate:(NSDate*)date
@@ -463,17 +409,18 @@
     
     NSCalendar *calendar = [[NSCalendar alloc] initWithCalendarIdentifier:NSGregorianCalendar];
     NSDateComponents *comps = nil;
-    comps = [calendar components:NSYearCalendarUnit|NSMonthCalendarUnit|NSDayCalendarUnit fromDate:todayDate];
+    comps = [calendar components:NSYearCalendarUnit|NSMonthCalendarUnit|NSDayCalendarUnit fromDate:todayNewDate];
     NSDateComponents *adcomps = [[NSDateComponents alloc] init];
     [adcomps setYear:0];
     [adcomps setMonth:0];
     [adcomps setDay:1-[self getDayFromDate:todayNewDate]];
     NSDate *resultDate;
-    resultDate = [calendar dateByAddingComponents:adcomps toDate:todayDate options:0];
+    resultDate = [calendar dateByAddingComponents:adcomps toDate:todayNewDate options:0];
 
     
     return (unsigned long)[self getWeekdayFromDate:resultDate];
 }
+
 /**
  *  判断theDate 过了days天后是 什么日子
  *
@@ -491,7 +438,7 @@
     [adcomps setDay:days];
     NSDate *resultDate;
     resultDate = [calendar dateByAddingComponents:adcomps toDate:theDate options:0];
-    NSLog(@"resultDate--------%@",resultDate);
+//    NSLog(@"resultDate--------%@",resultDate);
     
     return resultDate;
 }

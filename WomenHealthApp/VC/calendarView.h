@@ -7,6 +7,15 @@
 //
 
 #import <UIKit/UIKit.h>
+
+@protocol CalendarProtocal <NSObject>
+
+-(void)gotoRecordDetailwith:(NSDate *)currenDateNew;
+
+-(void)setCurrentdate:(NSDate *)curentDate;
+
+@end
+
 /**
  *  日历
  */
@@ -15,6 +24,8 @@
 - (IBAction)leftBtnClick:(id)sender;
 
 - (IBAction)rightBtnClick:(id)sender;
+
+@property(nonatomic,weak) id<CalendarProtocal> CPdelegede;
 
 @property (weak, nonatomic) IBOutlet UILabel *titleLab;
 

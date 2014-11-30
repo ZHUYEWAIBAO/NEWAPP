@@ -10,26 +10,25 @@
 
 @implementation RecordDetailContentView
 
-/*
+
 // Only override drawRect: if you perform custom drawing.
 // An empty implementation adversely affects performance during animation.
 - (void)drawRect:(CGRect)rect {
     // Drawing code
-}
-*/
--(void)awakeFromNib{
+    NSDateFormatter  *formater =[[NSDateFormatter alloc]init];
+    [formater setDateFormat:@"yyyyMMdd"];
+    NSString  *TodayStr =[formater stringFromDate:self.RDDate];
     
-    [super awakeFromNib];
-    if ([[[NSUserDefaults standardUserDefaults] objectForKey:@"tongjing"] length]==0) {
-        [[NSUserDefaults standardUserDefaults] setObject:@"轻度" forKey:@"tongjing"];
-    }
-    if ([[[NSUserDefaults standardUserDefaults] objectForKey:@"liuliang"] length]==0) {
-        [[NSUserDefaults standardUserDefaults] setObject:@"很少" forKey:@"liuliang"];
-    }
+    NSDictionary *dataDic  = [[[NSUserDefaults standardUserDefaults] objectForKey:@"resultDic"] objectForKey:TodayStr];
+    
+
+    self.liuliang =[dataDic objectForKey:@"liuliang"];
+    
+    self.tongjing =[dataDic objectForKey:@"tongjing"];
     
     [self.subviews enumerateObjectsUsingBlock:^(id obj, NSUInteger idx, BOOL *stop) {
         if ([obj class] ==[UIButton class]) {
-            if ([((UIButton *)obj).titleLabel.text isEqualToString:[[NSUserDefaults standardUserDefaults] objectForKey:@"tongjing"]]||[((UIButton *)obj).titleLabel.text isEqualToString:[[NSUserDefaults standardUserDefaults] objectForKey:@"liuliang"]]) {
+            if ([((UIButton *)obj).titleLabel.text isEqualToString:self.liuliang]||[((UIButton *)obj).titleLabel.text isEqualToString:self.tongjing]) {
                 
                 
                 [((UIButton *)obj) setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
@@ -41,9 +40,23 @@
                 
             }
         }
-
+        
         
     }];
+
+}
+
+-(void)awakeFromNib{
+    
+    [super awakeFromNib];
+//    
+//    if ([[[NSUserDefaults standardUserDefaults] objectForKey:@"tongjing"] length]==0) {
+//        [[NSUserDefaults standardUserDefaults] setObject:@"轻度" forKey:@"tongjing"];
+//    }
+//    if ([[[NSUserDefaults standardUserDefaults] objectForKey:@"liuliang"] length]==0) {
+//        [[NSUserDefaults standardUserDefaults] setObject:@"很少" forKey:@"liuliang"];
+//    }
+    
     
     
     
@@ -62,7 +75,13 @@
     
     [btn setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
     [btn setBackgroundImage:[UIImage imageWithContentFileName:@"Record_detail_detail_text_selected.png"] forState:UIControlStateNormal];
-    [[NSUserDefaults standardUserDefaults] setObject:btn.titleLabel.text forKey:@"tongjing"];
+//    [[NSUserDefaults standardUserDefaults] setObject:btn.titleLabel.text forKey:@"tongjing"];
+    self.tongjing =btn.titleLabel.text;
+    
+    if ([self.RDDelegete respondsToSelector:@selector(setLiuLiang:AndTongjing:)]) {
+        [self.RDDelegete setLiuLiang:self.liuliang AndTongjing:self.tongjing];
+    }
+    
     
 }
 
@@ -81,7 +100,13 @@
 
     [btn setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
     [btn setBackgroundImage:[UIImage imageWithContentFileName:@"Record_detail_detail_text_selected.png"] forState:UIControlStateNormal];
-    [[NSUserDefaults standardUserDefaults] setObject:btn.titleLabel.text forKey:@"liuliang"];
+    
+    self.liuliang =btn.titleLabel.text;
+//    [[NSUserDefaults standardUserDefaults] setObject:btn.titleLabel.text forKey:@"liuliang"];
+    if ([self.RDDelegete respondsToSelector:@selector(setLiuLiang:AndTongjing:)]) {
+        [self.RDDelegete setLiuLiang:self.liuliang AndTongjing:self.tongjing];
+    }
+    
     
     
     

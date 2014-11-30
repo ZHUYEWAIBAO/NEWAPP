@@ -12,7 +12,8 @@
 
 -(void)didSelDismss;
 
--(void)comfirmSelect;
+-(void)comfirmSelect:(NSMutableArray *)zzzAry;
+
 
 @end
 
@@ -26,7 +27,7 @@
 
 @property (weak, nonatomic) IBOutlet UIPickerView *pickerView;
 @property(nonatomic,strong) NSMutableArray *ZZAry;
-
+@property(nonatomic,strong) NSDate *zzzDate;
 
 @property (weak, nonatomic) IBOutlet UIScrollView *alterScrollview;
 
@@ -41,6 +42,8 @@
 - (IBAction)click:(id)sender;
 
 @property (nonatomic ,strong) id<RecordItemProtocal >delegete;
+
+@property(nonatomic,strong) NSMutableArray *btnDataAry;;
 
 @end
 

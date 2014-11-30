@@ -7,6 +7,7 @@
 //
 
 #import "BasicVC.h"
+#import "calendarView.h"
 /**
 
  *   ceshi   233
@@ -14,6 +15,6 @@
  *   ceshi   567
 
  */
-@interface RecordViewController : BasicVC
+@interface RecordViewController : BasicVC<CalendarProtocal>
 
 @end

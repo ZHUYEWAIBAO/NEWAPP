@@ -18,7 +18,9 @@
 #import "RecordViewController.h"
 #import "RecordDetailVC.h"
 #import "calendarView.h"
-@interface RecordViewController ()
+@interface RecordViewController (){
+    NSDate *muBiaoDate;
+}
 
 @end
 
@@ -52,18 +54,36 @@
     
     
     calendarView *tempView =(calendarView *)[[[NSBundle mainBundle] loadNibNamed:@"calendarView" owner:self options:nil] lastObject];
-
+    tempView.CPdelegede =self;
     tempView.frame=CGRectMake(0, 110, tempView.frame.size.width, tempView.frame.size.height);
     [self.view addSubview:tempView];
+    
     
     
     NSLog(@"%@",[[NSUserDefaults standardUserDefaults] objectForKey:@"RecordId"]);
 }
 
+
+-(void)gotoRecordDetailwith:(NSDate *)currenDateNew{
+    
+    RecordDetailVC *vc = [[RecordDetailVC alloc]initWithNibName:@"RecordDetailVC" bundle:nil];
+    vc.passDate =currenDateNew;
+    [self.navigationController pushViewController:vc animated:YES];
+    
+}
+
+-(void)setCurrentdate:(NSDate *)curentDate{
+    
+    muBiaoDate =curentDate;
+    [CMSinger share].singerDate =curentDate;
+    
+}
 - (void)recordDetailAction:(id)sender
 {
     RecordDetailVC *vc = [[RecordDetailVC alloc]initWithNibName:@"RecordDetailVC" bundle:nil];
+    vc.passDate =muBiaoDate;
     [self.navigationController pushViewController:vc animated:YES];
+    
 }
 
 - (void)didReceiveMemoryWarning {

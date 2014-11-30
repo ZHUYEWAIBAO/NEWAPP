@@ -19,7 +19,7 @@
 #import "CustomItoast.h"
 #import "WHSinger.h"
 #import "UserInfo.h"
-
+#import "CMSinger.h"
 #ifndef WomenHealthApp_NewDefines_h
 #define WomenHealthApp_NewDefines_h
 

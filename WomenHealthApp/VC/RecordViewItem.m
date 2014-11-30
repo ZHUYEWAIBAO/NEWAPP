@@ -10,35 +10,48 @@
 
 @implementation RecordViewItem
 
-/*
+
 // Only override drawRect: if you perform custom drawing.
 // An empty implementation adversely affects performance during animation.
 - (void)drawRect:(CGRect)rect {
     // Drawing code
-}
-*/
+    
+    
+  }
+
 @synthesize ZZAry;
 -(void)awakeFromNib{
     
     [super awakeFromNib];
     
-    self.ZZAry=[NSMutableArray arrayWithArray:[[NSUserDefaults standardUserDefaults] objectForKey:@"zhengZhuangAry"]];
-    if ([[NSUserDefaults standardUserDefaults] objectForKey:@"zhengZhuangAry"] ==nil) {
+    //zzzDate
+    
+    NSDateFormatter  *formater =[[NSDateFormatter alloc]init];
+    [formater setDateFormat:@"yyyyMMdd"];
+    NSString * TodayStr =[formater stringFromDate:[CMSinger share].singerDate];
+    
+    
+    NSDictionary* totalDic =[NSMutableDictionary dictionaryWithDictionary:[[[NSUserDefaults standardUserDefaults] objectForKey:@"resultDic"] objectForKey:TodayStr]];
+    
+    self.ZZAry=[NSMutableArray arrayWithArray:[totalDic objectForKey:@"shujuAry"]];
+    if (self.ZZAry ==nil) {
         self.ZZAry =[NSMutableArray array];
         
     }else{
+        
         [self.altetSubView.subviews enumerateObjectsUsingBlock:^(id obj, NSUInteger idx, BOOL *stop) {
             if ([obj class] ==[UIButton class] &&[ZZAry containsObject:[NSNumber numberWithInteger: (((UIButton *)obj).tag)]] ) {
-
+                
                 [(UIButton *)obj setTitle:((UIButton *)obj).titleLabel.text forState:UIControlStateSelected];
                 [(UIButton *)obj setTitleColor:FENSERGB forState:UIControlStateNormal];
                 [(UIButton *)obj setBackgroundImage:[UIImage imageWithContentFileName:@"type_active_btn"] forState:UIControlStateNormal];
             }
             
             
-            
         }];
     }
+
+
 //        NSLog(@"%@",self.altetSubView.subviews);
     
 //        for (int i=0; i<ZZAry.count; i++) {
@@ -61,10 +74,10 @@
     for (int i=1000; i<=1014; i++) {
         UIButton *btn =(UIButton *)[self viewWithTag:i];
         [btn setTitle:btn.titleLabel.text forState:UIControlStateNormal];
-        [btn setTitleColor:FENSERGB forState:UIControlStateNormal];
-        [btn setBackgroundImage:[UIImage imageWithContentFileName:@"type_active_btn"] forState:UIControlStateNormal];
+        [btn setTitleColor:[UIColor lightGrayColor] forState:UIControlStateNormal];
+        [btn setBackgroundImage:[UIImage imageWithContentFileName:@"type_normal_btn"] forState:UIControlStateNormal];
     }
-    
+    [ZZAry removeAllObjects];
     
     
     if ([self.delegete respondsToSelector:@selector(didSelDismss)]) {
@@ -72,8 +85,7 @@
         
     }
     
-    [ZZAry removeAllObjects];
-    [[NSUserDefaults standardUserDefaults] setObject:ZZAry forKey:@"zhengZhuangAry"];
+
 
     
 }
@@ -81,12 +93,10 @@
 - (IBAction)confirm:(id)sender {
     NSLog(@"2");
     
-    if ([self.delegete respondsToSelector:@selector(comfirmSelect)]) {
-        [self.delegete comfirmSelect];
+    if ([self.delegete respondsToSelector:@selector(comfirmSelect:)]) {
+        [self.delegete comfirmSelect:ZZAry];
         
     }
-    
-    [[NSUserDefaults standardUserDefaults] setObject:ZZAry forKey:@"zhengZhuangAry"];
     
     
 }
