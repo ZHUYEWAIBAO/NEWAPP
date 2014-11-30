@@ -49,6 +49,10 @@
     
     NSDate *currentDate; // 当前选择的月份的第一天
     
+    NSString *qijianStr;
+    
+    NSDate *needNumberDate; // 预测下次多久时间用
+    
 }
 
 
@@ -66,7 +70,7 @@
     //  20141111111111_3_24
     NSArray *dataAry =[[[NSUserDefaults standardUserDefaults] objectForKey:@"RecordId"] componentsSeparatedByString:@"_"];
     NSString *timeStr =[dataAry objectAtIndex:0];
-    NSDate *confromTimesp = [NSDate dateWithTimeIntervalSince1970:[timeStr doubleValue]+100];
+    NSDate *confromTimesp = [NSDate dateWithTimeIntervalSince1970:[timeStr doubleValue]];
     confromTimesp =[self getTheDate:confromTimesp afterDays:1];
 
     currentDate =[self getTheDate:confromTimesp afterDays:1-(int)[self getDayFromDate:confromTimesp]];
@@ -78,9 +82,9 @@
     
     durationDay =[[dataAry objectAtIndex:1] intValue];//月经持续时间
     zhouqiDay =[[dataAry objectAtIndex:2] intValue];//周期时间
-    NSDate *paiRuanDate =[self getTheDate:confromTimesp afterDays:10]; //第一个排卵日
+    NSDate *paiRuanDate =[self getTheDate:confromTimesp afterDays:zhouqiDay-14]; //第一个排卵日
     
-    
+
     /**
      *  迭代一年时间
      */
@@ -96,7 +100,7 @@
     }
     
     
-    for (int timeNumber =-12*2; timeNumber <12*1; timeNumber++) {
+    for (int timeNumber =-12*2; timeNumber <12*2; timeNumber++) {
         
         //所有的排卵日
         [paiRuanDateAry addObject:[self getTheDate:paiRuanDate afterDays:zhouqiDay*timeNumber]];
@@ -104,7 +108,16 @@
         for (int tempp =0; tempp <durationDay; tempp++) {
             
             //所有预测的月经期
-            [yueJingDayAry addObject:[self getTheDate:[self getTheDate:confromTimesp afterDays:timeNumber*zhouqiDay]  afterDays:tempp]];
+            NSDate *dateeee =[self getTheDate:[self getTheDate:confromTimesp afterDays:timeNumber*zhouqiDay]  afterDays:tempp];
+            NSDateFormatter *fffffff =[[NSDateFormatter alloc] init];
+            [fffffff setDateFormat:@"yyyyMM"];
+            NSString *strr =[fffffff stringFromDate:dateeee];
+            NSString *todatstrr =[fffffff stringFromDate:[NSDate date]];
+            if ([strr isEqualToString:todatstrr]) {
+                needNumberDate =dateeee;
+            }
+
+            [yueJingDayAry addObject:dateeee];
         }
         
         //所有的危险期
@@ -121,7 +134,7 @@
     NSString *TodayStr =[formater stringFromDate:confromTimesp];
 //    NSLog(@"今天是星期几--------%lu",(unsigned long)[self getWeekdayFromDate:todayDate]);
 //    NSLog(@"这个月总共有-------%lu",(unsigned long)[self getNumberForDate:todayDate]);
-    NSInteger totayDays =(unsigned long)[self getNumberForDate:currentDate];
+//    NSInteger totayDays =(unsigned long)[self getNumberForDate:currentDate];
 //    NSLog(@"今天是这个月的第-----%lu",(unsigned long)[self getDayFromDate:todayDate]);
 //    NSLog(@"这个月的第1天是星期-----%lu",(unsigned long)[self getTheFirstDayThisMounth:todayDate]);
     
@@ -131,59 +144,89 @@
     }
     self.titleLab.text =TodayStr;
     
+    /************************/
+     
+
+     NSDate *todayTempDate=[NSDate date];
+     NSDateFormatter *fff =[[NSDateFormatter alloc] init];
+     [fff setDateFormat:@"yyyyMMdd160000"];
+     NSString *str =[fff stringFromDate:todayTempDate];
+     NSDate *today =[fff dateFromString:str];
+     
+     
+     if ([yueJingDayAry containsObject:today]) {
+     
+     qijianStr =@"月经期";
+     
+     }else if([weixianqiDayAry containsObject:today]){
+     qijianStr =@"危险期";
+     }else if([paiRuanDateAry containsObject:today]){
+     qijianStr =@"排卵期";
+     }else{
+     qijianStr =@"安全期";
+     
+     }
+     
+     
+     
+     /*********************/
+    
+    
     for (int i=0; i<6; i++) {
         for (int j=0; j<7; j++) {
-            int impotrNum =(7*i+j)+1-(firstDayXingQi-1);
+//            int impotrNum =(7*i+j)+1-(firstDayXingQi-1);
             calendarItemBtn *temp =[[calendarItemBtn alloc] initWithFrame:CGRectMake(46*j-1,46*i+65, 46 , 46)];
-            if((7*i+j) >=(firstDayXingQi-1)  &&  (7*i+j)<totayDays+(firstDayXingQi-1)){
-                
-                
-                [temp setTitle:[NSString stringWithFormat:@"%i",impotrNum] forState:UIControlStateNormal];
-                NSDate *panduanDate =[self getTheDate:currentDate afterDays:impotrNum];
-                if([weixianqiDayAry containsObject:panduanDate]){
-                    
-                    temp.lineView.backgroundColor =YIYUNQICOLOR;
-                }else{
-                    temp.lineView.backgroundColor =ANQUANQICOLOR;
-                    
-                }
-                
-                if ([yueJingDayAry containsObject:panduanDate]) {
-                    
-                    temp.lineView.backgroundColor =YUCEJINGQICOLOR;
-                    
-                    
-                }
-                if ([currenYuejingDayAry containsObject:panduanDate]) {
-                    temp.lineView.backgroundColor =YUEJINGQICOLOR;
-                }
-                
-                if ([paiRuanDateAry containsObject:panduanDate]) {
-                    temp.tempImg.image =[UIImage imageNamed:@"pailuanri_logo.png"];
-                }else{
-                    temp.tempImg.image =[UIImage imageNamed:@""];
-                }
-                
-                
-            }else{
-                 [temp setTitle:@"" forState:UIControlStateNormal];
-                 temp.lineView.backgroundColor =[UIColor clearColor];
-            }
-            
-            //244 227 229
-            [temp addTarget:self action:@selector(didSelect:) forControlEvents:UIControlEventTouchUpInside];
-            temp.tag =7*i+j;
-            temp.titleLabel.font =[UIFont systemFontOfSize:14];
-            [temp setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
-            temp.backgroundColor =[UIColor whiteColor];
-            /**
-             *  今天几号
-             */
-            if ((7*i+j)+1-(firstDayXingQi-1) ==(unsigned long)[self getDayFromDate:todayDate]) {
-                
-                didSelectBtn =temp;
-                [temp setBackgroundImage:[UIImage imageWithContentFileName:@"today_active@2x.png"] forState:UIControlStateNormal];
-            }
+//            if((7*i+j) >=(firstDayXingQi-1)  &&  (7*i+j)<totayDays+(firstDayXingQi-1)){
+//                
+//                
+//                [temp setTitle:[NSString stringWithFormat:@"%i",impotrNum] forState:UIControlStateNormal];
+//                NSDate *panduanDate =[self getTheDate:currentDate afterDays:impotrNum];
+//                if([weixianqiDayAry containsObject:panduanDate]){
+//                    
+//                    temp.lineView.backgroundColor =YIYUNQICOLOR;
+//                }else{
+//                    temp.lineView.backgroundColor =ANQUANQICOLOR;
+//                    
+//                }
+//                
+//                if ([yueJingDayAry containsObject:panduanDate]) {
+//                    
+//                    temp.lineView.backgroundColor =YUCEJINGQICOLOR;
+//                    
+//                    
+//                }
+//                if ([currenYuejingDayAry containsObject:panduanDate]) {
+//                    temp.lineView.backgroundColor =YUEJINGQICOLOR;
+//                }
+//                
+//                if ([paiRuanDateAry containsObject:panduanDate] &&![yueJingDayAry containsObject:panduanDate]) {
+//                    temp.tempImg.image =[UIImage imageNamed:@"pailuanri_logo.png"];
+//                    
+//                }else{
+//                    temp.tempImg.image =[UIImage imageNamed:@""];
+//                }
+//                
+//                
+//            }else{
+//                 [temp setTitle:@"" forState:UIControlStateNormal];
+//                 temp.lineView.backgroundColor =[UIColor clearColor];
+//                temp.tempImg.image =[UIImage imageNamed:@""];
+//            }
+//            
+//            //244 227 229
+//            [temp addTarget:self action:@selector(didSelect:) forControlEvents:UIControlEventTouchUpInside];
+//            temp.tag =7*i+j;
+//            temp.titleLabel.font =[UIFont systemFontOfSize:14];
+//            [temp setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
+//            temp.backgroundColor =[UIColor whiteColor];
+//            /**
+//             *  今天几号
+//             */
+//            if ((7*i+j)+1-(firstDayXingQi-1) ==(unsigned long)[self getDayFromDate:todayDate]) {
+//                
+//                didSelectBtn =temp;
+//                [temp setBackgroundImage:[UIImage imageWithContentFileName:@"today_active@2x.png"] forState:UIControlStateNormal];
+//            }
 
             
             [self addSubview:temp];
@@ -195,14 +238,22 @@
     }
 
     
+
     
 }
-
+/**
+////!!!:手动修改过后的逻辑
+ *  手动修改过后的逻辑
+ *
+ */
 -(void)reloadDataCl:(NSNotification *)notification{
 
     NSNumber *yesOrNo =[notification object];
     
     if ([yesOrNo intValue] ==1) {
+        /**
+         *   增加月经期 红色条
+         */
         if ([currenYuejingDayAry containsObject:[CMSinger share].singerDate]) {
             
             [self setNeedsDisplay];
@@ -212,17 +263,51 @@
         
         for (int iii =0; iii<durationDay; iii++) {
             [currenYuejingDayAry addObject:[self getTheDate:[CMSinger share].singerDate afterDays:iii+1]];
-            
         }
+        
+        for (int xxx=0; xxx<9; xxx++) {
+            [weixianqiDayAry addObject:[self getTheDate:[CMSinger share].singerDate afterDays:xxx-14-5]];
+        }
+        [paiRuanDateAry addObject:[self getTheDate:[CMSinger share].singerDate afterDays:-14]];
+        
+        
     }else if([yesOrNo intValue] ==0){
         //如果是结束传递过来
+        //移除月经期  移除危险期 移除拍软日
+        for (int iii =0; iii<durationDay; iii++) {
+            [currenYuejingDayAry removeObject:[self getTheDate:[CMSinger share].singerDate afterDays:iii+1]];
+        }
+        
+        for (int xxx=0; xxx<9; xxx++) {
+            [weixianqiDayAry removeObject:[self getTheDate:[CMSinger share].singerDate afterDays:xxx-14-5]];
+        }
+        [paiRuanDateAry removeObject:[self getTheDate:[CMSinger share].singerDate afterDays:-14]];
+        
+        
+    }else if([yesOrNo intValue] ==-1){
+        //增加一天的月经期
+        //增加危险期
+        
+        [currenYuejingDayAry addObject:[self getTheDate:[CMSinger share].singerDate afterDays:1]];
+        
+        for (int xxx=0; xxx<9; xxx++) {
+            [weixianqiDayAry addObject:[self getTheDate:[CMSinger share].singerDate afterDays:xxx-14-5]];
+        }
+        
+        [paiRuanDateAry addObject:[self getTheDate:[CMSinger share].singerDate afterDays:-14]];
+        
+    }else{
         
         for (int iii =0; iii<durationDay; iii++) {
             [currenYuejingDayAry removeObject:[self getTheDate:[CMSinger share].singerDate afterDays:iii+1]];
         }
         
-    }else{
-        [currenYuejingDayAry addObject:[self getTheDate:[CMSinger share].singerDate afterDays:1]];
+        for (int xxx=0; xxx<9; xxx++) {
+            [weixianqiDayAry removeObject:[self getTheDate:[CMSinger share].singerDate afterDays:xxx-14-5]];
+        }
+        
+        [paiRuanDateAry removeObject:[self getTheDate:[CMSinger share].singerDate afterDays:-14]];
+        
     }
 
 
@@ -347,7 +432,7 @@
                 }
                
    
-                if ([paiRuanDateAry containsObject:panduanDate]) {
+                if ([paiRuanDateAry containsObject:panduanDate] &&![yueJingDayAry containsObject:panduanDate]) {
                     temp.tempImg.image =[UIImage imageNamed:@"pailuanri_logo.png"];
                 }else{
                     temp.tempImg.image =[UIImage imageNamed:@""];
@@ -357,6 +442,7 @@
             }else{
                 [temp setTitle:@"" forState:UIControlStateNormal];
                 temp.lineView.backgroundColor =[UIColor clearColor];
+                temp.tempImg.image =[UIImage imageNamed:@""];
             }
             
             //244 227 229
@@ -491,7 +577,29 @@
 
 -(void)drawRect:(CGRect)rect{
     [super drawRect:rect];
+    
     [self calanderReloadData];
+    
+
+    NSDate *todyaDateaa =[NSDate date];
+    NSDateFormatter *sssss =[[NSDateFormatter alloc] init];
+    [sssss setDateFormat:@"yyyyMMdd"];
+    double aaa =[[sssss stringFromDate:todyaDateaa] doubleValue];
+    double bbbb =[[sssss stringFromDate:needNumberDate] doubleValue];
+    int number = 0;
+    
+    if (aaa>bbbb) {
+        number =zhouqiDay-(aaa-bbbb)-durationDay-1;
+    }else if(aaa ==bbbb){
+        number =zhouqiDay;
+    }else{
+        number =bbbb-aaa;
+    }
+
+    
+    if ([self.CPdelegede respondsToSelector:@selector(setTitleLab:withnumber:)]) {
+        [self.CPdelegede setTitleLab:[NSString stringWithFormat:@"亲,你当前属于%@",qijianStr] withnumber:number];
+    }
     
 }
 

@@ -60,6 +60,8 @@
     
     
     
+    
+    
     NSLog(@"%@",[[NSUserDefaults standardUserDefaults] objectForKey:@"RecordId"]);
 }
 
@@ -76,6 +78,12 @@
     
     muBiaoDate =curentDate;
     [CMSinger share].singerDate =curentDate;
+    
+}
+-(void)setTitleLab:(NSString *)title1 withnumber:(int)numberDay{
+    
+    self.titleLab1.text =title1;
+    self.titleLab2.text =[NSString stringWithFormat:@"距离大姨妈来还有%i天~",numberDay];
     
 }
 - (void)recordDetailAction:(id)sender

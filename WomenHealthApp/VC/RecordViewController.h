@@ -17,4 +17,8 @@
  */
 @interface RecordViewController : BasicVC<CalendarProtocal>
 
+@property (weak, nonatomic) IBOutlet UILabel *titleLab1;
+@property (weak, nonatomic) IBOutlet UILabel *titleLab2;
+
+
 @end

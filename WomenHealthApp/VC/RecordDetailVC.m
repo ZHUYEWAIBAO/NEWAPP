@@ -299,6 +299,14 @@
     if (starSwitch.isOn==YES &&endSwitch.isOn ==YES) {
         [[NSNotificationCenter defaultCenter] postNotificationName:@"reloadDataCl" object:[NSNumber numberWithInt:-1]];
     }
+    if (starSwitch.isOn==NO &&endSwitch.isOn ==NO) {
+        [[NSNotificationCenter defaultCenter] postNotificationName:@"reloadDataCl" object:[NSNumber numberWithInt:-99]];
+    }
+    
+    
+
+    
+    
     
     [self .navigationController popViewControllerAnimated:YES];
     

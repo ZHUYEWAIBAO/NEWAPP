@@ -7,6 +7,8 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="RecordViewController">
             <connections>
+                <outlet property="titleLab1" destination="iGM-6e-jMa" id="yVH-Rq-c2f"/>
+                <outlet property="titleLab2" destination="nya-Iv-Ump" id="NI5-o3-cnf"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
         </placeholder>

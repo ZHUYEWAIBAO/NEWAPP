@@ -14,6 +14,8 @@
 
 -(void)setCurrentdate:(NSDate *)curentDate;
 
+-(void)setTitleLab:(NSString *)title1 withnumber:(int )numberDay;
+
 @end
 
 /**
