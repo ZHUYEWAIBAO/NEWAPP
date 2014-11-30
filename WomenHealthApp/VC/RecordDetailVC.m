@@ -289,6 +289,10 @@
     [[NSUserDefaults standardUserDefaults] synchronize];
     
     
+    if (starSwitch.isOn) {
+        [[NSNotificationCenter defaultCenter] postNotificationName:@"reloadDataCl" object:nil];
+    }
+    
     [self .navigationController popViewControllerAnimated:YES];
     
     

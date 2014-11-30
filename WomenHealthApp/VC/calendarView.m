@@ -58,6 +58,8 @@
     weixianqiDayAry =[NSMutableArray array];
     paiRuanDateAry =[NSMutableArray array];
     currenYuejingDayAry =[NSMutableArray array];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(reloadDataCl) name:@"reloadDataCl" object:nil];
+    
     /**
      *  假设     2014-11-3_3_24
      */
@@ -83,10 +85,16 @@
      *  迭代一年时间
      */
     //红色的线
-    for (int ii =0; ii<durationDay; ii++) {
-        
-        [currenYuejingDayAry addObject:[self getTheDate:confromTimesp afterDays:ii]];
+    
+    if ([[NSUserDefaults standardUserDefaults] objectForKey:@"addYueJingAry"]) {
+        currenYuejingDayAry=[[NSUserDefaults standardUserDefaults] objectForKey:@"addYueJingAry"];
+    }else{
+        for (int ii =0; ii<durationDay; ii++) {
+            
+            [currenYuejingDayAry addObject:[self getTheDate:confromTimesp afterDays:ii]];
+        }
     }
+    
     
     for (int timeNumber =-12*2; timeNumber <12*1; timeNumber++) {
         
@@ -132,15 +140,7 @@
                 
                 [temp setTitle:[NSString stringWithFormat:@"%i",impotrNum] forState:UIControlStateNormal];
                 NSDate *panduanDate =[self getTheDate:currentDate afterDays:impotrNum];
-                if ([yueJingDayAry containsObject:panduanDate]) {
-                    
-                    temp.lineView.backgroundColor =YUCEJINGQICOLOR;
-                    
-                    if ([currenYuejingDayAry containsObject:panduanDate]) {
-                        temp.lineView.backgroundColor =YUEJINGQICOLOR;
-                    }
-                    
-                }else if([weixianqiDayAry containsObject:panduanDate]){
+                if([weixianqiDayAry containsObject:panduanDate]){
                     
                     temp.lineView.backgroundColor =YIYUNQICOLOR;
                 }else{
@@ -148,7 +148,15 @@
                     
                 }
                 
-                
+                if ([yueJingDayAry containsObject:panduanDate]) {
+                    
+                    temp.lineView.backgroundColor =YUCEJINGQICOLOR;
+                    
+                    
+                }
+                if ([currenYuejingDayAry containsObject:panduanDate]) {
+                    temp.lineView.backgroundColor =YUEJINGQICOLOR;
+                }
                 
                 if ([paiRuanDateAry containsObject:panduanDate]) {
                     temp.tempImg.image =[UIImage imageNamed:@"pailuanri_logo.png"];
@@ -188,6 +196,27 @@
 
     
     
+}
+
+-(void)reloadDataCl{
+
+    
+    if ([currenYuejingDayAry containsObject:[CMSinger share].singerDate]) {
+        
+        [self setNeedsDisplay];
+        return ;
+    }
+    for (int iii =0; iii<durationDay; iii++) {
+        [currenYuejingDayAry addObject:[self getTheDate:[CMSinger share].singerDate afterDays:iii+1]];
+
+    }
+
+    [[NSUserDefaults standardUserDefaults] setObject:currenYuejingDayAry forKey:@"addYueJingAry"];
+    [[NSUserDefaults standardUserDefaults] synchronize];
+    
+    [self setNeedsDisplay];
+    
+
 }
 
 -(void)didSelect:(id)sender{
@@ -283,15 +312,8 @@
 
                 [temp setTitle:[NSString stringWithFormat:@"%i",impotrNum] forState:UIControlStateNormal];
                 NSDate *panduanDate =[self getTheDate:currentDate afterDays:impotrNum];
-                if ([yueJingDayAry containsObject:panduanDate]) {
-                    
-                    temp.lineView.backgroundColor =YUCEJINGQICOLOR;
-                    
-                    if ([currenYuejingDayAry containsObject:panduanDate]) {
-                        temp.lineView.backgroundColor =YUEJINGQICOLOR;
-                    }
-                    
-                }else if([weixianqiDayAry containsObject:panduanDate]){
+
+                if([weixianqiDayAry containsObject:panduanDate]){
                     
                     temp.lineView.backgroundColor =YIYUNQICOLOR;
                 }else{
@@ -299,6 +321,14 @@
                     
                 }
                 
+                if ([yueJingDayAry containsObject:panduanDate]) {
+                    
+                    temp.lineView.backgroundColor =YUCEJINGQICOLOR;
+                    
+                }
+                if ([currenYuejingDayAry containsObject:panduanDate]) {
+                    temp.lineView.backgroundColor =YUEJINGQICOLOR;
+                }
                
    
                 if ([paiRuanDateAry containsObject:panduanDate]) {
@@ -441,6 +471,12 @@
 //    NSLog(@"resultDate--------%@",resultDate);
     
     return resultDate;
+}
+
+-(void)drawRect:(CGRect)rect{
+    [super drawRect:rect];
+    [self calanderReloadData];
+    
 }
 
 @end
