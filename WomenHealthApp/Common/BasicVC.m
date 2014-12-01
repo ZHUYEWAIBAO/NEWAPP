@@ -8,6 +8,8 @@
 
 #import "BasicVC.h"
 #import "UITabbarCommonViewController.h"
+#import "UIViewController+Category.h"
+#import "LoginViewController.h"
 
 @interface BasicVC ()
 
@@ -82,6 +84,22 @@
         [UITabbarCommonViewController setTabbarViewHidden];
     }
 }
+
+#pragma mark 弹出登陆页面
+-(void)presentLoginVCAction
+{
+    if (self.presentingViewController) {
+        [self presentViewController:[LoginViewController navigationControllerContainSelf] animated:YES completion:nil];
+    }else{
+        if (self.tabbarController) {
+            [self.tabbarController presentViewController:[LoginViewController navigationControllerContainSelf] animated:YES completion:nil];
+        }else{
+            [self presentViewController:[LoginViewController navigationControllerContainSelf] animated:YES completion:nil];
+        }
+    }
+    
+}
+
 #pragma mark -
 #pragma mark 定义返回按钮
 /**

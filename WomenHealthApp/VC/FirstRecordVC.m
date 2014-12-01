@@ -307,10 +307,11 @@
                 NSString *time = [NSString stringWithFormat:@"%ld%@%@000000",currentYear,month,day];
                 NSString *recordKey = [NSString stringWithFormat:@"%@_%@_%@",[self getTheWomanTime:time],currentMenstrual,currentCycle];
                 [COMMONDSHARE saveTheRecordKey:recordKey];
+                
+                RecordViewController *vc = [[RecordViewController alloc]initWithNibName:@"RecordViewController" bundle:nil];
+                [self.navigationController pushViewController:vc animated:YES];
             }
             
-            RecordViewController *vc = [[RecordViewController alloc]initWithNibName:@"RecordViewController" bundle:nil];
-            [self.navigationController pushViewController:vc animated:YES];
         }
             break;
             

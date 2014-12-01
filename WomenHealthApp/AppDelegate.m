@@ -13,6 +13,7 @@
 #import "ShoppingViewController.h"
 #import "SetViewController.h"
 #import "UITabbarCommonViewController.h"
+#import <ShareSDK/ShareSDK.h>
 
 @interface AppDelegate ()
 
@@ -23,11 +24,13 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     
+    [ShareSDK registerApp:@"46ddb4d7bdeb"];
+    
     self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
     // Override point for customization after application launch.
     self.window.backgroundColor = [UIColor whiteColor];
     
-    UITabbarCommonViewController *tabCtrl = [[UITabbarCommonViewController alloc]initWithNibName:@"UITabbarCommonViewController" bundle:nil];
+    self.tabCtrl = [[UITabbarCommonViewController alloc]initWithNibName:@"UITabbarCommonViewController" bundle:nil];
 
     //记录
     UINavigationController *record_vc;
@@ -56,14 +59,14 @@
     
     NSArray *tits = [NSArray arrayWithObjects:@"记录",@"圈子",@"购物",@"设置",nil];
     
-    tabCtrl.viewControllers = ctrs;
-    tabCtrl.images = imgs;
-    tabCtrl.selectImages = sImgs;
-    tabCtrl.titles = tits;
+    self.tabCtrl.viewControllers = ctrs;
+    self.tabCtrl.images = imgs;
+    self.tabCtrl.selectImages = sImgs;
+    self.tabCtrl.titles = tits;
 
-    [WHSinger share].customTabbr =tabCtrl;
+    [WHSinger share].customTabbr = self.tabCtrl;
     
-    self.window.rootViewController = tabCtrl;
+    self.window.rootViewController = self.tabCtrl;
     
     [self.window makeKeyAndVisible];
     

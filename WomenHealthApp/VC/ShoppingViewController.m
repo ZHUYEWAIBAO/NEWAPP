@@ -41,6 +41,7 @@
     UIBarButtonItem *leftItem = [[UIBarButtonItem alloc] initWithCustomView:searchBtn];
     self.navigationItem.rightBarButtonItem = leftItem;
     
+    [self getTheBannerData];
     
     NSMutableArray *viewsArray = [@[] mutableCopy];
     NSArray *colorArray = @[[UIColor cyanColor],[UIColor blueColor],[UIColor greenColor],[UIColor yellowColor],[UIColor purpleColor]];
@@ -67,6 +68,36 @@
     
     self.shopTableView.tableHeaderView = self.headView;
     
+}
+
+//获取广告
+- (void)getTheBannerData
+{
+    //设置请求参数
+    [self.params removeAllObjects];
+
+    [NETWORK_ENGINE requestWithPath:@"/api/ec/?mod=ad" Params:self.params CompletionHandler:^(MKNetworkOperation *completedOperation) {
+        
+        NSDictionary *dic=[completedOperation responseDecodeToDic];
+        
+        NSDictionary *statusDic = [dic objectForKey:@"status"];
+        NSLog(@"yyy %@",dic);
+        
+        if ([@"1" isEqualToString:CHECK_VALUE([statusDic objectForKey:@"statu"])]) {
+            
+      
+            
+            [SVProgressHUD dismiss];
+            
+        }
+        else{
+            [SVProgressHUD showErrorWithStatus:CHECK_VALUE([statusDic objectForKey:@"msg"])];
+        }
+        
+    } ErrorHandler:^(MKNetworkOperation *completedOperation, NSError *error) {
+        [SVProgressHUD showErrorWithStatus:@"服务器忙，请稍候再试"];
+    }];
+
 }
 
 - (void)searchClick:(id)sender

@@ -32,4 +32,9 @@
  */
 -(void)setViewLayer:(UIView *)view andCornerRadius:(float)radius andBorderColor:(UIColor *)color andBorderWidth:(float)width;
 
+/**
+ *  弹出登录视图
+ */
+-(void)presentLoginVCAction;
+
 @end

@@ -182,9 +182,18 @@
 
 - (IBAction)btnClickAction:(id)sender
 {
-    UIAlertView *alertView = [[UIAlertView alloc]initWithTitle:@"确定要退出舒服吗" message:@"" delegate:self cancelButtonTitle:@"取消" otherButtonTitles:@"确定", nil];
-    alertView.tag = 100;
-    [alertView show];
+    UIButton *button = (UIButton *)sender;
+    
+    if (button.tag == 100) {
+        
+        [self presentLoginVCAction];
+    }
+    else{
+        UIAlertView *alertView = [[UIAlertView alloc]initWithTitle:@"确定要退出舒服吗" message:@"" delegate:self cancelButtonTitle:@"取消" otherButtonTitles:@"确定", nil];
+        alertView.tag = 100;
+        [alertView show];
+    }
+
     
     
 }
