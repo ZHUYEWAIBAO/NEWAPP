@@ -156,16 +156,42 @@
      
      if ([yueJingDayAry containsObject:today]) {
      
-     qijianStr =@"月经期";
+     qijianStr =@"亲，您的大姨妈还没来嘛。";
      
      }else if([weixianqiDayAry containsObject:today]){
-     qijianStr =@"危险期";
-     }else if([paiRuanDateAry containsObject:today]){
-     qijianStr =@"排卵期";
+     qijianStr =@"亲，您当前处于:危险期";
+    if([paiRuanDateAry containsObject:today]){
+        qijianStr =@"亲，您当前处于:排卵期";
+    }
+         
      }else{
-     qijianStr =@"安全期";
+     qijianStr =@"亲，您当前处于:安全期";
      
      }
+    
+    /**
+     *  处于月经是 是多少天
+     */
+    if ([currenYuejingDayAry containsObject:today]) {
+        
+        NSDate *todyaDateaa =[NSDate date];
+        NSDateFormatter *sssss =[[NSDateFormatter alloc] init];
+        [sssss setDateFormat:@"yyyyMMdd"];
+        double aaa =[[sssss stringFromDate:todyaDateaa] doubleValue];
+        double bbbb =[[sssss stringFromDate:confromTimesp] doubleValue];
+        int number = 0;
+        
+        if (aaa<bbbb) {
+            number =[self xiangCHajitian:today withday:confromTimesp];
+        }else if(aaa ==bbbb){
+            number =0;
+        }else{
+            number =[self xiangCHajitian:today withday:confromTimesp];
+        }
+
+        
+        qijianStr =[NSString stringWithFormat:@"亲，您当前处于月经第%i天",number+1];
+    }
      
      
      
@@ -174,13 +200,20 @@
     
     for (int i=0; i<6; i++) {
         for (int j=0; j<7; j++) {
-//            int impotrNum =(7*i+j)+1-(firstDayXingQi-1);
+            int impotrNum =(7*i+j)+1-(firstDayXingQi-1);
             calendarItemBtn *temp =[[calendarItemBtn alloc] initWithFrame:CGRectMake(46*j-1,46*i+65, 46 , 46)];
+            
+            
 //            if((7*i+j) >=(firstDayXingQi-1)  &&  (7*i+j)<totayDays+(firstDayXingQi-1)){
 //                
 //                
 //                [temp setTitle:[NSString stringWithFormat:@"%i",impotrNum] forState:UIControlStateNormal];
-//                NSDate *panduanDate =[self getTheDate:currentDate afterDays:impotrNum];
+                NSDate *panduanDate =[self getTheDate:currentDate afterDays:impotrNum];
+            if ([self isTheSameDayOne:panduanDate wihtTwo:[NSDate date]]) {
+                [temp setBackgroundImage:[UIImage imageWithContentFileName:@"today_active@2x.png"] forState:UIControlStateNormal];
+            }else{
+                [temp setBackgroundImage:[UIImage imageWithContentFileName:@""] forState:UIControlStateNormal];
+            }
 //                if([weixianqiDayAry containsObject:panduanDate]){
 //                    
 //                    temp.lineView.backgroundColor =YIYUNQICOLOR;
@@ -241,6 +274,116 @@
 
     
 }
+
+-(int)xiangCHajitian:(NSDate *)day1 withday:(NSDate *)day2{
+    
+    NSDateFormatter *dateFormatter=[[NSDateFormatter alloc] init];
+    [dateFormatter setDateFormat:@"yyyy-MM-dd HH:mm:ss"];
+    NSDate *  senddate=[NSDate date];
+    //结束时间
+    NSDate *endDate = day1;
+    //当前时间
+    NSDate *senderDate = day2;
+    //得到相差秒数
+    NSTimeInterval time=[endDate timeIntervalSinceDate:senderDate];
+    
+    int days = ((int)time)/(3600*24);
+//    int hours = ((int)time)%(3600*24)/3600;
+//    int minute = ((int)time)%(3600*24)*600/60;
+    
+//    if (days <= 0&&hours; <= 0&&minute; <= 0)
+//        dateContent=@"0天0小时0分钟";
+//    else
+//      NSString * dateContent=[[NSString alloc] initWithFormat:@"%i天%i小时%i分钟",days,hours,minute];
+    
+    return days;
+}
+/**
+ *  刷新日历界面
+ */
+-(void)calanderReloadData{
+    
+    
+    NSInteger totayDays =(unsigned long)[self getNumberForDate:currentDate];
+    
+    
+    int firstDayXingQi =(int)[self getTheFirstDayThisMounth:currentDate];
+    if (firstDayXingQi ==0) {
+        firstDayXingQi =7;
+    }
+    for (int i=0; i<6; i++) {
+        for (int j=0; j<7; j++) {
+            
+            calendarItemBtn *temp =[daysAry objectAtIndex:7*i+j];
+            int impotrNum =(7*i+j)+1-(firstDayXingQi-1);
+            if((7*i+j) >=(firstDayXingQi-1)  &&  (7*i+j)<totayDays+(firstDayXingQi-1)){
+                
+                [temp setTitle:[NSString stringWithFormat:@"%i",impotrNum] forState:UIControlStateNormal];
+                NSDate *panduanDate =[self getTheDate:currentDate afterDays:impotrNum];
+                if ([self isTheSameDayOne:[self getTheDate:panduanDate afterDays:-1] wihtTwo:[NSDate date]]) {
+                    [temp setBackgroundImage:[UIImage imageWithContentFileName:@"today_active@2x.png"] forState:UIControlStateNormal];
+                    didSelectBtn =temp;
+                }else{
+                    [temp setBackgroundImage:[UIImage imageWithContentFileName:@""] forState:UIControlStateNormal];
+                }
+                
+                
+                if([weixianqiDayAry containsObject:panduanDate]){
+                    
+                    temp.lineView.backgroundColor =YIYUNQICOLOR;
+                }else{
+                    temp.lineView.backgroundColor =ANQUANQICOLOR;
+                    
+                }
+                
+                if ([yueJingDayAry containsObject:panduanDate]) {
+                    
+                    temp.lineView.backgroundColor =YUCEJINGQICOLOR;
+                    
+                }
+                if ([currenYuejingDayAry containsObject:panduanDate]) {
+                    temp.lineView.backgroundColor =YUEJINGQICOLOR;
+                }
+                
+                
+                if ([paiRuanDateAry containsObject:panduanDate] &&![yueJingDayAry containsObject:panduanDate]) {
+                    temp.tempImg.image =[UIImage imageNamed:@"pailuanri_logo.png"];
+                }else{
+                    temp.tempImg.image =[UIImage imageNamed:@""];
+                }
+                
+                
+            }else{
+                [temp setTitle:@"" forState:UIControlStateNormal];
+                temp.lineView.backgroundColor =[UIColor clearColor];
+                temp.tempImg.image =[UIImage imageNamed:@""];
+               
+                [temp setBackgroundImage:[UIImage imageWithContentFileName:@""] forState:UIControlStateNormal];
+
+            }
+            
+            //244 227 229
+            [temp addTarget:self action:@selector(didSelect:) forControlEvents:UIControlEventTouchUpInside];
+            temp.tag =7*i+j;
+            temp.titleLabel.font =[UIFont systemFontOfSize:14];
+            [temp setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
+            temp.backgroundColor =[UIColor whiteColor];
+            
+//            if (impotrNum == [self getDayFromDate:[NSDate date]]) {
+//
+//                didSelectBtn =temp;
+//                
+//            }else{
+//                
+//                [temp setBackgroundImage:[UIImage imageWithContentFileName:@""] forState:UIControlStateNormal];
+//            }
+            
+            
+        }
+    }
+    
+}
+
 /**
 ////!!!:手动修改过后的逻辑
  *  手动修改过后的逻辑
@@ -322,8 +465,12 @@
 
 -(void)didSelect:(id)sender{
 
+
     
     calendarItemBtn *btn =(calendarItemBtn *)sender;
+    if (btn.titleLabel.text.length ==0) {
+        return;
+    }
     
     NSDate *panduanDate =[self getTheDate:currentDate afterDays:[btn.titleLabel.text intValue]-1];
     if([self.CPdelegede respondsToSelector:@selector(setCurrentdate:)]){
@@ -331,19 +478,18 @@
         [self.CPdelegede setCurrentdate:panduanDate];
     }
     
-    if (didSelectBtn.tag ==btn.tag) {
-        
+//    if (didSelectBtn.tag ==btn.tag) {
+    
         if ([self.CPdelegede respondsToSelector:@selector(gotoRecordDetailwith:)]) {
             [self.CPdelegede gotoRecordDetailwith:panduanDate];
         }
-        
-        return ;
-    }
-    [didSelectBtn setBackgroundImage:[UIImage imageWithContentFileName:@""] forState:UIControlStateNormal];
     
-    [btn setBackgroundImage:[UIImage imageWithContentFileName:@"today_active@2x.png"] forState:UIControlStateNormal];
+//    }
+//    [didSelectBtn setBackgroundImage:[UIImage imageWithContentFileName:@""] forState:UIControlStateNormal];
+//    
+//    [btn setBackgroundImage:[UIImage imageWithContentFileName:@"today_active@2x.png"] forState:UIControlStateNormal];
     
-    didSelectBtn =btn;
+//    didSelectBtn =btn;
  
     
     NSLog(@"%@",panduanDate);
@@ -390,81 +536,6 @@
 
     [self calanderReloadData];
     
-}
-/**
- *  刷新日历界面
- */
--(void)calanderReloadData{
-
-
-    NSInteger totayDays =(unsigned long)[self getNumberForDate:currentDate];
-
-    
-    int firstDayXingQi =(int)[self getTheFirstDayThisMounth:currentDate];
-    if (firstDayXingQi ==0) {
-        firstDayXingQi =7;
-    }
-    for (int i=0; i<6; i++) {
-        for (int j=0; j<7; j++) {
-            
-            calendarItemBtn *temp =[daysAry objectAtIndex:7*i+j];
-            int impotrNum =(7*i+j)+1-(firstDayXingQi-1);
-            if((7*i+j) >=(firstDayXingQi-1)  &&  (7*i+j)<totayDays+(firstDayXingQi-1)){
-
-                [temp setTitle:[NSString stringWithFormat:@"%i",impotrNum] forState:UIControlStateNormal];
-                NSDate *panduanDate =[self getTheDate:currentDate afterDays:impotrNum];
-
-                if([weixianqiDayAry containsObject:panduanDate]){
-                    
-                    temp.lineView.backgroundColor =YIYUNQICOLOR;
-                }else{
-                    temp.lineView.backgroundColor =ANQUANQICOLOR;
-                    
-                }
-                
-                if ([yueJingDayAry containsObject:panduanDate]) {
-                    
-                    temp.lineView.backgroundColor =YUCEJINGQICOLOR;
-                    
-                }
-                if ([currenYuejingDayAry containsObject:panduanDate]) {
-                    temp.lineView.backgroundColor =YUEJINGQICOLOR;
-                }
-               
-   
-                if ([paiRuanDateAry containsObject:panduanDate] &&![yueJingDayAry containsObject:panduanDate]) {
-                    temp.tempImg.image =[UIImage imageNamed:@"pailuanri_logo.png"];
-                }else{
-                    temp.tempImg.image =[UIImage imageNamed:@""];
-                }
-      
-                
-            }else{
-                [temp setTitle:@"" forState:UIControlStateNormal];
-                temp.lineView.backgroundColor =[UIColor clearColor];
-                temp.tempImg.image =[UIImage imageNamed:@""];
-            }
-            
-            //244 227 229
-            [temp addTarget:self action:@selector(didSelect:) forControlEvents:UIControlEventTouchUpInside];
-            temp.tag =7*i+j;
-            temp.titleLabel.font =[UIFont systemFontOfSize:14];
-            [temp setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
-            temp.backgroundColor =[UIColor whiteColor];
-
-            if ((7*i+j)+1-(firstDayXingQi-1) ==(unsigned long)[self getDayFromDate:currentDate]) {
-                
-                didSelectBtn =temp;
-                [temp setBackgroundImage:[UIImage imageWithContentFileName:@"today_active@2x.png"] forState:UIControlStateNormal];
-            }else{
-                
-                [temp setBackgroundImage:[UIImage imageWithContentFileName:@""] forState:UIControlStateNormal];
-            }
-
-            
-        }
-    }
-
 }
 /**
  *  判断 date是星期几
@@ -593,16 +664,31 @@
     }else if(aaa ==bbbb){
         number =zhouqiDay;
     }else{
-        number =bbbb-aaa;
+        number =bbbb-aaa-durationDay;
     }
 
     
     if ([self.CPdelegede respondsToSelector:@selector(setTitleLab:withnumber:)]) {
-        [self.CPdelegede setTitleLab:[NSString stringWithFormat:@"亲,你当前属于%@",qijianStr] withnumber:number];
+        [self.CPdelegede setTitleLab:[NSString stringWithFormat:@"%@",qijianStr] withnumber:number];
     }
     
 }
+-(BOOL)isTheSameDayOne:(NSDate *)date1 wihtTwo:(NSDate *)date2{
+    BOOL result ;
 
+    NSDateFormatter *sssss =[[NSDateFormatter alloc] init];
+    [sssss setDateFormat:@"yyyyMMdd"];
+    double aaa =[[sssss stringFromDate:date1] doubleValue];
+    double bbbb =[[sssss stringFromDate:date2] doubleValue];
+    
+    if (aaa==bbbb) {
+        result =YES;
+    }else{
+        result =NO;
+    }
+    
+    return result;
+}
 @end
 
 

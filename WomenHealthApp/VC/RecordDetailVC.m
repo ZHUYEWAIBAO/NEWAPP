@@ -211,7 +211,7 @@
         
     }else if(pickerChose ==2){
         
-        [totalDic setObject:[NSMutableArray array] forKey:@"zzzAry"];
+        [totalDic setObject:[NSMutableArray array] forKey:@"shujuAry"];
         
         
     }else if(pickerChose ==3){
@@ -271,16 +271,27 @@
     [totalDic setObject:[NSNumber numberWithInt:tiwenRow1] forKey:@"tiwenRow1"];
     [totalDic setObject:[NSNumber numberWithInt:tizhongRow0] forKey:@"tizhongRow0"];
     [totalDic setObject:[NSNumber numberWithInt:tizhongRow1] forKey:@"tizhongRow1"];
-    
+    if (shujuAry ==nil) {
+        shujuAry =[NSMutableArray array];
+    }
     [totalDic setObject:shujuAry forKey:@"shujuAry"];
     
     [totalDic setObject:[NSNumber numberWithBool:starSwitch.isOn] forKey:@"starSwitch"];
     [totalDic setObject:[NSNumber numberWithBool:endSwitch.isOn] forKey:@"endSwitch"];
     
+    if (tongjingData.length ==0) {
+        tongjingData =@"轻度";
+    }
+    if(liuliangData.length ==0){
+        liuliangData =@"很少";
+    }
     [totalDic setObject:tongjingData forKey:@"tongjing"];
     [totalDic setObject:liuliangData forKey:@"liuliang"];
     
     NSMutableDictionary *resultDic = [NSMutableDictionary dictionaryWithDictionary: [[NSUserDefaults standardUserDefaults] objectForKey:@"resultDic"]];
+    if (totalDic ==nil) {
+        totalDic =[NSMutableDictionary dictionary];
+    }
     [resultDic setObject:totalDic forKey:TodayStr];
     
     NSLog(@"%@",totalDic);

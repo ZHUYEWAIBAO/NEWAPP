@@ -55,7 +55,7 @@
     
     calendarView *tempView =(calendarView *)[[[NSBundle mainBundle] loadNibNamed:@"calendarView" owner:self options:nil] lastObject];
     tempView.CPdelegede =self;
-    tempView.frame=CGRectMake(0, 110, tempView.frame.size.width, tempView.frame.size.height);
+    tempView.frame=CGRectMake(0, 89, tempView.frame.size.width, tempView.frame.size.height);
     [self.view addSubview:tempView];
     
     
@@ -83,7 +83,13 @@
 -(void)setTitleLab:(NSString *)title1 withnumber:(int)numberDay{
     
     self.titleLab1.text =title1;
-    self.titleLab2.text =[NSString stringWithFormat:@"距离大姨妈来还有%i天~",numberDay];
+    if ([title1 isEqualToString:@"亲，您的大姨妈还没来嘛。"]) {
+        self.titleLab2.text =@"";
+
+    }else{
+        self.titleLab2.text =[NSString stringWithFormat:@"距离大姨妈来还有%i天~",numberDay];
+
+    }
     
 }
 - (void)recordDetailAction:(id)sender
