@@ -151,7 +151,7 @@
      NSDateFormatter *fff =[[NSDateFormatter alloc] init];
      [fff setDateFormat:@"yyyyMMdd160000"];
      NSString *str =[fff stringFromDate:todayTempDate];
-     NSDate *today =[fff dateFromString:str];
+     NSDate *today =[self getTheDate:[fff dateFromString:str] afterDays:1] ;
      
      
      if ([yueJingDayAry containsObject:today]) {

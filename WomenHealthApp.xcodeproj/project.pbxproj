@@ -1405,14 +1405,14 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = "AppIcon-2";
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = "LaunchImage-2";
-				CODE_SIGN_IDENTITY = "iPhone Developer: zhang zhiyong (5RUGM4A2HF)";
+				CODE_SIGN_IDENTITY = "iPhone Distribution: zhang zhiyong (3LRXQF8C63)";
 				GCC_PREFIX_HEADER = WomenHealthApp/WomenHealthApp.pch;
 				INFOPLIST_FILE = WomenHealthApp/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				ONLY_ACTIVE_ARCH = YES;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "b588acb6-2321-4869-a4a3-a785aaab59bf";
+				PROVISIONING_PROFILE = "70ab6c4c-4ada-4b67-bd1b-70a8ebbe77dc";
 				VALID_ARCHS = "arm64 armv7 armv7s";
 			};
 			name = Debug;
@@ -1422,14 +1422,14 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = "AppIcon-2";
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = "LaunchImage-2";
-				CODE_SIGN_IDENTITY = "iPhone Developer: zhang zhiyong (5RUGM4A2HF)";
+				CODE_SIGN_IDENTITY = "iPhone Distribution: zhang zhiyong (3LRXQF8C63)";
 				GCC_PREFIX_HEADER = WomenHealthApp/WomenHealthApp.pch;
 				INFOPLIST_FILE = WomenHealthApp/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				ONLY_ACTIVE_ARCH = NO;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "b588acb6-2321-4869-a4a3-a785aaab59bf";
+				PROVISIONING_PROFILE = "70ab6c4c-4ada-4b67-bd1b-70a8ebbe77dc";
 				VALID_ARCHS = "arm64 armv7 armv7s";
 			};
 			name = Release;

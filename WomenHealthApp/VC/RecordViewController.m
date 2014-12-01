@@ -59,8 +59,8 @@
     [self.view addSubview:tempView];
     
     
-    
-    
+    [((UIScrollView *)self.view) setContentSize:CGSizeMake(SCREEN_SIZE.width, 500)];
+    ((UIScrollView *)self.view).showsVerticalScrollIndicator =NO;
     
     NSLog(@"%@",[[NSUserDefaults standardUserDefaults] objectForKey:@"RecordId"]);
 }
