@@ -147,12 +147,12 @@
             if (!isReadProtocol) {
                 isReadProtocol = YES;
 
-                [self.readProtocolImageView setImage:[UIImage imageWithContentFileName:@"icon_choose_selected.png"]];
+                [self.readProtocolImageView setImage:[UIImage imageWithContentFileName:@"icon_choose_selected"]];
             }
             else{
                 isReadProtocol = NO;
                 
-                [self.readProtocolImageView setImage:[UIImage imageWithContentFileName:@"icon_choose_normal.png"]];
+                [self.readProtocolImageView setImage:[UIImage imageWithContentFileName:@"icon_choose_normal"]];
 
             }
             

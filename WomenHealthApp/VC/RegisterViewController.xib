@@ -36,7 +36,7 @@
                         <action selector="btnClickAction:" destination="-1" eventType="touchUpInside" id="aCi-fj-lJ3"/>
                     </connections>
                 </button>
-                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="icon_choose_normal.png" id="kzw-Ok-XFa">
+                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="icon_choose_selected.png" id="kzw-Ok-XFa">
                     <rect key="frame" x="10" y="193" width="15" height="15"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                 </imageView>
@@ -91,7 +91,7 @@
     </objects>
     <resources>
         <image name="get_btn_normal.png" width="300" height="43"/>
-        <image name="icon_choose_normal.png" width="15" height="15"/>
+        <image name="icon_choose_selected.png" width="15" height="15"/>
         <image name="user_register_step1.png" width="320" height="32"/>
     </resources>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">
