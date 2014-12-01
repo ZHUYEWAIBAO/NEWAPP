@@ -7,8 +7,12 @@
 //
 
 #import "ShoppingViewController.h"
+#import "AdModal.h"
 
 @interface ShoppingViewController ()
+{
+    NSMutableArray *adArray;
+}
 
 @end
 
@@ -41,33 +45,9 @@
     UIBarButtonItem *leftItem = [[UIBarButtonItem alloc] initWithCustomView:searchBtn];
     self.navigationItem.rightBarButtonItem = leftItem;
     
+    adArray = [[NSMutableArray alloc]initWithCapacity:5];
     [self getTheBannerData];
-    
-    NSMutableArray *viewsArray = [@[] mutableCopy];
-    NSArray *colorArray = @[[UIColor cyanColor],[UIColor blueColor],[UIColor greenColor],[UIColor yellowColor],[UIColor purpleColor]];
-    for (int i = 0; i < 5; ++i) {
-        UILabel *tempLabel = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, 320, 120)];
-        tempLabel.backgroundColor = [(UIColor *)[colorArray objectAtIndex:i] colorWithAlphaComponent:0.5];
-        [viewsArray addObject:tempLabel];
-        
-    }
-    
-    self.mainScorllView = [[CycleScrollView alloc] initWithFrame:CGRectMake(0, 0, 320, 120) animationDuration:3];
-    
-    self.mainScorllView.fetchContentViewAtIndex = ^UIView *(NSInteger pageIndex){
-        return viewsArray[pageIndex];
-    };
-    self.mainScorllView.totalPagesCount = ^NSInteger(void){
-        return 5;
-    };
-    self.mainScorllView.TapActionBlock = ^(NSInteger pageIndex){
-        NSLog(@"点击了第%ld个",pageIndex);
-    };
-    
-    [self.headView addSubview:self.mainScorllView];
-    
-    self.shopTableView.tableHeaderView = self.headView;
-    
+
 }
 
 //获取广告
@@ -85,8 +65,14 @@
         
         if ([@"1" isEqualToString:CHECK_VALUE([statusDic objectForKey:@"statu"])]) {
             
-      
+            NSDictionary *data = [dic objectForKey:@"data"];
             
+            for (NSDictionary *subDictionery in [data objectForKey:@"list"]) {
+                AdModal *modal = [AdModal parseDicToADObject:subDictionery];
+                [adArray addObject:modal];
+            }
+            
+            [self layOutTheBannerImage:adArray];
             [SVProgressHUD dismiss];
             
         }
@@ -98,6 +84,58 @@
         [SVProgressHUD showErrorWithStatus:@"服务器忙，请稍候再试"];
     }];
 
+}
+
+- (void)layOutTheBannerImage:(NSMutableArray *)array
+{
+    
+    NSMutableArray *viewsArray = [@[] mutableCopy];
+ 
+    for (int i = 0; i < adArray.count; ++i) {
+        
+        AdModal *model = [adArray objectAtIndex:i];
+        UIImageView *imageView = [[UIImageView alloc]initWithFrame:CGRectMake(0, 0, 320, 120)];
+        
+        //下载图片
+        UIActivityIndicatorView *myac=[[UIActivityIndicatorView alloc]initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleGray];
+        [myac setFrame:CGRectMake(imageView.frame.size.width/2-10, imageView.frame.size.height/2-10, 20, 20)];
+        [imageView addSubview:myac];
+        
+        __block UIActivityIndicatorView *amyac=myac;
+        [amyac startAnimating];
+        
+        [imageView setImageWithURL:[NSURL URLWithString:model.adSrc] completed:^(UIImage *image, NSError *error, SDImageCacheType cacheType) {
+            
+            if (image) {
+                [amyac stopAnimating];
+                [amyac removeFromSuperview];
+                amyac=nil;
+            }
+        }];
+        [viewsArray addObject:imageView];
+    }
+    
+    self.mainScorllView = [[CycleScrollView alloc] initWithFrame:CGRectMake(0, 0, 320, 120) animationDuration:3];
+    
+    self.mainScorllView.fetchContentViewAtIndex = ^UIView *(NSInteger pageIndex){
+        return viewsArray[pageIndex];
+    };
+    
+    self.mainScorllView.totalPagesCount = ^NSInteger(void){
+        return array.count;
+    };
+    
+    __block ShoppingViewController *vc = self;
+    self.mainScorllView.TapActionBlock = ^(NSInteger pageIndex){
+        NSLog(@"点击了第%ld个",pageIndex);
+        AdModal *modal = [array objectAtIndex:pageIndex];
+        [vc action:modal.adType withJumpId:modal.adUrl];
+    };
+    
+    [self.headView addSubview:self.mainScorllView];
+    
+    self.shopTableView.tableHeaderView = self.headView;
+    
 }
 
 - (void)searchClick:(id)sender

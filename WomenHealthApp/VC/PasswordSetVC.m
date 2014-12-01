@@ -71,7 +71,7 @@
     [self.params setObject:CHECK_VALUE(self.vertifiCode) forKey:@"code"];
     [self.params setObject:CHECK_VALUE(self.registerModel.registerPhoneNum) forKey:@"username"];
     
-    [SVProgressHUD showWithStatus:@"正在注册" maskType:SVProgressHUDMaskTypeClear];
+    [SVProgressHUD showWithStatus:@"正在登录" maskType:SVProgressHUDMaskTypeClear];
     
     [NETWORK_ENGINE requestWithPath:@"/api/dz/member.php?mod=register&inajax=1" Params:self.params CompletionHandler:^(MKNetworkOperation *completedOperation) {
         
@@ -85,47 +85,11 @@
             
             self.registerModel.registerPassword = self.passwordTextField.text;
             
-            [self loginAction];
-            
-        }
-        else{
-            [SVProgressHUD showErrorWithStatus:CHECK_VALUE([statusDic objectForKey:@"msg"])];
-        }
-        
-    } ErrorHandler:^(MKNetworkOperation *completedOperation, NSError *error) {
-        [SVProgressHUD showErrorWithStatus:@"服务器忙，请稍候再试"];
-    }];
-    
-}
-
-- (void)loginAction
-{
-    //设置请求参数
-    [self.params removeAllObjects];
-    
-    [self.params setObject:CHECK_VALUE(self.registerModel.registerPassword) forKey:@"password"];
-    [self.params setObject:CHECK_VALUE(self.registerModel.registerPhoneNum) forKey:@"username"];
-
-    [SVProgressHUD showWithStatus:@"正在登录" maskType:SVProgressHUDMaskTypeClear];
-    
-    [NETWORK_ENGINE requestWithPath:@"/api/dz/member.php?mod=logging&action=login&loginsubmit=yes&handlekey=login&inajax=1&logintype=3&other_code= " Params:self.params CompletionHandler:^(MKNetworkOperation *completedOperation) {
-        
-        NSDictionary *dic=[completedOperation responseDecodeToDic];
-        
-        NSDictionary *statusDic = [dic objectForKey:@"status"];
-        NSLog(@"yyy %@",dic);
-        
-        if ([@"1" isEqualToString:CHECK_VALUE([statusDic objectForKey:@"statu"])]) {
-            
             USERINFO.isLogin = YES;
             
-//            [USERINFO parseDicToUserInfoModel:dic];
-//            
-//            [[NSNotificationCenter defaultCenter]postNotificationName:NOTIFICATION_USER_LOGIN object:@"1"];
-//
-//            [self.navigationController popToRootViewControllerAnimated:YES];
+            [USERINFO parseDicToUserInfoModel:statusDic];
             
-            [SVProgressHUD showSuccessWithStatus:@"登录成功"];
+            [self dismissViewControllerAnimated:YES completion:nil];
             
         }
         else{
@@ -136,21 +100,6 @@
         [SVProgressHUD showErrorWithStatus:@"服务器忙，请稍候再试"];
     }];
     
-    
-}
-
-- (void)popToLogin
-{
-//    for (UIViewController *controller in self.navigationController.viewControllers) {
-//        if ([controller isKindOfClass:[LoginViewController class]]) {
-//            LoginViewController *loginVC = (LoginViewController *)controller;
-//            loginVC.userNumTextField.text = self.registerModel.registerPhoneNum;
-//            loginVC.userPwdTextField.text = self.registerModel.registerPassword;
-//            
-//            [self.navigationController popToViewController:loginVC animated:YES];
-//            
-//        }
-//    }
 }
 
 - (void)didReceiveMemoryWarning

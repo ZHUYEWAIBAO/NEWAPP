@@ -10,7 +10,7 @@
 
 @implementation AdModal
 
-+ (AdModal *)parseDicToPanicADObject:(NSDictionary *)dic
++ (AdModal *)parseDicToADObject:(NSDictionary *)dic
 {
     AdModal *model = [[AdModal alloc]init];
     

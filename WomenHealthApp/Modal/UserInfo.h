@@ -10,15 +10,14 @@
 
 @interface UserInfo : NSObject
 
-@property (strong, nonatomic) NSString * code;           //用户登录状态校验码
-@property (strong, nonatomic) NSString * user_id;        //用户id
+@property (strong, nonatomic) NSString * uid;            //用户id
 @property (strong, nonatomic) NSString * username;       //用户名(手机号)
-@property (strong, nonatomic) NSString * head_pic;       //用户头像
-@property (strong, nonatomic) NSString * nicheng;        //用户昵称
-@property (strong, nonatomic) NSString * lastlogintime;  //用户最后登录时间
-@property (strong, nonatomic) NSString * email;          //用户邮箱
-@property (strong, nonatomic) NSString * realname;       //用户真实姓名
-@property (strong, nonatomic) NSString * money;          //用户悦动币余额
+@property (strong, nonatomic) NSString * user_icon;       //用户头像
+//@property (strong, nonatomic) NSString * nicheng;        //用户昵称
+//@property (strong, nonatomic) NSString * lastlogintime;  //用户最后登录时间
+//@property (strong, nonatomic) NSString * email;          //用户邮箱
+//@property (strong, nonatomic) NSString * realname;       //用户真实姓名
+//@property (strong, nonatomic) NSString * money;          //用户悦动币余额
 @property (assign, nonatomic) BOOL isLogin;              //判断用户是否登录
 
 /**

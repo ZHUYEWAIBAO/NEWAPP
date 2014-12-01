@@ -74,7 +74,7 @@
                         <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                     </state>
                     <connections>
-                        <action selector="btnClickAction:" destination="-1" eventType="touchUpInside" id="mJh-Sj-WIt"/>
+                        <action selector="thirdClickAction:" destination="-1" eventType="touchUpInside" id="xTt-ec-PtK"/>
                     </connections>
                 </button>
                 <button opaque="NO" tag="104" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="6tu-Fs-gNU">
@@ -84,7 +84,7 @@
                         <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                     </state>
                     <connections>
-                        <action selector="btnClickAction:" destination="-1" eventType="touchUpInside" id="xmY-er-YwY"/>
+                        <action selector="thirdClickAction:" destination="-1" eventType="touchUpInside" id="K83-IQ-cgp"/>
                     </connections>
                 </button>
                 <button opaque="NO" tag="101" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="NnX-fN-wi8">

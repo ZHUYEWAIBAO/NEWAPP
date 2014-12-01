@@ -21,7 +21,7 @@
  */
 - (BOOL)contains:(NSString *)subString;
 
-//昵称表达式
-- (BOOL)isValidateNiCheng;
+//手机号码表达式
+- (BOOL)isValidatePhoneNum;
 
 @end

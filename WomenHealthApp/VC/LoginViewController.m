@@ -8,6 +8,7 @@
 
 #import "LoginViewController.h"
 #import "RegisterViewController.h"
+#import <ShareSDK/ShareSDK.h>
 
 #define btn_register  100     //注册
 #define btn_login     101     //登录
@@ -79,22 +80,60 @@
         }
             
             break;
-
-        case btn_qq:{
-            
-        }
-            
-            break;
-            
-        case btn_sina:{
-            
-        }
-            
-            break;
-            
         default:
             break;
     }
+}
+
+- (IBAction)thirdClickAction:(id)sender
+{
+    UIButton *btn = (UIButton *)sender;
+    
+    id<ISSAuthOptions> authOptions = [ShareSDK authOptionsWithAutoAuth:YES
+                                                         allowCallback:YES
+                                                         authViewStyle:SSAuthViewStyleFullScreenPopup
+                                                          viewDelegate:nil
+                                               authManagerViewDelegate:nil];
+    
+    if (btn.tag == btn_sina) {
+        
+        [ShareSDK getUserInfoWithType:ShareTypeSinaWeibo
+                          authOptions:authOptions
+                               result:^(BOOL result, id<ISSPlatformUser> userInfo, id<ICMErrorInfo> error) {
+                                   
+                                   if (result){
+    
+                                       [self fillSinaWeiboUser:userInfo];
+                                       
+                                       
+                                   }
+                                   
+                               }];
+
+    }
+    else{
+        [ShareSDK getUserInfoWithType:ShareTypeQQSpace
+                          authOptions:authOptions
+                               result:^(BOOL result, id<ISSPlatformUser> userInfo, id<ICMErrorInfo> error) {
+                                   
+                                   if (result){
+                                    
+                                       [self fillQQSpaceUser:userInfo];
+                                       
+                                       
+                                   }
+                                   
+                               }];
+    }
+}
+
+- (void)fillSinaWeiboUser:(id<ISSPlatformUser>)userInfo
+{
+    
+}
+
+- (void)fillQQSpaceUser:(id<ISSPlatformUser>)userInfo
+{
 }
 
 - (void)loginAction
@@ -122,17 +161,14 @@
         NSDictionary *dic=[completedOperation responseDecodeToDic];
         
         NSDictionary *statusDic = [dic objectForKey:@"status"];
-        NSLog(@"yyy %@",dic);
-        
+
         if ([@"1" isEqualToString:CHECK_VALUE([statusDic objectForKey:@"statu"])]) {
             
             USERINFO.isLogin = YES;
             
-            //            [USERINFO parseDicToUserInfoModel:dic];
-            //
-            //            [[NSNotificationCenter defaultCenter]postNotificationName:NOTIFICATION_USER_LOGIN object:@"1"];
-            //
-            //            [self.navigationController popToRootViewControllerAnimated:YES];
+            [USERINFO parseDicToUserInfoModel:statusDic];
+
+            [self dismissViewControllerAnimated:YES completion:nil];
             
             [SVProgressHUD dismiss];
             

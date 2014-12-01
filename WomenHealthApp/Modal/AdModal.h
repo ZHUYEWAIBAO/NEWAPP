@@ -15,6 +15,6 @@
 @property (strong, nonatomic) NSString * adType;              //方式
 @property (strong, nonatomic) NSString * adUrl;               //链接
 
-+ (AdModal *)parseDicToPanicADObject:(NSDictionary *)dic;
++ (AdModal *)parseDicToADObject:(NSDictionary *)dic;
 
 @end

@@ -72,14 +72,7 @@
         
         return;
     }
-    
-    if (self.phoneNumTextField.text.length < 11) {
-        
-        [SVProgressHUD showErrorWithStatus:@"该手机号码无效，请重新输入"];
-        
-        return;
-    }
-    
+
     if (!isReadProtocol) {
         
         [SVProgressHUD showErrorWithStatus:@"您必须同意舒服用户协议才能进行下一步操作"];
@@ -163,6 +156,23 @@
             break;
     }
 
+}
+
+#pragma mark --UITextFiled的观察者方法
+-(void)textFiledEditChanged:(NSNotification *)obj
+{
+    UITextField *textField = (UITextField *)obj.object;
+
+    if (textField == self.phoneNumTextField) {
+        
+        if ([self.phoneNumTextField.text isValidatePhoneNum]) {
+            [self.getVerCodeBtn setEnabled:YES];
+        }
+        else{
+            [self.getVerCodeBtn setEnabled:NO];
+        }
+    }
+    
 }
 
 - (void)didReceiveMemoryWarning

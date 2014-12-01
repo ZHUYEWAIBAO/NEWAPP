@@ -10,6 +10,8 @@
 #import "UITabbarCommonViewController.h"
 #import "UIViewController+Category.h"
 #import "LoginViewController.h"
+#import "ShoppingDetailVC.h"
+#import "ShoppingWebVC.h"
 
 @interface BasicVC ()
 
@@ -134,6 +136,30 @@
     [[view layer] setBorderWidth:width];
     [[view layer] setCornerRadius:radius];
     [[view layer] setBorderColor:color.CGColor];
+}
+
+#pragma mark 统一跳转各界面
+//点击广告图片跳转到相应的界面
+-(void)action:(NSString *)eventId withJumpId:(NSString *)jumpId
+{
+    if ([@"url" isEqualToString:eventId]) {
+        ShoppingWebVC *vc = [[ShoppingWebVC alloc]initWithNibName:@"ShoppingWebVC" bundle:nil];
+        vc.webUrl = jumpId;
+        [self.navigationController pushViewController:vc animated:YES];
+    }
+    else if ([@"goods" isEqualToString:eventId]) {
+        ShoppingDetailVC *vc = [[ShoppingDetailVC alloc]initWithNibName:@"ShoppingDetailVC" bundle:nil];
+        [self.navigationController pushViewController:vc animated:YES];
+    }
+
+//    switch (<#expression#>) {
+//        case <#constant#>:
+//            <#statements#>
+//            break;
+//            
+//        default:
+//            break;
+//    }
 }
 
 #pragma mark --UITextFiled的观察者方法

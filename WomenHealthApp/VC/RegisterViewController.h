@@ -19,6 +19,7 @@
  *  阅读协议按钮
  */
 @property (weak,nonatomic) IBOutlet UIButton *readProtocolBtn;
+@property (weak,nonatomic) IBOutlet UIButton *getVerCodeBtn;
 
 @property (weak,nonatomic) IBOutlet UIImageView *readProtocolImageView;
 

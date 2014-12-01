@@ -22,29 +22,24 @@
 
 - (void)parseDicToUserInfoModel:(NSDictionary*)dic
 {
-    self.user_id = CHECK_VALUE([dic objectForKey:@"user_id"]);
+    self.uid = CHECK_VALUE([dic objectForKey:@"uid"]);
     self.username = CHECK_VALUE([dic objectForKey:@"username"]);
-    self.code = CHECK_VALUE([dic objectForKey:@"code"]);
-    self.head_pic = CHECK_VALUE([dic objectForKey:@"head_pic"]);
-    self.nicheng = CHECK_VALUE([dic objectForKey:@"nicheng"]);
-    self.lastlogintime = CHECK_VALUE([dic objectForKey:@"lastlogintime"]);
-    self.email = CHECK_VALUE([dic objectForKey:@"email"]);
-    self.realname = CHECK_VALUE([dic objectForKey:@"realname"]);
-    self.money = CHECK_VALUE([dic objectForKey:@"money"]);
+    self.user_icon = CHECK_VALUE([dic objectForKey:@"user_icon"]);
+
     
 }
 
 - (void)loginOutForUserInfoModel
 {
-    self.user_id = @"";
-    self.username = @"";
-    self.code = @"";
-    self.head_pic = @"";
-    self.nicheng = @"";
-    self.lastlogintime = @"";
-    self.email = @"";
-    self.realname = @"";
-    self.money = @"";
+//    self.user_id = @"";
+//    self.username = @"";
+//    self.code = @"";
+//    self.head_pic = @"";
+//    self.nicheng = @"";
+//    self.lastlogintime = @"";
+//    self.email = @"";
+//    self.realname = @"";
+//    self.money = @"";
     
 }
 

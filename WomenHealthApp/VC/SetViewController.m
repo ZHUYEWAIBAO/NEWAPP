@@ -204,38 +204,38 @@
     if (alertView.tag == 100) {
         if (buttonIndex == 1) {
             
-            //设置请求参数
-            [self.params removeAllObjects];
-            
-            [self.params setObject:CHECK_VALUE(USERINFO.user_id) forKey:@"user_id"];
-            [self.params setObject:CHECK_VALUE(USERINFO.code) forKey:@"code"];
-            
-            [SVProgressHUD showWithStatus:@"正在退出" maskType:SVProgressHUDMaskTypeClear];
-            
-            [NETWORK_ENGINE requestWithPath:GLOBALSHARE.USER_LOGINOUT_PATH Params:self.params CompletionHandler:^(MKNetworkOperation *completedOperation) {
-                
-                NSDictionary *dic=[completedOperation responseDecodeToDic];
-                
-                if ([@"0" isEqualToString:CHECK_VALUE([dic objectForKey:@"errorid"])]) {
-                    
-                    USERINFO.isLogin = NO;
-                    
-                    [USERINFO loginOutForUserInfoModel];
-                    
-                    [[NSNotificationCenter defaultCenter]postNotificationName:NOTIFICATION_USER_LOGIN object:@"0"];
-                    
-                    [self.navigationController popViewControllerAnimated:YES];
-                    
-                    [SVProgressHUD dismiss];
-                    
-                }
-                else{
-                    [SVProgressHUD showErrorWithStatus:CHECK_VALUE([dic objectForKey:@"msg"])];
-                }
-                
-            } ErrorHandler:^(MKNetworkOperation *completedOperation, NSError *error) {
-                [SVProgressHUD showErrorWithStatus:@"服务器忙，请稍候再试"];
-            }];
+//            //设置请求参数
+//            [self.params removeAllObjects];
+//            
+//            [self.params setObject:CHECK_VALUE(USERINFO.user_id) forKey:@"user_id"];
+//            [self.params setObject:CHECK_VALUE(USERINFO.code) forKey:@"code"];
+//            
+//            [SVProgressHUD showWithStatus:@"正在退出" maskType:SVProgressHUDMaskTypeClear];
+//            
+//            [NETWORK_ENGINE requestWithPath:GLOBALSHARE.USER_LOGINOUT_PATH Params:self.params CompletionHandler:^(MKNetworkOperation *completedOperation) {
+//                
+//                NSDictionary *dic=[completedOperation responseDecodeToDic];
+//                
+//                if ([@"0" isEqualToString:CHECK_VALUE([dic objectForKey:@"errorid"])]) {
+//                    
+//                    USERINFO.isLogin = NO;
+//                    
+//                    [USERINFO loginOutForUserInfoModel];
+//                    
+//                    [[NSNotificationCenter defaultCenter]postNotificationName:NOTIFICATION_USER_LOGIN object:@"0"];
+//                    
+//                    [self.navigationController popViewControllerAnimated:YES];
+//                    
+//                    [SVProgressHUD dismiss];
+//                    
+//                }
+//                else{
+//                    [SVProgressHUD showErrorWithStatus:CHECK_VALUE([dic objectForKey:@"msg"])];
+//                }
+//                
+//            } ErrorHandler:^(MKNetworkOperation *completedOperation, NSError *error) {
+//                [SVProgressHUD showErrorWithStatus:@"服务器忙，请稍候再试"];
+//            }];
             
         }
     }

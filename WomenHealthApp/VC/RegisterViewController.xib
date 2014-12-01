@@ -7,6 +7,7 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="RegisterViewController">
             <connections>
+                <outlet property="getVerCodeBtn" destination="Gn0-tc-P0U" id="z9V-Mn-bct"/>
                 <outlet property="phoneNumTextField" destination="6MC-NS-BiD" id="LvU-2y-x4M"/>
                 <outlet property="readProtocolBtn" destination="RmP-Rx-Rhy" id="rGi-I5-oyl"/>
                 <outlet property="readProtocolImageView" destination="kzw-Ok-XFa" id="hbo-Ia-rni"/>
@@ -40,10 +41,10 @@
                     <rect key="frame" x="10" y="193" width="15" height="15"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                 </imageView>
-                <button opaque="NO" tag="100" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="Gn0-tc-P0U">
+                <button opaque="NO" tag="100" contentMode="scaleToFill" enabled="NO" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="Gn0-tc-P0U">
                     <rect key="frame" x="10" y="132" width="300" height="43"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                    <state key="normal" backgroundImage="get_btn_normal.png">
+                    <state key="normal" backgroundImage="get_btn_active.png">
                         <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                     </state>
                     <connections>
@@ -90,7 +91,7 @@
         </view>
     </objects>
     <resources>
-        <image name="get_btn_normal.png" width="300" height="43"/>
+        <image name="get_btn_active.png" width="300" height="43"/>
         <image name="icon_choose_selected.png" width="15" height="15"/>
         <image name="user_register_step1.png" width="320" height="32"/>
     </resources>

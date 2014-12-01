@@ -11,10 +11,10 @@
 @implementation NSString (Category)
 
 //昵称表达式
-- (BOOL)isValidateNiCheng
+- (BOOL)isValidatePhoneNum
 {
 
-    NSString *niChengRegex =[NSString stringWithFormat:@"^[a-zA-Z0-9_\u4e00-\u9fa5]+$"];
+    NSString *niChengRegex =[NSString stringWithFormat:@"^(13[0-9]|15[0|1|2|3|5|6|7|8|9]|18[0|5|6|7|8|9])\\d{8}$"];
     
     NSPredicate *regex = [NSPredicate predicateWithFormat:@"SELF MATCHES %@",niChengRegex];
     
