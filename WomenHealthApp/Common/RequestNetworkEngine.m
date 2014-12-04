@@ -43,8 +43,15 @@
     
     //    MKNetworkOperation *op =[self operationWithPath:@"/app.php/order/get_order/?debug=0&id=140515990566&user_id=1&code=8b3be42aabdfba75f1980f76008489ef" params:nil httpMethod:@"POST"];
     //    if (params) {
-    MKNetworkOperation *op = [self operationWithPath:path params:params httpMethod:@"POST"];
+    MKNetworkOperation *op;
     
+    if (params) {
+        op =[self operationWithPath:path params:params httpMethod:@"POST"];
+
+    }
+    else{
+        op = [self operationWithPath:path params:nil httpMethod:@"GET"];
+    }
     
     //处理句柄
     [op addCompletionHandler:response errorHandler:error];

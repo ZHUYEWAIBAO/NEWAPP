@@ -43,6 +43,13 @@
     UIBarButtonItem *leftItem = [[UIBarButtonItem alloc] initWithCustomView:_forgetBtn];
     self.navigationItem.rightBarButtonItem = leftItem;
     
+    //为了释放定时器，自定义返回按钮
+    UIButton *leftButton = [[UIButton alloc]initWithFrame:CGRectMake(0, 0, 46, 25)];
+    [leftButton addTarget:self action:@selector(leftBackClick:) forControlEvents:UIControlEventTouchUpInside];
+    [leftButton setImage:[UIImage imageWithContentFileName:@"back_bt.png"] forState:UIControlStateNormal];
+    UIBarButtonItem *leftButtonItem = [[UIBarButtonItem alloc]initWithCustomView:leftButton];
+    self.navigationItem.leftBarButtonItem = leftButtonItem;
+    
 }
 
 - (void)viewWillAppear:(BOOL)animated
@@ -50,6 +57,12 @@
     [super viewWillAppear:YES];
     
     self.view.backgroundColor = [UIColor whiteColor];
+}
+
+- (void)leftBackClick:(id)sender
+{
+
+    [self dismissViewControllerAnimated:YES completion:nil];
 }
 
 #pragma mark 按钮事件
@@ -70,7 +83,8 @@
             
         case btn_login:{
             
-            [self loginAction];
+            self.loginType = loginType_mobile;
+            [self loginActionWithUid:@""];
         }
             
             break;
@@ -129,34 +143,60 @@
 
 - (void)fillSinaWeiboUser:(id<ISSPlatformUser>)userInfo
 {
+    self.loginType = loginType_sina;
     
+    USERINFO.user_icon = [userInfo profileImage];
+    USERINFO.username = [userInfo nickname];
+    
+    NSLog(@"%@------%@",[userInfo uid],[userInfo nickname]);
+    
+    [self loginActionWithUid:[userInfo uid]];
+
 }
 
 - (void)fillQQSpaceUser:(id<ISSPlatformUser>)userInfo
 {
+    self.loginType = loginType_qq;
+
+    USERINFO.user_icon = [userInfo profileImage];
+    USERINFO.username = [userInfo nickname];
+    
+    NSLog(@"%@------%@",[userInfo uid],[userInfo nickname]);
+    
+    [self loginActionWithUid:[userInfo uid]];
+
 }
 
-- (void)loginAction
+- (void)loginActionWithUid:(NSString *)uid
 {
-    if (self.userNumTextField.text.length == 0 ) {
-        [SVProgressHUD showErrorWithStatus:@"请输入手机号码"];
-        return;
-    }
-    
-    if (self.userPwdTextField.text.length == 0 ) {
-        [SVProgressHUD showErrorWithStatus:@"请输入密码"];
-        return;
-    }
-
     //设置请求参数
     [self.params removeAllObjects];
     
-    [self.params setObject:CHECK_VALUE(self.userPwdTextField.text) forKey:@"password"];
-    [self.params setObject:CHECK_VALUE(self.userNumTextField.text) forKey:@"username"];
+    if (self.loginType == loginType_mobile) {
+        if (self.userNumTextField.text.length == 0 ) {
+            [SVProgressHUD showErrorWithStatus:@"请输入手机号码"];
+            return;
+        }
+        
+        if (self.userPwdTextField.text.length == 0 ) {
+            [SVProgressHUD showErrorWithStatus:@"请输入密码"];
+            return;
+        }
+        
+        [self.params setObject:CHECK_VALUE(self.userPwdTextField.text) forKey:@"password"];
+        [self.params setObject:CHECK_VALUE(self.userNumTextField.text) forKey:@"username"];
+    }
+    else{
+        [self.params setObject:@"" forKey:@"password"];
+        [self.params setObject:@"Nick" forKey:@"username"];
+    }
+
     
     [SVProgressHUD showWithStatus:@"正在登录" maskType:SVProgressHUDMaskTypeClear];
     
-    [NETWORK_ENGINE requestWithPath:[@"/api/dz/member.php?mod=logging&action=login&loginsubmit=yes&handlekey=login&inajax=1&logintype=3&other_code=" stringByAppendingString:@""] Params:self.params CompletionHandler:^(MKNetworkOperation *completedOperation) {
+    NSString *path = [NSString stringWithFormat:@"/api/ec/user.php?mod=logging&action=login&loginsubmit=yes&handlekey=login&inajax=1&logintype=%u&other_code=%@",self.loginType,uid];
+    
+    [NETWORK_ENGINE requestWithPath:path Params:self.params CompletionHandler:^(MKNetworkOperation *completedOperation) {
         
         NSDictionary *dic=[completedOperation responseDecodeToDic];
         

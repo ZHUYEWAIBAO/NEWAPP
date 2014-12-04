@@ -6,14 +6,16 @@
 //  Copyright (c) 2014年 WomenHealthApp. All rights reserved.
 //
 
-#import "BasicVC.h"
+#import "RefreshTableVC.h"
 #import "CycleScrollView.h"
 
-@interface ShoppingViewController : BasicVC
+@interface ShoppingViewController : RefreshTableVC
 
 @property (weak, nonatomic) IBOutlet UITableView *shopTableView;
 
 @property (strong, nonatomic) IBOutlet UIView *headView;
+@property (weak, nonatomic) IBOutlet UIScrollView *hotKeyScrollView;
+@property (weak, nonatomic) IBOutlet UIImageView *priceSortLogoImageView;
 
 @property (strong, nonatomic) NSMutableArray *shopArray;
 

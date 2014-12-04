@@ -18,6 +18,7 @@
     model.adText = CHECK_VALUE([dic objectForKey:@"text"]);
     model.adType = CHECK_VALUE([dic objectForKey:@"type"]);
     model.adUrl = CHECK_VALUE([dic objectForKey:@"url"]);
+    model.adGoods_id = CHECK_VALUE([dic objectForKey:@"goods_id"]);
 
     return model;
 }

@@ -68,6 +68,11 @@
 //获取当前APP版本
 #define CLIENT_VERSION [[[NSBundle mainBundle] infoDictionary]objectForKey:@"CFBundleShortVersionString"]
 
+#define MAIN_RED_COLOR RGBACOLOR(254,111,117,1.0)
+
+//搜索本地保存的key
+#define GOODS_SEARCH_KEY @"goodsSearchKey"
+
 /**
  *  检查数据有效性
  */

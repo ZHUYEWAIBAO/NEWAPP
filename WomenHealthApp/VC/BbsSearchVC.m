@@ -26,7 +26,7 @@
     [super viewDidLoad];
     
     //将自定义的视图作为导航条leftBarButtonItem
-    UISearchBar *searchBar= [[UISearchBar alloc] initWithFrame:CGRectMake(0, 0, 230, 44)];
+    UISearchBar *searchBar= [[UISearchBar alloc] initWithFrame:CGRectMake(0, 0, 250, 44)];
     
     searchBar.placeholder =@"请输入关键字";
 //    UIButton *searchBtn = [UIButton buttonWithType:UIButtonTypeCustom];

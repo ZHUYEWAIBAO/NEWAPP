@@ -14,6 +14,7 @@
 @property (strong, nonatomic) NSString * adText;              //内容
 @property (strong, nonatomic) NSString * adType;              //方式
 @property (strong, nonatomic) NSString * adUrl;               //链接
+@property (strong, nonatomic) NSString * adGoods_id;          //商品id
 
 + (AdModal *)parseDicToADObject:(NSDictionary *)dic;
 

@@ -73,7 +73,7 @@
     
     [SVProgressHUD showWithStatus:@"正在登录" maskType:SVProgressHUDMaskTypeClear];
     
-    [NETWORK_ENGINE requestWithPath:@"/api/dz/member.php?mod=register&inajax=1" Params:self.params CompletionHandler:^(MKNetworkOperation *completedOperation) {
+    [NETWORK_ENGINE requestWithPath:@"/api/ec/user.php?mod=register&inajax=1" Params:self.params CompletionHandler:^(MKNetworkOperation *completedOperation) {
         
         NSDictionary *dic=[completedOperation responseDecodeToDic];
 

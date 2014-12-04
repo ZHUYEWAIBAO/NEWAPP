@@ -152,14 +152,6 @@
         [self.navigationController pushViewController:vc animated:YES];
     }
 
-//    switch (<#expression#>) {
-//        case <#constant#>:
-//            <#statements#>
-//            break;
-//            
-//        default:
-//            break;
-//    }
 }
 
 #pragma mark --UITextFiled的观察者方法

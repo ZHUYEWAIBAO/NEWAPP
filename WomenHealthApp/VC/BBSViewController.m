@@ -58,8 +58,8 @@
     self.navigationItem.rightBarButtonItem = rightItem;
     
     NSMutableArray *viewsArray = [@[] mutableCopy];
-    NSArray *colorArray = @[[UIColor cyanColor],[UIColor blueColor],[UIColor greenColor],[UIColor yellowColor],[UIColor purpleColor]];
-    for (int i = 0; i < 5; ++i) {
+    NSArray *colorArray = @[[UIColor cyanColor],[UIColor blueColor]];
+    for (int i = 0; i < 2; ++i) {
         UILabel *tempLabel = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, 320, 120)];
         tempLabel.backgroundColor = [(UIColor *)[colorArray objectAtIndex:i] colorWithAlphaComponent:0.5];
         [viewsArray addObject:tempLabel];
@@ -71,7 +71,7 @@
         return viewsArray[pageIndex];
     };
     self.mainScorllView.totalPagesCount = ^NSInteger(void){
-        return 5;
+        return 2;
     };
     self.mainScorllView.TapActionBlock = ^(NSInteger pageIndex){
         NSLog(@"点击了第%ld个",pageIndex);

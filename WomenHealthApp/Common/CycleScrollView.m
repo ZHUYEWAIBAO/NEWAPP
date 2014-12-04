@@ -108,6 +108,7 @@
     [self.contentViews removeAllObjects];
     
     if (self.fetchContentViewAtIndex) {
+
         [self.contentViews addObject:self.fetchContentViewAtIndex(previousPageIndex)];
         [self.contentViews addObject:self.fetchContentViewAtIndex(_currentPageIndex)];
         [self.contentViews addObject:self.fetchContentViewAtIndex(rearPageIndex)];

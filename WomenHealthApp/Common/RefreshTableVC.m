@@ -194,11 +194,6 @@
     self.refreshHeaderView=nil;
 }
 
-
-- (void)viewDidUnload {
-	self.refreshHeaderView=nil;
-}
-
 - (void)dealloc {
 	
 	self.refreshHeaderView = nil;
