@@ -279,6 +279,12 @@
 		BAD0AE661A1ED12900F2D001 /* Set_people_head_image.png in Resources */ = {isa = PBXBuildFile; fileRef = BAD0AE651A1ED12900F2D001 /* Set_people_head_image.png */; };
 		BAD0AE6A1A1F19EC00F2D001 /* Circle_menu_cateArrow.png in Resources */ = {isa = PBXBuildFile; fileRef = BAD0AE691A1F19EC00F2D001 /* Circle_menu_cateArrow.png */; };
 		BAD0AE6C1A1F1AB200F2D001 /* nav_back_bt@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BAD0AE6B1A1F1AB200F2D001 /* nav_back_bt@2x.png */; };
+		BAD35F4C1A31414E0065369F /* CSLinearLayoutView.m in Sources */ = {isa = PBXBuildFile; fileRef = BAD35F4B1A31414E0065369F /* CSLinearLayoutView.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
+		BAD35F501A3143B50065369F /* ChannelModelView.m in Sources */ = {isa = PBXBuildFile; fileRef = BAD35F4E1A3143B50065369F /* ChannelModelView.m */; };
+		BAD35F511A3143B50065369F /* ChannelModelView.xib in Resources */ = {isa = PBXBuildFile; fileRef = BAD35F4F1A3143B50065369F /* ChannelModelView.xib */; };
+		BAD35F571A317C990065369F /* CategoryModel.m in Sources */ = {isa = PBXBuildFile; fileRef = BAD35F561A317C990065369F /* CategoryModel.m */; };
+		BAD35F5C1A3187BA0065369F /* screening_btn_active@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BAD35F5A1A3187BA0065369F /* screening_btn_active@2x.png */; };
+		BAD35F5D1A3187BA0065369F /* screening_btn_noraml@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BAD35F5B1A3187BA0065369F /* screening_btn_noraml@2x.png */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -669,6 +675,15 @@
 		BAD0AE651A1ED12900F2D001 /* Set_people_head_image.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Set_people_head_image.png; sourceTree = "<group>"; };
 		BAD0AE691A1F19EC00F2D001 /* Circle_menu_cateArrow.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Circle_menu_cateArrow.png; sourceTree = "<group>"; };
 		BAD0AE6B1A1F1AB200F2D001 /* nav_back_bt@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "nav_back_bt@2x.png"; sourceTree = "<group>"; };
+		BAD35F4A1A31414E0065369F /* CSLinearLayoutView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CSLinearLayoutView.h; sourceTree = "<group>"; };
+		BAD35F4B1A31414E0065369F /* CSLinearLayoutView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CSLinearLayoutView.m; sourceTree = "<group>"; };
+		BAD35F4D1A3143B50065369F /* ChannelModelView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ChannelModelView.h; sourceTree = "<group>"; };
+		BAD35F4E1A3143B50065369F /* ChannelModelView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ChannelModelView.m; sourceTree = "<group>"; };
+		BAD35F4F1A3143B50065369F /* ChannelModelView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ChannelModelView.xib; sourceTree = "<group>"; };
+		BAD35F551A317C990065369F /* CategoryModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CategoryModel.h; sourceTree = "<group>"; };
+		BAD35F561A317C990065369F /* CategoryModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CategoryModel.m; sourceTree = "<group>"; };
+		BAD35F5A1A3187BA0065369F /* screening_btn_active@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "screening_btn_active@2x.png"; sourceTree = "<group>"; };
+		BAD35F5B1A3187BA0065369F /* screening_btn_noraml@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "screening_btn_noraml@2x.png"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -851,6 +866,8 @@
 				BA47EC081A1CA10000ACBA05 /* SettingDataModel.m */,
 				BA6230D91A2EFD7D00F471A6 /* GoodsListModel.h */,
 				BA6230DA1A2EFD7D00F471A6 /* GoodsListModel.m */,
+				BAD35F551A317C990065369F /* CategoryModel.h */,
+				BAD35F561A317C990065369F /* CategoryModel.m */,
 			);
 			path = Modal;
 			sourceTree = "<group>";
@@ -970,6 +987,8 @@
 		BA59D75919F894620098BDCF /* Common */ = {
 			isa = PBXGroup;
 			children = (
+				BAD35F4A1A31414E0065369F /* CSLinearLayoutView.h */,
+				BAD35F4B1A31414E0065369F /* CSLinearLayoutView.m */,
 				BA6A44121A2C0DA300BAC95F /* UIViewController+Category.h */,
 				BA6A44131A2C0DA300BAC95F /* UIViewController+Category.m */,
 				65EE0A421A178D2A00F6F38E /* MJ */,
@@ -1264,6 +1283,8 @@
 		BA6230C61A2EBB3600F471A6 /* shopping */ = {
 			isa = PBXGroup;
 			children = (
+				BAD35F5A1A3187BA0065369F /* screening_btn_active@2x.png */,
+				BAD35F5B1A3187BA0065369F /* screening_btn_noraml@2x.png */,
 				BA769CAD1A305A9D00574267 /* search_logo@2x.png */,
 				BA769CA01A300F5F00574267 /* shaixuan_logo@2x.png */,
 				BA769C9A1A3009C200574267 /* price_down_logo@2x.png */,
@@ -1413,6 +1434,9 @@
 			children = (
 				BAA689841A15E81600B201A0 /* OrderCellDetailView.h */,
 				BAA689851A15E81600B201A0 /* OrderCellDetailView.m */,
+				BAD35F4D1A3143B50065369F /* ChannelModelView.h */,
+				BAD35F4E1A3143B50065369F /* ChannelModelView.m */,
+				BAD35F4F1A3143B50065369F /* ChannelModelView.xib */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -1535,6 +1559,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				BA4FB32B1A14D9B800DFECC4 /* Record_chose_btn.png in Resources */,
+				BAD35F5D1A3187BA0065369F /* screening_btn_noraml@2x.png in Resources */,
 				BA95CB121A19DF7800FAE262 /* Record_detail_detail_text.png in Resources */,
 				650F60651A1ED605003DB8F1 /* type_active_btn@2x.png in Resources */,
 				BACD63D81A2C3D8500683E38 /* icon_choose_normal@2x.png in Resources */,
@@ -1565,6 +1590,7 @@
 				657B41581A1732270057F5AE /* hot_logo@2x.png in Resources */,
 				BA95CAFB1A19A22C00FAE262 /* Record_detail_begin_logo.png in Resources */,
 				657B413F1A172B3B0057F5AE /* addview0.jpg in Resources */,
+				BAD35F5C1A3187BA0065369F /* screening_btn_active@2x.png in Resources */,
 				65134D0D1A1A26710011BCF7 /* calendarView.xib in Resources */,
 				65CD13DE1A1C96FB000A4F8E /* tiwen_logo@2x.png in Resources */,
 				657B41571A1732270057F5AE /* fresh_btn@2x.png in Resources */,
@@ -1584,6 +1610,7 @@
 				65D8BBE61A1744DE00E7F68C /* bar_icon_search2.png in Resources */,
 				65134D011A1A24F50011BCF7 /* record_btn@2x.png in Resources */,
 				65134CFF1A1A24F50011BCF7 /* next_month_btn_selected@2x.png in Resources */,
+				BAD35F511A3143B50065369F /* ChannelModelView.xib in Resources */,
 				65134CFC1A1A24F50011BCF7 /* last_month_btn@2x.png in Resources */,
 				BACD63E11A2C3D8500683E38 /* third_word@2x.png in Resources */,
 				65D8BBDE1A1736E300E7F68C /* search_clear_btn@2x.png in Resources */,
@@ -1718,6 +1745,7 @@
 				BA47EC061A1C9F0300ACBA05 /* UserInfo.m in Sources */,
 				BA59D7A819F894620098BDCF /* Global.m in Sources */,
 				BA769CA61A30115300574267 /* SearchGoodsVC.m in Sources */,
+				BAD35F501A3143B50065369F /* ChannelModelView.m in Sources */,
 				BA769CB21A3062C900574267 /* CustomSearchCell.m in Sources */,
 				65EE0A3E1A178CDA00F6F38E /* RefreshTableVC.m in Sources */,
 				BA59D7B819F894620098BDCF /* MKAnnotationView+WebCache.m in Sources */,
@@ -1730,6 +1758,7 @@
 				BA59D7AE19F894620098BDCF /* NSAlert+MKNetworkKitAdditions.m in Sources */,
 				BA769CAB1A30118A00574267 /* SearchResultVC.m in Sources */,
 				BA6230DB1A2EFD7D00F471A6 /* GoodsListModel.m in Sources */,
+				BAD35F571A317C990065369F /* CategoryModel.m in Sources */,
 				BA59D83B19F8ABAB0098BDCF /* SetViewController.m in Sources */,
 				BA5634FA1A15FC8100283A11 /* CustomItoast.m in Sources */,
 				BA59D73019F884560098BDCF /* main.m in Sources */,
@@ -1772,6 +1801,7 @@
 				BA59D7B119F894620098BDCF /* NSDictionary+RequestEncoding.m in Sources */,
 				BA6A43C81A2C0BA200BAC95F /* VericationCodeVC.m in Sources */,
 				BA6230D41A2EE93B00F471A6 /* B2CShoppingListCell.m in Sources */,
+				BAD35F4C1A31414E0065369F /* CSLinearLayoutView.m in Sources */,
 				BAA689861A15E81600B201A0 /* OrderCellDetailView.m in Sources */,
 				BA59D7A719F894620098BDCF /* CommonMethod.m in Sources */,
 				65EE0A4C1A178D2B00F6F38E /* MJRefreshHeaderView.m in Sources */,

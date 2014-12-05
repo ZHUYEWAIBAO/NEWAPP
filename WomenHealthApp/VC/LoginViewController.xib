@@ -111,6 +111,7 @@
             </state>
             <connections>
                 <action selector="btnClickAction:" destination="-1" eventType="touchUpInside" id="cKF-4L-ZSQ"/>
+                <action selector="forgetPwdAction:" destination="-1" eventType="touchUpInside" id="ML9-Ka-2v9"/>
             </connections>
             <point key="canvasLocation" x="237" y="577"/>
         </button>

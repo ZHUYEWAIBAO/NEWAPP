@@ -240,33 +240,7 @@
 //设置底部tabbar隐藏
 + (void)setTabbarViewHidden
 {
-    
-    //amend by yijing.niu
-//    UITabbarCommonViewController *controller=nil;
-//    UIViewController *centerView=G.mSideBarVC.centerViewController;
-//    if ([centerView isKindOfClass:[UITabbarCommonViewController class]])
-//    {
-//        controller=(UITabbarCommonViewController*)centerView;
-//    }
-//    else if ([centerView isKindOfClass:[UINavigationController class]])
-//    {
-//        UIViewController *currentVC=centerView.currentVisibleController;
-//        if ([currentVC isKindOfClass:[UITabbarCommonViewController class]])
-//        {
-//            controller=(UITabbarCommonViewController*)currentVC;
-//            
-//        }
-//        else
-//        {
-//            return;
-//        }
-//    }
-//    else
-//    {
-//        return;
-//    }
-    //end
-    
+       
     UITabbarCommonViewController *controller =(UITabbarCommonViewController *)[WHSinger share].customTabbr;
     if (![controller isKindOfClass:[UITabbarCommonViewController class]]) {
         return;
@@ -291,31 +265,6 @@
 //设置底部tabbar显示
 + (void)setTabbarViewShow
 {
-    //amend by yijing.niu
-//    UITabbarCommonViewController *controller=nil;
-//    UIViewController *centerView=G.mSideBarVC.centerViewController;
-//    if ([centerView isKindOfClass:[UITabbarCommonViewController class]])
-//    {
-//        controller=(UITabbarCommonViewController*)centerView;
-//    }
-//    else if ([centerView isKindOfClass:[UINavigationController class]])
-//    {
-//        UIViewController *currentVC=centerView.currentVisibleController;
-//        if ([currentVC isKindOfClass:[UITabbarCommonViewController class]])
-//        {
-//            controller=(UITabbarCommonViewController*)currentVC;
-//
-//        }
-//         else
-//         {
-//             return;
-//         }
-//    }
-//    else
-//    {
-//        return;
-//    }
-    //end
     
     UITabbarCommonViewController *controller=(UITabbarCommonViewController *) [WHSinger share].customTabbr;
     if (![controller isKindOfClass:[UITabbarCommonViewController class]]) {

@@ -13,6 +13,9 @@
 @property (weak, nonatomic) IBOutlet UITableView *searchTableView;
 @property (weak, nonatomic) IBOutlet UIImageView *priceSortLogoImageView;
 
+@property (weak, nonatomic) IBOutlet UIView *searchEmptyView;
+@property (weak, nonatomic) IBOutlet UIView *sortView;
+
 @property (strong, nonatomic) NSMutableArray *shopArray;
 
 @property (strong, nonatomic) NSString *currentKeyWords;

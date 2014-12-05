@@ -185,9 +185,16 @@
 - (IBAction)popToNavigation:(id)sender
 {
 
-    [self.navigationController popViewControllerAnimated:YES];
-    
-    
+    if ([self.searchTextField isFirstResponder]) {
+        
+        [self.searchTextField resignFirstResponder];
+        [self.searchTextField setText:@""];
+     
+    }
+    else{
+        [self.navigationController popViewControllerAnimated:YES];
+    }
+ 
 }
 
 - (BOOL)textFieldShouldReturn:(UITextField *)textField

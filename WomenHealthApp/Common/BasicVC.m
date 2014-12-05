@@ -68,7 +68,7 @@
     
     //返回按钮
     [self setTheBackItemButton];
-//    [self setTabBarHiddenAction];
+    [self setTabBarHiddenAction];
     self.view.backgroundColor =[UIColor colorWithRed:243/255.0f green:240/255.0f blue:234/255.0f alpha:1];
 }
 
