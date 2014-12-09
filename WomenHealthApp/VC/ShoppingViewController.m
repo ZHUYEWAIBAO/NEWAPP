@@ -11,13 +11,16 @@
 #import "GoodsListModel.h"
 #import "CalculateHigh.h"
 #import "BannerImageView.h"
+#import "ShoppingDetailVC.h"
 #import "CategoryViewController.h"
 #import "SearchResultVC.h"
 #import "SearchGoodsVC.h"
 #import "AdModal.h"
 
 #define keyBtnInSetx 5
-#define keyBtnInSety 7
+#define keyBtnInSety 0
+#define buttonWidth  50
+#define buttonHeight 40
 
 @interface ShoppingViewController ()
 {
@@ -240,8 +243,6 @@
         
         [keyBtnArray addObject:button];
         
-        float buttonWidth = [CalculateHigh widthForString:word fontSize:13.0 andWidth:SCREEN_SIZE.width] + 20;
-        float buttonHeight = 25;
         
         if (idx > 0) {
             
@@ -379,13 +380,13 @@
 //点击商品触发push详情页
 -(void)tableViewBtnAction:(id)sender
 {
-//    B2CGoodsButton *btn = (B2CGoodsButton *)sender;
-//    
-//    B2CNewGoodsDetailVC *vc = [[B2CNewGoodsDetailVC alloc]initWithNibName:@"B2CNewGoodsDetailVC" bundle:nil];
-//    
-//    vc.goodsId = btn.model.ID;
-//    vc.refererSign = btn.model.REFERER;
-//    [self.navigationController pushViewController:vc animated:YES];
+    B2CGoodsButton *btn = (B2CGoodsButton *)sender;
+    
+    ShoppingDetailVC *vc = [[ShoppingDetailVC alloc]initWithNibName:@"ShoppingDetailVC" bundle:nil];
+    
+    vc.goodsId = btn.model.goods_id;
+
+    [self.navigationController pushViewController:vc animated:YES];
     
 }
 

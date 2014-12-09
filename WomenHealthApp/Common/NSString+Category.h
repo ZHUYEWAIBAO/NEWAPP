@@ -24,4 +24,6 @@
 //手机号码表达式
 - (BOOL)isValidatePhoneNum;
 
++ (NSString *)priceStringWithOneFloat:(NSString *)priceStr;
+
 @end

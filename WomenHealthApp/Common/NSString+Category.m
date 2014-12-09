@@ -42,4 +42,15 @@
     return range.location != NSNotFound;
 }
 
++ (NSString *)priceStringWithOneFloat:(NSString *)priceStr
+{
+    if (priceStr.length == 0) {
+        return @"";
+    }
+    CGFloat price = [priceStr floatValue];
+    
+    return [NSString stringWithFormat:@"¥%.1f",price];
+    
+}
+
 @end

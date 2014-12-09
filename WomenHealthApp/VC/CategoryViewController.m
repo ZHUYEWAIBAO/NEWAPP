@@ -109,15 +109,15 @@
             UIButton *foreButton = [btnArray objectAtIndex:idx - 1];
             
             if (idx%3 == 0) {
-                [button setFrame:CGRectMake(buttonInSetx, buttonInSety + foreButton.frame.origin.y + foreButton.frame.size.height, buttonWidth, buttonHeight)];
+                [button setFrame:CGRectMake(catebuttonInSetx, catebuttonInSety + foreButton.frame.origin.y + foreButton.frame.size.height, catebuttonWidth, catebuttonHeight)];
             }
             else{
             
-                [button setFrame:CGRectMake(buttonInSetx + foreButton.frame.origin.x + foreButton.frame.size.width, foreButton.frame.origin.y, buttonWidth, buttonHeight)];
+                [button setFrame:CGRectMake(catebuttonInSetx + foreButton.frame.origin.x + foreButton.frame.size.width, foreButton.frame.origin.y, catebuttonWidth, catebuttonHeight)];
             }
         }
         else{
-            [button setFrame:CGRectMake(buttonInSetx, buttonInSety + 18, buttonWidth, buttonHeight)];
+            [button setFrame:CGRectMake(catebuttonInSetx, catebuttonInSety + 18, catebuttonWidth, catebuttonHeight)];
         }
 
         [self.goodsMenuView addSubview:button];
@@ -126,7 +126,7 @@
             
             CGRect rect = self.goodsMenuView.frame;
 
-            rect.size.height = button.frame.origin.y + button.frame.size.height + buttonInSety;
+            rect.size.height = button.frame.origin.y + button.frame.size.height + catebuttonInSety;
             
             self.goodsMenuView.frame = rect;
             

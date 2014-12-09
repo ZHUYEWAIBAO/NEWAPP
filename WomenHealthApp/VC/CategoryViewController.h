@@ -9,10 +9,10 @@
 #import "BasicVC.h"
 #import "CSLinearLayoutView.h"
 
-#define buttonInSetx 8
-#define buttonInSety 8
-#define buttonHeight 30
-#define buttonWidth  96
+#define catebuttonInSetx 8
+#define catebuttonInSety 8
+#define catebuttonHeight 30
+#define catebuttonWidth  96
 
 @interface CategoryViewController : BasicVC
 

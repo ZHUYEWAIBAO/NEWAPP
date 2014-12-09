@@ -66,19 +66,19 @@
             //现价
             if (model.promote_price.length > 0) {
                 
-                view.nowPriceLabel.text = [self priceStringWithOneFloat:model.promote_price];
+                view.nowPriceLabel.text = [NSString priceStringWithOneFloat:model.promote_price];
             }
             else{
                 if(model.shop_price.length > 0){
                     
-                    view.nowPriceLabel.text = [self priceStringWithOneFloat:model.shop_price];
+                    view.nowPriceLabel.text = [NSString priceStringWithOneFloat:model.shop_price];
                     
                 }
             }
             view.nowPriceLabel.textColor = RGBACOLOR(254, 111, 117, 1.0);
             
             //原价
-            view.marketPriceLabel.text= [self priceStringWithOneFloat:model.market_price];
+            view.marketPriceLabel.text= [NSString priceStringWithOneFloat:model.market_price];
             view.marketPriceLabel.strikeThroughEnabled=YES;
             view.marketPriceLabel.textColor=[UIColor darkGrayColor];
             
@@ -89,17 +89,6 @@
         
     }
     
-}
-
-- (NSString *)priceStringWithOneFloat:(NSString *)priceStr
-{
-    if (priceStr.length == 0) {
-        return @"";
-    }
-    CGFloat price = [priceStr floatValue];
-
-    return [NSString stringWithFormat:@"¥%.1f",price];
-
 }
 
 @end
