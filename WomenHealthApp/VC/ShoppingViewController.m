@@ -240,8 +240,8 @@
         
         [keyBtnArray addObject:button];
         
-        float buttonWidth = [CalculateHigh widthForString:word fontSize:13.0 andWidth:SCREEN_SIZE.width] + 20;
-        float buttonHeight = 25;
+//        float buttonWidth = [CalculateHigh widthForString:word fontSize:13.0 andWidth:SCREEN_SIZE.width] + 20;
+//        float buttonHeight = 25;
         
         if (idx > 0) {
             
