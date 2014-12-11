@@ -45,7 +45,7 @@
 #define NOTIFICATION_ACTIVE                          @"NOTIFICATION_ACTIVE"     //从后台唤醒APP
 #define NOTIFICATION_USER_LOGIN                      @"NOTIFICATION_USER_LOGIN" //用户登录之后
 #define NOTIFICATION_REFRESH_ORDERRECORD             @"NOTIFICATION_REFRESH_ORDERRECORD" //刷新订单记录列表
-#define NOTIFICATION_USER_INFO                       @"NOTIFICATION_USER_INFO" //获取用户信息
+#define NOTIFICATION_SHOP_SELECT                     @"NOTIFICATION_SHOP_SELECT" //购物筛选
 //====================================
 
 //全局变量

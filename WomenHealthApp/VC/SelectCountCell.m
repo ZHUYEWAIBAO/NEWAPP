@@ -11,7 +11,8 @@
 @implementation SelectCountCell
 
 - (void)awakeFromNib {
-    // Initialization code
+    
+    _buttonArray = [[NSMutableArray alloc]initWithCapacity:0];
 }
 
 - (void)setSelected:(BOOL)selected animated:(BOOL)animated {

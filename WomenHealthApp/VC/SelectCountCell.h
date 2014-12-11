@@ -10,4 +10,8 @@
 
 @interface SelectCountCell : UITableViewCell
 
+@property (weak, nonatomic) IBOutlet UILabel *nameLabel;
+
+@property (strong, nonatomic) NSMutableArray *buttonArray;
+
 @end

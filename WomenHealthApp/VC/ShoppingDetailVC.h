@@ -38,4 +38,7 @@
 
 @property (strong, nonatomic)IBOutlet UIView *imageTextView;
 
+@property (weak, nonatomic)IBOutlet UIButton *blackButton;
+
+
 @end

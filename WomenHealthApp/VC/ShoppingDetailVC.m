@@ -11,11 +11,9 @@
 #import "ShoppingParameterView.h"
 #import "ShoppingCommentView.h"
 #import "B2CSelectCountView.h"
+#import "JSONKit.h"
 
-#define TAG_BUYNOW 100
-#define TAG_ADDCAR 101
-
-@interface ShoppingDetailVC ()<UIScrollViewDelegate>
+@interface ShoppingDetailVC ()<UIScrollViewDelegate,B2CSelectCountViewDelegate>
 
 /**
  *  选择数量的view
@@ -47,6 +45,7 @@
     
     _selectCountView = (B2CSelectCountView *)[[[NSBundle mainBundle] loadNibNamed:@"B2CSelectCountView" owner:self options:nil] firstObject];
     [_selectCountView layOutTheCountView];
+    [_selectCountView setDelegate:self];
     _selectCountView.frame = CGRectMake(0, SCREEN_SIZE.height, _selectCountView.frame.size.width, _selectCountView.frame.size.height);
     
     
@@ -288,28 +287,93 @@
 
 - (IBAction)buyClickAction:(id)sender
 {
-    UIButton *btn = (UIButton *)sender;
-    
-    switch (btn.tag) {
-        case TAG_BUYNOW:{
-            
-        }
-            break;
-       
-        case TAG_ADDCAR:{
-            
-        }
-            break;
-            
-        default:
-            break;
-    }
-    
-    [UIView animateWithDuration:0.3f animations:^{
+
+    [UIView animateWithDuration:0.2f animations:^{
+        
+        self.blackButton.alpha = 0.3;
         _selectCountView.frame = CGRectMake(0, self.view.frame.size.height - _selectCountView.frame.size.height, _selectCountView.frame.size.width, _selectCountView.frame.size.height);
+ 
         [self.view addSubview:_selectCountView];
         
     }];
+}
+
+- (IBAction)blackBtnAction:(id)sender
+{
+    [UIView animateWithDuration:0.2f animations:^{
+        
+        self.blackButton.alpha = 0.0;
+        _selectCountView.frame = CGRectMake(0, SCREEN_SIZE.height, _selectCountView.frame.size.width, _selectCountView.frame.size.height);
+        
+        
+    } completion:^(BOOL finished) {
+        [_selectCountView removeFromSuperview];
+    }];
+}
+
+#pragma mark - B2CSelectCountViewDelegate
+- (void)B2CSelectCountView:(B2CSelectCountView *)view params:(NSMutableDictionary *)dic
+{
+    if (![USERINFO isLogin]) {
+        [self presentLoginVCAction];
+        return;
+    }
+    [self addToShopCart:dic];
+}
+
+- (void)B2CSelectCountView:(B2CSelectCountView *)view dismiss:(BOOL)dismiss
+{
+    [UIView animateWithDuration:0.2f animations:^{
+        
+        self.blackButton.alpha = 0.0;
+        _selectCountView.frame = CGRectMake(0, SCREEN_SIZE.height, _selectCountView.frame.size.width, _selectCountView.frame.size.height);
+        
+    
+    } completion:^(BOOL finished) {
+        [_selectCountView removeFromSuperview];
+    }];
+}
+
+- (void)addToShopCart:(NSMutableDictionary *)dictionary
+{
+    [SVProgressHUD showWithMaskType:SVProgressHUDMaskTypeClear];
+    
+    [self.params removeAllObjects];
+    [self.params setObject:[dictionary JSONString] forKey:@"goods"];
+    NSString *path = [NSString stringWithFormat:@"/api/ec/flow.php?uid=%@&step=add_to_cart",USERINFO.uid];
+    
+    [NETWORK_ENGINE requestWithPath:path Params:self.params CompletionHandler:^(MKNetworkOperation *completedOperation) {
+        
+        NSDictionary *dic=[completedOperation responseDecodeToDic];
+        
+        NSDictionary *statusDic = [dic objectForKey:@"status"];
+        
+        if ([@"1" isEqualToString:CHECK_VALUE([statusDic objectForKey:@"statu"])]) {
+            [SVProgressHUD showSuccessWithStatus:@"添加购物车成功"];
+            
+            [UIView animateWithDuration:0.2f animations:^{
+                
+                self.blackButton.alpha = 0.0;
+                _selectCountView.frame = CGRectMake(0, SCREEN_SIZE.height, _selectCountView.frame.size.width, _selectCountView.frame.size.height);
+                
+                
+            } completion:^(BOOL finished) {
+                [_selectCountView removeFromSuperview];
+            }];
+
+        }
+        else{
+            
+            [SVProgressHUD showErrorWithStatus:@"服务器忙，请稍候再试"];
+        }
+        [SVProgressHUD dismiss];
+        
+    } ErrorHandler:^(MKNetworkOperation *completedOperation, NSError *error) {
+        
+        [SVProgressHUD showErrorWithStatus:@"服务器忙，请稍候再试"];
+        
+    }];
+
 }
 
 - (IBAction)pushToShopCarAction:(id)sender

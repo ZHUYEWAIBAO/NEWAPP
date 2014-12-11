@@ -176,6 +176,11 @@
 		BA59D83019F8AAF90098BDCF /* ShoppingViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BA59D82E19F8AAF90098BDCF /* ShoppingViewController.m */; };
 		BA59D83119F8AAF90098BDCF /* ShoppingViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = BA59D82F19F8AAF90098BDCF /* ShoppingViewController.xib */; };
 		BA59D83B19F8ABAB0098BDCF /* SetViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BA59D83919F8ABAB0098BDCF /* SetViewController.m */; };
+		BA5D08F01A37FB9A0028FBD3 /* ForgetPwdCodeVC.m in Sources */ = {isa = PBXBuildFile; fileRef = BA5D08EE1A37FB9A0028FBD3 /* ForgetPwdCodeVC.m */; };
+		BA5D08F11A37FB9A0028FBD3 /* ForgetPwdCodeVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = BA5D08EF1A37FB9A0028FBD3 /* ForgetPwdCodeVC.xib */; };
+		BA5D08F51A37FBCE0028FBD3 /* ForgetPwdSetVC.m in Sources */ = {isa = PBXBuildFile; fileRef = BA5D08F31A37FBCE0028FBD3 /* ForgetPwdSetVC.m */; };
+		BA5D08F61A37FBCE0028FBD3 /* ForgetPwdSetVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = BA5D08F41A37FBCE0028FBD3 /* ForgetPwdSetVC.xib */; };
+		BA5D08F91A3853120028FBD3 /* JSONKit.m in Sources */ = {isa = PBXBuildFile; fileRef = BA5D08F81A3853120028FBD3 /* JSONKit.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		BA6230C81A2EBB4200F471A6 /* notice_logo@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BA6230C71A2EBB4200F471A6 /* notice_logo@2x.png */; };
 		BA6230CB1A2EDC8600F471A6 /* CalculateHigh.m in Sources */ = {isa = PBXBuildFile; fileRef = BA6230CA1A2EDC8600F471A6 /* CalculateHigh.m */; };
 		BA6230D21A2EE93B00F471A6 /* B2CShopItemView.m in Sources */ = {isa = PBXBuildFile; fileRef = BA6230CD1A2EE93B00F471A6 /* B2CShopItemView.m */; };
@@ -566,6 +571,14 @@
 		BA59D82F19F8AAF90098BDCF /* ShoppingViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ShoppingViewController.xib; sourceTree = "<group>"; };
 		BA59D83819F8ABAB0098BDCF /* SetViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SetViewController.h; sourceTree = "<group>"; };
 		BA59D83919F8ABAB0098BDCF /* SetViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SetViewController.m; sourceTree = "<group>"; };
+		BA5D08ED1A37FB9A0028FBD3 /* ForgetPwdCodeVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ForgetPwdCodeVC.h; sourceTree = "<group>"; };
+		BA5D08EE1A37FB9A0028FBD3 /* ForgetPwdCodeVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ForgetPwdCodeVC.m; sourceTree = "<group>"; };
+		BA5D08EF1A37FB9A0028FBD3 /* ForgetPwdCodeVC.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ForgetPwdCodeVC.xib; sourceTree = "<group>"; };
+		BA5D08F21A37FBCE0028FBD3 /* ForgetPwdSetVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ForgetPwdSetVC.h; sourceTree = "<group>"; };
+		BA5D08F31A37FBCE0028FBD3 /* ForgetPwdSetVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ForgetPwdSetVC.m; sourceTree = "<group>"; };
+		BA5D08F41A37FBCE0028FBD3 /* ForgetPwdSetVC.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ForgetPwdSetVC.xib; sourceTree = "<group>"; };
+		BA5D08F71A3853120028FBD3 /* JSONKit.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JSONKit.h; sourceTree = "<group>"; };
+		BA5D08F81A3853120028FBD3 /* JSONKit.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JSONKit.m; sourceTree = "<group>"; };
 		BA6230C71A2EBB4200F471A6 /* notice_logo@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "notice_logo@2x.png"; sourceTree = "<group>"; };
 		BA6230C91A2EDC8600F471A6 /* CalculateHigh.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CalculateHigh.h; sourceTree = "<group>"; };
 		BA6230CA1A2EDC8600F471A6 /* CalculateHigh.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CalculateHigh.m; sourceTree = "<group>"; };
@@ -1040,6 +1053,8 @@
 		BA59D75919F894620098BDCF /* Common */ = {
 			isa = PBXGroup;
 			children = (
+				BA5D08F71A3853120028FBD3 /* JSONKit.h */,
+				BA5D08F81A3853120028FBD3 /* JSONKit.m */,
 				BAD35F4A1A31414E0065369F /* CSLinearLayoutView.h */,
 				BAD35F4B1A31414E0065369F /* CSLinearLayoutView.m */,
 				BA6A44121A2C0DA300BAC95F /* UIViewController+Category.h */,
@@ -1388,6 +1403,12 @@
 				BA6A43B71A2C0BA200BAC95F /* RegisterProtocolVC.h */,
 				BA6A43B81A2C0BA200BAC95F /* RegisterProtocolVC.m */,
 				BA6A43B91A2C0BA200BAC95F /* RegisterProtocolVC.xib */,
+				BA5D08ED1A37FB9A0028FBD3 /* ForgetPwdCodeVC.h */,
+				BA5D08EE1A37FB9A0028FBD3 /* ForgetPwdCodeVC.m */,
+				BA5D08EF1A37FB9A0028FBD3 /* ForgetPwdCodeVC.xib */,
+				BA5D08F21A37FBCE0028FBD3 /* ForgetPwdSetVC.h */,
+				BA5D08F31A37FBCE0028FBD3 /* ForgetPwdSetVC.m */,
+				BA5D08F41A37FBCE0028FBD3 /* ForgetPwdSetVC.xib */,
 			);
 			name = Login;
 			sourceTree = "<group>";
@@ -1667,6 +1688,7 @@
 				65EE0A371A17897400F6F38E /* delete_btn@2x.png in Resources */,
 				657B41581A1732270057F5AE /* hot_logo@2x.png in Resources */,
 				BA07DBA01A353AE100CB872D /* share_btn@2x.png in Resources */,
+				BA5D08F61A37FBCE0028FBD3 /* ForgetPwdSetVC.xib in Resources */,
 				BA95CAFB1A19A22C00FAE262 /* Record_detail_begin_logo.png in Resources */,
 				657B413F1A172B3B0057F5AE /* addview0.jpg in Resources */,
 				BAD35F5C1A3187BA0065369F /* screening_btn_active@2x.png in Resources */,
@@ -1690,6 +1712,7 @@
 				65D8BBE61A1744DE00E7F68C /* bar_icon_search2.png in Resources */,
 				65134D011A1A24F50011BCF7 /* record_btn@2x.png in Resources */,
 				65134CFF1A1A24F50011BCF7 /* next_month_btn_selected@2x.png in Resources */,
+				BA5D08F11A37FB9A0028FBD3 /* ForgetPwdCodeVC.xib in Resources */,
 				BAD35F511A3143B50065369F /* ChannelModelView.xib in Resources */,
 				65134CFC1A1A24F50011BCF7 /* last_month_btn@2x.png in Resources */,
 				BACD63E11A2C3D8500683E38 /* third_word@2x.png in Resources */,
@@ -1846,6 +1869,7 @@
 				BA1BB6381A1D9E63000742EC /* CycleScrollView.m in Sources */,
 				BA59D7AE19F894620098BDCF /* NSAlert+MKNetworkKitAdditions.m in Sources */,
 				BA769CAB1A30118A00574267 /* SearchResultVC.m in Sources */,
+				BA5D08F51A37FBCE0028FBD3 /* ForgetPwdSetVC.m in Sources */,
 				BA6230DB1A2EFD7D00F471A6 /* GoodsListModel.m in Sources */,
 				BAD35F571A317C990065369F /* CategoryModel.m in Sources */,
 				BA59D83B19F8ABAB0098BDCF /* SetViewController.m in Sources */,
@@ -1871,6 +1895,7 @@
 				BAB630821A1DF3EE00E3F62D /* BBSMenuModal.m in Sources */,
 				BA6A43C01A2C0BA200BAC95F /* LoginViewController.m in Sources */,
 				BA59D7B619F894620098BDCF /* MKNetworkOperation.m in Sources */,
+				BA5D08F91A3853120028FBD3 /* JSONKit.m in Sources */,
 				BA59D7C119F894620098BDCF /* UIButton+WebCache.m in Sources */,
 				BA6A43C41A2C0BA200BAC95F /* RegisterProtocolVC.m in Sources */,
 				65EE0A4B1A178D2B00F6F38E /* MJRefreshFooterView.m in Sources */,
@@ -1922,6 +1947,7 @@
 				BA59D7C519F894620098BDCF /* UIImageView+WebCache.m in Sources */,
 				BA59D7B219F894620098BDCF /* NSString+MKNetworkKitAdditions.m in Sources */,
 				65CD13B91A1C8BF7000A4F8E /* RecordViewItem.m in Sources */,
+				BA5D08F01A37FB9A0028FBD3 /* ForgetPwdCodeVC.m in Sources */,
 				65134D0C1A1A26710011BCF7 /* calendarView.m in Sources */,
 				BA59D7AC19F894620098BDCF /* UIImage+imageContent.m in Sources */,
 				BA6230E31A2F181200F471A6 /* CategoryViewController.m in Sources */,

@@ -14,6 +14,7 @@
 @property (weak, nonatomic) IBOutlet UITableView *shopTableView;
 
 @property (strong, nonatomic) IBOutlet UIView *headView;
+@property (weak, nonatomic) IBOutlet UIView *emptyView;
 @property (weak, nonatomic) IBOutlet UIScrollView *hotKeyScrollView;
 @property (weak, nonatomic) IBOutlet UIImageView *priceSortLogoImageView;
 

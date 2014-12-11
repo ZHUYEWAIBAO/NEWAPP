@@ -7,6 +7,7 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="ShoppingDetailVC">
             <connections>
+                <outlet property="blackButton" destination="P9L-7r-Rpf" id="plJ-tv-mzw"/>
                 <outlet property="commentLabel" destination="dOM-TY-DDn" id="EnT-XS-p1R"/>
                 <outlet property="commentView" destination="z9t-34-9L7" id="29B-VG-y8C"/>
                 <outlet property="headPageControl" destination="SLp-43-wEr" id="h3Q-cE-KDu"/>
@@ -97,6 +98,17 @@
                     </subviews>
                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                 </view>
+                <button opaque="NO" alpha="0.0" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="P9L-7r-Rpf">
+                    <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                    <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                    <state key="normal">
+                        <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                    </state>
+                    <connections>
+                        <action selector="blackBtnAction:" destination="-1" eventType="touchUpInside" id="aom-KN-ImU"/>
+                    </connections>
+                </button>
             </subviews>
             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
             <point key="canvasLocation" x="218" y="226"/>
