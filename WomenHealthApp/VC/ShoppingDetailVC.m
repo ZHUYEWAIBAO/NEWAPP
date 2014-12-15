@@ -11,6 +11,8 @@
 #import "ShoppingParameterView.h"
 #import "ShoppingCommentView.h"
 #import "B2CSelectCountView.h"
+#import "ShoppingOrderComfirmVC.h"
+#import "AddressViewController.h"
 #import "JSONKit.h"
 
 @interface ShoppingDetailVC ()<UIScrollViewDelegate,B2CSelectCountViewDelegate>
@@ -90,7 +92,7 @@
         }
         else{
             
-            [SVProgressHUD showErrorWithStatus:@"服务器忙，请稍候再试"];
+            [SVProgressHUD showErrorWithStatus:CHECK_VALUE([statusDic objectForKey:@"msg"])];
         }
         [SVProgressHUD dismiss];
         
@@ -106,6 +108,15 @@
 //布局整体页面
 -(void)layOutMainView:(NSMutableArray *)viewArr
 {
+    //商品是否已下架,1表示未下架，0表示已下架
+    if ([@"0" isEqualToString:self.detailModel.infoModel.goods_number]) {
+        
+        [self.gotoBuyBtn setHidden:YES];
+        [self.addToCarBtn setHidden:YES];
+        [self.downAlertLabel setHidden:NO];
+        
+    }
+    
     [self layOutHeadView];
     [self layOutTheTitleView];
     [self layOutTheParameterView];
@@ -274,7 +285,8 @@
 #pragma mark - 按钮事件
 - (void)shareAction:(id)sender
 {
-    
+    AddressViewController *vc = [[AddressViewController alloc]initWithNibName:@"AddressViewController" bundle:nil];
+    [self.navigationController pushViewController:vc animated:YES];
 }
 
 - (IBAction)imageTextClickAction:(id)sender
@@ -312,13 +324,21 @@
 }
 
 #pragma mark - B2CSelectCountViewDelegate
-- (void)B2CSelectCountView:(B2CSelectCountView *)view params:(NSMutableDictionary *)dic
+- (void)B2CSelectCountView:(B2CSelectCountView *)view params:(NSMutableDictionary *)dic isAddToCar:(BOOL)addToCar
 {
     if (![USERINFO isLogin]) {
         [self presentLoginVCAction];
         return;
     }
-    [self addToShopCart:dic];
+    if (addToCar) {
+        [self addToShopCart:dic];
+    }
+    else{
+        ShoppingOrderComfirmVC *vc = [[ShoppingOrderComfirmVC alloc]initWithNibName:@"ShoppingOrderComfirmVC" bundle:nil];
+        vc.jsonString = [dic JSONString];
+        [self.navigationController pushViewController:vc animated:YES];
+    }
+    
 }
 
 - (void)B2CSelectCountView:(B2CSelectCountView *)view dismiss:(BOOL)dismiss
@@ -334,6 +354,7 @@
     }];
 }
 
+//加入购物车
 - (void)addToShopCart:(NSMutableDictionary *)dictionary
 {
     [SVProgressHUD showWithMaskType:SVProgressHUDMaskTypeClear];
@@ -375,6 +396,7 @@
     }];
 
 }
+
 
 - (IBAction)pushToShopCarAction:(id)sender
 {

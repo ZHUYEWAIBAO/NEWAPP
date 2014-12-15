@@ -20,6 +20,10 @@
  */
 @property (strong, nonatomic)NSString *goodsId;
 
+@property (weak, nonatomic) IBOutlet UIButton *gotoBuyBtn;
+@property (weak, nonatomic) IBOutlet UIButton *addToCarBtn;
+@property (weak, nonatomic) IBOutlet UILabel *downAlertLabel;
+
 @property (strong, nonatomic)GoodDetailModel *detailModel;
 
 @property (strong, nonatomic)IBOutlet UIView *headView;

@@ -284,23 +284,43 @@
     switch (button.tag) {
             
         case TAG_BUYNOW:{
-
-        }
-            break;
-            
-        case TAG_ADDCAR:{
             NSMutableArray *array = [[NSMutableArray alloc]init];
             
-            for (NSString *str in _paramDic) {
-                [array addObject:str];
+            for (NSInteger i=0;i < [[_paramDic allValues]count];i++) {
+                [array addObject:[[_paramDic allValues]objectAtIndex:i]];
+            }
+            
+            if (array.count < self.detailModel.specificationModel.specificationArray.count) {
+                [[CustomItoast showText:@"请选择您要的商品信息"] showInView:self];
+                return;
             }
             
             [_goodsDic setObject:array forKey:@"spec"];
             [_goodsDic setObject:self.detailModel.infoModel.goods_id forKey:@"goods_id"];
             [_goodsDic setObject:[NSString stringWithFormat:@"%ld",self.countView.totalNum] forKey:@"number"];
             
-            if ([self.delegate respondsToSelector:@selector(B2CSelectCountView:params:)]) {
-                [self.delegate B2CSelectCountView:self params:_goodsDic];
+            if ([self.delegate respondsToSelector:@selector(B2CSelectCountView:params:isAddToCar:)]) {
+                [self.delegate B2CSelectCountView:self params:_goodsDic isAddToCar:NO];
+            }
+        }
+            break;
+            
+        case TAG_ADDCAR:{
+            NSMutableArray *array = [[NSMutableArray alloc]init];
+            
+            for (NSInteger i=0;i < [[_paramDic allValues]count];i++) {
+                [array addObject:[[_paramDic allValues]objectAtIndex:i]];
+            }
+            if (array.count < self.detailModel.specificationModel.specificationArray.count) {
+                [[CustomItoast showText:@"请选择您要的商品信息"] showInView:self];
+                return;
+            }
+            [_goodsDic setObject:array forKey:@"spec"];
+            [_goodsDic setObject:self.detailModel.infoModel.goods_id forKey:@"goods_id"];
+            [_goodsDic setObject:[NSString stringWithFormat:@"%ld",self.countView.totalNum] forKey:@"number"];
+            
+            if ([self.delegate respondsToSelector:@selector(B2CSelectCountView:params:isAddToCar:)]) {
+                [self.delegate B2CSelectCountView:self params:_goodsDic isAddToCar:YES];
             }
         }
             break;

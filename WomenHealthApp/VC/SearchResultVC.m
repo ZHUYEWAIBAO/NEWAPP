@@ -9,6 +9,7 @@
 #import "SearchResultVC.h"
 #import "GoodsListModel.h"
 #import "B2CShoppingListCell.h"
+#import "ShoppingDetailVC.h"
 #import "CategoryViewController.h"
 
 @interface SearchResultVC ()
@@ -43,6 +44,7 @@
     
     //允许上拉分页加载
     self.isNeedLoadMore=YES;
+    self.page = 1;
     
     currentSortId = @"is_best";
     currentMin_price = @"0";
@@ -181,7 +183,13 @@
 //点击商品触发push详情页
 -(void)tableViewBtnAction:(id)sender
 {
-
+    B2CGoodsButton *btn = (B2CGoodsButton *)sender;
+    
+    ShoppingDetailVC *vc = [[ShoppingDetailVC alloc]initWithNibName:@"ShoppingDetailVC" bundle:nil];
+    
+    vc.goodsId = btn.model.goods_id;
+    
+    [self.navigationController pushViewController:vc animated:YES];
 }
 
 #pragma mark - 分页加载

@@ -7,6 +7,8 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="SetViewController">
             <connections>
+                <outlet property="headImageView" destination="lVI-v0-0N4" id="v6T-PF-61s"/>
+                <outlet property="headTitleLabel" destination="PkX-5t-QZk" id="cK6-fQ-RR6"/>
                 <outlet property="loginView" destination="bmd-7x-dWd" id="J0s-IM-6Ry"/>
                 <outlet property="setTableView" destination="jK8-Jk-SKv" id="tr6-me-AFV"/>
                 <outlet property="view" destination="sDu-eX-O2x" id="O1V-dg-r0O"/>

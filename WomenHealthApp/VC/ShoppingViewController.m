@@ -162,14 +162,12 @@
 {
     
     NSMutableArray *viewsArray = [@[] mutableCopy];
- 
-    NSArray *colorArray = @[[UIColor cyanColor],[UIColor blueColor]];
+
     for (int i = 0; i < adArray.count; ++i) {
         
         AdModal *model = [adArray objectAtIndex:i];
         BannerImageView *imageView = [[BannerImageView alloc]initWithFrame:CGRectMake(0, 0, 320, 120)];
-        
-        [imageView setBackgroundColor:[colorArray objectAtIndex:i]];
+   
         //下载图片
         UIActivityIndicatorView *myac=[[UIActivityIndicatorView alloc]initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleGray];
         [myac setFrame:CGRectMake(imageView.frame.size.width/2-10, imageView.frame.size.height/2-10, 20, 20)];

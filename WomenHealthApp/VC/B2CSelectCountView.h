@@ -41,7 +41,7 @@
 @protocol B2CSelectCountViewDelegate <NSObject>
 @optional
 
-- (void)B2CSelectCountView:(B2CSelectCountView *)view params:(NSMutableDictionary *)dic;
+- (void)B2CSelectCountView:(B2CSelectCountView *)view params:(NSMutableDictionary *)dic isAddToCar:(BOOL)addToCar;
 
 - (void)B2CSelectCountView:(B2CSelectCountView *)view dismiss:(BOOL)dismiss;
 

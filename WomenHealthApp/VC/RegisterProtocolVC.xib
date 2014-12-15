@@ -1,27 +1,14 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="5056" systemVersion="13E28" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="6254" systemVersion="14B25" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none">
     <dependencies>
-        <deployment defaultVersion="1536" identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="3733"/>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6247"/>
     </dependencies>
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="RegisterProtocolVC">
             <connections>
-                <outlet property="fifthContentLabel" destination="eR6-ut-EwF" id="3VP-2b-AhM"/>
-                <outlet property="fifthTitleLabel" destination="xLV-3d-SHc" id="Wss-Gs-Lj2"/>
                 <outlet property="firstContentLabel" destination="sRB-Xw-6Vv" id="ea3-bG-0oJ"/>
-                <outlet property="firstTitleLabel" destination="4Kw-9q-i3h" id="b81-gp-091"/>
-                <outlet property="fourthContentLabel" destination="5RL-nL-rm5" id="FFJ-VW-86s"/>
-                <outlet property="fourthTitleLabel" destination="7zn-Di-UQr" id="nQk-1I-j19"/>
-                <outlet property="secondContentLabel" destination="cBa-BF-HLb" id="aJd-NR-oud"/>
-                <outlet property="secondTitleLabel" destination="snL-Nr-P3i" id="qCU-9W-4l5"/>
-                <outlet property="sevenContentLabel" destination="btT-1M-oZe" id="Egi-AS-1UE"/>
-                <outlet property="sevenTitleLabel" destination="dmc-1d-9Ap" id="cCC-H6-0uV"/>
-                <outlet property="sixContentLabel" destination="dtH-HO-PB2" id="DuC-Xc-1ct"/>
-                <outlet property="sixTitleLabel" destination="lRe-1F-rtI" id="yCr-BZ-grc"/>
                 <outlet property="textScrollView" destination="ikA-Xp-ntA" id="SXT-0L-H2d"/>
-                <outlet property="thirdContentLabel" destination="01X-Bz-9v0" id="uRH-V5-LMx"/>
-                <outlet property="thirdTitleLabel" destination="27l-sl-Ige" id="nNX-kS-cPm"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
         </placeholder>
@@ -34,186 +21,10 @@
                     <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                     <subviews>
-                        <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="重要须知:" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="4Kw-9q-i3h">
-                            <rect key="frame" x="10" y="9" width="75" height="21"/>
-                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                            <fontDescription key="fontDescription" type="system" pointSize="15"/>
-                            <nil key="highlightedColor"/>
-                        </label>
                         <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="sRB-Xw-6Vv">
-                            <rect key="frame" x="10" y="30" width="300" height="220"/>
-                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                            <mutableString key="text">悦动文化传媒有限公司在此特别提醒用户认真阅读、充分理解本《服务协议》（下称《协议》）--- 用户应认真阅读、充分理解本《协议》中各条款，包括免除或者限制悦动文化传媒责任的免责条款及对用户的权利限制条款。请您审慎阅读并选择接受或不接受本《协议》（未成年人应在法定监护人陪同下阅读）。除非您接受本《协议》所有条款，否则您无权注册、登录或使用本协议所涉相关服务。您的注册、登录、使用等行为将视为对本《协议》的接受，并同意接受本《协议》各项条款的约束。 
-
-本《协议》描述悦动文化传媒与用户之间关于"悦支付"服务相关方面的权利义务。"用户"是指注册、登录、使用、浏览本服务的个人或组织。本《协议》由悦动文化传媒随时更新，更新后的协议条款一旦公布即代替原来的协议条款，恕不再另行通知，用户可在本网站查阅最新版协议条款。在悦动传媒修改《协议》条款后，如果用户不接受修改后的条款，请立即停止使用悦动文化传媒提供的服务，用户继续使用悦动文化传媒提供的服务将被视为已接受了修改后的协议。</mutableString>
-                            <fontDescription key="fontDescription" type="system" pointSize="10"/>
-                            <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
-                            <nil key="highlightedColor"/>
-                        </label>
-                        <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="一、使用规则 " lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="snL-Nr-P3i">
-                            <rect key="frame" x="10" y="262" width="126" height="21"/>
-                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                            <fontDescription key="fontDescription" type="system" pointSize="15"/>
-                            <nil key="highlightedColor"/>
-                        </label>
-                        <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="cBa-BF-HLb">
-                            <rect key="frame" x="10" y="283" width="300" height="1200"/>
-                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                            <mutableString key="text">1、用户充分了解并同意，悦动文化传媒的"悦支付"仅为用户提供信息分享、传送及获取的平台，用户必须为自己注册账号下的一切行为负责，包括您所传送的任何内容以及由此产生的任何结果。用户应对悦动文化传媒的"悦支付"中的内容自行加以判断，并承担因使用内容而引起的所有风险，包括因对内容的正确性、完整性或实用性的依赖而产生的风险。悦动文化传媒公司无法且不会对因用户行为而导致的任何损失或损害承担责任。 
-
-2、用户在悦动文化传媒"悦支付"服务中或通过悦动文化传媒"悦支付"服务所传送的任何内容并不反映悦动文化传媒公司的观点或政策，悦动文化传媒公司对此不承担任何责任。 
-
-3、用户充分了解并同意，悦动文化传媒"悦支付"是一个基于地铁内悦动终端机，解决支付功能的软件，用户须对在悦动文化传媒"悦支付"上的注册信息的真实性、合法性、有效性承担全部责任，用户不得冒充他人；不得利用他人的名义传播任何信息；不得恶意使用注册账号导致其他用户误认；否则悦动文化传媒公司有权立即停止提供服务，收回悦动文化传媒"地铁支付"账号并由用户独自承担由此而产生的一切法律责任。 
-
-4、用户须对在悦动文化传媒"悦支付"上所传送信息的真实性、合法性、无害性、有效性等全权负责，与用户所传播的信息相关的任何法律责任由用户自行承担，与悦动文化传媒无关。 
-
-5、悦动文化传媒保留因业务发展需要，单方面对本服务的全部或部分服务内容在任何时候不经任何通知的情况下变更、暂停、限制、终止或撤销悦动文化传媒"地铁支付"服务的权利，用户需承担此风险。 
-
-6、悦动文化传媒"悦支付"提供的服务中可能包括广告，用户同意在使用过程中显示悦动文化传媒"地铁支付"和第三方供应商、合作伙伴提供的广告。 
-
-7、用户不得利用悦动文化传媒"悦支付"或悦动文化传媒"悦支付"服务制作、上载、复制、发送如下内容： 
-
-(1) 反对宪法所确定的基本原则的； 
-
-(2) 危害国家安全，泄露国家秘密，颠覆国家政权，破坏国家统一的； 
-
-(3) 损害国家荣誉和利益的； 
-
-(4) 煽动民族仇恨、民族歧视，破坏民族团结的； 
-
-(5) 破坏国家宗教政策，宣扬邪教和封建迷信的； 
-
-(6) 散布谣言，扰乱社会秩序，破坏社会稳定的； 
-
-(7) 散布淫秽、色情、赌博、暴力、凶杀、恐怖或者教唆犯罪的； 
-
-(8) 侮辱或者诽谤他人，侵害他人合法权益的； 
-
-(9) 含有法律、行政法规禁止的其他内容的信息。 
-
-8、悦动文化传媒公司可依其合理判断，对违反有关法律法规或本协议约定；或侵犯、妨害、威胁任何人权利或安全的内容，或者假冒他人的行为，悦动文化传媒公司有权依法停止传输任何前述内容，并有权依其自行判断对违反本条款的任何人士采取适当的法律行动，包括但不限于，从悦动文化传媒"悦支付"服务中删除具有违法性、侵权性、不当性等内容，终止违反者的成员资格，阻止其使用悦动文化传媒"地铁支付"全部或部分服务，并且依据法律法规保存有关信息并向有关部门报告等。 
-
-9、用户权利及义务： 
-
-(1) 悦动文化传媒"悦支付"账号的所有权归悦动文化传媒公司所有，用户完成申请注册手续后，获得悦动文化传媒"悦支付"账号的使用权，该使用权仅属于初始申请注册人，禁止赠与、借用、租用、转让或售卖。悦动文化传媒公司因经营需要，有权回收用户的悦动文化传媒"悦支付"账号。 
-
-(2) 用户有权更改、删除在悦动文化传媒"悦支付"上的个人资料、注册信息及传送内容等，但需注意，删除有关信息的同时也会删除任何您储存在系统中的文字和图片。用户需承担该风险。 
-
-(3) 用户有责任妥善保管注册账号信息及账号密码的安全，用户需要对注册账号以及密码下的行为承担法律责任。用户同意在任何情况下不使用其他成员的账号或密码。在您怀疑他人在使用您的账号或密码时，您同意立即通知悦动文化传媒公司。 
-
-(4) 用户应遵守本协议的各项条款，正确、适当地使用本服务，如因用户违反本协议中的任何条款，悦动文化传媒公司有权依据协议终止对违约用户悦动文化传媒"悦支付"账号提供服务。同时，悦动文化传媒保留在任何时候收回悦动文化传媒"悦支付"账号、用户名的权利。 
-
-(5) 用户注册悦动文化传媒"悦支付"账号后如果长期不登录该账号，悦动文化传媒有权回收该账号，以免造成资源浪费，由此带来问题均由用户自行承担。 </mutableString>
-                            <fontDescription key="fontDescription" type="system" pointSize="10"/>
-                            <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
-                            <nil key="highlightedColor"/>
-                        </label>
-                        <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="二、隐私保护 " lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="27l-sl-Ige">
-                            <rect key="frame" x="10" y="1449" width="126" height="21"/>
-                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                            <fontDescription key="fontDescription" type="system" pointSize="15"/>
-                            <nil key="highlightedColor"/>
-                        </label>
-                        <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="01X-Bz-9v0">
-                            <rect key="frame" x="10" y="1485" width="300" height="290"/>
-                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                            <mutableString key="text">用户同意个人隐私信息是指那些能够对用户进行个人辨识或涉及个人通信的信息，包括下列信息：用户真实姓名，身份证号，手机号码，IP地址。而非个人隐私信息是指用户对本服务的操作状态以及使用习惯等一些明确且客观反映在悦动文化传媒服务器端的基本记录信息和其他一切个人隐私信息范围外的普通信息；以及用户同意公开的上述隐私信息； 
-
-尊重用户个人隐私信息的私有性是悦动文化传媒的一贯制度，悦动文化传媒将会采取合理的措施保护用户的个人隐私信息，除法律或有法律赋予权限的政府部门要求或用户同意等原因外，悦动文化传媒未经用户同意不向除合作单位以外的第三方公开、 透露用户个人隐私信息。 但是，用户在注册时选择同意，或用户与悦动文化传媒及合作单位之间就用户个人隐私信息公开或使用另有约定的除外，同时用户应自行承担因此可能产生的任何风险，悦动文化传媒对此不予负责。同时，为了运营和改善悦动文化传媒的技术和服务，悦动文化传媒将可能会自行收集使用或向第三方提供用户的非个人隐私信息，这将有助于悦动文化传媒向用户提供更好的用户体验和提高悦动文化传媒的服务质量。 
-
-用户同意，在使用悦动文化传媒"悦支付"服务时也同样受悦动文化传媒隐私政策的约束。当您接受本协议条款时，您同样认可并接受悦动文化传媒公司隐私政策的条款。</mutableString>
-                            <fontDescription key="fontDescription" type="system" pointSize="10"/>
-                            <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
-                            <nil key="highlightedColor"/>
-                        </label>
-                        <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="三、悦动文化传媒&quot;悦支付&quot;商标信息 " lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="7zn-Di-UQr">
-                            <rect key="frame" x="10" y="1793" width="290" height="21"/>
-                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                            <fontDescription key="fontDescription" type="system" pointSize="15"/>
-                            <nil key="highlightedColor"/>
-                        </label>
-                        <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="5RL-nL-rm5">
-                            <rect key="frame" x="10" y="1832" width="300" height="90"/>
-                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                            <string key="text">悦动文化传媒"悦支付"服务中所涉及的图形、文字或其组成，以及其他悦动文化传媒标志及产品、服务名称，均为悦动文化传媒公司之商标（以下简称"悦动文化传媒标识"）。未经悦动文化传媒事先书面同意，用户不得将悦动文化传媒标识以任何方式展示或使用或作其他处理，也不得向他人表明您有权展示、使用、或其他有权处理悦动文化传媒标识的行为。</string>
-                            <fontDescription key="fontDescription" type="system" pointSize="10"/>
-                            <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
-                            <nil key="highlightedColor"/>
-                        </label>
-                        <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="四、法律责任及免责 " lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="xLV-3d-SHc">
-                            <rect key="frame" x="10" y="1945" width="290" height="21"/>
-                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                            <fontDescription key="fontDescription" type="system" pointSize="15"/>
-                            <nil key="highlightedColor"/>
-                        </label>
-                        <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="eR6-ut-EwF">
-                            <rect key="frame" x="10" y="1993" width="300" height="487"/>
-                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                            <mutableString key="text">1、用户违反本《协议》或相关的服务条款的规定，导致或产生的任何第三方主张的任何索赔、要求或损失，包括合理的律师费，用户同意赔偿悦动文化传媒与合作公司、关联公司，并使之免受损害。 
-
-2、用户因第三方如电信部门的通讯线路故障、技术问题、网络、电脑故障、系统不稳定性及其他各种不可抗力原因而遭受的一切损失，悦动文化传媒及合作单位不承担责任。 
-
-3、因技术故障等不可抗事件影响到服务的正常运行的，悦动文化传媒及合作单位承诺在第一时间内与相关单位配合，及时处理进行修复，但用户因此而遭受的一切损失，悦动文化传媒及合作单位不承担责任。 
-
-4、本服务同大多数互联网服务一样，受包括但不限于用户原因、网络服务质量、社会环境等因素的差异影响，可能受到各种安全问题的侵扰，如他人利用用户的资料，造成现实生活中的骚扰；用户下载安装的其它软件或访问的其他网站中含有"特洛伊木马"等病毒，威胁到用户的计算机信息和数据的安全，继而影响本服务的正常使用等等。用户应加强信息安全及使用者资料的保护意识，要注意加强密码保护，以免遭致损失和骚扰。 
-
-5、用户须明白，使用本服务因涉及Internet服务，可能会受到各个环节不稳定因素的影响。因此，本服务存在因不可抗力、计算机病毒或黑客攻击、系统不稳定、用户所在位置、用户关机以及其他任何技术、互联网络、通信线路原因等造成的服务中断或不能满足用户要求的风险。用户须承担以上风险，悦动文化传媒公司不作担保。对因此导致用户不能发送和接受阅读信息、或接发错信息，悦动文化传媒公司不承担任何责任。 
-
-6、用户须明白，在使用本服务过程中存在有来自任何他人的包括威胁性的、诽谤性的、令人反感的或非法的内容或行为或对他人权利的侵犯（包括知识产权）的匿名或冒名的信息的风险，用户须承担以上风险，悦动文化传媒公司和合作公司对本服务不作任何类型的担保，不论是明确的或隐含的，包括所有有关信息真实性、适商性、适于某一特定用途、所有权和非侵权性的默示担保和条件，对因此导致任何因用户不正当或非法使用服务产生的直接、间接、偶然、特殊及后续的损害，不承担任何责任。 
-
-7、悦动文化传媒公司定义的信息内容包括：文字、软件、声音、相片、录像、图表；在广告中全部内容；悦动文化传媒公司为用户提供的商业信息，所有这些内容受版权、商标权、和其它知识产权和所有权法律的保护。所以，用户只能在悦动文化传媒公司和广告商授权下才能使用这些内容，而不能擅自复制、修改、编纂这些内容、或创造与内容有关的衍生产品。 
-
-8、在任何情况下，悦动文化传媒公司均不对任何间接性、后果性、惩罚性、偶然性、特殊性或刑罚性的损害，包括因用户使用悦动文化传媒"悦支付"服务而遭受的利润损失，承担责任（即使悦动文化传媒"悦支付"已被告知该等损失的可能性亦然）。尽管本协议中可能含有相悖的规定，悦动文化传媒公司对您承担的全部责任，无论因何原因或何种行为方式，始终不超过您在成员期内因使用悦动文化传媒"悦支付"服务而支付给悦动文化传媒公司的费用(如有) 。 </mutableString>
-                            <fontDescription key="fontDescription" type="system" pointSize="10"/>
-                            <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
-                            <nil key="highlightedColor"/>
-                        </label>
-                        <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="五、&quot;悦支付&quot;社区管理规则 " lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="lRe-1F-rtI">
-                            <rect key="frame" x="10" y="2505" width="290" height="21"/>
-                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                            <fontDescription key="fontDescription" type="system" pointSize="15"/>
-                            <nil key="highlightedColor"/>
-                        </label>
-                        <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="dtH-HO-PB2">
-                            <rect key="frame" x="10" y="2542" width="300" height="316"/>
-                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                            <mutableString key="text">"悦支付"是和现实相关的社交产品，希望用户相互尊重，遵循和现实社会一样的社交礼仪。 
-
-为避免遭到用户举报而被封禁设备，请您遵守以下原则： 
-
-1、请勿发送涉嫌性骚扰的文字、图片及语音信息； 
-
-2、请勿使用含色情、淫秽意味或其他令人不适的头像或资料； 
-
-3、请勿在交谈中使用辱骂、恐吓、威胁等言论； 
-
-4、请勿发布各类垃圾广告、恶意信息、诱骗信息； 
-
-5、请勿盗用他人头像或资料，请勿伪装他人身份； 
-
-6、请勿发布不当政治言论或者任何违反国家法规政策的言论。 
-
-因违反用户协议被封禁的用户，可以发邮件到 ducking@yuedo.com.cn 查询封禁时间，并在封禁到期后自助解封。 
-
-如用户违反社区管理规则，悦动文化传媒公司有权依据协议终止对违约用户悦动文化传媒"悦支付"账号提供服务。同时，悦动文化传媒保留在任何时候收回"悦支付"账号的权力。</mutableString>
-                            <fontDescription key="fontDescription" type="system" pointSize="10"/>
-                            <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
-                            <nil key="highlightedColor"/>
-                        </label>
-                        <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="六、其他条款" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="dmc-1d-9Ap">
-                            <rect key="frame" x="15" y="2879" width="290" height="21"/>
-                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                            <fontDescription key="fontDescription" type="system" pointSize="15"/>
-                            <nil key="highlightedColor"/>
-                        </label>
-                        <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="btT-1M-oZe">
-                            <rect key="frame" x="10" y="2923" width="300" height="144"/>
-                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                            <string key="text">1、悦动文化传媒公司郑重提醒用户注意本《协议》中免除悦动文化传媒公司责任和加重用户义务的条款，请用户仔细阅读，自主考虑风险。未成年人应在法定监护人的陪同下阅读本《协议》。以上各项条款内容的最终解释权及修改权归悦动文化传媒公司所有。 
-
-2、本《协议》所定的任何条款的部分或全部无效者，不影响其它条款的效力。 
-
-3、本《协议》的版权由悦动文化传媒所有，悦动文化传媒保留一切解释和修改权利。</string>
+                            <rect key="frame" x="10" y="10" width="300" height="558"/>
+                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" heightSizable="YES"/>
+                            <mutableString key="text">1. 特别提示欢迎您使用舒服。请您仔细阅读以下条款，如果您对本协议的任何条款表示异议，您可以选择不进入舒服。当您注册登录成功，无论是进入舒服，还是在舒服上发布任何内容（即“内容”），均意味着您（即“用户”）完全接受本协议项下的全部条款。2. 服务内容2.1 本服务的具体内容由舒服根据实际情况提供，舒服保留随时变更、中断或终止部分或全部服务的权利。舒服不承担因业务调整给用户造成的损失。除非本协议另有其它明示规定，增加或强化目前本服务的任何新功能，包括所推出的新产品，均受到本协议之规范。用户了解并同意，本服务仅依其当前所呈现的状况提供，对于任何用户通讯或个人化设定之时效、删除、传递错误、未予储存或其它任何问题，舒服均不承担任何责任。2.2 用户理解，舒服仅提供相关的本服务，除此之外与相关本服务有关的设备（如电脑、调制解调器及其他与接入互联网有关的装置）及所需的费用（如为接入互联网而支付的电话费及上网费）均应由用户自行负担。3. 使用规则3.1 用户注册成功后，舒服将给予每个用户一个用户帐号及相应的密码，该用户帐号和密码由用户负责保管；用户应当对以其用户帐号进行的所有活动和事件负法律责任。3.2 用户须对在舒服的注册信息的真实性、合法性、有效性承担全部责任，用户不得冒充他人；不得利用他人的名义发布任何信息；不得恶意使用注册帐户导致其他用户误认；否则舒服有权立即停止提供服务，收回其帐号并由用户独自承担由此而产生的一切法律责任。3.3 用户承诺不得以任何方式利用舒服直接或间接从事违反中国法律、以及社会公德的行为，舒服有权对违反上述承诺的内容予以删除。3.4 用户不得利用舒服服务制作、上载、复制、发布、传播或者转载如下内容：反对宪法所确定的基本原则的；危害国家安全，泄露国家秘密，颠覆国家政权，破坏国家统一的；损害国家荣誉和利益的；煽动民族仇恨、民族歧视，破坏民族团结的；破坏国家宗教政策，宣扬邪教和封建迷信的；散布谣言，扰乱社会秩序，破坏社会稳定的；散布淫秽、色情、赌博、暴力、凶杀、恐怖或者教唆犯罪的；侮辱或者诽谤他人，侵害他人合法权益的；含有法律、行政法规禁止的其他内容的信息。3.5 舒服有权对用户使用舒服的情况进行审查和监督，如用户在使用舒服时违反任何上述规定，舒服或其授权的人有权要求用户改正或直接采取一切必要的措施（包括但不限于更改或删除用户张贴的内容、暂停或终止用户使用舒服的权利）以减轻用户不当行为造成的影响。4. 内容所有权4.1 舒服提供的本服务内容可能包括：文字、软件、声音、图片、录象、图表等。所有这些内容受版权、商标和其它财产所有权法律的保护。4.2 用户只有在获得舒服或其他相关权利人的授权之后才能使用这些内容，不能擅自复制、再造这些内容、或创造与内容有关的派生产品。4.3 舒服鼓励用户充分利用舒服平台自由地张贴和共享自己的信息，但这些内容必须位于公共领域内，或者用户拥有这些内容的使用权。同时，用户对于其创作并在舒服上发布的合法内容依法享有著作权及其相关权利。用户不应通过舒服张贴其它受版权保护的内容。舒服如果收到正式版权投诉，将会删除这些内容。4.4 在舒服张贴的公开信息：在本协议中，“本服务公开使用区域”系指一般公众可以使用的区域。用户同意已就用户于本服务公开使用区域及本服务其它任何公开使用区域张贴之内容，包括照片、文字或影音资料等内容，授予舒服全球性、免许可费及非独家的使用权，舒服可以为了展示、散布及推广张贴前述内容之特定服务目的，将前述内容复制、修改、改写、改编或出版，对于照片及文字影音资料的上述使用，仅为张贴该照片或文字影音于本服务之目的而为之。在用户将前述内容放入本服务期间，使用权持续有效；若用户将前述内容自本服务中删除，则使用权于删除时终止。用户同意已就用户于本服务其它公开使用区域张贴的其它内容，授予舒服免许可费、永久有效、不可撤销、非独家及可完全再授权之权利在全球使用、复制、修改、改写、改编、发行、翻译、创造衍生性著作，及/或将前述内容（部分或全部）加以散布、表演、展示，及/ 或放入利用任何现在已知和未来开发出之形式、媒体和科技之其它著作物当中。5. 隐私保护5.1 保护用户隐私是舒服的一项基本政策，舒服保证不对外公开或向第三方提供用户注册资料及用户在使用本服务时存储在舒服的非公开内容，但下列情况除外：事先获得用户的明确授权；根据有关的法律法规要求；按照相关政府主管部门的要求；为维护社会公众的利益；维护舒服的合法权益。5.2 舒服可能会与第三方合作向用户提供相关的本服务，在此情况下，如该第三方同意承担与舒服同等的保护用户隐私的责任，则舒服可将用户的注册资料等提供给该第三方。5.3 在不透露单个用户隐私资料的前提下，舒服有权对整个用户数据库进行分析并对用户数据库进行商业上的利用。6. 免责声明6.1 用户将照片、个人信息等资料上传到互联网上，有可能会被其他组织或个人复制、转载、擅改或做其它非法用途，用户必须充分意识此类风险的存在。用户明确同意其使用舒服服务所存在的风险（包括但不限于受到第三方侵权或对第三方造成侵权）将完全由其自己承担；因其使用舒服服务而产生的一切后果也由其自己承担，舒服对此不承担任何责任。6.2 舒服不担保本服务一定能满足用户的要求，也不担保本服务不会中断，对本服务的及时性、安全性、准确性、真实性、完整性也都不作担保。6.3 对于因不可抗力或舒服不能控制的原因造成的本服务中断或其它缺陷，舒服不承担任何责任，但将尽力减少因此而给用户造成的损失和影响。6.4 根据有关法律法规，舒服在此郑重提请用户注意，任何经由本服务以上载、张贴、发送电子邮件或任何其它方式传送的资讯、资料、文字、软件、音乐、音讯、照片、图形、视讯、信息或其它资料（以下简称“内容”），无论系公开还是私下传送，均由内容提供者承担责任。舒服无法控制经由本服务传送之内容，因此不保证内容的正确性、完整性或品质。在任何情况下，舒服均不为任何内容负责，包含但不限于任何内容之任何错误或遗漏，以及经由本服务以张贴、发送电子邮件或其它方式传送任何内容而衍生之任何损失或损害。但舒服有权依法停止传输任何前述内容并采取相应行动，包括但不限于暂停用户使用本服务的全部或部分，保存有关记录，并向有关机关报告。6.5 舒服作为网络服务提供者，对非法转载，虚假发布、盗版行为的发生不具备充分的监控能力。舒服对他人在网站上实施的此类侵权行为不承担法律责任，侵权的法律责任概由本人承担。7. 协议修改7.1 舒服将有权随时修改本协议的有关条款，一旦本协议的内容发生变动，舒服将会通过适当方式在网站上提示。7.2 如果不同意舒服对本协议相关条款所做的修改，用户有权停止使用本服务。如果用户继续使用本服务，则视为用户接受舒服对本协议相关条款所做的修改。</mutableString>
                             <fontDescription key="fontDescription" type="system" pointSize="10"/>
                             <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                             <nil key="highlightedColor"/>
@@ -222,8 +33,11 @@
                 </scrollView>
             </subviews>
             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
-            <simulatedStatusBarMetrics key="simulatedStatusBarMetrics"/>
-            <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina4"/>
         </view>
     </objects>
+    <simulatedMetricsContainer key="defaultSimulatedMetrics">
+        <simulatedStatusBarMetrics key="statusBar"/>
+        <simulatedOrientationMetrics key="orientation"/>
+        <simulatedScreenMetrics key="destination" type="retina4"/>
+    </simulatedMetricsContainer>
 </document>
