@@ -139,36 +139,6 @@
             endingLineNumber = "677"
             landmarkName = "-pickerView:didSelectRow:inComponent:"
             landmarkType = "5">
-            <Locations>
-               <Location
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "-[RecordDetailVC pickerView:didSelectRow:inComponent:]"
-                  moduleName = "WomenHealthApp"
-                  urlString = "file:///Users/Daniel/Desktop/WAIBAOAPP/WomenHealthApp/VC/RecordDetailVC.m"
-                  timestampString = "439135338.617163"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "679"
-                  endingLineNumber = "679"
-                  offsetFromSymbolStart = "633">
-               </Location>
-               <Location
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "-[RecordDetailVC pickerView:didSelectRow:inComponent:]"
-                  moduleName = "WomenHealthApp"
-                  urlString = "file:///Users/Daniel/Desktop/WAIBAOAPP/WomenHealthApp/VC/RecordDetailVC.m"
-                  timestampString = "439135338.617421"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "679"
-                  endingLineNumber = "679"
-                  offsetFromSymbolStart = "657">
-               </Location>
-            </Locations>
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -402,6 +372,38 @@
             startingLineNumber = "286"
             endingLineNumber = "286"
             landmarkName = "-recordDetailSureAction:"
+            landmarkType = "5">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "WomenHealthApp/VC/ShoppingDetailVC.m"
+            timestampString = "439822720.892354"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "292"
+            endingLineNumber = "292"
+            landmarkName = "-buyClickAction:"
+            landmarkType = "5">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "WomenHealthApp/VC/B2CSelectCountView.m"
+            timestampString = "439822657.704633"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "212"
+            endingLineNumber = "212"
+            landmarkName = "-btnClickAction:"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>

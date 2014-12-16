@@ -11,7 +11,7 @@
 #import "ShoppingParameterView.h"
 #import "ShoppingCommentView.h"
 #import "B2CSelectCountView.h"
-
+#import "ShoppingCartVC.h"
 #define TAG_BUYNOW 100
 #define TAG_ADDCAR 101
 
@@ -275,7 +275,8 @@
 #pragma mark - 按钮事件
 - (void)shareAction:(id)sender
 {
-    
+    ShoppingCartVC *vc =[[ShoppingCartVC alloc] initWithNibName:@"ShoppingCartVC" bundle:nil];
+    [self.navigationController pushViewController:vc animated:YES];
 }
 
 - (IBAction)imageTextClickAction:(id)sender
@@ -297,6 +298,11 @@
             break;
        
         case TAG_ADDCAR:{
+            //这里添加购物车
+            ShoppingCartVC *vc =[[ShoppingCartVC alloc] initWithNibName:@"ShoppingCartVC" bundle:nil];
+            [self.navigationController pushViewController:vc animated:YES];
+            
+            
             
         }
             break;
