@@ -9,6 +9,7 @@
 #import "LoginViewController.h"
 #import "RegisterViewController.h"
 #import <ShareSDK/ShareSDK.h>
+#import "ForgetPwdCodeVC.h"
 
 #define btn_register  100     //注册
 #define btn_login     101     //登录
@@ -206,8 +207,11 @@
             
             USERINFO.isLogin = YES;
             
-            [USERINFO parseDicToUserInfoModel:statusDic];
+            [USERINFO parseDicToUserInfoModel:[dic objectForKey:@"data"]];
 
+            [[NSNotificationCenter defaultCenter]postNotificationName:NOTIFICATION_USER_LOGIN object:nil];
+            [self.navigationController popViewControllerAnimated:YES];
+            
             [self dismissViewControllerAnimated:YES completion:nil];
             
             [SVProgressHUD dismiss];
@@ -225,7 +229,8 @@
 
 - (IBAction)forgetPwdAction:(id)sender
 {
-    
+    ForgetPwdCodeVC *vc = [[ForgetPwdCodeVC alloc]initWithNibName:@"ForgetPwdCodeVC" bundle:nil];
+    [self.navigationController pushViewController:vc animated:YES];
 }
 
 - (void)didReceiveMemoryWarning {

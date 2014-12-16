@@ -9,13 +9,9 @@
 #import <UIKit/UIKit.h>
 #import "GoodDetailModel.h"
 
-
 @interface CountView : UIView
 {
-    /**
-     *  数量值
-     */
-    NSInteger totalNum;
+
     /**
      *  购买最大数量
      */
@@ -30,6 +26,11 @@
 @property (strong, nonatomic) GoodDetailModel *detailModel;
 
 /**
+ *  数量值
+ */
+@property (assign, nonatomic) NSInteger totalNum;;
+
+/**
  *  数量输入框
  */
 @property (weak, nonatomic) IBOutlet UITextField *countTextField;
@@ -40,22 +41,14 @@
 @protocol B2CSelectCountViewDelegate <NSObject>
 @optional
 
-- (void)B2CSelectCountView:(B2CSelectCountView *)view btnClick:(NSInteger)btnTag goodsCount:(NSInteger)num;
+- (void)B2CSelectCountView:(B2CSelectCountView *)view params:(NSMutableDictionary *)dic isAddToCar:(BOOL)addToCar;
 
+- (void)B2CSelectCountView:(B2CSelectCountView *)view dismiss:(BOOL)dismiss;
 
 @end
 
 @interface B2CSelectCountView : UIView
-{
-    /**
-     *  数量值
-     */
-    NSInteger totalNum;
-    /**
-     *  购买最大数量
-     */
-    NSUInteger maxNum;
-}
+
 @property (weak, nonatomic) id <B2CSelectCountViewDelegate> delegate;
 
 /**
@@ -65,6 +58,8 @@
 @property (weak, nonatomic) IBOutlet UIButton *selectCloseBtn;    //关闭按钮
 @property (weak, nonatomic) IBOutlet UITableView *selectTableView;
 @property (strong, nonatomic) CountView *countView;
+@property (strong, nonatomic) NSMutableDictionary *paramDic;
+@property (strong, nonatomic) NSMutableDictionary *goodsDic;
 /**
  *  展示在view上的数据类
  */

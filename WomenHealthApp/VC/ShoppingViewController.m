@@ -34,6 +34,9 @@
     NSString *currentMin_price;
     NSString *currentMax_price;
     NSString *is_shipping;
+    NSString *is_best;
+    NSString *is_hot;
+    NSString *is_new;
     
     IBOutlet UIButton *zongheButton;
     IBOutlet UIButton *saleButton;
@@ -42,6 +45,8 @@
     NSMutableArray *sortBtnArray;
     
     BOOL isPriceUp;//降序还是升序
+    
+    UIView *noneView;
 }
 
 @end
@@ -79,6 +84,8 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(cateSelectAction:) name:NOTIFICATION_SHOP_SELECT object:nil];
+    
     //将自定义的视图作为导航条leftBarButtonItem
     UIButton *searchBtn = [UIButton buttonWithType:UIButtonTypeCustom];
     searchBtn.frame = CGRectMake(0,0,30,30);
@@ -97,6 +104,23 @@
     [self getTheBannerData];
     [self getTheHotKey];
     [self getTheListData];
+}
+
+- (void)cateSelectAction:(NSNotification *)notification
+{
+    if (notification.userInfo) {
+        currentCategoryId = [notification.userInfo objectForKey:@"cid"];
+        currentMin_price = [notification.userInfo objectForKey:@"minPrice"];
+        currentMax_price = [notification.userInfo objectForKey:@"maxPrice"];
+        
+        is_shipping = [notification.userInfo objectForKey:@"is_shipping"];
+        is_best = [notification.userInfo objectForKey:@"is_best"];
+        is_hot = [notification.userInfo objectForKey:@"is_hot"];
+        is_new = [notification.userInfo objectForKey:@"is_new"];
+
+        self.page = 1;
+        [self getTheListData];
+    }
 }
 
 #pragma mark - 获取广告
@@ -138,14 +162,12 @@
 {
     
     NSMutableArray *viewsArray = [@[] mutableCopy];
- 
-    NSArray *colorArray = @[[UIColor cyanColor],[UIColor blueColor]];
+
     for (int i = 0; i < adArray.count; ++i) {
         
         AdModal *model = [adArray objectAtIndex:i];
         BannerImageView *imageView = [[BannerImageView alloc]initWithFrame:CGRectMake(0, 0, 320, 120)];
-        
-        [imageView setBackgroundColor:[colorArray objectAtIndex:i]];
+   
         //下载图片
         UIActivityIndicatorView *myac=[[UIActivityIndicatorView alloc]initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleGray];
         [myac setFrame:CGRectMake(imageView.frame.size.width/2-10, imageView.frame.size.height/2-10, 20, 20)];
@@ -243,8 +265,6 @@
         
         [keyBtnArray addObject:button];
         
-
-        
         if (idx > 0) {
             
             UIButton *foreButton = [keyBtnArray objectAtIndex:idx - 1];
@@ -271,6 +291,19 @@
 
     NSString *path = [NSString stringWithFormat:@"/api/ec/search.php?keywords=%@&category=%@&sort=%@&order=%@&min_price=%@&max_price=%@&page=%ld",currentKeyWords,currentCategoryId,currentSortId,currentOrdergoryId,currentMin_price,currentMax_price,self.page];
     
+    if (is_shipping.length > 0) {
+        path = [path stringByAppendingString:@"&is_shipping=1"];
+    }
+    if (is_best.length > 0) {
+        path = [path stringByAppendingString:@"&is_best=1"];
+    }
+    if (is_hot.length > 0) {
+        path = [path stringByAppendingString:@"&is_hot=1"];
+    }
+    if (is_new.length > 0) {
+        path = [path stringByAppendingString:@"&is_new=1"];
+    }
+    
     [NETWORK_ENGINE requestWithPath:path Params:nil CompletionHandler:^(MKNetworkOperation *completedOperation) {
         
         NSDictionary *dic=[completedOperation responseDecodeToDic];
@@ -284,8 +317,12 @@
             self.totalRowNum = [CHECK_VALUE([data objectForKey:@"total_recode"]) integerValue];
             
             if (self.totalRowNum == 0) {
-//                [self showTheNoneDataViewForView:self.view];
+                [self showNothingViewForView:self.shopTableView];
+                [self.shopArray removeAllObjects];
                 self.footview.hidden=YES;
+            }
+            else{
+                [self removeTheNoneView];
             }
             
             NSArray *ary = CHECK_ARRAY_VALUE([data objectForKey:@"list"]);
@@ -336,6 +373,25 @@
         [self.footview endRefreshing];
     }];
 
+}
+
+- (void)showNothingViewForView:(UIView *)aView
+{
+    if (nil==noneView) {
+        noneView = [[UIView alloc]initWithFrame:CGRectMake(0, 200, aView.frame.size.width, aView.frame.size.height - 200)];
+    }
+    noneView.backgroundColor = [UIColor clearColor];
+
+    UIImageView *zanWuImg = [[UIImageView alloc]initWithFrame:CGRectMake(93, noneView.frame.size.height/2-35, 133, 77)];
+    zanWuImg.image = [UIImage imageWithContentFileName:@"search_empty_icon"];
+    [noneView addSubview:zanWuImg];
+    
+    [aView addSubview:noneView];
+}
+
+- (void)removeTheNoneView
+{
+    [noneView removeFromSuperview];
 }
 
 #pragma mark UITableViewDataSource

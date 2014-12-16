@@ -45,7 +45,10 @@
 #define NOTIFICATION_ACTIVE                          @"NOTIFICATION_ACTIVE"     //从后台唤醒APP
 #define NOTIFICATION_USER_LOGIN                      @"NOTIFICATION_USER_LOGIN" //用户登录之后
 #define NOTIFICATION_REFRESH_ORDERRECORD             @"NOTIFICATION_REFRESH_ORDERRECORD" //刷新订单记录列表
-#define NOTIFICATION_USER_INFO                       @"NOTIFICATION_USER_INFO" //获取用户信息
+#define NOTIFICATION_SHOP_SELECT                     @"NOTIFICATION_SHOP_SELECT" //购物筛选
+#define NOTIFICATION_ADDRESS_REQUEST                 @"NOTIFICATION_ADDRESS_REQUEST" //收货地址保存
+#define NOTIFICATION_ADDRESS_SELECT                  @"NOTIFICATION_ADDRESS_SELECT" //收货地址选择
+#define NOTIFICATION_PAYTYPE_SELECT                  @"NOTIFICATION_PAYTYPE_SELECT" //支付方式选择
 //====================================
 
 //全局变量

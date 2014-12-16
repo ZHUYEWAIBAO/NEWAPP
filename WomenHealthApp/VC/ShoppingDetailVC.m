@@ -11,11 +11,19 @@
 #import "ShoppingParameterView.h"
 #import "ShoppingCommentView.h"
 #import "B2CSelectCountView.h"
+<<<<<<< HEAD
 #import "ShoppingCartVC.h"
 #define TAG_BUYNOW 100
 #define TAG_ADDCAR 101
 
 @interface ShoppingDetailVC ()<UIScrollViewDelegate>
+=======
+#import "ShoppingOrderComfirmVC.h"
+#import "AddressViewController.h"
+#import "JSONKit.h"
+
+@interface ShoppingDetailVC ()<UIScrollViewDelegate,B2CSelectCountViewDelegate>
+>>>>>>> FETCH_HEAD
 
 /**
  *  选择数量的view
@@ -47,6 +55,7 @@
     
     _selectCountView = (B2CSelectCountView *)[[[NSBundle mainBundle] loadNibNamed:@"B2CSelectCountView" owner:self options:nil] firstObject];
     [_selectCountView layOutTheCountView];
+    [_selectCountView setDelegate:self];
     _selectCountView.frame = CGRectMake(0, SCREEN_SIZE.height, _selectCountView.frame.size.width, _selectCountView.frame.size.height);
     
     
@@ -91,7 +100,7 @@
         }
         else{
             
-            [SVProgressHUD showErrorWithStatus:@"服务器忙，请稍候再试"];
+            [SVProgressHUD showErrorWithStatus:CHECK_VALUE([statusDic objectForKey:@"msg"])];
         }
         [SVProgressHUD dismiss];
         
@@ -107,6 +116,15 @@
 //布局整体页面
 -(void)layOutMainView:(NSMutableArray *)viewArr
 {
+    //商品是否已下架,1表示未下架，0表示已下架
+    if ([@"0" isEqualToString:self.detailModel.infoModel.goods_number]) {
+        
+        [self.gotoBuyBtn setHidden:YES];
+        [self.addToCarBtn setHidden:YES];
+        [self.downAlertLabel setHidden:NO];
+        
+    }
+    
     [self layOutHeadView];
     [self layOutTheTitleView];
     [self layOutTheParameterView];
@@ -275,7 +293,11 @@
 #pragma mark - 按钮事件
 - (void)shareAction:(id)sender
 {
+<<<<<<< HEAD
     ShoppingCartVC *vc =[[ShoppingCartVC alloc] initWithNibName:@"ShoppingCartVC" bundle:nil];
+=======
+    AddressViewController *vc = [[AddressViewController alloc]initWithNibName:@"AddressViewController" bundle:nil];
+>>>>>>> FETCH_HEAD
     [self.navigationController pushViewController:vc animated:YES];
 }
 
@@ -289,12 +311,91 @@
 
 - (IBAction)buyClickAction:(id)sender
 {
-    UIButton *btn = (UIButton *)sender;
+
+    [UIView animateWithDuration:0.2f animations:^{
+        
+        self.blackButton.alpha = 0.3;
+        _selectCountView.frame = CGRectMake(0, self.view.frame.size.height - _selectCountView.frame.size.height, _selectCountView.frame.size.width, _selectCountView.frame.size.height);
+ 
+        [self.view addSubview:_selectCountView];
+        
+    }];
+}
+
+- (IBAction)blackBtnAction:(id)sender
+{
+    [UIView animateWithDuration:0.2f animations:^{
+        
+        self.blackButton.alpha = 0.0;
+        _selectCountView.frame = CGRectMake(0, SCREEN_SIZE.height, _selectCountView.frame.size.width, _selectCountView.frame.size.height);
+        
+        
+    } completion:^(BOOL finished) {
+        [_selectCountView removeFromSuperview];
+    }];
+}
+
+#pragma mark - B2CSelectCountViewDelegate
+- (void)B2CSelectCountView:(B2CSelectCountView *)view params:(NSMutableDictionary *)dic isAddToCar:(BOOL)addToCar
+{
+    if (![USERINFO isLogin]) {
+        [self presentLoginVCAction];
+        return;
+    }
+    if (addToCar) {
+        [self addToShopCart:dic];
+    }
+    else{
+        ShoppingOrderComfirmVC *vc = [[ShoppingOrderComfirmVC alloc]initWithNibName:@"ShoppingOrderComfirmVC" bundle:nil];
+        vc.jsonString = [dic JSONString];
+        [self.navigationController pushViewController:vc animated:YES];
+    }
     
-    switch (btn.tag) {
-        case TAG_BUYNOW:{
+}
+
+- (void)B2CSelectCountView:(B2CSelectCountView *)view dismiss:(BOOL)dismiss
+{
+    [UIView animateWithDuration:0.2f animations:^{
+        
+        self.blackButton.alpha = 0.0;
+        _selectCountView.frame = CGRectMake(0, SCREEN_SIZE.height, _selectCountView.frame.size.width, _selectCountView.frame.size.height);
+        
+    
+    } completion:^(BOOL finished) {
+        [_selectCountView removeFromSuperview];
+    }];
+}
+
+//加入购物车
+- (void)addToShopCart:(NSMutableDictionary *)dictionary
+{
+    [SVProgressHUD showWithMaskType:SVProgressHUDMaskTypeClear];
+    
+    [self.params removeAllObjects];
+    [self.params setObject:[dictionary JSONString] forKey:@"goods"];
+    NSString *path = [NSString stringWithFormat:@"/api/ec/flow.php?uid=%@&step=add_to_cart",USERINFO.uid];
+    
+    [NETWORK_ENGINE requestWithPath:path Params:self.params CompletionHandler:^(MKNetworkOperation *completedOperation) {
+        
+        NSDictionary *dic=[completedOperation responseDecodeToDic];
+        
+        NSDictionary *statusDic = [dic objectForKey:@"status"];
+        
+        if ([@"1" isEqualToString:CHECK_VALUE([statusDic objectForKey:@"statu"])]) {
+            [SVProgressHUD showSuccessWithStatus:@"添加购物车成功"];
             
+            [UIView animateWithDuration:0.2f animations:^{
+                
+                self.blackButton.alpha = 0.0;
+                _selectCountView.frame = CGRectMake(0, SCREEN_SIZE.height, _selectCountView.frame.size.width, _selectCountView.frame.size.height);
+                
+                
+            } completion:^(BOOL finished) {
+                [_selectCountView removeFromSuperview];
+            }];
+
         }
+<<<<<<< HEAD
             break;
        
         case TAG_ADDCAR:{
@@ -303,20 +404,22 @@
             [self.navigationController pushViewController:vc animated:YES];
             
             
+=======
+        else{
+>>>>>>> FETCH_HEAD
             
+            [SVProgressHUD showErrorWithStatus:@"服务器忙，请稍候再试"];
         }
-            break;
-            
-        default:
-            break;
-    }
-    
-    [UIView animateWithDuration:0.3f animations:^{
-        _selectCountView.frame = CGRectMake(0, self.view.frame.size.height - _selectCountView.frame.size.height, _selectCountView.frame.size.width, _selectCountView.frame.size.height);
-        [self.view addSubview:_selectCountView];
+        [SVProgressHUD dismiss];
+        
+    } ErrorHandler:^(MKNetworkOperation *completedOperation, NSError *error) {
+        
+        [SVProgressHUD showErrorWithStatus:@"服务器忙，请稍候再试"];
         
     }];
+
 }
+
 
 - (IBAction)pushToShopCarAction:(id)sender
 {

@@ -12,6 +12,15 @@
 @interface CategoryViewController ()
 {
     NSMutableArray *btnArray;
+    NSMutableArray *cateArray;
+    
+    NSString *currentCid;
+    
+    NSString *is_shipping; //是否包邮
+    NSString *is_best;     //是否精品
+    NSString *is_hot;      //是否热卖
+    NSString *is_new;      //是否新品
+
 }
 @end
 
@@ -23,6 +32,11 @@
     
     self.title = @"筛选";
 
+    is_shipping = @"";
+    is_best = @"";
+    is_new = @"";
+    is_hot = @"";
+    currentCid = @"";
 }
 
 - (void)viewDidLoad {
@@ -41,6 +55,7 @@
     [self.linearLayoutView addGestureRecognizer:tapGestureRecognizer];
     
     btnArray = [[NSMutableArray alloc]initWithCapacity:5];
+    cateArray = [[NSMutableArray alloc]initWithCapacity:0];
     
     [self setViewLayer:self.minTextField andCornerRadius:0 andBorderColor:[UIColor lightGrayColor] andBorderWidth:0.6f];
     
@@ -66,15 +81,13 @@
             
             NSDictionary *data = [dic objectForKey:@"data"];
             
-            NSMutableArray *strArray = [[NSMutableArray alloc]init];
-            
             for (NSDictionary *dictionary in [data objectForKey:@"list"]) {
                 
                 CategoryModel *model = [CategoryModel parseDicToCategoryModelObject:dictionary];
-                [strArray addObject:model];
+                [cateArray addObject:model];
             }
             
-            [self layOutTheMenuView:strArray];
+            [self layOutTheMenuView:cateArray];
             
             [SVProgressHUD dismiss];
         }
@@ -100,6 +113,7 @@
         [button setTitleColor:MAIN_RED_COLOR forState:UIControlStateSelected];
         [button setBackgroundImage:[UIImage imageWithContentFileName:@"screening_btn_noraml"] forState:UIControlStateNormal];
         [button setBackgroundImage:[UIImage imageWithContentFileName:@"screening_btn_active"] forState:UIControlStateSelected];
+        [button setTag:idx];
         [button addTarget:self action:@selector(categoryChooseAction:) forControlEvents:UIControlEventTouchUpInside];
         
         [btnArray addObject:button];
@@ -162,23 +176,98 @@
 #pragma mark - 按钮事件
 - (void)categoryChooseAction:(id)sender
 {
-
     for (UIButton *btn in btnArray) {
         btn.selected = NO;
     }
     UIButton *button = (UIButton *)sender;
     button.selected = YES;
+
+    CategoryModel *model = [cateArray objectAtIndex:button.tag];
+    currentCid = model.category_cid;
 }
 
 - (IBAction)typeClickAction:(id)sender
 {
     UIButton *button = (UIButton *)sender;
-    button.selected = YES;
+    
+    if (button.selected) {
+        button.selected = NO;
+        
+        switch ([button tag]) {
+            case 100:{
+                is_shipping = @"";
+            }
+                break;
+                
+            case 101:{
+                is_best = @"";
+            }
+                break;
+                
+            case 102:{
+                is_hot = @"";
+            }
+                break;
+                
+            case 103:{
+                is_new = @"";
+            }
+                break;
+                
+            default:
+                break;
+        }
+    }
+    else{
+        button.selected = YES;
+        switch ([button tag]) {
+            case 100:{
+                is_shipping = @"1";
+            }
+                break;
+                
+            case 101:{
+                is_best = @"1";
+            }
+                break;
+                
+            case 102:{
+                is_hot = @"1";
+            }
+                break;
+                
+            case 103:{
+                is_new = @"1";
+            }
+                break;
+                
+            default:
+                break;
+        }
+    }
+    
 }
 
 - (void)categorySureAction:(id)sender
 {
+    NSMutableDictionary *dictionary = [[NSMutableDictionary alloc]init];
     
+    NSString *minStr = [self.minTextField.text integerValue] <= [self.maxTextField.text integerValue]?self.minTextField.text:self.maxTextField.text;
+    
+    NSString *maxStr = [self.minTextField.text integerValue] <= [self.maxTextField.text integerValue]?self.maxTextField.text:self.minTextField.text;
+
+    [dictionary setObject:minStr forKey:@"minPrice"];
+    [dictionary setObject:maxStr forKey:@"maxPrice"];
+    
+    [dictionary setObject:is_shipping forKey:@"is_shipping"];
+    [dictionary setObject:is_best forKey:@"is_best"];
+    [dictionary setObject:is_hot forKey:@"is_hot"];
+    [dictionary setObject:is_new forKey:@"is_new"];
+    
+    [dictionary setObject:currentCid forKey:@"cid"];
+    
+    [[NSNotificationCenter defaultCenter]postNotificationName:NOTIFICATION_SHOP_SELECT object:nil userInfo:dictionary];
+    [self.navigationController popViewControllerAnimated:YES];
 }
 
 - (void)keyboardHide

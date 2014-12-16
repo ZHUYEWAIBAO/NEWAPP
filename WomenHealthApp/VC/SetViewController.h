@@ -16,6 +16,8 @@
 @property (weak,nonatomic) IBOutlet UITableView *setTableView;
 
 @property (strong,nonatomic) IBOutlet UIView *loginView;
+@property (weak,nonatomic) IBOutlet UIImageView *headImageView;
+@property (weak,nonatomic) IBOutlet UILabel *headTitleLabel;
 
 @property (strong,nonatomic) NSMutableArray *setDataArray;
 

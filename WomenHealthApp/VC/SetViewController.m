@@ -9,6 +9,7 @@
 #import "SetViewController.h"
 #import "SettingDataModel.h"
 #import "SetTableViewCell.h"
+#import "MyOrderListVC.h"
 #import "AboutUsVC.h"
 
 @interface SetViewController ()<UIActionSheetDelegate>
@@ -41,9 +42,18 @@
     
     [super viewDidLoad];
     
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(userAfterLoginAction:) name:NOTIFICATION_USER_LOGIN object:nil];
+    
+    //设置UIImageView显示为圆形
+    self.headImageView.layer.cornerRadius = self.headImageView.frame.size.width / 2;
+    self.headImageView.layer.masksToBounds = YES;
+    
+    self.setTableView.tableHeaderView = self.loginView;
+    
     if ([USERINFO isLogin]) {
         sectionNum = 2;
-
+        self.headTitleLabel.text = USERINFO.username;
+        [self.headImageView setImageWithURL:[NSURL URLWithString:USERINFO.user_icon]];
     }
     else{
         sectionNum = 1;
@@ -51,7 +61,16 @@
     
     self.setDataArray = [SettingDataModel arrayForSectionNum:sectionNum];
     
-    self.setTableView.tableHeaderView = self.loginView;
+}
+
+- (void)userAfterLoginAction:(NSNotification *)notification
+{
+    sectionNum = 2;
+    self.headTitleLabel.text = USERINFO.username;
+    [self.headImageView setImageWithURL:[NSURL URLWithString:USERINFO.user_icon]];
+    self.setDataArray = [SettingDataModel arrayForSectionNum:sectionNum];
+    
+    [self.setTableView reloadData];
 }
 
 #pragma mark UITableViewDataSource
@@ -125,6 +144,8 @@
     switch (tag) {
         case 100:{
             //我的订单
+            MyOrderListVC *vc = [[MyOrderListVC alloc]initWithNibName:@"MyOrderListVC" bundle:nil];
+            [self.navigationController pushViewController:vc animated:YES];
             
         }
             break;
@@ -186,7 +207,13 @@
     
     if (button.tag == 100) {
         
-        [self presentLoginVCAction];
+        if ([USERINFO isLogin]) {
+            
+        }
+        else{
+            [self presentLoginVCAction];
+        }
+        
     }
     else{
         UIAlertView *alertView = [[UIAlertView alloc]initWithTitle:@"确定要退出舒服吗" message:@"" delegate:self cancelButtonTitle:@"取消" otherButtonTitles:@"确定", nil];

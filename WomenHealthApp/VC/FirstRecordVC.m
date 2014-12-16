@@ -53,10 +53,24 @@
     recentYearArray = [[NSMutableArray alloc]init];
     recentDayArray = [[NSMutableArray alloc]init];
     
-    //默认2014年1月1日
+    //默认日期
+//    NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
+//    //zzz表示时区，zzz可以删除，这样返回的日期字符将不包含时区信息。
+//    [dateFormatter setDateFormat:@"yyyy-MM-dd"];
+//    NSString *destDateString = [dateFormatter stringFromDate:[NSDate date]];
+//
+//    NSArray *array = [destDateString componentsSeparatedByString:@"-"];
+//   
+//    currentYear = [[array objectAtIndex:0] integerValue];
+//    currentMonth = [[array objectAtIndex:1] integerValue];
+//    currentDay = [[array objectAtIndex:2] integerValue];
+    
     currentYear = 2014;
     currentMonth = 1;
     currentDay = 1;
+    
+    self.recentTextField.text = [NSString stringWithFormat:@"%ld年%ld月%ld日",currentYear,currentMonth,currentDay];
+    
     //经期天数默认5天
     currentMenstrual = @"5";
     //周期天数默认28天
@@ -271,10 +285,10 @@
                 currentTextField.text = [NSString stringWithFormat:@"%ld年%ld月%ld日",currentYear,currentMonth,currentDay];
             }
             else if (currentTextField == self.menstrualTextField){
-                currentTextField.text = currentMenstrual;
+                currentTextField.text = [currentMenstrual stringByAppendingString:@"天"];
             }
             else{
-                currentTextField.text = currentCycle;
+                currentTextField.text = [currentCycle stringByAppendingString:@"天"];
             }
             [currentTextField resignFirstResponder];
         }

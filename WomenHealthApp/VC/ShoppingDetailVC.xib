@@ -7,8 +7,12 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="ShoppingDetailVC">
             <connections>
+                <outlet property="addToCarBtn" destination="elr-ov-vXd" id="HCK-4L-2JV"/>
+                <outlet property="blackButton" destination="P9L-7r-Rpf" id="plJ-tv-mzw"/>
                 <outlet property="commentLabel" destination="dOM-TY-DDn" id="EnT-XS-p1R"/>
                 <outlet property="commentView" destination="z9t-34-9L7" id="29B-VG-y8C"/>
+                <outlet property="downAlertLabel" destination="Kff-Fe-cP1" id="eyp-N4-nn1"/>
+                <outlet property="gotoBuyBtn" destination="sZF-IE-Rg8" id="ybZ-1B-hyE"/>
                 <outlet property="headPageControl" destination="SLp-43-wEr" id="h3Q-cE-KDu"/>
                 <outlet property="headScrollView" destination="DwI-kE-TzZ" id="Sa2-4F-Pe5"/>
                 <outlet property="headView" destination="0G5-aP-jgk" id="4Vv-6t-KDM"/>
@@ -36,6 +40,12 @@
                     <rect key="frame" x="0.0" y="518" width="320" height="50"/>
                     <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
                     <subviews>
+                        <label hidden="YES" opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="该商品已下架" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="Kff-Fe-cP1">
+                            <rect key="frame" x="26" y="14" width="216" height="21"/>
+                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <fontDescription key="fontDescription" type="boldSystem" pointSize="16"/>
+                            <nil key="highlightedColor"/>
+                        </label>
                         <button opaque="NO" tag="105" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="sZF-IE-Rg8">
                             <rect key="frame" x="8" y="5" width="121" height="40"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -97,6 +107,17 @@
                     </subviews>
                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                 </view>
+                <button opaque="NO" alpha="0.0" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="P9L-7r-Rpf">
+                    <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                    <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                    <state key="normal">
+                        <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                    </state>
+                    <connections>
+                        <action selector="blackBtnAction:" destination="-1" eventType="touchUpInside" id="aom-KN-ImU"/>
+                    </connections>
+                </button>
             </subviews>
             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
             <point key="canvasLocation" x="218" y="226"/>
