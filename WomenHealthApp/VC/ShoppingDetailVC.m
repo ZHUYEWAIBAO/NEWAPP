@@ -11,19 +11,17 @@
 #import "ShoppingParameterView.h"
 #import "ShoppingCommentView.h"
 #import "B2CSelectCountView.h"
-<<<<<<< HEAD
+
 #import "ShoppingCartVC.h"
 #define TAG_BUYNOW 100
 #define TAG_ADDCAR 101
 
-@interface ShoppingDetailVC ()<UIScrollViewDelegate>
-=======
 #import "ShoppingOrderComfirmVC.h"
 #import "AddressViewController.h"
 #import "JSONKit.h"
 
 @interface ShoppingDetailVC ()<UIScrollViewDelegate,B2CSelectCountViewDelegate>
->>>>>>> FETCH_HEAD
+
 
 /**
  *  选择数量的view
@@ -293,11 +291,8 @@
 #pragma mark - 按钮事件
 - (void)shareAction:(id)sender
 {
-<<<<<<< HEAD
-    ShoppingCartVC *vc =[[ShoppingCartVC alloc] initWithNibName:@"ShoppingCartVC" bundle:nil];
-=======
+
     AddressViewController *vc = [[AddressViewController alloc]initWithNibName:@"AddressViewController" bundle:nil];
->>>>>>> FETCH_HEAD
     [self.navigationController pushViewController:vc animated:YES];
 }
 
@@ -395,18 +390,7 @@
             }];
 
         }
-<<<<<<< HEAD
-            break;
-       
-        case TAG_ADDCAR:{
-            //这里添加购物车
-            ShoppingCartVC *vc =[[ShoppingCartVC alloc] initWithNibName:@"ShoppingCartVC" bundle:nil];
-            [self.navigationController pushViewController:vc animated:YES];
-            
-            
-=======
         else{
->>>>>>> FETCH_HEAD
             
             [SVProgressHUD showErrorWithStatus:@"服务器忙，请稍候再试"];
         }
@@ -423,6 +407,9 @@
 
 - (IBAction)pushToShopCarAction:(id)sender
 {
+    
+    ShoppingCartVC *vc =[[ShoppingCartVC alloc] initWithNibName:@"ShoppingCartVC" bundle:nil];
+    [self.navigationController pushViewController:vc animated:YES];
     
 }
 

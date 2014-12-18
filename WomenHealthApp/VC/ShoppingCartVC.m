@@ -5,19 +5,24 @@
 //  Created by Daniel on 14/12/9.
 //  Copyright (c) 2014年 WomenHealthApp. All rights reserved.
 //
-
 #import "ShoppingCartVC.h"
 #import "ShopCartTabCell.h"
+#import "shopCartListModel.h"
 @interface ShoppingCartVC ()
 
 @property (weak, nonatomic) IBOutlet UITableView *shopCartTableView;
 @property (strong, nonatomic) IBOutlet UIView *goToOrderView;
 @property (weak, nonatomic) IBOutlet UIButton *xiaDanbtn;
+@property (weak, nonatomic) IBOutlet UILabel *totocalPriceLab;
+- (IBAction)goToOrderClick:(id)sender;
 
 
 @end
 
-@implementation ShoppingCartVC
+@implementation ShoppingCartVC{
+    float totalPriceAll;
+
+}
 - (void)loadView
 {
     [super loadView];
@@ -42,6 +47,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.title =@"购物车";
+     self.dataArray =[NSMutableArray array];
     //添加分享按钮
     UIButton *rightButton=[[UIButton alloc]initWithFrame:CGRectMake(0, 0, 30, 30)];
     [rightButton addTarget:self action:@selector(CanelCart) forControlEvents:UIControlEventTouchUpInside];
@@ -49,12 +55,21 @@
     UIBarButtonItem *rightButtonItem=[[UIBarButtonItem alloc]initWithCustomView:rightButton];
     self.navigationItem.rightBarButtonItem = rightButtonItem;
     [self.params removeAllObjects];
-    [self.params setObject:@"111" forKey:@"uid"];
-    [NETWORK_ENGINE requestWithPath:@"/api/ec/flow.php?uid=71" Params:self.params CompletionHandler:^(MKNetworkOperation *completedOperation) {
+    [self.params setObject:@"73" forKey:@"uid"];
+    [NETWORK_ENGINE requestWithPath:@"/api/ec/flow.php?uid=73" Params:self.params CompletionHandler:^(MKNetworkOperation *completedOperation) {
         NSDictionary *dic =[completedOperation responseDecodeToDic];
         NSLog(@"%@",dic);
         
+        [[[dic objectForKey:@"data"] objectForKey:@"goods_list"] enumerateObjectsUsingBlock:^(id obj, NSUInteger idx, BOOL *stop) {
+            [self.dataArray addObject:([shopCartListModel parseDicToShopCartListObject:obj])];
+            totalPriceAll =totalPriceAll+[[obj objectForKey:@"goods_price"] floatValue];
+        }];
+        self.totocalPriceLab.text =[NSString stringWithFormat:@"%f",totalPriceAll];
+        [self.shopCartTableView reloadData];
+        
+        
     } ErrorHandler:^(MKNetworkOperation *completedOperation, NSError *error) {
+        
         
     }];
     
@@ -70,21 +85,22 @@
 #pragma mark UITableViewDataSource
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 {
-    return 3;
+    return self.dataArray.count;
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    if (section==0) {
-        return 1;
-    }else if(section ==1){
-        return 2;
-    }else if(section ==2){
-        return 3;
-    }else{
-        return 4;
-    }
-    
+//    if (section==0) {
+//        return 1;
+//    }else if(section ==1){
+//        return 2;
+//    }else if(section ==2){
+//        return 3;
+//    }else{
+//        return 4;
+//    }
+//
+    return 1;
 }
 
 -(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
@@ -105,6 +121,14 @@
         cell = [nibArr objectAtIndex:0];
         
     }
+    shopCartListModel *tempModel =[self.dataArray objectAtIndex:indexPath.section];
+    cell.shopNameLab.text =[tempModel goods_name];
+    cell.shopCountLab.text =[tempModel goods_number];
+    cell.xiaoJiMoneyLab.text =[tempModel subtotal];
+    cell.colorTypeLab.text =[tempModel goods_attr];
+    [cell.shopImageView setImageWithURL:[NSURL URLWithString:tempModel.goods_thumb ] placeholderImage:[UIImage imageNamed:@""]];
+    
+    
     return cell;
     
     
@@ -120,22 +144,22 @@
 //    
 //}
 
-- (UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section{
-
-    UIView *vc =[[UIView alloc] initWithFrame:CGRectMake(0, 0, 320, 40)];
-    UIButton *btn =[[UIButton alloc] initWithFrame:CGRectMake(10, 12, 17 , 17)];
-    [btn setBackgroundImage:[UIImage imageWithContentFileName:@"chose_no_btn"] forState:UIControlStateNormal];
-    [btn addTarget:self action:@selector(chooseSelect:) forControlEvents:UIControlEventTouchUpInside];
-    [vc addSubview:btn];
-    
-    UILabel *laber =[[UILabel alloc] initWithFrame:CGRectMake(32, 10, 265, 20)];
-    laber.text =@"韩都衣舍旗舰店";
-    [vc addSubview:laber];
-    vc.backgroundColor =[UIColor whiteColor];
-    return vc;
-    
-    
-}
+//- (UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section{
+//
+//    UIView *vc =[[UIView alloc] initWithFrame:CGRectMake(0, 0, 320, 40)];
+//    UIButton *btn =[[UIButton alloc] initWithFrame:CGRectMake(10, 12, 17 , 17)];
+//    [btn setBackgroundImage:[UIImage imageWithContentFileName:@"chose_no_btn"] forState:UIControlStateNormal];
+//    [btn addTarget:self action:@selector(chooseSelect:) forControlEvents:UIControlEventTouchUpInside];
+//    [vc addSubview:btn];
+//    
+//    UILabel *laber =[[UILabel alloc] initWithFrame:CGRectMake(32, 10, 265, 20)];
+//    laber.text =@"韩都衣舍旗舰店";
+//    [vc addSubview:laber];
+//    vc.backgroundColor =[UIColor whiteColor];
+//    return vc;
+//    
+//    
+//}
 -(void)chooseSelect:(id)sender{
     NSLog(@"sssss");
   UIButton *tempBtn = (UIButton *)sender;
@@ -144,7 +168,7 @@
 }
 - (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section{
     
-    return 40;
+    return 20;
 }
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
@@ -161,4 +185,6 @@
 }
 */
 
+- (IBAction)goToOrderClick:(id)sender {
+}
 @end

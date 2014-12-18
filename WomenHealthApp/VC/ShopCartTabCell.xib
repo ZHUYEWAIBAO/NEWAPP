@@ -73,11 +73,11 @@
                         <nil key="highlightedColor"/>
                     </label>
                     <view contentMode="scaleToFill" id="WDS-Zb-gqE" customClass="CountView">
-                        <rect key="frame" x="175" y="97" width="140" height="60"/>
+                        <rect key="frame" x="175" y="101" width="140" height="56"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="7OB-kC-Mr5">
-                                <rect key="frame" x="0.0" y="10" width="40" height="40"/>
+                                <rect key="frame" x="0.0" y="6" width="40" height="40"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" red="0.8901960784313725" green="0.8901960784313725" blue="0.8901960784313725" alpha="1" colorSpace="calibratedRGB"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="15"/>
@@ -87,10 +87,11 @@
                                 </state>
                                 <connections>
                                     <action selector="minusBtnClickAction:" destination="WDS-Zb-gqE" eventType="touchUpInside" id="ie8-vz-OcO"/>
+                                    <action selector="subtractionClick:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="S0x-B1-BTd"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="7rg-Ci-mlK">
-                                <rect key="frame" x="103" y="10" width="40" height="40"/>
+                                <rect key="frame" x="103" y="6" width="40" height="40"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" red="0.89019607840000003" green="0.89019607840000003" blue="0.89019607840000003" alpha="1" colorSpace="calibratedRGB"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="15"/>
@@ -100,15 +101,16 @@
                                 </state>
                                 <connections>
                                     <action selector="addBtnClickAction:" destination="WDS-Zb-gqE" eventType="touchUpInside" id="5cd-Ao-1QS"/>
+                                    <action selector="addClick:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="jyI-ek-UOq"/>
                                 </connections>
                             </button>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" id="ahO-UJ-7Vt">
-                                <rect key="frame" x="46" y="10" width="50" height="40"/>
+                                <rect key="frame" x="46" y="6" width="50" height="40"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" red="0.89019607840000003" green="0.89019607840000003" blue="0.89019607840000003" alpha="1" colorSpace="calibratedRGB"/>
                             </imageView>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" enabled="NO" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="1" textAlignment="center" minimumFontSize="17" id="s5Y-e6-PNb">
-                                <rect key="frame" x="46" y="15" width="50" height="30"/>
+                                <rect key="frame" x="46" y="11" width="50" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
@@ -123,9 +125,15 @@
                 </subviews>
             </tableViewCellContentView>
             <connections>
+                <outlet property="colorTypeLab" destination="eLB-Lf-6al" id="fbS-6q-nd0"/>
                 <outlet property="selectBtnClick" destination="82j-q0-uFj" id="HRl-Tt-nxG"/>
+                <outlet property="shopCountLab" destination="WGd-qP-3v7" id="D9j-9b-bWB"/>
+                <outlet property="shopImageView" destination="qNy-T7-WPE" id="Zyd-uO-Jv6"/>
+                <outlet property="shopNameLab" destination="e2d-iS-P7c" id="Mpz-6D-ptf"/>
+                <outlet property="shoptotalCountLab" destination="s5Y-e6-PNb" id="ubS-j4-5ex"/>
+                <outlet property="xiaoJiMoneyLab" destination="zEP-Jr-NEn" id="Qvg-eI-ari"/>
             </connections>
-            <point key="canvasLocation" x="321" y="251"/>
+            <point key="canvasLocation" x="354" y="252"/>
         </tableViewCell>
     </objects>
     <resources>

@@ -9,7 +9,7 @@
 #import "B2CSelectCountView.h"
 #import "CustomItoast.h"
 #import "SelectCountCell.h"
-
+#import "ShoppingCartVC.h"
 
 @implementation CountView
 
@@ -27,15 +27,15 @@
     [super awakeFromNib];
     
     //顶部加一条线
-    UIImageView *topLineImgV = [[UIImageView alloc]initWithFrame:CGRectMake(15, 0, self.frame.size.width, 0.5)];
-    [topLineImgV setBackgroundColor:[UIColor colorWithRed:199.0/255.0 green:199.0/255.0 blue:204.0/255.0 alpha:1.0]];
-    [self addSubview:topLineImgV];
-    
-    //底部加一条线
-    UIImageView *bottomLineImgV = [[UIImageView alloc]initWithFrame:CGRectMake(15, self.frame.size.height - 0.5, self.frame.size.width, 0.5)];
-    [bottomLineImgV setBackgroundColor:[UIColor colorWithRed:199.0/255.0 green:199.0/255.0 blue:204.0/255.0 alpha:1.0]];
-    bottomLineImgV.autoresizingMask = UIViewAutoresizingFlexibleTopMargin;
-    [self addSubview:bottomLineImgV];
+//    UIImageView *topLineImgV = [[UIImageView alloc]initWithFrame:CGRectMake(15, 0, self.frame.size.width, 0.5)];
+//    [topLineImgV setBackgroundColor:[UIColor colorWithRed:199.0/255.0 green:199.0/255.0 blue:204.0/255.0 alpha:1.0]];
+//    [self addSubview:topLineImgV];
+//    
+//    //底部加一条线
+//    UIImageView *bottomLineImgV = [[UIImageView alloc]initWithFrame:CGRectMake(15, self.frame.size.height - 0.5, self.frame.size.width, 0.5)];
+//    [bottomLineImgV setBackgroundColor:[UIColor colorWithRed:199.0/255.0 green:199.0/255.0 blue:204.0/255.0 alpha:1.0]];
+//    bottomLineImgV.autoresizingMask = UIViewAutoresizingFlexibleTopMargin;
+//    [self addSubview:bottomLineImgV];
     
     _totalNum = 1;
 }
@@ -326,6 +326,8 @@
             break;
             
         case TAG_TOCART:{
+           
+            
             
         }
             break;
