@@ -8,7 +8,10 @@
 #import "ShoppingCartVC.h"
 #import "ShopCartTabCell.h"
 #import "shopCartListModel.h"
-@interface ShoppingCartVC ()
+@interface ShoppingCartVC (){
+    
+    BOOL selsectBool;
+}
 
 @property (weak, nonatomic) IBOutlet UITableView *shopCartTableView;
 @property (strong, nonatomic) IBOutlet UIView *goToOrderView;
@@ -16,11 +19,18 @@
 @property (weak, nonatomic) IBOutlet UILabel *totocalPriceLab;
 - (IBAction)goToOrderClick:(id)sender;
 
+- (IBAction)selctAllClick:(id)sender;
+
+@property (weak, nonatomic) IBOutlet UIButton *sleallbtn;
+
 
 @end
 
 @implementation ShoppingCartVC{
     float totalPriceAll;
+    
+    
+    
 
 }
 - (void)loadView
@@ -64,7 +74,7 @@
             [self.dataArray addObject:([shopCartListModel parseDicToShopCartListObject:obj])];
             totalPriceAll =totalPriceAll+[[obj objectForKey:@"goods_price"] floatValue];
         }];
-        self.totocalPriceLab.text =[NSString stringWithFormat:@"%f",totalPriceAll];
+        self.totocalPriceLab.text =[NSString stringWithFormat:@"%.2f",[self getTotalPrice]];
         [self.shopCartTableView reloadData];
         
         
@@ -121,16 +131,76 @@
         cell = [nibArr objectAtIndex:0];
         
     }
+    cell.selectGouBtn.tag =100+indexPath.section;
+    [cell.selectGouBtn addTarget:self action:@selector(changeSelecrIndex:) forControlEvents:UIControlEventTouchUpInside];
     shopCartListModel *tempModel =[self.dataArray objectAtIndex:indexPath.section];
     cell.shopNameLab.text =[tempModel goods_name];
-    cell.shopCountLab.text =[tempModel goods_number];
-    cell.xiaoJiMoneyLab.text =[tempModel subtotal];
+    cell.shopCountLab.text =[NSString stringWithFormat:@"数量:%@",[tempModel goods_number]];
+    cell.xiaoJiNumber.text =tempModel.goods_number;
+    
+    cell.xiaoJiMoneyLab.text =[NSString stringWithFormat:@"%.2f",[[tempModel goods_number] intValue]*[[tempModel goods_price] floatValue]];
     cell.colorTypeLab.text =[tempModel goods_attr];
+    if (tempModel.selectIndex ==1) {
+        [cell.selectGouBtn setBackgroundImage:[UIImage imageNamed:@"chose_yes_btn.png"] forState:UIControlStateNormal];
+    }else {
+        [cell.selectGouBtn setBackgroundImage:[UIImage imageNamed:@"chose_no_btn.png"] forState:UIControlStateNormal];
+    }
+    [cell.addBtnv addTarget:self action:@selector(addCount:) forControlEvents:UIControlEventTouchUpInside];
+    cell.addBtnv.tag =2000+indexPath.section;
+    [cell.plusBtnv addTarget:self action:@selector(plusCount:) forControlEvents:UIControlEventTouchUpInside];
+    cell.plusBtnv.tag =3000+indexPath.section;
+    
     [cell.shopImageView setImageWithURL:[NSURL URLWithString:tempModel.goods_thumb ] placeholderImage:[UIImage imageNamed:@""]];
     
     
     return cell;
     
+    
+}
+-(void)addCount:(id)sender{
+    UIButton *btn =(UIButton *)sender;
+    shopCartListModel *tempModel =[self.dataArray objectAtIndex:btn.tag-2000];
+    int temp =[tempModel.goods_number intValue];
+    tempModel.goods_number =[NSString stringWithFormat:@"%i",temp +1];
+    [self.shopCartTableView reloadData];
+  self.totocalPriceLab.text =[NSString stringWithFormat:@"%.2f",[self getTotalPrice]];
+    
+    
+}
+-(void)plusCount:(id)sender{
+    UIButton *btn =(UIButton *)sender;
+    shopCartListModel *tempModel =[self.dataArray objectAtIndex:btn.tag-3000];
+    int temp =[tempModel.goods_number intValue];
+    tempModel.goods_number =[NSString stringWithFormat:@"%i",temp -1];
+    [self.shopCartTableView reloadData];
+    
+    self.totocalPriceLab.text =[NSString stringWithFormat:@"%.2f",[self getTotalPrice]];
+}
+
+-(float)getTotalPrice{
+   __block float price =0;
+    [self.dataArray enumerateObjectsUsingBlock:^(id obj, NSUInteger idx, BOOL *stop) {
+        if (((shopCartListModel *)obj).selectIndex ==1) {
+            price =price +[((shopCartListModel *)obj).goods_number floatValue]*[((shopCartListModel *)obj).goods_price floatValue];
+        }
+        
+    }];
+    
+    return price;
+}
+-(void)changeSelecrIndex:(id)sender{
+    
+    UIButton *btn =(UIButton *)sender;
+    shopCartListModel *tempModel =[self.dataArray objectAtIndex:btn.tag-100];
+    if (tempModel.selectIndex ==1) {
+        tempModel.selectIndex =0;
+    }else{
+        tempModel.selectIndex =1;
+    }
+    
+    
+    [self.shopCartTableView reloadData];
+    self.totocalPriceLab.text =[NSString stringWithFormat:@"%.2f",[self getTotalPrice]];
     
 }
 //- (UITableViewHeaderFooterView *)headerViewForSection:(NSInteger)section NS_AVAILABLE_IOS(6_0){
@@ -186,5 +256,29 @@
 */
 
 - (IBAction)goToOrderClick:(id)sender {
+}
+
+- (IBAction)selctAllClick:(id)sender {
+    
+        if (selsectBool ==NO) {
+            [_sleallbtn setBackgroundImage:[UIImage imageNamed:@"chose_yes_btn.png"] forState:UIControlStateNormal];
+        }else {
+            [_sleallbtn setBackgroundImage:[UIImage imageNamed:@"chose_no_btn.png"] forState:UIControlStateNormal];
+        }
+    [self.dataArray enumerateObjectsUsingBlock:^(id obj, NSUInteger idx, BOOL *stop) {
+        
+        if (selsectBool ==NO) {
+            ((shopCartListModel *)obj).selectIndex =1;
+        }else{
+            ((shopCartListModel *)obj).selectIndex =0;
+        }
+        
+        
+    }];
+
+    selsectBool =!selsectBool;
+    [self.shopCartTableView reloadData];
+    self.totocalPriceLab.text =[NSString stringWithFormat:@"%.2f",[self getTotalPrice]];
+    
 }
 @end

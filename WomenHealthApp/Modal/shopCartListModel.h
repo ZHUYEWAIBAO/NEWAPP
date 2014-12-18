@@ -21,5 +21,7 @@
 @property(nonatomic,strong) NSString *subtotal;
 @property(nonatomic,strong) NSString *goods_thumb;
 
+@property(nonatomic,assign)int selectIndex;
+
 + (shopCartListModel *)parseDicToShopCartListObject:(NSDictionary*)dic;
 @end

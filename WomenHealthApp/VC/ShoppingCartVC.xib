@@ -9,6 +9,7 @@
             <connections>
                 <outlet property="goToOrderView" destination="aOE-S0-xgM" id="P3I-s5-rY6"/>
                 <outlet property="shopCartTableView" destination="gNB-wd-ryL" id="YdI-lV-kPe"/>
+                <outlet property="sleallbtn" destination="xw0-ca-5uG" id="0nc-B8-Z7K"/>
                 <outlet property="totocalPriceLab" destination="1Vp-F3-JDP" id="WdE-aX-lSh"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
                 <outlet property="xiaDanbtn" destination="HE1-9a-Sn2" id="yo0-5O-I6O"/>
@@ -38,6 +39,9 @@
                             <state key="normal" backgroundImage="chose_no_btn.png">
                                 <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                             </state>
+                            <connections>
+                                <action selector="selctAllClick:" destination="-1" eventType="touchUpInside" id="8Ud-SZ-W7z"/>
+                            </connections>
                         </button>
                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="全选" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="Acv-Wd-M8V">
                             <rect key="frame" x="43" y="19" width="38" height="21"/>

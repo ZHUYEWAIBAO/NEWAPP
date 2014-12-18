@@ -23,8 +23,8 @@
 - (IBAction)subtractionClick:(id)sender {
     
     int temp =[self.shoptotalCountLab.text intValue] -1;
-    
     self.shoptotalCountLab.text =[NSString stringWithFormat:@"%i",temp];
+    
 }
 
 - (IBAction)addClick:(id)sender {

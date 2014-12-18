@@ -20,6 +20,12 @@
 - (IBAction)subtractionClick:(id)sender;
 - (IBAction)addClick:(id)sender;
 @property (weak, nonatomic) IBOutlet UITextField *shoptotalCountLab;
+@property (weak, nonatomic) IBOutlet UIButton *selectGouBtn;
+
+@property (weak, nonatomic) IBOutlet UITextField *xiaoJiNumber;
+
+@property (weak, nonatomic) IBOutlet UIButton *addBtnv;
+@property (weak, nonatomic) IBOutlet UIButton *plusBtnv;
 
 
 @end
