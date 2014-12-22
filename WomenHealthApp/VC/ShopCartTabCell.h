@@ -7,7 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
-
+#import "B2CSelectCountView.h"
 @interface ShopCartTabCell : UITableViewCell
 @property (weak, nonatomic) IBOutlet UIButton *selectBtnClick;
 @property (weak, nonatomic) IBOutlet UILabel *shopNameLab;
@@ -27,5 +27,6 @@
 @property (weak, nonatomic) IBOutlet UIButton *addBtnv;
 @property (weak, nonatomic) IBOutlet UIButton *plusBtnv;
 
+@property (weak, nonatomic) IBOutlet CountView *countView;
 
 @end

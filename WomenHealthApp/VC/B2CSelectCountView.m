@@ -52,7 +52,8 @@
         
     }
     else if (_totalNum == [_detailModel.infoModel.goods_number integerValue]) {
-        [[CustomItoast showText:@"数量超过范围～"] showInView:self];
+//        [[CustomItoast showText:@"数量超过范围～"] showInView:self];
+        [OMGToast showWithText:@"数量超过范围～"];
     }
 }
 
@@ -64,7 +65,8 @@
         
     }
     else if (_totalNum == 1) {
-        [[CustomItoast showText:@"数量不少于1件～"] showInView:self];
+//        [[CustomItoast showText:@"数量不少于1件～"] showInView:self];
+        [OMGToast showWithText:@"数量不少于1件～"];
     }
     
 }

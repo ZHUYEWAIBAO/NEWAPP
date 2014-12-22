@@ -22,14 +22,23 @@
 
 - (IBAction)subtractionClick:(id)sender {
     
-    int temp =[self.shoptotalCountLab.text intValue] -1;
+    int temp =[self.shoptotalCountLab.text intValue];
+    
+    if (temp ==1) {
+        
+        return;
+    }
+    temp =[self.shoptotalCountLab.text intValue] -1;
     self.shoptotalCountLab.text =[NSString stringWithFormat:@"%i",temp];
+    self.countView.totalNum =temp;
     
 }
 
 - (IBAction)addClick:(id)sender {
-    int temp =[self.shoptotalCountLab.text intValue] +1;
+    int temp =[self.shoptotalCountLab.text intValue]+1;
+
 
     self.shoptotalCountLab.text =[NSString stringWithFormat:@"%i",temp];
+    self.countView.totalNum =temp;
 }
 @end

@@ -8,6 +8,7 @@
 #import "ShoppingCartVC.h"
 #import "ShopCartTabCell.h"
 #import "shopCartListModel.h"
+#import "OrderComfirmModel.h"
 @interface ShoppingCartVC (){
     
     BOOL selsectBool;
@@ -90,6 +91,36 @@
 -(void)CanelCart{
     NSLog(@"删除");
     
+    [self.dataArray enumerateObjectsUsingBlock:^(id obj, NSUInteger idx, BOOL *stop) {
+        if (((shopCartListModel *)obj).selectIndex ==1){
+            //拼接要删的参数
+        }
+    }];
+    
+    [self.params removeAllObjects];
+    [NETWORK_ENGINE requestWithPath:@"/api/ec/flow.php?uid=73&id=5&step=drop_goods" Params:self.params CompletionHandler:^(MKNetworkOperation *completedOperation) {
+        NSDictionary *dic =[completedOperation responseDecodeToDic];
+        NSLog(@"%@",dic);
+
+        NSMutableArray *tempAry =self.dataArray ;
+        [tempAry enumerateObjectsUsingBlock:^(id obj, NSUInteger idx, BOOL *stop) {
+            if (((shopCartListModel *)obj).selectIndex ==1){
+
+                [self.dataArray removeObject:obj];
+                
+            }
+        }];
+        
+        self.totocalPriceLab.text =[NSString stringWithFormat:@"%.2f",[self getTotalPrice]];
+        [self.shopCartTableView reloadData];
+        
+        
+    } ErrorHandler:^(MKNetworkOperation *completedOperation, NSError *error) {
+        
+        
+    }];
+    
+    
 }
 
 #pragma mark UITableViewDataSource
@@ -159,11 +190,27 @@
 }
 -(void)addCount:(id)sender{
     UIButton *btn =(UIButton *)sender;
+    [self.params removeAllObjects];
     shopCartListModel *tempModel =[self.dataArray objectAtIndex:btn.tag-2000];
     int temp =[tempModel.goods_number intValue];
-    tempModel.goods_number =[NSString stringWithFormat:@"%i",temp +1];
-    [self.shopCartTableView reloadData];
-  self.totocalPriceLab.text =[NSString stringWithFormat:@"%.2f",[self getTotalPrice]];
+
+    [self.params setObject:[NSString stringWithFormat:@"%i",temp+1] forKey:@"goods_number"];
+    [NETWORK_ENGINE requestWithPath:@"/api/ec/flow.php?uid=73&step=update_cart" Params:self.params CompletionHandler:^(MKNetworkOperation *completedOperation) {
+        NSDictionary *dic =[completedOperation responseDecodeToDic];
+        if ([[dic objectForKey:@"status"] objectForKey:@"statu"]) {
+            
+            tempModel.goods_number =[NSString stringWithFormat:@"%i",temp +1];
+            [self.shopCartTableView reloadData];
+            self.totocalPriceLab.text =[NSString stringWithFormat:@"%.2f",[self getTotalPrice]];
+        }else{
+            [OMGToast showWithText:@"添加失败"];
+        }
+        NSLog(@"%@",dic);
+    } ErrorHandler:^(MKNetworkOperation *completedOperation, NSError *error) {
+            [OMGToast showWithText:@"添加失败"];
+    }];
+ 
+   
     
     
 }
@@ -171,10 +218,26 @@
     UIButton *btn =(UIButton *)sender;
     shopCartListModel *tempModel =[self.dataArray objectAtIndex:btn.tag-3000];
     int temp =[tempModel.goods_number intValue];
-    tempModel.goods_number =[NSString stringWithFormat:@"%i",temp -1];
-    [self.shopCartTableView reloadData];
+    if (temp ==1) {
+
+        return;
+    }
+    [NETWORK_ENGINE requestWithPath:@"/api/ec/flow.php?uid=73&step=update_cart" Params:self.params CompletionHandler:^(MKNetworkOperation *completedOperation) {
+        NSDictionary *dic =[completedOperation responseDecodeToDic];
+        if ([[dic objectForKey:@"status"] objectForKey:@"statu"]) {
+            
+            tempModel.goods_number =[NSString stringWithFormat:@"%i",temp -1];
+            [self.shopCartTableView reloadData];
+            
+            self.totocalPriceLab.text =[NSString stringWithFormat:@"%.2f",[self getTotalPrice]];
+        }else{
+            [OMGToast showWithText:@"添加失败"];
+        }
+        NSLog(@"%@",dic);
+    } ErrorHandler:^(MKNetworkOperation *completedOperation, NSError *error) {
+        [OMGToast showWithText:@"添加失败"];
+    }];
     
-    self.totocalPriceLab.text =[NSString stringWithFormat:@"%.2f",[self getTotalPrice]];
 }
 
 -(float)getTotalPrice{
@@ -256,6 +319,47 @@
 */
 
 - (IBAction)goToOrderClick:(id)sender {
+    
+//    [self.params removeAllObjects];
+//    [self.params setObject:CHECK_VALUE(string) forKey:@"goods"];
+//    [self.params setObject:CHECK_VALUE(self.shopCarId) forKey:@"rec_ids"];
+//    NSString *path = [NSString stringWithFormat:@"/api/ec/flow.php?uid=%@&step=checkout&address_id=%@&type=%@",USERINFO.uid,currentAddressId,currentType];
+//    
+//    [NETWORK_ENGINE requestWithPath:path Params:self.params CompletionHandler:^(MKNetworkOperation *completedOperation) {
+//        
+//        NSDictionary *dic=[completedOperation responseDecodeToDic];
+//        
+//        NSDictionary *statusDic = [dic objectForKey:@"status"];
+//        
+//        if ([@"1" isEqualToString:CHECK_VALUE([statusDic objectForKey:@"statu"])]) {
+//            
+//            OrderComfirmModel *model = [OrderComfirmModel parseDicToOrderComfirmObject:[dic objectForKey:@"data"]];
+//            self.comfirmModel = model;
+//            
+//            NSMutableArray *array = [[NSMutableArray alloc]initWithObjects:_addressView,_payTypeView,_scoreView,_goodsTableView,_speakView,_timeView, nil];
+//            
+//            if (![@"1" isEqualToString:model.allow_use_integral]) {
+//                [array removeObject:_scoreView];
+//            }
+//            
+//            [self layOutMainView:array];
+//            [SVProgressHUD dismiss];
+//        }
+//        else{
+//            
+//            [SVProgressHUD showErrorWithStatus:CHECK_VALUE([statusDic objectForKey:@"msg"])];
+//        }
+//        
+//        
+//    } ErrorHandler:^(MKNetworkOperation *completedOperation, NSError *error) {
+//        
+//        [SVProgressHUD showErrorWithStatus:@"服务器忙，请稍候再试"];
+//        
+//    }];
+
+    
+    
+    
 }
 
 - (IBAction)selctAllClick:(id)sender {
