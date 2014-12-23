@@ -64,6 +64,7 @@
 {
 
     [self dismissViewControllerAnimated:YES completion:nil];
+    
 }
 
 #pragma mark 按钮事件

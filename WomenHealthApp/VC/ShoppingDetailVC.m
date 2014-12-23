@@ -11,12 +11,18 @@
 #import "ShoppingParameterView.h"
 #import "ShoppingCommentView.h"
 #import "B2CSelectCountView.h"
+
+#import "ShoppingCartVC.h"
+#define TAG_BUYNOW 100
+#define TAG_ADDCAR 101
+
 #import "ShoppingOrderComfirmVC.h"
 #import "AddressViewController.h"
 #import "OrderCommentListVC.h"
 #import "JSONKit.h"
 
 @interface ShoppingDetailVC ()<UIScrollViewDelegate,B2CSelectCountViewDelegate>
+
 
 /**
  *  选择数量的view
@@ -293,6 +299,7 @@
 #pragma mark - 按钮事件
 - (void)shareAction:(id)sender
 {
+
     AddressViewController *vc = [[AddressViewController alloc]initWithNibName:@"AddressViewController" bundle:nil];
     [self.navigationController pushViewController:vc animated:YES];
 }
@@ -408,6 +415,9 @@
 
 - (IBAction)pushToShopCarAction:(id)sender
 {
+    
+    ShoppingCartVC *vc =[[ShoppingCartVC alloc] initWithNibName:@"ShoppingCartVC" bundle:nil];
+    [self.navigationController pushViewController:vc animated:YES];
     
 }
 

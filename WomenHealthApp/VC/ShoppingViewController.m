@@ -72,7 +72,7 @@
     //允许上拉分页加载
     self.isNeedLoadMore=YES;
     self.page = 1;
-    
+
     currentSortId = @"is_best";
     currentMin_price = @"0";
     currentMax_price = @"0";

@@ -1,8 +1,15 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<<<<<<< HEAD
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="6254" systemVersion="14B25" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none">
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6247"/>
+=======
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="5053" systemVersion="13C64" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none">
+    <dependencies>
+        <deployment defaultVersion="1536" identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="3733"/>
+>>>>>>> FETCH_HEAD
     </dependencies>
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="ShoppingDetailVC">
@@ -120,7 +127,6 @@
                 </button>
             </subviews>
             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
-            <point key="canvasLocation" x="218" y="226"/>
         </view>
         <view contentMode="scaleToFill" id="0G5-aP-jgk">
             <rect key="frame" x="0.0" y="0.0" width="320" height="240"/>
@@ -139,7 +145,6 @@
             </subviews>
             <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
-            <point key="canvasLocation" x="-3" y="493"/>
         </view>
         <view contentMode="scaleToFill" id="kfO-3h-cyw" customClass="OrderCellDetailView">
             <rect key="frame" x="0.0" y="0.0" width="320" height="70"/>
@@ -171,7 +176,6 @@
             </subviews>
             <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
-            <point key="canvasLocation" x="78" y="669"/>
         </view>
         <view contentMode="scaleToFill" id="cIR-iq-Xtj" customClass="OrderCellDetailView">
             <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
@@ -205,7 +209,6 @@
             </subviews>
             <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
-            <point key="canvasLocation" x="138" y="875"/>
         </view>
         <view contentMode="scaleToFill" id="z9t-34-9L7" customClass="OrderCellDetailView">
             <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
@@ -246,7 +249,6 @@
             </subviews>
             <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
-            <point key="canvasLocation" x="63" y="825"/>
         </view>
         <view contentMode="scaleToFill" id="ReA-0j-kyR" customClass="OrderCellDetailView">
             <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
@@ -273,7 +275,6 @@
             </subviews>
             <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
-            <point key="canvasLocation" x="63" y="727"/>
         </view>
     </objects>
     <resources>
@@ -286,9 +287,4 @@
         <image name="goods_cart_btn.png" width="40" height="40"/>
         <image name="image_paper.png" width="15" height="15"/>
     </resources>
-    <simulatedMetricsContainer key="defaultSimulatedMetrics">
-        <simulatedStatusBarMetrics key="statusBar"/>
-        <simulatedOrientationMetrics key="orientation"/>
-        <simulatedScreenMetrics key="destination" type="retina4"/>
-    </simulatedMetricsContainer>
 </document>
