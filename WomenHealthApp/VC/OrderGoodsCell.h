@@ -16,4 +16,6 @@
 @property (weak, nonatomic) IBOutlet UILabel *priceLabel;
 @property (weak, nonatomic) IBOutlet UIImageView *goodsImageView;
 
+@property (weak, nonatomic) IBOutlet UIButton *commentBtn;
+
 @end

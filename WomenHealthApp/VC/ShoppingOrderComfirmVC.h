@@ -31,6 +31,7 @@
 @property (weak, nonatomic) IBOutlet UILabel *phoneLabel;
 
 @property (strong, nonatomic) IBOutlet UIView *payTypeView;
+@property (weak, nonatomic) IBOutlet UILabel *payTypeLabel;
 
 @property (strong, nonatomic) IBOutlet UIView *scoreView;
 @property (weak, nonatomic) IBOutlet UILabel *scoreLabel;

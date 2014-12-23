@@ -14,7 +14,8 @@
 {
     self = [super initWithFrame:frame];
     if (self) {
-
+        self.frame = CGRectMake(self.frame.origin.x, self.frame.origin.y, self.frame.size.width, 0.5);
+        self.backgroundColor = RGBACOLOR(199, 199, 204, 1.0f);
     }
     return self;
 }

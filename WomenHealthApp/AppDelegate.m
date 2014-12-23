@@ -29,8 +29,8 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     
-//    [ShareSDK registerApp:@"46ddb4d7bdeb"];
-    [ShareSDK registerApp:@"iosv1101"];
+    [ShareSDK registerApp:@"46ddb4d7bdeb"];
+//    [ShareSDK registerApp:@"iosv1101"];
     [self initializePlat];
     
     self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
@@ -86,8 +86,8 @@
      连接新浪微博开放平台应用以使用相关功能，此应用需要引用SinaWeiboConnection.framework
      http://open.weibo.com上注册新浪微博开放平台应用，并将相关信息填写到以下字段
      **/
-    [ShareSDK connectSinaWeiboWithAppKey:@"568898243"
-                               appSecret:@"38a4f8204cc784f81f9f0daaf31e02e3"
+    [ShareSDK connectSinaWeiboWithAppKey:@"79554925"
+                               appSecret:@"eb24938cb9628fb682622d5e21da979d"
                              redirectUri:@"http://www.sharesdk.cn"];
 
     

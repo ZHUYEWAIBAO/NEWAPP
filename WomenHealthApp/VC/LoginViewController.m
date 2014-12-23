@@ -210,8 +210,7 @@
             [USERINFO parseDicToUserInfoModel:[dic objectForKey:@"data"]];
 
             [[NSNotificationCenter defaultCenter]postNotificationName:NOTIFICATION_USER_LOGIN object:nil];
-            [self.navigationController popViewControllerAnimated:YES];
-            
+     
             [self dismissViewControllerAnimated:YES completion:nil];
             
             [SVProgressHUD dismiss];

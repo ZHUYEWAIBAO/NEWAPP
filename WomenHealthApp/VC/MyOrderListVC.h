@@ -11,6 +11,7 @@
 @interface MyOrderListVC : RefreshTableVC
 
 @property (weak, nonatomic) IBOutlet UITableView *orderListTableView;
+@property (weak, nonatomic) IBOutlet UIView *orderEmptyView;
 
 @property (strong, nonatomic) NSMutableArray *orderListArray;
 

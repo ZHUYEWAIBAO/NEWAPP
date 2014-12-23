@@ -15,6 +15,7 @@
                 <outlet property="nameLabel" destination="iYm-xO-xGR" id="Cum-S4-mL8"/>
                 <outlet property="noneLabel" destination="Hfe-gp-Wql" id="qG1-uA-po7"/>
                 <outlet property="numTextField" destination="QiK-lj-bjn" id="1Yi-n3-DpL"/>
+                <outlet property="payTypeLabel" destination="KZ2-h0-Vbh" id="Vcx-2J-0gB"/>
                 <outlet property="payTypeView" destination="eLh-eF-YtQ" id="6hg-wu-gow"/>
                 <outlet property="phoneLabel" destination="8zL-Rr-4DL" id="Z9w-fF-UwE"/>
                 <outlet property="scoreLabel" destination="TYe-Xy-ZUp" id="ZSO-IL-dgy"/>
@@ -190,7 +191,7 @@
                             <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                             <nil key="highlightedColor"/>
                         </label>
-                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="支付宝支付" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="KZ2-h0-Vbh">
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="KZ2-h0-Vbh">
                             <rect key="frame" x="84" y="11" width="105" height="21"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             <fontDescription key="fontDescription" type="system" pointSize="15"/>

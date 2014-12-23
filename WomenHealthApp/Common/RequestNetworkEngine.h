@@ -21,6 +21,32 @@
  */
 -(MKNetworkOperation*)requestWithPath:(NSString*)path Params:(NSMutableDictionary*)params  CompletionHandler:(MKNKResponseBlock) response ErrorHandler:(MKNKResponseErrorBlock) error;
 
+/**
+ *  上传多张图片
+ *
+ *  @param path     请求地址路径
+ *  @param params   参数
+ *  @param array    文件数组
+ *  @param key      关键词
+ *  @param response
+ *  @param error
+ *
+ *  @return
+ */
+-(MKNetworkOperation*)requestWithPath:(NSString*)path Params:(NSMutableDictionary*)params  fileArray:(NSMutableArray *)array keyString:(NSString *)key CompletionHandler:(MKNKResponseBlock) response ErrorHandler:(MKNKResponseErrorBlock) error;
+
+/**
+ *  上传单张张图片
+ *
+ *  @param path           请求地址路径
+ *  @param params         参数
+ *  @param imageData      图片数据
+ *  @param response
+ *  @param error
+ *
+ *  @return
+ */
+-(MKNetworkOperation*)requestWithPath:(NSString*)path Params:(NSMutableDictionary*)params imageData:(NSData *)fileData keyString:(NSString *)key CompletionHandler:(MKNKResponseBlock) response ErrorHandler:(MKNKResponseErrorBlock) error;
 
 /**
  生成请求

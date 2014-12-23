@@ -26,4 +26,12 @@
 
 + (NSString *)priceStringWithOneFloat:(NSString *)priceStr;
 
+/**
+ *@日期格式转换函数
+ *date所要转化的日期 格式为"yyyyMMddHHmmss"
+ *type转化的格式  1:@"yyyy-MM-dd HH:mm:ss"
+ *              2:@"yyyy-MM-dd"
+ **/
+- (NSString *)switchDateReturnType:(NSUInteger)type;
+
 @end

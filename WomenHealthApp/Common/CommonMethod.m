@@ -103,7 +103,7 @@ UIImage * UIImageScaleToSize(UIImage *img, CGSize size)
 - (void)saveTheRecordKey:(NSString *)recordKey
 {
     NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
-    [userDefaults setObject:CHECK_VALUE(recordKey) forKey:@"RecordId"];
+    [userDefaults setObject:CHECK_VALUE(recordKey) forKey:@"RecordHealthId"];
     //将数据即时写入
     [userDefaults synchronize];
 
@@ -113,7 +113,7 @@ UIImage * UIImageScaleToSize(UIImage *img, CGSize size)
 {
     NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
 
-    return [userDefaults objectForKey:@"RecordId"];
+    return [userDefaults objectForKey:@"RecordHealthId"];
 }
 
 - (NSInteger)getDayNumberWithYear:(NSInteger)year month:(NSInteger)month

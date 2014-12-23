@@ -13,6 +13,7 @@
 #import "B2CSelectCountView.h"
 #import "ShoppingOrderComfirmVC.h"
 #import "AddressViewController.h"
+#import "OrderCommentListVC.h"
 #import "JSONKit.h"
 
 @interface ShoppingDetailVC ()<UIScrollViewDelegate,B2CSelectCountViewDelegate>
@@ -254,18 +255,25 @@
             
             ShoppingCommentView *view = (ShoppingCommentView *)[[[NSBundle mainBundle]loadNibNamed:@"ShoppingCommentView" owner:self options:nil]lastObject];
             
-            [view setFrame:CGRectMake(0, 44 + idx * 60, SCREEN_SIZE.width, 60)];
+            [view setFrame:CGRectMake(0, 44 + idx * 70, SCREEN_SIZE.width, 70)];
             
             view.nameLabel.text = model.discuss_user_name;
             view.contentLabel.text = model.discuss_content;
             view.timeLabel.text = [model.discuss_time substringToIndex:10];
             [view.userImageView setImageWithURL:[NSURL URLWithString:model.discuss_user_avatar]];
             
-            [self.commentView setFrame:CGRectMake(0, 0, SCREEN_SIZE.width, 60 * self.detailModel.discussModel.discussArray.count + 44)];
+            [self.commentView setFrame:CGRectMake(0, 0, SCREEN_SIZE.width, 70 * self.detailModel.discussModel.discussArray.count + 44)];
             [self.commentView addSubview:view];
             
         }];
     }
+}
+
+- (IBAction)pushToCommentViewAction:(id)sender
+{
+    OrderCommentListVC *vc = [[OrderCommentListVC alloc]initWithNibName:@"OrderCommentListVC" bundle:nil];
+    vc.commentId = self.goodsId;
+    [self.navigationController pushViewController:vc animated:YES];
 }
 
 #pragma mark - UIScrollViewDelegate

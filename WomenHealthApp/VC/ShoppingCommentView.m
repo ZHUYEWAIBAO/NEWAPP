@@ -10,12 +10,11 @@
 
 @implementation ShoppingCommentView
 
-/*
-// Only override drawRect: if you perform custom drawing.
-// An empty implementation adversely affects performance during animation.
-- (void)drawRect:(CGRect)rect {
-    // Drawing code
+- (void)awakeFromNib
+{
+    //设置UIImageView显示为圆形
+    self.userImageView.layer.cornerRadius = self.userImageView.frame.size.width / 2;
+    self.userImageView.layer.masksToBounds = YES;
 }
-*/
 
 @end

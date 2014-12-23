@@ -37,12 +37,14 @@
     currentAddressId = @"";
     if (_isFromCar) {
         currentType = @"1";
+        
     }
     else{
         currentType = @"2";
     }
     isUseTimeBuy = @"0";
     currentPayTypeId = @"4";
+  
 }
 
 - (void)viewDidLoad {
@@ -75,9 +77,18 @@
     
 }
 
+
 - (void)selectThePayTypeAction:(NSNotification *)notifi
 {
     currentPayTypeId = notifi.object;
+    
+    if ([@"4" isEqualToString:currentPayTypeId]) {
+        self.payTypeLabel.text = @"支付宝支付";
+        
+    }
+    else{
+        self.payTypeLabel.text = @"微信支付";
+    }
 }
 
 - (void)getTheOrderInfo:(NSString *)string
@@ -128,6 +139,7 @@
 {
 
     [self layOutAddressView];
+    [self layOutPayTyeView];
     [self layOutTheScoreView];
     [self layOutTheTableView];
     
@@ -170,6 +182,18 @@
 {
     AddressViewController *vc = [[AddressViewController alloc]initWithNibName:@"AddressViewController" bundle:nil];
     [self.navigationController pushViewController:vc animated:YES];
+}
+
+
+- (void)layOutPayTyeView
+{
+    if ([@"4" isEqualToString:currentPayTypeId]) {
+        self.payTypeLabel.text = @"支付宝支付";
+        
+    }
+    else{
+        self.payTypeLabel.text = @"微信支付";
+    }
 }
 
 - (IBAction)payTypeChooseAction:(id)sender

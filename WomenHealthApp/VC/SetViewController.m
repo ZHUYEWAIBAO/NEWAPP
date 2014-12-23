@@ -10,6 +10,7 @@
 #import "SettingDataModel.h"
 #import "SetTableViewCell.h"
 #import "MyOrderListVC.h"
+#import "UserDetailVC.h"
 #import "AboutUsVC.h"
 
 @interface SetViewController ()<UIActionSheetDelegate>
@@ -43,6 +44,7 @@
     [super viewDidLoad];
     
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(userAfterLoginAction:) name:NOTIFICATION_USER_LOGIN object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(userDetailChangeAction:) name:NOTIFICATION_DETAIL_CHANGE object:nil];
     
     //设置UIImageView显示为圆形
     self.headImageView.layer.cornerRadius = self.headImageView.frame.size.width / 2;
@@ -71,6 +73,16 @@
     self.setDataArray = [SettingDataModel arrayForSectionNum:sectionNum];
     
     [self.setTableView reloadData];
+}
+
+- (void)userDetailChangeAction:(NSNotification *)notification
+{
+    if (USERINFO.isLogin) {
+        self.headTitleLabel.text = USERINFO.username;
+        [self.headImageView setImageWithURL:[NSURL URLWithString:USERINFO.user_icon]];
+        
+    }
+ 
 }
 
 #pragma mark UITableViewDataSource
@@ -208,7 +220,8 @@
     if (button.tag == 100) {
         
         if ([USERINFO isLogin]) {
-            
+            UserDetailVC *vc = [[UserDetailVC alloc]initWithNibName:@"UserDetailVC" bundle:nil];
+            [self.navigationController pushViewController:vc animated:YES];
         }
         else{
             [self presentLoginVCAction];
