@@ -419,6 +419,7 @@
     //payShopAry 就是用户选中的商品   都是 shopCartListModel 类型
     
     ShoppingOrderComfirmVC *vc =[[ShoppingOrderComfirmVC alloc] initWithNibName:@"ShoppingOrderComfirmVC" bundle:nil];
+    vc.isFromCar = YES;
     [self.navigationController pushViewController:vc animated:YES];
     
     

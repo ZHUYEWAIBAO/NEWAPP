@@ -96,8 +96,13 @@
     [SVProgressHUD showWithMaskType:SVProgressHUDMaskTypeClear];
     
     [self.params removeAllObjects];
-    [self.params setObject:CHECK_VALUE(string) forKey:@"goods"];
-    [self.params setObject:CHECK_VALUE(self.shopCarId) forKey:@"rec_ids"];
+    
+    if ([@"2" isEqualToString:currentType]) {
+        [self.params setObject:CHECK_VALUE(string) forKey:@"goods"];
+    }
+    else{
+        [self.params setObject:CHECK_VALUE(self.shopCarId) forKey:@"rec_ids"];
+    }
     NSString *path = [NSString stringWithFormat:@"/api/ec/flow.php?uid=%@&step=checkout&address_id=%@&type=%@",USERINFO.uid,currentAddressId,currentType];
     
     [NETWORK_ENGINE requestWithPath:path Params:self.params CompletionHandler:^(MKNetworkOperation *completedOperation) {
@@ -110,6 +115,8 @@
          
             OrderComfirmModel *model = [OrderComfirmModel parseDicToOrderComfirmObject:[dic objectForKey:@"data"]];
             self.comfirmModel = model;
+            
+            self.shopCarId = model.rec_ids;
             
             NSMutableArray *array = [[NSMutableArray alloc]initWithObjects:_addressView,_payTypeView,_scoreView,_goodsTableView,_speakView,_timeView, nil];
 
