@@ -58,22 +58,12 @@
 //    currentCategoryId = @"";
 //    currentOrdergoryId = @"";
 }
-- (void)viewDidLoad {
-    [super viewDidLoad];
-    self.title =@"购物车";
-     self.dataArray =[NSMutableArray array];
-    //添加分享按钮
-    UIButton *rightButton=[[UIButton alloc]initWithFrame:CGRectMake(0, 0, 30, 30)];
-    [rightButton addTarget:self action:@selector(CanelCart) forControlEvents:UIControlEventTouchUpInside];
-    [rightButton setBackgroundImage:[UIImage imageWithContentFileName:@"cancel_btn"] forState:UIControlStateNormal];
-    UIBarButtonItem *rightButtonItem=[[UIBarButtonItem alloc]initWithCustomView:rightButton];
-    self.navigationItem.rightBarButtonItem = rightButtonItem;
-//    [self.params removeAllObjects];
-//    [self.params setObject:@"73" forKey:@"uid"];
+-(void)viewDidAppear:(BOOL)animated{
+    [super viewDidAppear:YES];
     [NETWORK_ENGINE requestWithPath:[NSString stringWithFormat:@"/api/ec/flow.php?uid=%@",USERINFO.uid] Params:nil CompletionHandler:^(MKNetworkOperation *completedOperation) {
         NSDictionary *dic =[completedOperation responseDecodeToDic];
         NSLog(@"%@",dic);
-//        shopCartId =[[dic objectForKey:@"data"] objectForKey:@""];
+        //        shopCartId =[[dic objectForKey:@"data"] objectForKey:@""];
         
         [self.dataArray removeAllObjects];
         [[[dic objectForKey:@"data"] objectForKey:@"goods_list"] enumerateObjectsUsingBlock:^(id obj, NSUInteger idx, BOOL *stop) {
@@ -88,6 +78,21 @@
         
         
     }];
+    
+}
+- (void)viewDidLoad {
+    [super viewDidLoad];
+    self.title =@"购物车";
+     self.dataArray =[NSMutableArray array];
+    //添加分享按钮
+    UIButton *rightButton=[[UIButton alloc]initWithFrame:CGRectMake(0, 0, 30, 30)];
+    [rightButton addTarget:self action:@selector(CanelCart) forControlEvents:UIControlEventTouchUpInside];
+    [rightButton setBackgroundImage:[UIImage imageWithContentFileName:@"cancel_btn"] forState:UIControlStateNormal];
+    UIBarButtonItem *rightButtonItem=[[UIBarButtonItem alloc]initWithCustomView:rightButton];
+    self.navigationItem.rightBarButtonItem = rightButtonItem;
+//    [self.params removeAllObjects];
+//    [self.params setObject:@"73" forKey:@"uid"];
+    
     
     // Do any additional setup after loading the view from its nib.
 }
@@ -492,6 +497,8 @@
     
     
     ShoppingOrderComfirmVC *vc =[[ShoppingOrderComfirmVC alloc] initWithNibName:@"ShoppingOrderComfirmVC" bundle:nil];
+    vc.isFromCar =YES;
+    vc.shopCarId =tempIdString;
     [self.navigationController pushViewController:vc animated:YES];
     
     
