@@ -101,7 +101,7 @@
         if (((shopCartListModel *)obj).selectIndex ==1){
             //拼接要删的参数
             tempIdString =[tempIdString stringByAppendingString:((shopCartListModel *)obj).rec_id];
-            if (idx<payShopAry.count-1 && payShopAry.count !=1) {
+            if (idx<self.dataArray.count-1 && self.dataArray.count !=1) {
                 tempIdString =[tempIdString stringByAppendingString:@","];
             }
         }
