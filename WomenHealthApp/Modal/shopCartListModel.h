@@ -23,5 +23,6 @@
 
 @property(nonatomic,assign)int selectIndex;
 
+
 + (shopCartListModel *)parseDicToShopCartListObject:(NSDictionary*)dic;
 @end

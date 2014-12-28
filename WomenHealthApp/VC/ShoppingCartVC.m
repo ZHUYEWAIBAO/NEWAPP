@@ -12,6 +12,8 @@
 @interface ShoppingCartVC (){
     
     BOOL selsectBool;
+    NSString *shopCartId;//购物车Id
+    
 }
 
 @property (weak, nonatomic) IBOutlet UITableView *shopCartTableView;
@@ -65,12 +67,14 @@
     [rightButton setBackgroundImage:[UIImage imageWithContentFileName:@"cancel_btn"] forState:UIControlStateNormal];
     UIBarButtonItem *rightButtonItem=[[UIBarButtonItem alloc]initWithCustomView:rightButton];
     self.navigationItem.rightBarButtonItem = rightButtonItem;
-    [self.params removeAllObjects];
-    [self.params setObject:@"73" forKey:@"uid"];
-    [NETWORK_ENGINE requestWithPath:@"/api/ec/flow.php?uid=73" Params:self.params CompletionHandler:^(MKNetworkOperation *completedOperation) {
+//    [self.params removeAllObjects];
+//    [self.params setObject:@"73" forKey:@"uid"];
+    [NETWORK_ENGINE requestWithPath:[NSString stringWithFormat:@"/api/ec/flow.php?uid=%@",USERINFO.uid] Params:nil CompletionHandler:^(MKNetworkOperation *completedOperation) {
         NSDictionary *dic =[completedOperation responseDecodeToDic];
         NSLog(@"%@",dic);
+        shopCartId =[[dic objectForKey:@""] objectForKey:@""];
         
+        [self.dataArray removeAllObjects];
         [[[dic objectForKey:@"data"] objectForKey:@"goods_list"] enumerateObjectsUsingBlock:^(id obj, NSUInteger idx, BOOL *stop) {
             [self.dataArray addObject:([shopCartListModel parseDicToShopCartListObject:obj])];
             totalPriceAll =totalPriceAll+[[obj objectForKey:@"goods_price"] floatValue];
@@ -86,33 +90,41 @@
     
     // Do any additional setup after loading the view from its nib.
 }
-
-
+/**
+ *  删除购物车
+ */
 -(void)CanelCart{
     NSLog(@"删除");
-    
+  __block  NSString *tempIdString=@"";
     [self.dataArray enumerateObjectsUsingBlock:^(id obj, NSUInteger idx, BOOL *stop) {
         if (((shopCartListModel *)obj).selectIndex ==1){
             //拼接要删的参数
+            tempIdString =[tempIdString stringByAppendingString:((shopCartListModel *)obj).rec_id];
+            tempIdString =[tempIdString stringByAppendingString:@","];
         }
     }];
     
     [self.params removeAllObjects];
-    [NETWORK_ENGINE requestWithPath:@"/api/ec/flow.php?uid=73&id=5&step=drop_goods" Params:self.params CompletionHandler:^(MKNetworkOperation *completedOperation) {
+    [NETWORK_ENGINE requestWithPath:[NSString stringWithFormat:@"/api/ec/flow.php?uid=%@&id=%@&step=drop_goods",USERINFO.uid,tempIdString] Params:self.params CompletionHandler:^(MKNetworkOperation *completedOperation) {
         NSDictionary *dic =[completedOperation responseDecodeToDic];
         NSLog(@"%@",dic);
 
-        NSMutableArray *tempAry =self.dataArray ;
-        [tempAry enumerateObjectsUsingBlock:^(id obj, NSUInteger idx, BOOL *stop) {
-            if (((shopCartListModel *)obj).selectIndex ==1){
+        if([[[dic objectForKey:@"status"] objectForKey:@"statu"] isEqualToString:@"1"]){
+            [OMGToast showWithText:@"删除成功"];
+            
+            NSMutableArray *tempAry =[NSMutableArray arrayWithArray:self.dataArray];
+            [tempAry enumerateObjectsUsingBlock:^(id obj, NSUInteger idx, BOOL *stop) {
+                if (((shopCartListModel *)obj).selectIndex ==1){
+                    
+                    [self.dataArray removeObject:obj];
+                    
+                }
+            }];
 
-                [self.dataArray removeObject:obj];
-                
-            }
-        }];
+            self.totocalPriceLab.text =[NSString stringWithFormat:@"%.2f",[self getTotalPrice]];
+            [self.shopCartTableView reloadData];
+        }
         
-        self.totocalPriceLab.text =[NSString stringWithFormat:@"%.2f",[self getTotalPrice]];
-        [self.shopCartTableView reloadData];
         
         
     } ErrorHandler:^(MKNetworkOperation *completedOperation, NSError *error) {
@@ -183,19 +195,28 @@
     
     [cell.shopImageView setImageWithURL:[NSURL URLWithString:tempModel.goods_thumb ] placeholderImage:[UIImage imageNamed:@""]];
     
+    [cell setSelectionStyle:UITableViewCellSelectionStyleNone];
     
     return cell;
     
     
 }
+/**
+ *  编辑购物车数量 增加
+ *
+ *  @param sender <#sender description#>
+ */
 -(void)addCount:(id)sender{
     UIButton *btn =(UIButton *)sender;
     [self.params removeAllObjects];
     shopCartListModel *tempModel =[self.dataArray objectAtIndex:btn.tag-2000];
     int temp =[tempModel.goods_number intValue];
-
+    [self.params removeAllObjects];
     [self.params setObject:[NSString stringWithFormat:@"%i",temp+1] forKey:@"goods_number"];
-    [NETWORK_ENGINE requestWithPath:@"/api/ec/flow.php?uid=73&step=update_cart" Params:self.params CompletionHandler:^(MKNetworkOperation *completedOperation) {
+    [self.params setObject:[NSString stringWithFormat:@"%i",temp+1] forKey:@"id"];
+
+    
+    [NETWORK_ENGINE requestWithPath:[NSString stringWithFormat:@"/api/ec/flow.php?uid=%@&step=update_cart",USERINFO.uid]  Params:self.params CompletionHandler:^(MKNetworkOperation *completedOperation) {
         NSDictionary *dic =[completedOperation responseDecodeToDic];
         if ([[dic objectForKey:@"status"] objectForKey:@"statu"]) {
             
@@ -214,6 +235,12 @@
     
     
 }
+
+/**
+ *  减少数量
+ *
+ *  @param sender <#sender description#>
+ */
 -(void)plusCount:(id)sender{
     UIButton *btn =(UIButton *)sender;
     shopCartListModel *tempModel =[self.dataArray objectAtIndex:btn.tag-3000];
@@ -240,6 +267,11 @@
     
 }
 
+/**
+ *  获得总价
+ *
+ *  @return <#return value description#>
+ */
 -(float)getTotalPrice{
    __block float price =0;
     [self.dataArray enumerateObjectsUsingBlock:^(id obj, NSUInteger idx, BOOL *stop) {
@@ -251,6 +283,11 @@
     
     return price;
 }
+/**
+ *  复选
+ *
+ *  @param sender <#sender description#>
+ */
 -(void)changeSelecrIndex:(id)sender{
     
     UIButton *btn =(UIButton *)sender;
@@ -317,51 +354,65 @@
     // Pass the selected object to the new view controller.
 }
 */
-
+/**
+ *  下单
+ timing string 是否定时够
+ buy_nums string 定时够的期数
+ month string 定时够每期间隔多久
+ integral string 使用多少积分来抵扣
+ rec_ids string 选择下单的购物车ID 不传则默认全部 多个商品用逗号隔开
+ postscript string 用户留言
+ address_id string 收货地址ID
+ payment string 支付方式ID 默认4 支付宝支付
+ *
+ *  @param sender <#sender description#>
+ */
 - (IBAction)goToOrderClick:(id)sender {
     
-//    [self.params removeAllObjects];
-//    [self.params setObject:CHECK_VALUE(string) forKey:@"goods"];
-//    [self.params setObject:CHECK_VALUE(self.shopCarId) forKey:@"rec_ids"];
-//    NSString *path = [NSString stringWithFormat:@"/api/ec/flow.php?uid=%@&step=checkout&address_id=%@&type=%@",USERINFO.uid,currentAddressId,currentType];
-//    
-//    [NETWORK_ENGINE requestWithPath:path Params:self.params CompletionHandler:^(MKNetworkOperation *completedOperation) {
-//        
-//        NSDictionary *dic=[completedOperation responseDecodeToDic];
-//        
-//        NSDictionary *statusDic = [dic objectForKey:@"status"];
-//        
-//        if ([@"1" isEqualToString:CHECK_VALUE([statusDic objectForKey:@"statu"])]) {
-//            
-//            OrderComfirmModel *model = [OrderComfirmModel parseDicToOrderComfirmObject:[dic objectForKey:@"data"]];
-//            self.comfirmModel = model;
-//            
-//            NSMutableArray *array = [[NSMutableArray alloc]initWithObjects:_addressView,_payTypeView,_scoreView,_goodsTableView,_speakView,_timeView, nil];
-//            
-//            if (![@"1" isEqualToString:model.allow_use_integral]) {
-//                [array removeObject:_scoreView];
-//            }
-//            
-//            [self layOutMainView:array];
-//            [SVProgressHUD dismiss];
-//        }
-//        else{
-//            
-//            [SVProgressHUD showErrorWithStatus:CHECK_VALUE([statusDic objectForKey:@"msg"])];
-//        }
-//        
-//        
-//    } ErrorHandler:^(MKNetworkOperation *completedOperation, NSError *error) {
-//        
-//        [SVProgressHUD showErrorWithStatus:@"服务器忙，请稍候再试"];
-//        
-//    }];
+    [self.params removeAllObjects];
+    [self.params setObject:@"" forKey:@"timing"];
+    [self.params setObject:@"" forKey:@"buy_nums"];
+    [self.params setObject:@"" forKey:@"month"];
+    [self.params setObject:@"" forKey:@"integral"];
+    [self.params setObject:@"" forKey:@"rec_ids"];
+    [self.params setObject:@"" forKey:@"postscript"];
+    [self.params setObject:@"" forKey:@"address_id"];
+    [self.params setObject:@"" forKey:@"payment"];
+    
+    NSString *path = [NSString stringWithFormat:@"http://123.57.46.174/api/ec/flow.php?uid=%@&step=done",USERINFO.uid];
+    
+    [NETWORK_ENGINE requestWithPath:path Params:self.params CompletionHandler:^(MKNetworkOperation *completedOperation) {
+        
+        NSDictionary *dic=[completedOperation responseDecodeToDic];
+        
+        NSDictionary *statusDic = [dic objectForKey:@"status"];
+        
+        if ([@"1" isEqualToString:CHECK_VALUE([statusDic objectForKey:@"statu"])]) {
+            
+          
+        }
+        else{
+            
+            [SVProgressHUD showErrorWithStatus:CHECK_VALUE([statusDic objectForKey:@"msg"])];
+        }
+        
+        
+    } ErrorHandler:^(MKNetworkOperation *completedOperation, NSError *error) {
+        
+        [SVProgressHUD showErrorWithStatus:@"服务器忙，请稍候再试"];
+        
+    }];
 
     
     
     
 }
 
+/**
+ *  全选
+ *
+ *  @param sender <#sender description#>
+ */
 - (IBAction)selctAllClick:(id)sender {
     
         if (selsectBool ==NO) {
