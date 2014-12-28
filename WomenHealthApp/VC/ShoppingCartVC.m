@@ -101,7 +101,9 @@
         if (((shopCartListModel *)obj).selectIndex ==1){
             //拼接要删的参数
             tempIdString =[tempIdString stringByAppendingString:((shopCartListModel *)obj).rec_id];
-            tempIdString =[tempIdString stringByAppendingString:@","];
+            if (idx<payShopAry.count-1 && payShopAry.count !=1) {
+                tempIdString =[tempIdString stringByAppendingString:@","];
+            }
         }
     }];
     
@@ -367,7 +369,50 @@
  address_id string 收货地址ID
  payment string 支付方式ID 默认4 支付宝支付
  *
- *  @param sender <#sender description#>
+ 
+ 
+ data =     {
+ "goods_list" =         (
+ {
+ "goods_attr" = "";
+ "goods_id" = 5;
+ "goods_name" = "\U7d22\U7231\U539f\U88c5M2\U5361\U8bfb\U5361\U5668";
+ "goods_number" = 4;
+ "goods_price" = "20.00";
+ "goods_thumb" = "http://123.57.46.174/ec/images/200905/thumb_img/5_thumb_G_1241422518886.jpg";
+ "is_real" = 1;
+ "market_price" = "24.00";
+ "rec_id" = 135;
+ subtotal = "80.00";
+ }
+ );
+ total =         {
+ "allow_use_integral" = 1;
+ consignee =             {
+ consignee =                 {
+ };
+ "consignee_exist" = 0;
+ };
+ "goods_price" = "80.00";
+ "market_price" = "96.00";
+ "order_max_integral" = 0;
+ "order_max_integral_str" = "\U53ef\U7528\U8212\U670d0\U79ef\U5206\U62b5\U62630\U5143";
+ "order_reduce_moeny" = 0;
+ "rec_ids" = 135;
+ "save_rate" = "17%";
+ saving = "16.00";
+ "shipping_fee" = 15;
+ "your_integral" = 0;
+ };
+ };
+ status =     {
+ msg = "api request success";
+ statu = 1;
+ };
+ }
+
+ 
+
  */
 - (IBAction)goToOrderClick:(id)sender {
     
@@ -416,7 +461,35 @@
         }
     }];
     
+    __block  NSString *tempIdString=@"";
+    [payShopAry enumerateObjectsUsingBlock:^(id obj, NSUInteger idx, BOOL *stop) {
+        if (((shopCartListModel *)obj).selectIndex ==1){
+            //拼接要删的参数
+            tempIdString =[tempIdString stringByAppendingString:((shopCartListModel *)obj).rec_id];
+            if (idx<payShopAry.count-1 && payShopAry.count !=1) {
+                tempIdString =[tempIdString stringByAppendingString:@","];
+            }
+            
+        }
+    }];
+    
+    [self.params removeAllObjects];
+    [self.params setObject:tempIdString forKey:@"rec_ids"];
+    
+    
     //payShopAry 就是用户选中的商品   都是 shopCartListModel 类型
+    [NETWORK_ENGINE requestWithPath:[NSString stringWithFormat:@"/api/ec/flow.php?uid=%@&step=checkout&address_id=&type=1",USERINFO.uid]  Params:self.params CompletionHandler:^(MKNetworkOperation *completedOperation) {
+        NSDictionary *dic =[completedOperation responseDecodeToDic];
+        if ([[dic objectForKey:@"status"] objectForKey:@"statu"]) {
+            
+        }else{
+
+        }
+        NSLog(@"%@",dic);
+    } ErrorHandler:^(MKNetworkOperation *completedOperation, NSError *error) {
+
+    }];
+    
     
     ShoppingOrderComfirmVC *vc =[[ShoppingOrderComfirmVC alloc] initWithNibName:@"ShoppingOrderComfirmVC" bundle:nil];
     [self.navigationController pushViewController:vc animated:YES];
