@@ -9,6 +9,7 @@
 #import "ShopCartTabCell.h"
 #import "shopCartListModel.h"
 #import "OrderComfirmModel.h"
+#import "ShoppingOrderComfirmVC.h"
 @interface ShoppingCartVC (){
     
     BOOL selsectBool;
@@ -47,7 +48,7 @@
     self.tableView = self.shopCartTableView;
     
     //允许上拉分页加载
-    self.isNeedLoadMore=YES;
+//    self.isNeedLoadMore=YES;
     self.page = 1;
 //    
 //    currentSortId = @"is_best";
@@ -72,7 +73,7 @@
     [NETWORK_ENGINE requestWithPath:[NSString stringWithFormat:@"/api/ec/flow.php?uid=%@",USERINFO.uid] Params:nil CompletionHandler:^(MKNetworkOperation *completedOperation) {
         NSDictionary *dic =[completedOperation responseDecodeToDic];
         NSLog(@"%@",dic);
-        shopCartId =[[dic objectForKey:@""] objectForKey:@""];
+//        shopCartId =[[dic objectForKey:@"data"] objectForKey:@""];
         
         [self.dataArray removeAllObjects];
         [[[dic objectForKey:@"data"] objectForKey:@"goods_list"] enumerateObjectsUsingBlock:^(id obj, NSUInteger idx, BOOL *stop) {
@@ -212,10 +213,8 @@
     shopCartListModel *tempModel =[self.dataArray objectAtIndex:btn.tag-2000];
     int temp =[tempModel.goods_number intValue];
     [self.params removeAllObjects];
-    [self.params setObject:[NSString stringWithFormat:@"%i",temp+1] forKey:@"goods_number"];
-    [self.params setObject:[NSString stringWithFormat:@"%i",temp+1] forKey:@"id"];
 
-    
+    [self.params setObject:[NSString stringWithFormat:@"{\"%@\":\"%i\"}",tempModel.rec_id,temp+1] forKey:@"goods_number"];
     [NETWORK_ENGINE requestWithPath:[NSString stringWithFormat:@"/api/ec/flow.php?uid=%@&step=update_cart",USERINFO.uid]  Params:self.params CompletionHandler:^(MKNetworkOperation *completedOperation) {
         NSDictionary *dic =[completedOperation responseDecodeToDic];
         if ([[dic objectForKey:@"status"] objectForKey:@"statu"]) {
@@ -249,13 +248,16 @@
 
         return;
     }
-    [NETWORK_ENGINE requestWithPath:@"/api/ec/flow.php?uid=73&step=update_cart" Params:self.params CompletionHandler:^(MKNetworkOperation *completedOperation) {
+    [self.params removeAllObjects];
+    [self.params setObject:[NSString stringWithFormat:@"{\"%@\":\"%i\"}",tempModel.rec_id,temp+1] forKey:@"goods_number"];
+    
+    
+    [NETWORK_ENGINE requestWithPath:[NSString stringWithFormat:@"/api/ec/flow.php?uid=%@&step=update_cart",USERINFO.uid]  Params:self.params CompletionHandler:^(MKNetworkOperation *completedOperation) {
         NSDictionary *dic =[completedOperation responseDecodeToDic];
         if ([[dic objectForKey:@"status"] objectForKey:@"statu"]) {
             
             tempModel.goods_number =[NSString stringWithFormat:@"%i",temp -1];
             [self.shopCartTableView reloadData];
-            
             self.totocalPriceLab.text =[NSString stringWithFormat:@"%.2f",[self getTotalPrice]];
         }else{
             [OMGToast showWithText:@"添加失败"];
@@ -369,41 +371,55 @@
  */
 - (IBAction)goToOrderClick:(id)sender {
     
-    [self.params removeAllObjects];
-    [self.params setObject:@"" forKey:@"timing"];
-    [self.params setObject:@"" forKey:@"buy_nums"];
-    [self.params setObject:@"" forKey:@"month"];
-    [self.params setObject:@"" forKey:@"integral"];
-    [self.params setObject:@"" forKey:@"rec_ids"];
-    [self.params setObject:@"" forKey:@"postscript"];
-    [self.params setObject:@"" forKey:@"address_id"];
-    [self.params setObject:@"" forKey:@"payment"];
-    
-    NSString *path = [NSString stringWithFormat:@"http://123.57.46.174/api/ec/flow.php?uid=%@&step=done",USERINFO.uid];
-    
-    [NETWORK_ENGINE requestWithPath:path Params:self.params CompletionHandler:^(MKNetworkOperation *completedOperation) {
-        
-        NSDictionary *dic=[completedOperation responseDecodeToDic];
-        
-        NSDictionary *statusDic = [dic objectForKey:@"status"];
-        
-        if ([@"1" isEqualToString:CHECK_VALUE([statusDic objectForKey:@"statu"])]) {
-            
-          
-        }
-        else{
-            
-            [SVProgressHUD showErrorWithStatus:CHECK_VALUE([statusDic objectForKey:@"msg"])];
-        }
-        
-        
-    } ErrorHandler:^(MKNetworkOperation *completedOperation, NSError *error) {
-        
-        [SVProgressHUD showErrorWithStatus:@"服务器忙，请稍候再试"];
-        
-    }];
+//    [self.params removeAllObjects];
+//    [self.params setObject:@"" forKey:@"timing"];
+//    [self.params setObject:@"" forKey:@"buy_nums"];
+//    [self.params setObject:@"" forKey:@"month"];
+//    [self.params setObject:@"" forKey:@"integral"];
+//    [self.params setObject:@"" forKey:@"rec_ids"];
+//    [self.params setObject:@"" forKey:@"postscript"];
+//    [self.params setObject:@"" forKey:@"address_id"];
+//    [self.params setObject:@"" forKey:@"payment"];
+//    
+//    NSString *path = [NSString stringWithFormat:@"http://123.57.46.174/api/ec/flow.php?uid=%@&step=done",USERINFO.uid];
+//    
+//    [NETWORK_ENGINE requestWithPath:path Params:self.params CompletionHandler:^(MKNetworkOperation *completedOperation) {
+//        
+//        NSDictionary *dic=[completedOperation responseDecodeToDic];
+//        
+//        NSDictionary *statusDic = [dic objectForKey:@"status"];
+//        
+//        if ([@"1" isEqualToString:CHECK_VALUE([statusDic objectForKey:@"statu"])]) {
+//            
+//          
+//        }
+//        else{
+//            
+//            [SVProgressHUD showErrorWithStatus:CHECK_VALUE([statusDic objectForKey:@"msg"])];
+//        }
+//        
+//        
+//    } ErrorHandler:^(MKNetworkOperation *completedOperation, NSError *error) {
+//        
+//        [SVProgressHUD showErrorWithStatus:@"服务器忙，请稍候再试"];
+//        
+//    }];
 
     
+    
+    //遍历 找出需要支付的商品
+    NSMutableArray *payShopAry =[NSMutableArray array];
+    [self.dataArray enumerateObjectsUsingBlock:^(id obj, NSUInteger idx, BOOL *stop) {
+        if (((shopCartListModel *)obj).selectIndex ==1) {
+            [payShopAry addObject:obj];
+            
+        }
+    }];
+    
+    //payShopAry 就是用户选中的商品   都是 shopCartListModel 类型
+    
+    ShoppingOrderComfirmVC *vc =[[ShoppingOrderComfirmVC alloc] initWithNibName:@"ShoppingOrderComfirmVC" bundle:nil];
+    [self.navigationController pushViewController:vc animated:YES];
     
     
 }
