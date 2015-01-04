@@ -22,6 +22,7 @@
 		65134D0B1A1A26710011BCF7 /* UIColor+RGBCo.m in Sources */ = {isa = PBXBuildFile; fileRef = 65134D071A1A26710011BCF7 /* UIColor+RGBCo.m */; };
 		65134D0C1A1A26710011BCF7 /* calendarView.m in Sources */ = {isa = PBXBuildFile; fileRef = 65134D091A1A26710011BCF7 /* calendarView.m */; };
 		65134D0D1A1A26710011BCF7 /* calendarView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 65134D0A1A1A26710011BCF7 /* calendarView.xib */; };
+		653AAFAA1A59723C005E87CE /* NoOrder.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 653AAFA91A59723C005E87CE /* NoOrder.jpg */; };
 		6560F4041A2B137E004B2847 /* CMSinger.m in Sources */ = {isa = PBXBuildFile; fileRef = 6560F4031A2B137E004B2847 /* CMSinger.m */; };
 		656B0EE71A484DFA00669852 /* OMGToast.m in Sources */ = {isa = PBXBuildFile; fileRef = 656B0EE61A484DFA00669852 /* OMGToast.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		657B41361A1729160057F5AE /* add_btn_selected@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 657B41311A1729160057F5AE /* add_btn_selected@2x.png */; };
@@ -429,6 +430,7 @@
 		65134D081A1A26710011BCF7 /* calendarView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = calendarView.h; sourceTree = "<group>"; };
 		65134D091A1A26710011BCF7 /* calendarView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = calendarView.m; sourceTree = "<group>"; };
 		65134D0A1A1A26710011BCF7 /* calendarView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = calendarView.xib; sourceTree = "<group>"; };
+		653AAFA91A59723C005E87CE /* NoOrder.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = NoOrder.jpg; sourceTree = "<group>"; };
 		6560F4021A2B137E004B2847 /* CMSinger.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CMSinger.h; sourceTree = "<group>"; };
 		6560F4031A2B137E004B2847 /* CMSinger.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CMSinger.m; sourceTree = "<group>"; };
 		656B0EE51A484DFA00669852 /* OMGToast.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OMGToast.h; sourceTree = "<group>"; };
@@ -1657,6 +1659,7 @@
 		BA6230C61A2EBB3600F471A6 /* shopping */ = {
 			isa = PBXGroup;
 			children = (
+				653AAFA91A59723C005E87CE /* NoOrder.jpg */,
 				65E5BDDC1A38474C00975757 /* cancel_btn@2x.png */,
 				65E5BDD81A38462000975757 /* chose_no_btn@2x.png */,
 				65E5BDD91A38462000975757 /* chose_yes_btn@2x.png */,
@@ -2083,6 +2086,7 @@
 				65EE0A391A17897400F6F38E /* menu_btn@2x.png in Resources */,
 				BA769CA71A30115300574267 /* SearchGoodsVC.xib in Resources */,
 				BA8955121A43333B00EFFF2C /* comment_btn@2x.png in Resources */,
+				653AAFAA1A59723C005E87CE /* NoOrder.jpg in Resources */,
 				BA59D83119F8AAF90098BDCF /* ShoppingViewController.xib in Resources */,
 				BACD63E41A2C3D8500683E38 /* user_register_step3@2x.png in Resources */,
 				BA3739341A4265E700164B85 /* order_delete_btn@2x.png in Resources */,
@@ -2536,7 +2540,7 @@
 				);
 				ONLY_ACTIVE_ARCH = YES;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "32ece9c9-0409-4077-b03e-08d0af8b94a5";
+				PROVISIONING_PROFILE = "7460819f-0b2f-4c6f-b5a4-27024572e668";
 				VALID_ARCHS = "arm64 armv7 armv7s";
 			};
 			name = Debug;
@@ -2567,7 +2571,7 @@
 				);
 				ONLY_ACTIVE_ARCH = NO;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "32ece9c9-0409-4077-b03e-08d0af8b94a5";
+				PROVISIONING_PROFILE = "7460819f-0b2f-4c6f-b5a4-27024572e668";
 				VALID_ARCHS = "arm64 armv7 armv7s";
 			};
 			name = Release;
