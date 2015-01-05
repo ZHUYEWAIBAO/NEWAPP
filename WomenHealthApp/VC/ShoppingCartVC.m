@@ -15,6 +15,8 @@
     BOOL selsectBool;
     NSString *shopCartId;//购物车Id
     
+    IBOutlet UIImageView *noOrderImg;
+    
 }
 
 @property (weak, nonatomic) IBOutlet UITableView *shopCartTableView;
@@ -26,6 +28,9 @@
 - (IBAction)selctAllClick:(id)sender;
 
 @property (weak, nonatomic) IBOutlet UIButton *sleallbtn;
+
+@property (weak, nonatomic) IBOutlet UIImageView *iconAllImage;
+
 
 
 @end
@@ -60,6 +65,11 @@
 }
 -(void)viewDidAppear:(BOOL)animated{
     [super viewDidAppear:YES];
+    
+    
+}
+-(void)viewWillAppear:(BOOL)animated{
+    [super viewWillAppear:YES];
     [NETWORK_ENGINE requestWithPath:[NSString stringWithFormat:@"/api/ec/flow.php?uid=%@",USERINFO.uid] Params:nil CompletionHandler:^(MKNetworkOperation *completedOperation) {
         NSDictionary *dic =[completedOperation responseDecodeToDic];
         NSLog(@"%@",dic);
@@ -70,15 +80,15 @@
             [self.dataArray addObject:([shopCartListModel parseDicToShopCartListObject:obj])];
             totalPriceAll =totalPriceAll+[[obj objectForKey:@"goods_price"] floatValue];
         }];
-        self.totocalPriceLab.text =[NSString stringWithFormat:@"%.2f",[self getTotalPrice]];
-        [self.shopCartTableView reloadData];
+        
+        
+        [self getSAllInfo];
         
         
     } ErrorHandler:^(MKNetworkOperation *completedOperation, NSError *error) {
         
         
     }];
-    
 }
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -93,9 +103,86 @@
 //    [self.params removeAllObjects];
 //    [self.params setObject:@"73" forKey:@"uid"];
     
-    
+    self.tableView.tableFooterView =[[UIView alloc]init];
     // Do any additional setup after loading the view from its nib.
 }
+
+#pragma mark - 下拉刷新
+- (void)reloadTableViewDataSource
+{
+    
+    if (self.isLoading) { return;}
+    self.page = 1;
+    [self getOrderListData];
+    [super reloadTableViewDataSource];
+    
+}
+-(void)getOrderListData{
+    //根据订单状态得到订单列表
+    //1处理中 2完成 3取消
+    
+    [NETWORK_ENGINE requestWithPath:[NSString stringWithFormat:@"/api/ec/flow.php?uid=%@",USERINFO.uid] Params:nil CompletionHandler:^(MKNetworkOperation *completedOperation){
+        NSDictionary *dic =[completedOperation responseDecodeToDic];
+        NSLog(@"%@",dic);
+        
+        if ([[[dic objectForKey:@"status"] objectForKey:@"statu"] isEqualToString:@"1"]) {
+            
+
+            if (self.page ==1) {
+                [self.dataArray removeAllObjects];
+                [[[dic objectForKey:@"data"] objectForKey:@"goods_list"] enumerateObjectsUsingBlock:^(id obj, NSUInteger idx, BOOL *stop) {
+                    [self.dataArray addObject:[shopCartListModel parseDicToShopCartListObject:obj]];
+                }];
+                
+                
+            }else{
+                
+                [[[dic objectForKey:@"data"] objectForKey:@"goods_list"] enumerateObjectsUsingBlock:^(id obj, NSUInteger idx, BOOL *stop) {
+                    [self.dataArray addObject:[shopCartListModel parseDicToShopCartListObject:obj]];
+                }];
+                
+            }
+            
+            
+            if (self.page <[[[dic objectForKey:@"result"] objectForKey:@"totalPages"] intValue]) {
+                self.page ++;
+                self.isNeedLoadMore =YES;
+                self.footview.hidden=NO;
+            }else if(self.page ==[[[dic objectForKey:@"result"] objectForKey:@"totalPages"] intValue]){
+                
+                self.isNeedLoadMore =NO;
+                self.footview.hidden=YES;
+            }
+            
+            [self.tableView reloadData];
+            
+        }else{
+            self.isNeedLoadMore =NO;
+            self.footview.hidden=YES;
+        }
+        
+        [self getSAllInfo];
+        [self doneLoadingTableViewData];
+        [self.footview endRefreshing];
+        
+    } ErrorHandler:^(MKNetworkOperation *completedOperation, NSError *error) {
+        
+        [self doneLoadingTableViewData];
+        [self.footview endRefreshing];
+        self.isNeedLoadMore =NO;
+        self.footview.hidden=YES;
+        
+    }];
+}
+- (void)doneLoadingTableViewData
+{
+    
+    [super doneLoadingTableViewData];
+    
+}
+
+
+
 /**
  *  删除购物车
  */
@@ -111,6 +198,10 @@
             }
         }
     }];
+    if(tempIdString.length==0){
+        [OMGToast showWithText:@"请选择要删除的商品"];
+        return ;
+    }
     
     [self.params removeAllObjects];
     [NETWORK_ENGINE requestWithPath:[NSString stringWithFormat:@"/api/ec/flow.php?uid=%@&id=%@&step=drop_goods",USERINFO.uid,tempIdString] Params:self.params CompletionHandler:^(MKNetworkOperation *completedOperation) {
@@ -129,8 +220,8 @@
                 }
             }];
 
-            self.totocalPriceLab.text =[NSString stringWithFormat:@"%.2f",[self getTotalPrice]];
-            [self.shopCartTableView reloadData];
+
+            [self getSAllInfo];
         }
         
         
@@ -182,8 +273,8 @@
         cell = [nibArr objectAtIndex:0];
         
     }
-    cell.selectGouBtn.tag =100+indexPath.section;
-    [cell.selectGouBtn addTarget:self action:@selector(changeSelecrIndex:) forControlEvents:UIControlEventTouchUpInside];
+    cell.selectBtnClick.tag =100+indexPath.section;
+    [cell.selectBtnClick addTarget:self action:@selector(changeSelecrIndex:) forControlEvents:UIControlEventTouchUpInside];
     shopCartListModel *tempModel =[self.dataArray objectAtIndex:indexPath.section];
     cell.shopNameLab.text =[tempModel goods_name];
     cell.shopCountLab.text =[NSString stringWithFormat:@"数量:%@",[tempModel goods_number]];
@@ -306,11 +397,41 @@
     }else{
         tempModel.selectIndex =1;
     }
+    [self getSAllInfo];
     
+}
+
+-(void)getSAllInfo{
+    __block int shoudelSele =0;
+    [self.dataArray enumerateObjectsUsingBlock:^(id obj, NSUInteger idx, BOOL *stop) {
+        if(((shopCartListModel *)obj).selectIndex ==1){
+            shoudelSele++;
+        }
+        
+    }];
+    
+    if (shoudelSele ==self.dataArray.count&&shoudelSele !=0) {
+        [self.iconAllImage setImage:[UIImage imageNamed:@"chose_yes_btn.png"]];
+    }else {
+        [self.iconAllImage setImage:[UIImage imageNamed:@"chose_no_btn.png"]];
+    }
+    
+    if (self.dataArray.count ==0) {
+        if (self.shopCartTableView.scrollEnabled ==YES) {
+            [self.shopCartTableView addSubview:noOrderImg];
+
+
+            self.shopCartTableView.scrollEnabled =NO;
+        }
+        
+    }else{
+        [noOrderImg removeFromSuperview];
+
+        self.shopCartTableView.scrollEnabled =YES;
+    }
     
     [self.shopCartTableView reloadData];
     self.totocalPriceLab.text =[NSString stringWithFormat:@"%.2f",[self getTotalPrice]];
-    
 }
 //- (UITableViewHeaderFooterView *)headerViewForSection:(NSInteger)section NS_AVAILABLE_IOS(6_0){
 //    if(section ==0){
@@ -514,9 +635,9 @@
 - (IBAction)selctAllClick:(id)sender {
     
         if (selsectBool ==NO) {
-            [_sleallbtn setBackgroundImage:[UIImage imageNamed:@"chose_yes_btn.png"] forState:UIControlStateNormal];
+            [self.iconAllImage setImage:[UIImage imageNamed:@"chose_yes_btn.png"]];
         }else {
-            [_sleallbtn setBackgroundImage:[UIImage imageNamed:@"chose_no_btn.png"] forState:UIControlStateNormal];
+            [self.iconAllImage setImage:[UIImage imageNamed:@"chose_no_btn.png"]];
         }
     [self.dataArray enumerateObjectsUsingBlock:^(id obj, NSUInteger idx, BOOL *stop) {
         
@@ -530,8 +651,7 @@
     }];
 
     selsectBool =!selsectBool;
-    [self.shopCartTableView reloadData];
-    self.totocalPriceLab.text =[NSString stringWithFormat:@"%.2f",[self getTotalPrice]];
+    [self getSAllInfo];
     
 }
 @end

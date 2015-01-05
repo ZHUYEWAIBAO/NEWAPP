@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="5053" systemVersion="13C64" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="6254" systemVersion="14B25" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none">
     <dependencies>
-        <deployment defaultVersion="1536" identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="3733"/>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6247"/>
     </dependencies>
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
@@ -122,6 +122,13 @@
                             <outlet property="countTextField" destination="s5Y-e6-PNb" id="wap-Ff-kRk"/>
                         </connections>
                     </view>
+                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="Xf8-ht-KkY">
+                        <rect key="frame" x="4" y="34" width="28" height="38"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <state key="normal">
+                            <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                        </state>
+                    </button>
                 </subviews>
             </tableViewCellContentView>
             <connections>
@@ -129,7 +136,7 @@
                 <outlet property="colorTypeLab" destination="eLB-Lf-6al" id="fbS-6q-nd0"/>
                 <outlet property="countView" destination="WDS-Zb-gqE" id="oZs-qD-npJ"/>
                 <outlet property="plusBtnv" destination="7OB-kC-Mr5" id="0EV-d2-UbK"/>
-                <outlet property="selectBtnClick" destination="82j-q0-uFj" id="HRl-Tt-nxG"/>
+                <outlet property="selectBtnClick" destination="Xf8-ht-KkY" id="FvX-TE-7o2"/>
                 <outlet property="selectGouBtn" destination="82j-q0-uFj" id="NxR-xv-AYy"/>
                 <outlet property="shopCountLab" destination="WGd-qP-3v7" id="D9j-9b-bWB"/>
                 <outlet property="shopImageView" destination="qNy-T7-WPE" id="Zyd-uO-Jv6"/>
@@ -144,4 +151,9 @@
         <image name="chose_no_btn.png" width="17" height="17"/>
         <image name="hah.jpg" width="143" height="176"/>
     </resources>
+    <simulatedMetricsContainer key="defaultSimulatedMetrics">
+        <simulatedStatusBarMetrics key="statusBar"/>
+        <simulatedOrientationMetrics key="orientation"/>
+        <simulatedScreenMetrics key="destination" type="retina4"/>
+    </simulatedMetricsContainer>
 </document>

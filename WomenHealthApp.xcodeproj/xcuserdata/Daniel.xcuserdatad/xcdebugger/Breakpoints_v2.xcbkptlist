@@ -366,73 +366,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "WomenHealthApp/VC/ShoppingCartVC.m"
-            timestampString = "441465299.055981"
+            timestampString = "442072599.728576"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "115"
-            endingLineNumber = "115"
-            landmarkName = "-CanelCart"
-            landmarkType = "5">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "WomenHealthApp/VC/ShoppingCartVC.m"
-            timestampString = "441465299.055981"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "105"
-            endingLineNumber = "105"
-            landmarkName = "-CanelCart"
-            landmarkType = "5">
-            <Locations>
-               <Location
-                  shouldBeEnabled = "No"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "-[ShoppingCartVC CanelCart]"
-                  moduleName = "WomenHealthApp"
-                  urlString = "file:///Users/Daniel/Desktop/NEWAPP/WomenHealthApp/VC/ShoppingCartVC.m"
-                  timestampString = "441421869.590177"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "94"
-                  endingLineNumber = "94"
-                  offsetFromSymbolStart = "120">
-               </Location>
-               <Location
-                  shouldBeEnabled = "No"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "__27-[ShoppingCartVC CanelCart]_block_invoke"
-                  moduleName = "WomenHealthApp"
-                  urlString = "file:///Users/Daniel/Desktop/NEWAPP/WomenHealthApp/VC/ShoppingCartVC.m"
-                  timestampString = "441421869.590467"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "94"
-                  endingLineNumber = "94"
-                  offsetFromSymbolStart = "60">
-               </Location>
-            </Locations>
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "WomenHealthApp/VC/ShoppingCartVC.m"
-            timestampString = "441465299.055981"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "113"
-            endingLineNumber = "113"
+            startingLineNumber = "206"
+            endingLineNumber = "206"
             landmarkName = "-CanelCart"
             landmarkType = "5">
          </BreakpointContent>
@@ -444,27 +382,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "WomenHealthApp/VC/ShoppingCartVC.m"
-            timestampString = "441465299.055981"
+            timestampString = "442072599.728576"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "108"
-            endingLineNumber = "108"
-            landmarkName = "-CanelCart"
-            landmarkType = "5">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "WomenHealthApp/VC/ShoppingCartVC.m"
-            timestampString = "441465299.055981"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "224"
-            endingLineNumber = "224"
+            startingLineNumber = "315"
+            endingLineNumber = "315"
             landmarkName = "-addCount:"
             landmarkType = "5">
          </BreakpointContent>
@@ -476,11 +398,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "WomenHealthApp/VC/ShoppingCartVC.m"
-            timestampString = "441465299.055981"
+            timestampString = "442072599.728576"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "227"
-            endingLineNumber = "227"
+            startingLineNumber = "318"
+            endingLineNumber = "318"
             landmarkName = "-addCount:"
             landmarkType = "5">
          </BreakpointContent>
@@ -492,11 +414,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "WomenHealthApp/VC/ShoppingCartVC.m"
-            timestampString = "441465299.055981"
+            timestampString = "442072599.728576"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "223"
-            endingLineNumber = "223"
+            startingLineNumber = "314"
+            endingLineNumber = "314"
             landmarkName = "-addCount:"
             landmarkType = "5">
          </BreakpointContent>
@@ -508,11 +430,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "WomenHealthApp/VC/ShoppingCartVC.m"
-            timestampString = "441465299.055981"
+            timestampString = "442072599.728576"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "263"
-            endingLineNumber = "263"
+            startingLineNumber = "354"
+            endingLineNumber = "354"
             landmarkName = "-plusCount:"
             landmarkType = "5">
          </BreakpointContent>
@@ -524,11 +446,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "WomenHealthApp/VC/ShoppingCartVC.m"
-            timestampString = "441465299.055981"
+            timestampString = "442073049.066113"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "424"
-            endingLineNumber = "424"
+            startingLineNumber = "545"
+            endingLineNumber = "545"
             landmarkName = "-goToOrderClick:"
             landmarkType = "5">
          </BreakpointContent>
@@ -540,11 +462,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "WomenHealthApp/VC/ShoppingCartVC.m"
-            timestampString = "441465299.055981"
+            timestampString = "442073049.066113"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "436"
-            endingLineNumber = "436"
+            startingLineNumber = "557"
+            endingLineNumber = "557"
             landmarkName = "-goToOrderClick:"
             landmarkType = "5">
          </BreakpointContent>
@@ -556,12 +478,124 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "WomenHealthApp/VC/ShoppingCartVC.m"
-            timestampString = "441465299.055981"
+            timestampString = "442073049.066113"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "448"
-            endingLineNumber = "448"
+            startingLineNumber = "569"
+            endingLineNumber = "569"
             landmarkName = "-goToOrderClick:"
+            landmarkType = "5">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "WomenHealthApp/VC/ShoppingDetailVC.m"
+            timestampString = "442070023.049295"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "108"
+            endingLineNumber = "108"
+            landmarkName = "-getTheB2CDetailWithGoodsId:"
+            landmarkType = "5">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "WomenHealthApp/VC/ShoppingCartVC.m"
+            timestampString = "442072599.728576"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "164"
+            endingLineNumber = "164"
+            landmarkName = "-getOrderListData"
+            landmarkType = "5">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "WomenHealthApp/VC/ShoppingCartVC.m"
+            timestampString = "442072599.728576"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "224"
+            endingLineNumber = "224"
+            landmarkName = "-CanelCart"
+            landmarkType = "5">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "WomenHealthApp/VC/ShoppingCartVC.m"
+            timestampString = "442072599.728576"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "400"
+            endingLineNumber = "400"
+            landmarkName = "-changeSelecrIndex:"
+            landmarkType = "5">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "WomenHealthApp/VC/ShoppingCartVC.m"
+            timestampString = "442073049.066113"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "654"
+            endingLineNumber = "654"
+            landmarkName = "-selctAllClick:"
+            landmarkType = "5">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "WomenHealthApp/VC/ShoppingCartVC.m"
+            timestampString = "442071895.724844"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "68"
+            endingLineNumber = "68"
+            landmarkName = "-viewDidAppear:"
+            landmarkType = "5">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "WomenHealthApp/VC/ShoppingCartVC.m"
+            timestampString = "442072669.008362"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "419"
+            endingLineNumber = "419"
+            landmarkName = "-getSAllInfo"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>
