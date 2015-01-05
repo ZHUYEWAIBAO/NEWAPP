@@ -19,6 +19,7 @@
 #import <TencentOpenAPI/QQApi.h>
 #import <TencentOpenAPI/QQApiInterface.h>
 #import <TencentOpenAPI/TencentOAuth.h>
+#import <AlipaySDK/AlipaySDK.h>
 
 @interface AppDelegate ()
 
@@ -149,6 +150,15 @@
   sourceApplication:(NSString *)sourceApplication
          annotation:(id)annotation
 {
+    //跳转支付宝钱包进行支付，需要将支付宝钱包的支付结果回传给SDK
+    if ([url.host isEqualToString:@"safepay"]) {
+//        [[AlipaySDK defaultService]
+//         processOrderWithPaymentResult:url
+//         standbyCallback:^(NSDictionary *resultDic) {
+//             NSLog(@"result = %@", resultDic);
+//         }];
+    }
+    
     return [ShareSDK handleOpenURL:url
                  sourceApplication:sourceApplication
                         annotation:annotation

@@ -153,7 +153,8 @@
     cell.contenLabel.text = model.discuss_content;
     cell.timeLabel.text = model.discuss_time;
     
-    float contentHeight = HeightForString(model.discuss_content, 13, 300)+10;
+    float contentHeight = HeightForString(model.discuss_content, 13, 300)+20;
+    cell.contenLabel.frame = CGRectMake(cell.contenLabel.frame.origin.x, cell.contenLabel.frame.origin.y, cell.contenLabel.frame.size.width, contentHeight);
     
     CGRect rect = cell.frame;
     if (model.imageArray.count == 0) {

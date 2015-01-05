@@ -8,7 +8,7 @@
 
 #import "ShoppingWebVC.h"
 
-@interface ShoppingWebVC ()
+@interface ShoppingWebVC ()<UIWebViewDelegate>
 
 @end
 
@@ -18,6 +18,27 @@
     [super viewDidLoad];
     
     [self.webView loadRequest:[NSURLRequest requestWithURL:[NSURL URLWithString:self.webUrl]]];
+    [self.webView setDelegate:self];
+}
+
+- (BOOL)webView:(UIWebView *)webView shouldStartLoadWithRequest:(NSURLRequest *)request navigationType:(UIWebViewNavigationType)navigationType
+{
+    return YES;
+}
+
+- (void)webViewDidStartLoad:(UIWebView *)webView
+{
+    
+}
+
+- (void)webViewDidFinishLoad:(UIWebView *)webView
+{
+    self.title = [webView stringByEvaluatingJavaScriptFromString:@"document.title"];
+}
+
+- (void)webView:(UIWebView *)webView didFailLoadWithError:(NSError *)error
+{
+    
 }
 
 - (void)didReceiveMemoryWarning {
