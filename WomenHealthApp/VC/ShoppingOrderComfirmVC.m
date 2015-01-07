@@ -144,7 +144,8 @@
 //布局整体页面
 -(void)layOutMainView:(NSMutableArray *)viewArr
 {
-
+    [_layOutView removeAllItems];
+    
     [self layOutAddressView];
     [self layOutPayTyeView];
     [self layOutTheScoreView];
@@ -221,10 +222,10 @@
     UISwitch *swit = (UISwitch *)sender;
     float totalPrice;
     if (swit.on) {
-        totalPrice = [self.comfirmModel.goods_price floatValue] + [self.comfirmModel.shipping_fee floatValue] + [self.comfirmModel.order_reduce_moeny floatValue];
+        totalPrice = [self.comfirmModel.goods_price floatValue] + [self.comfirmModel.shipping_fee floatValue] - [self.comfirmModel.order_reduce_moeny floatValue];
     }
     else{
-        totalPrice = [self.comfirmModel.goods_price floatValue] + [self.comfirmModel.shipping_fee floatValue] - [self.comfirmModel.order_reduce_moeny floatValue];
+        totalPrice = [self.comfirmModel.goods_price floatValue] + [self.comfirmModel.shipping_fee floatValue];
     }
     self.totalPriceLabel.text = [NSString priceStringWithOneFloat:[NSString stringWithFormat:@"%.2f",totalPrice]];
 }
@@ -303,9 +304,13 @@
     UISwitch *swit = (UISwitch *)sender;
     if (swit.on) {
         isUseTimeBuy = @"1";
+        self.monthsTextField.enabled = YES;
+        self.numTextField.enabled = YES;
     }
     else{
         isUseTimeBuy = @"0";
+        self.monthsTextField.enabled = NO;
+        self.numTextField.enabled = NO;
     }
 }
 

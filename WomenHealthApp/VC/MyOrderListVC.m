@@ -350,10 +350,7 @@
 {
     [NETWORK_ENGINE requestWithPath:@"/api/ec/notice.php" Params:self.params CompletionHandler:^(MKNetworkOperation *completedOperation) {
         
-        NSString *str = [completedOperation responseDecodeToDic];
-        
-        
-        [SVProgressHUD showSuccessWithStatus:str];
+        [SVProgressHUD showSuccessWithStatus:@"提醒成功"];
         
         
     } ErrorHandler:^(MKNetworkOperation *completedOperation, NSError *error) {

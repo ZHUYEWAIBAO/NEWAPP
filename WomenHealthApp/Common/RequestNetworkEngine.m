@@ -119,7 +119,7 @@
     
     for (NSInteger i=0; i < array.count; i++) {
         
-        [op addData:[array objectAtIndex:i] forKey:[NSString stringWithFormat:@"%@%ld",key,i]];
+        [op addData:[array objectAtIndex:i] forKey:[NSString stringWithFormat:@"%@%ld",key,i+1]];
         
     }
     //处理句柄

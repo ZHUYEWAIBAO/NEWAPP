@@ -46,7 +46,7 @@
             [view.goodsImageView setImageWithURL:[NSURL URLWithString:model.goods_img]];
             
             if (model.recommend_tag_pic.length > 0) {
-                [view.recommendImageV setImageWithURL:[NSURL URLWithString:model.goods_img]];
+                [view.recommendImageV setImageWithURL:[NSURL URLWithString:model.recommend_tag_pic]];
             }
             
             if ([@"1" isEqualToString:model.is_best]) {

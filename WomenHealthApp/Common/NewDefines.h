@@ -52,7 +52,20 @@
 #define NOTIFICATION_ADDRESS_SELECT                  @"NOTIFICATION_ADDRESS_SELECT" //收货地址选择
 #define NOTIFICATION_PAYTYPE_SELECT                  @"NOTIFICATION_PAYTYPE_SELECT" //支付方式选择
 //====================================
+
+
+
+
+//===============支付宝支付================
+#define ALI_PARTNER                                  @"2088711759508470"
+#define ALI_SELLTER                                  @"najitian@163.com"
+#define ALI_PRIVATE_KEY                           @"MIICeAIBADANBgkqhkiG9w0BAQEFAASCAmIwggJeAgEAAoGBAMJqjq1anScc/rW4WBdtqw4v11xsHd487Dbd13El3qvE/QM0v9l7Q5le1SlJGz0bF4NJl3xOf7wTLujnhkt7TdKUCmqp97YJsafcKk+/n67i7I1M5SBo2UjBvleL+FgCBbb5lWTxZcFN+lKk2xc6IETvrAWrpAhav+KSdfxlYXvJAgMBAAECgYARmOuJLWaEH8++Sw1OMZMGGbZ4myCo+QK4hKP3jeH10kLEg4XJ/apEu5y3u/JHOaiLLaIUklZlg6b/VdWGB4cnm+HBUtBlGgi0uNuQBdC3wMNJj5QTIavCAWag/KQ2Xssr7/YtR9ayu9sYPTMOZGlXak73UwgRZqwVsiMW5az+wQJBAOyrDYCvsnrYtz+/iSNkPuvKA8K0KPp6nPZ4ICaQ1vVkgY6pTJ0GbFaOjgEUHyRWyCXw2Zr6VxTyDw+eB6KIlx0CQQDSS/plc90hf79YkF6huWJv1wAuSQRNcl0zVq9mj5hldsxT30RvIT/L107l7BnFAs5H/QsuNSc6hPahXS0tA9udAkEAwUeIxXm3lx/5t/QieWbbBBF9NLuRY85S9e5ww04yX0HvlKSqzup5+858JmFadYDyABpMfIbKK27r4eM7dP97+QJBAKdPtZbz2LInPehLbE7E/JE4gDdS9m5bl9UZmZFCm5/WJXhxQLQdwvD9ixMYheQdeFsD8to/hcdkNAhr5l5THG0CQQCHTdfLQFE5yv0eq2uIemCNv/nzRzliD7siZy3uF/9Nmx+TH/p7aEysT61zsDaiJ5vPxzSA6TI7mCGBdCpEFx9M"
+
+#define ALI_CALLBACK_URL                             @"http://123.57.46.174/api/ec/alipay/notify_url.php"
+//=======================================
+
 #define RecordHealthId  @"RecordHealthId"
+
 //全局变量
 #define GLOBALSHARE [Global share]
 
