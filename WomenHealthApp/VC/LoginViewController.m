@@ -10,6 +10,7 @@
 #import "RegisterViewController.h"
 #import <ShareSDK/ShareSDK.h>
 #import "ForgetPwdCodeVC.h"
+#import "LoginDataModel.h"
 
 #define btn_register  100     //注册
 #define btn_login     101     //登录
@@ -18,6 +19,9 @@
 #define btn_sina      104     //新浪微博登录
 
 @interface LoginViewController ()
+{
+    NSString *thirdImageStr;
+}
 
 @end
 
@@ -146,11 +150,31 @@
 - (void)fillSinaWeiboUser:(id<ISSPlatformUser>)userInfo
 {
     self.loginType = loginType_sina;
-    
-    USERINFO.user_icon = [userInfo profileImage];
+
     USERINFO.username = [userInfo nickname];
     
-    NSLog(@"%@------%@",[userInfo uid],[userInfo nickname]);
+    NSArray *keys = [[userInfo sourceData] allKeys];
+    for (int i = 0; i < [keys count]; i++){
+        
+        NSString *keyName = [keys objectAtIndex:i];
+        id value = [[userInfo sourceData] objectForKey:keyName];
+        if (![value isKindOfClass:[NSString class]]){
+            
+            if ([value respondsToSelector:@selector(stringValue)]){
+                value = [value stringValue];
+            }
+            else{
+                value = @"";
+            }
+        }
+        if([keyName isEqualToString:@"avatar_large"]){
+            
+            thirdImageStr = value;
+            
+            break;
+        }
+
+    }
     
     [self loginActionWithUid:[userInfo uid]];
 
@@ -160,13 +184,28 @@
 {
     self.loginType = loginType_qq;
 
-    USERINFO.user_icon = [userInfo profileImage];
+    thirdImageStr = [userInfo profileImage];
     USERINFO.username = [userInfo nickname];
     
     NSLog(@"%@------%@",[userInfo uid],[userInfo nickname]);
     
     [self loginActionWithUid:[userInfo uid]];
+    
+    
 
+}
+
+- (void)downloadImage:(NSString *)url
+{
+    NSURLRequest *request = [NSURLRequest requestWithURL:[NSURL URLWithString:url]];
+    NSError *error;
+    NSData *data = [NSURLConnection sendSynchronousRequest:request returningResponse:nil error:&error];
+    
+    if(data){
+  
+        [self upLoaduserPhoto:data];
+
+    }
 }
 
 - (void)loginActionWithUid:(NSString *)uid
@@ -203,23 +242,104 @@
         NSDictionary *dic=[completedOperation responseDecodeToDic];
         
         NSDictionary *statusDic = [dic objectForKey:@"status"];
+        NSDictionary *dataDic = [dic objectForKey:@"data"];
 
         if ([@"1" isEqualToString:CHECK_VALUE([statusDic objectForKey:@"statu"])]) {
             
             USERINFO.isLogin = YES;
-            
-            [USERINFO parseDicToUserInfoModel:[dic objectForKey:@"data"]];
+            USERINFO.loginType = [NSString stringWithFormat:@"%d",self.loginType];
+            USERINFO.thirdId = uid;
 
-            [[NSNotificationCenter defaultCenter]postNotificationName:NOTIFICATION_USER_LOGIN object:nil];
-     
-            [self dismissViewControllerAnimated:YES completion:nil];
+            if ([@"1" isEqualToString:CHECK_VALUE([dataDic objectForKey:@"is_login"])]) {
+                //登录
+                [USERINFO parseDicToUserInfoModel:dataDic];
+                
+                LoginDataModel *model = [LoginDataModel rememberLoginPhoneNum:self.userNumTextField.text andPassword:self.userPwdTextField.text andThirdUid:uid andLoginType:USERINFO.loginType remember:YES];
+                
+                SaveTheUserPhoneNumAndPassword(model);
+                
+                [[NSNotificationCenter defaultCenter]postNotificationName:NOTIFICATION_USER_LOGIN object:nil];
+                
+                [self dismissViewControllerAnimated:YES completion:nil];
+                
+                [SVProgressHUD dismiss];
+                
+            }
+            else{
+                //注册
+                USERINFO.uid = CHECK_VALUE([dataDic objectForKey:@"uid"]);
+                
+                LoginDataModel *model = [LoginDataModel rememberLoginPhoneNum:@"" andPassword:@"" andThirdUid:uid andLoginType:USERINFO.loginType remember:YES];
+                
+                SaveTheUserPhoneNumAndPassword(model);
+                
+                [self downloadImage:thirdImageStr];
+                
+                [self upLoadTheUseName];
+            }
             
-            [SVProgressHUD dismiss];
-            
+
         }
         else{
             [SVProgressHUD showErrorWithStatus:CHECK_VALUE([statusDic objectForKey:@"msg"])];
         }
+        
+    } ErrorHandler:^(MKNetworkOperation *completedOperation, NSError *error) {
+        [SVProgressHUD showErrorWithStatus:@"服务器忙，请稍候再试"];
+    }];
+    
+}
+
+//上传用户名
+- (void)upLoadTheUseName
+{
+
+    [self.params removeAllObjects];
+    [self.params setObject:CHECK_VALUE(USERINFO.username) forKey:@"username"];
+    
+    NSString *path = [NSString stringWithFormat:@"/dz/uc_server/index.php?m=user&uid=%@&a=updateusername",USERINFO.uid];
+    
+    [NETWORK_ENGINE requestWithPath:path Params:self.params CompletionHandler:^(MKNetworkOperation *completedOperation) {
+        
+//        NSDictionary *dic=[completedOperation responseDecodeToDic];
+ 
+    } ErrorHandler:^(MKNetworkOperation *completedOperation, NSError *error) {
+
+    }];
+    
+}
+
+//上传头像
+- (void)upLoaduserPhoto:(NSData *)imgData
+{
+    [self.params removeAllObjects];
+   
+    NSString *path = [NSString stringWithFormat:@"/dz/uc_server/index.php?m=user&uid=%@&a=uploadavatarapi",USERINFO.uid];
+    
+    [NETWORK_ENGINE requestWithPath:path Params:self.params imageData:imgData keyString:@"Filedata" CompletionHandler:^(MKNetworkOperation *completedOperation) {
+        
+        NSDictionary *dic=[completedOperation responseDecodeToDic];
+        
+        NSDictionary *statusDic = [dic objectForKey:@"status"];
+        
+        if ([@"1" isEqualToString:CHECK_VALUE([statusDic objectForKey:@"statu"])]) {
+ 
+            NSDictionary *dataDic = [dic objectForKey:@"data"];
+            NSArray *array = [dataDic objectForKey:@"list"];
+            
+            USERINFO.user_icon = [array objectAtIndex:0];
+  
+            [[NSNotificationCenter defaultCenter]postNotificationName:NOTIFICATION_USER_LOGIN object:nil];
+            
+            [self dismissViewControllerAnimated:YES completion:nil];
+            
+            [SVProgressHUD dismiss];
+        }
+        else{
+            
+            [SVProgressHUD showErrorWithStatus:CHECK_VALUE([statusDic objectForKey:@"msg"])];
+        }
+  
         
     } ErrorHandler:^(MKNetworkOperation *completedOperation, NSError *error) {
         [SVProgressHUD showErrorWithStatus:@"服务器忙，请稍候再试"];

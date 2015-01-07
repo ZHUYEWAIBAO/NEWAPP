@@ -329,7 +329,9 @@
             
         case TAG_TOCART:{
            
-            
+            if ([self.delegate respondsToSelector:@selector(B2CSelectCountView:pushToShopCart:)]) {
+                [self.delegate B2CSelectCountView:self pushToShopCart:YES];
+            }
             
         }
             break;

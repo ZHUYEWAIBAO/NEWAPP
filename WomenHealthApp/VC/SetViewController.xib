@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="6250" systemVersion="14B25" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="6254" systemVersion="14B25" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none">
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6244"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6247"/>
     </dependencies>
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="SetViewController">
@@ -10,6 +10,7 @@
                 <outlet property="headImageView" destination="lVI-v0-0N4" id="v6T-PF-61s"/>
                 <outlet property="headTitleLabel" destination="PkX-5t-QZk" id="cK6-fQ-RR6"/>
                 <outlet property="loginView" destination="bmd-7x-dWd" id="J0s-IM-6Ry"/>
+                <outlet property="setExitView" destination="Jd5-rc-47k" id="dYa-Z0-deP"/>
                 <outlet property="setTableView" destination="jK8-Jk-SKv" id="tr6-me-AFV"/>
                 <outlet property="view" destination="sDu-eX-O2x" id="O1V-dg-r0O"/>
             </connections>
@@ -73,10 +74,30 @@
             <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
             <point key="canvasLocation" x="165" y="60"/>
         </view>
+        <view contentMode="scaleToFill" id="Jd5-rc-47k">
+            <rect key="frame" x="0.0" y="0.0" width="320" height="65"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <subviews>
+                <button opaque="NO" tag="101" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="Kh4-CU-pac">
+                    <rect key="frame" x="10" y="11" width="300" height="43"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                    <state key="normal" backgroundImage="zhuxiao_btn.png">
+                        <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                    </state>
+                    <connections>
+                        <action selector="btnClickAction:" destination="-1" eventType="touchUpInside" id="n4A-KW-NJz"/>
+                    </connections>
+                </button>
+            </subviews>
+            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+            <nil key="simulatedStatusBarMetrics"/>
+            <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+        </view>
     </objects>
     <resources>
         <image name="Record_chose_btn.png" width="16" height="26"/>
         <image name="Set_people_head_image.png" width="78" height="78"/>
+        <image name="zhuxiao_btn.png" width="300" height="43"/>
     </resources>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">
         <simulatedStatusBarMetrics key="statusBar"/>

@@ -7,6 +7,7 @@
 //
 
 #import "ForgetPwdSetVC.h"
+#import "LoginDataModel.h"
 
 @interface ForgetPwdSetVC ()
 
@@ -78,6 +79,11 @@
             
             [SVProgressHUD showSuccessWithStatus:@"设置成功"];
 
+            LoginDataModel *loginData = GetTheSavedUserPhoneNumAndPassword();
+            //替换记住的密码
+            loginData.loginPassword = self.firstPwdField.text;
+            SaveTheUserPhoneNumAndPassword(loginData);
+            
             [self.navigationController popToRootViewControllerAnimated:YES];
             
         }

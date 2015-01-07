@@ -58,10 +58,7 @@
 		self.refreshHeaderView = view;
 		
 	}
-	
-	//  update the last update date
-	[_refreshHeaderView refreshLastUpdatedDate];
-    
+
     //判断需要上拉分页的类
     if (self.isNeedLoadMore==YES) {
         //集成上拉加载更多控件
@@ -73,51 +70,6 @@
 
     
 }
-
-- (NSString *)distanceChange:(NSString *)distance
-{
-    if ([distance isEqualToString:@"3000"]) {
-        return @"3";
-    }
-    else if([distance isEqualToString:@"500"]){
-        return @"0";
-    }
-    else if([distance isEqualToString:@"1000"]){
-        return @"1";
-    }
-    else if([distance isEqualToString:@"2000"]){
-        return @"2";
-    }
-    else{
-        return @"";
-    }
-}
-
-#pragma mark -
-#pragma mark UITableViewDataSource
-
-- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
-    return 10;
-}
-
-- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    return 4;
-}
-
-- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-    
-    static NSString *CellIdentifier = @"refreshCell";
-    
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
-    if (cell == nil) {
-        cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier];
-    }
-    
-	// Configure the cell.
-    
-    return cell;
-}
-
 #pragma mark -
 #pragma mark Data Source Loading / ReLoading Methods
 

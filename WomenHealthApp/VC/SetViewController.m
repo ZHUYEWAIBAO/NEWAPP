@@ -9,9 +9,11 @@
 #import "SetViewController.h"
 #import "SettingDataModel.h"
 #import "SetTableViewCell.h"
+#import "ShoppingCartVC.h"
 #import "MyOrderListVC.h"
 #import "UserDetailVC.h"
 #import "AboutUsVC.h"
+#import <ShareSDK/ShareSDK.h>
 
 @interface SetViewController ()<UIActionSheetDelegate>
 {
@@ -56,6 +58,8 @@
         sectionNum = 2;
         self.headTitleLabel.text = USERINFO.username;
         [self.headImageView setImageWithURL:[NSURL URLWithString:USERINFO.user_icon]];
+        
+        self.setTableView.tableFooterView = self.setExitView;
     }
     else{
         sectionNum = 1;
@@ -71,6 +75,7 @@
     self.headTitleLabel.text = USERINFO.username;
     [self.headImageView setImageWithURL:[NSURL URLWithString:USERINFO.user_icon]];
     self.setDataArray = [SettingDataModel arrayForSectionNum:sectionNum];
+    self.setTableView.tableFooterView = self.setExitView;
     
     [self.setTableView reloadData];
 }
@@ -83,6 +88,18 @@
         
     }
  
+}
+
+- (void)userLoginOutAction
+{
+    sectionNum = 1;
+    
+    self.headTitleLabel.text = @"未登录";
+    [self.headImageView setImage:[UIImage imageWithContentFileName:@"Set_people_head_image.png"]];
+    self.setDataArray = [SettingDataModel arrayForSectionNum:sectionNum];
+    self.setTableView.tableFooterView = nil;
+    
+    [self.setTableView reloadData];
 }
 
 #pragma mark UITableViewDataSource
@@ -164,7 +181,8 @@
             
         case 101:{
             //我的购物车
-
+            ShoppingCartVC *vc =[[ShoppingCartVC alloc] initWithNibName:@"ShoppingCartVC" bundle:nil];
+            [self.navigationController pushViewController:vc animated:YES];
             
         }
             break;
@@ -244,38 +262,20 @@
     if (alertView.tag == 100) {
         if (buttonIndex == 1) {
             
-//            //设置请求参数
-//            [self.params removeAllObjects];
-//            
-//            [self.params setObject:CHECK_VALUE(USERINFO.user_id) forKey:@"user_id"];
-//            [self.params setObject:CHECK_VALUE(USERINFO.code) forKey:@"code"];
-//            
-//            [SVProgressHUD showWithStatus:@"正在退出" maskType:SVProgressHUDMaskTypeClear];
-//            
-//            [NETWORK_ENGINE requestWithPath:GLOBALSHARE.USER_LOGINOUT_PATH Params:self.params CompletionHandler:^(MKNetworkOperation *completedOperation) {
-//                
-//                NSDictionary *dic=[completedOperation responseDecodeToDic];
-//                
-//                if ([@"0" isEqualToString:CHECK_VALUE([dic objectForKey:@"errorid"])]) {
-//                    
-//                    USERINFO.isLogin = NO;
-//                    
-//                    [USERINFO loginOutForUserInfoModel];
-//                    
-//                    [[NSNotificationCenter defaultCenter]postNotificationName:NOTIFICATION_USER_LOGIN object:@"0"];
-//                    
-//                    [self.navigationController popViewControllerAnimated:YES];
-//                    
-//                    [SVProgressHUD dismiss];
-//                    
-//                }
-//                else{
-//                    [SVProgressHUD showErrorWithStatus:CHECK_VALUE([dic objectForKey:@"msg"])];
-//                }
-//                
-//            } ErrorHandler:^(MKNetworkOperation *completedOperation, NSError *error) {
-//                [SVProgressHUD showErrorWithStatus:@"服务器忙，请稍候再试"];
-//            }];
+            if ([@"1" isEqualToString:USERINFO.loginType]) {
+                [ShareSDK cancelAuthWithType:ShareTypeQQSpace];
+            }
+            else if([@"2" isEqualToString:USERINFO.loginType]){
+                [ShareSDK cancelAuthWithType:ShareTypeSinaWeibo];
+            }
+            
+            [USERINFO loginOutForUserInfoModel];
+            
+            LoginDataModel *model = [LoginDataModel rememberLoginPhoneNum:@"" andPassword:@"" andThirdUid:@"" andLoginType:@"" remember:NO];
+
+            SaveTheUserPhoneNumAndPassword(model);
+            
+            [self userLoginOutAction];
             
         }
     }

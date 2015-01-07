@@ -40,6 +40,6 @@
 /**
  *  点击广告图片跳转到相应的界面
  */
--(void)action:(NSString *)eventId withJumpId:(NSString *)jumpId;
+-(void)action:(NSString *)eventId withJumpId:(NSString *)jumpId withTitle:(NSString *)title;
 
 @end

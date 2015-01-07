@@ -44,11 +44,11 @@
     [super viewDidLoad];
     
     //添加分享按钮
-    UIButton *rightButton=[[UIButton alloc]initWithFrame:CGRectMake(0, 0, 30, 30)];
-    [rightButton addTarget:self action:@selector(shareAction:) forControlEvents:UIControlEventTouchUpInside];
-    [rightButton setBackgroundImage:[UIImage imageWithContentFileName:@"share_btn"] forState:UIControlStateNormal];
-    UIBarButtonItem *rightButtonItem=[[UIBarButtonItem alloc]initWithCustomView:rightButton];
-    self.navigationItem.rightBarButtonItem = rightButtonItem;
+//    UIButton *rightButton=[[UIButton alloc]initWithFrame:CGRectMake(0, 0, 30, 30)];
+//    [rightButton addTarget:self action:@selector(shareAction:) forControlEvents:UIControlEventTouchUpInside];
+//    [rightButton setBackgroundImage:[UIImage imageWithContentFileName:@"share_btn"] forState:UIControlStateNormal];
+//    UIBarButtonItem *rightButtonItem=[[UIBarButtonItem alloc]initWithCustomView:rightButton];
+//    self.navigationItem.rightBarButtonItem = rightButtonItem;
     
     [self getTheB2CDetailWithGoodsId:self.goodsId];
     
@@ -371,6 +371,12 @@
     }];
 }
 
+- (void)B2CSelectCountView:(B2CSelectCountView *)view pushToShopCart:(BOOL)isPush
+{
+    ShoppingCartVC *vc =[[ShoppingCartVC alloc] initWithNibName:@"ShoppingCartVC" bundle:nil];
+    [self.navigationController pushViewController:vc animated:YES];
+}
+
 //加入购物车
 - (void)addToShopCart:(NSMutableDictionary *)dictionary
 {
@@ -404,7 +410,7 @@
             
             [SVProgressHUD showErrorWithStatus:@"服务器忙，请稍候再试"];
         }
-        [SVProgressHUD dismiss];
+      
         
     } ErrorHandler:^(MKNetworkOperation *completedOperation, NSError *error) {
         

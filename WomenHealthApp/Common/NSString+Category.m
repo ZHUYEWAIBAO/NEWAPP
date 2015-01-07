@@ -49,7 +49,7 @@
     }
     CGFloat price = [priceStr floatValue];
     
-    return [NSString stringWithFormat:@"¥%.2f",price];
+    return [NSString stringWithFormat:@"¥%.1f",price];
     
 }
 

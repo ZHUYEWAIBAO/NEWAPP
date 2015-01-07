@@ -87,6 +87,28 @@ UIImage * UIImageScaleToSize(UIImage *img, CGSize size)
     return scaledImage;
 }
 
+void SaveTheUserPhoneNumAndPassword(LoginDataModel *loginModel)
+{
+    NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
+    
+    NSData *data = [NSKeyedArchiver archivedDataWithRootObject:loginModel];
+    [userDefaults setObject:data forKey:@"userLoginModel"];
+    //将数据即时写入
+    [userDefaults synchronize];
+}
+
+LoginDataModel * GetTheSavedUserPhoneNumAndPassword()
+{
+    NSUserDefaults *defaults =[NSUserDefaults standardUserDefaults];
+    
+    NSData *data = [defaults objectForKey:@"userLoginModel"];
+    
+    LoginDataModel *loginInfo = (LoginDataModel *)[NSKeyedUnarchiver unarchiveObjectWithData:data];;
+    
+    return loginInfo;
+    
+}
+
 @implementation CommonMethod
 
 + (CommonMethod *)share

@@ -7,6 +7,7 @@
 //
 
 #import <Foundation/Foundation.h>
+#import "LoginDataModel.h"
 
 //把返回字段转换成string类型
 NSString * NSStringExchangeTheReturnValueToString(id value);
@@ -41,6 +42,21 @@ NSString * NSStringShowUserPhoneNumber(NSString *numString);
  *  @return 返回一张上传到图片
  */
 UIImage * UIImageScaleToSize(UIImage *img, CGSize size);
+
+/**
+ *  本地保存用户登录手机号和密码
+ *
+ *  @param numString 登录手机号码
+ *  @param pwdString 登录密码
+ */
+void SaveTheUserPhoneNumAndPassword(LoginDataModel *loginModel);
+
+/**
+ *  获取本地保存的用户登录数据
+ *
+ *  @return 登录数据类
+ */
+LoginDataModel * GetTheSavedUserPhoneNumAndPassword();
 
 @interface CommonMethod : NSObject
 

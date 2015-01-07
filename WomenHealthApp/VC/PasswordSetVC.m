@@ -8,6 +8,7 @@
 
 #import "PasswordSetVC.h"
 #import "LoginViewController.h"
+#import "LoginDataModel.h"
 
 @interface PasswordSetVC ()
 
@@ -87,7 +88,13 @@
             
             USERINFO.isLogin = YES;
             
-            [USERINFO parseDicToUserInfoModel:statusDic];
+            [USERINFO parseDicToUserInfoModel:[dic objectForKey:@"data"]];
+            
+            LoginDataModel *model = [LoginDataModel rememberLoginPhoneNum:self.registerModel.registerPhoneNum andPassword:self.registerModel.registerPassword andThirdUid:@"" andLoginType:USERINFO.loginType remember:YES];
+            
+            SaveTheUserPhoneNumAndPassword(model);
+            
+            [[NSNotificationCenter defaultCenter]postNotificationName:NOTIFICATION_USER_LOGIN object:nil];
             
             [self dismissViewControllerAnimated:YES completion:nil];
             

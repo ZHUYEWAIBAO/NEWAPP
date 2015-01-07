@@ -73,6 +73,7 @@
  
     [dictionery setObject:@"" forKey:@"email"];
     [dictionery setObject:@"0" forKey:@"type"];
+    [dictionery setObject:self.commentTextView.text forKey:@"content"];
     [dictionery setObject:CHECK_VALUE(self.goodsModel.goods_id) forKey:@"id"];
     [dictionery setObject:@"1" forKey:@"enabled_captcha"];
     [dictionery setObject:@"" forKey:@"captcha"];

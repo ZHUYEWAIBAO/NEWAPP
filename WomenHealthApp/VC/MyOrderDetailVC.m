@@ -15,6 +15,7 @@
 #import "CommentOrderVC.h"
 #import "OrderPayModel.h"
 #import "DataSigner.h"
+#import "ShoppingPaySuccessVC.h"
 #import <AlipaySDK/AlipaySDK.h>
 
 @interface MyOrderDetailVC ()
@@ -32,6 +33,8 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(payCallBackAction:) name:NOTIFICATION_ALIPAY object:nil];
     
     [self getTheOrderInfo:self.orderId];
 }
@@ -194,7 +197,7 @@
     
     self.shippingFeeLabel.text = [NSString priceStringWithOneFloat:self.orderDetailModel.shipping_fee];
     self.totalPriceLabel.text = [NSString priceStringWithOneFloat:self.orderDetailModel.order_amount];
-    self.scoreLabel.text = [NSString priceStringWithOneFloat:self.orderDetailModel.integral_str];
+    self.scoreLabel.text = self.orderDetailModel.integral_str;
 }
 
 #pragma mark UITableViewDataSource
@@ -336,10 +339,37 @@
         
         [[AlipaySDK defaultService] payOrder:orderString fromScheme:appScheme callback:^(NSDictionary *resultDic) {
             NSLog(@"reslut = %@",resultDic);
+            
+            if (resultDic){
+                if ([@"9000" isEqualToString:[resultDic objectForKey:@"resultStatus"]]){
+                    
+                    [SVProgressHUD showSuccessWithStatus:@"支付成功"];
+                    
+                    ShoppingPaySuccessVC *vc = [[ShoppingPaySuccessVC alloc]initWithNibName:@"ShoppingPaySuccessVC" bundle:nil];
+                    [self.navigationController pushViewController:vc animated:YES];
+                    
+                }
+                else{
+                    //交易失败
+                    [SVProgressHUD showErrorWithStatus:@"支付失败"];
+                }
+            }
+            else{
+                //交易失败
+                [SVProgressHUD showErrorWithStatus:@"支付失败"];
+                
+            }
+            
         }];
         
     }
 
+}
+
+- (void)payCallBackAction:(NSNotification *)notifi
+{
+    ShoppingPaySuccessVC *vc = [[ShoppingPaySuccessVC alloc]initWithNibName:@"ShoppingPaySuccessVC" bundle:nil];
+    [self.navigationController pushViewController:vc animated:YES];
 }
 
 //提醒发货

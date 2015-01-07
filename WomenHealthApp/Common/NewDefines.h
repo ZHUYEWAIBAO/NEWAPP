@@ -43,7 +43,7 @@
 #define IOS7 ([[[UIDevice currentDevice] systemVersion] floatValue] >= 7.0)
 
 //=============观察者==================
-#define NOTIFICATION_ACTIVE                          @"NOTIFICATION_ACTIVE"     //从后台唤醒APP
+#define NOTIFICATION_ALIPAY                          @"NOTIFICATION_ALIPAY"     //支付宝支付完成回调
 #define NOTIFICATION_USER_LOGIN                      @"NOTIFICATION_USER_LOGIN" //用户登录之后
 #define NOTIFICATION_DETAIL_CHANGE                   @"NOTIFICATION_DETAIL_CHANGE" //编辑个人信息
 #define NOTIFICATION_REFRESH_ORDERRECORD             @"NOTIFICATION_REFRESH_ORDERRECORD" //刷新订单记录列表

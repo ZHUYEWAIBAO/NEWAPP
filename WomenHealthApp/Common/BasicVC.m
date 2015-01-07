@@ -140,11 +140,12 @@
 
 #pragma mark 统一跳转各界面
 //点击广告图片跳转到相应的界面
--(void)action:(NSString *)eventId withJumpId:(NSString *)jumpId
+-(void)action:(NSString *)eventId withJumpId:(NSString *)jumpId withTitle:(NSString *)title
 {
     if ([@"url" isEqualToString:eventId]) {
         ShoppingWebVC *vc = [[ShoppingWebVC alloc]initWithNibName:@"ShoppingWebVC" bundle:nil];
         vc.webUrl = jumpId;
+        vc.title = title;
         [self.navigationController pushViewController:vc animated:YES];
     }
     else if ([@"goods" isEqualToString:eventId]) {
