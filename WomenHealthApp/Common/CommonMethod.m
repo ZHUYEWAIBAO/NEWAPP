@@ -103,7 +103,7 @@ UIImage * UIImageScaleToSize(UIImage *img, CGSize size)
 - (void)saveTheRecordKey:(NSString *)recordKey
 {
     NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
-    [userDefaults setObject:CHECK_VALUE(recordKey) forKey:@"RecordHealthId"];
+    [userDefaults setObject:CHECK_VALUE(recordKey) forKey:RecordHealthId];
     //将数据即时写入
     [userDefaults synchronize];
 

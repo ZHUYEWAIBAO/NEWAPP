@@ -68,7 +68,7 @@
      *  假设     2014-11-3_3_24
      */
     //  20141111111111_3_24
-    NSArray *dataAry =[[[NSUserDefaults standardUserDefaults] objectForKey:@"RecordId"] componentsSeparatedByString:@"_"];
+    NSArray *dataAry =[[[NSUserDefaults standardUserDefaults] objectForKey:RecordHealthId] componentsSeparatedByString:@"_"];
     NSString *timeStr =[dataAry objectAtIndex:0];
     NSDate *confromTimesp = [NSDate dateWithTimeIntervalSince1970:[timeStr doubleValue]];
     confromTimesp =[self getTheDate:confromTimesp afterDays:1];

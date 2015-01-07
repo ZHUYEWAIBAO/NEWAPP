@@ -349,6 +349,8 @@
         [self addToShopCart:dic];
     }
     else{
+        
+        
         ShoppingOrderComfirmVC *vc = [[ShoppingOrderComfirmVC alloc]initWithNibName:@"ShoppingOrderComfirmVC" bundle:nil];
         vc.jsonString = [dic JSONString];
         [self.navigationController pushViewController:vc animated:YES];
@@ -416,7 +418,10 @@
 - (IBAction)pushToShopCarAction:(id)sender
 {
     
-    
+    if (![USERINFO isLogin]) {
+        [self presentLoginVCAction];
+        return;
+    }
     ShoppingCartVC *vc =[[ShoppingCartVC alloc] initWithNibName:@"ShoppingCartVC" bundle:nil];
     [self.navigationController pushViewController:vc animated:YES];
     

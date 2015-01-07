@@ -52,7 +52,7 @@
 #define NOTIFICATION_ADDRESS_SELECT                  @"NOTIFICATION_ADDRESS_SELECT" //收货地址选择
 #define NOTIFICATION_PAYTYPE_SELECT                  @"NOTIFICATION_PAYTYPE_SELECT" //支付方式选择
 //====================================
-
+#define RecordHealthId  @"RecordHealthId"
 //全局变量
 #define GLOBALSHARE [Global share]
 
