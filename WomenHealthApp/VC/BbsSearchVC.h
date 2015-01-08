@@ -10,6 +10,12 @@
 
 @interface BbsSearchVC : BasicVC
 
+@property (strong, nonatomic) IBOutlet UIView *searchNavView;
 
+@property (weak, nonatomic) IBOutlet UITextField *searchTextField;
+@property (weak, nonatomic) IBOutlet UITableView *hisStoryTableView;
+@property (weak, nonatomic) IBOutlet UIView *searchView;
+
+@property (strong, nonatomic) IBOutlet UIView *clearSearchView;
 
 @end

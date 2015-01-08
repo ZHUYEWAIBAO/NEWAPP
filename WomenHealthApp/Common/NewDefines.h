@@ -90,6 +90,7 @@
 
 //搜索本地保存的key
 #define GOODS_SEARCH_KEY @"goodsSearchKey"
+#define CIRCLE_SEARCH_KEY @"circleSearchKey"
 
 /**
  *  检查数据有效性

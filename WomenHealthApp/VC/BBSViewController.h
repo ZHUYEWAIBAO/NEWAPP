@@ -10,10 +10,14 @@
 
 @interface BBSViewController : BasicVC<UIScrollViewDelegate,UITableViewDataSource,UITableViewDelegate>
 
-@property (weak, nonatomic) IBOutlet UITableView *bbsTableView;
+@property (weak, nonatomic) IBOutlet UITableView *menuBigTableView;
+@property (weak, nonatomic) IBOutlet UITableView *secondMenuTableView;
+@property (strong, nonatomic) IBOutlet UIView *secondMenuView;
+@property (strong, nonatomic) IBOutlet UIImageView *cateArrowImgV;
+@property (strong, nonatomic) IBOutlet UIImageView *lineImgV;
 
-@property (strong, nonatomic) IBOutlet UIView *footView;
+@property (strong, nonatomic) NSMutableArray *bigMenuArray;
 
-@property (strong, nonatomic) NSMutableArray *circleArray;
+@property (strong, nonatomic) NSMutableArray *subMenuArray;
 
 @end

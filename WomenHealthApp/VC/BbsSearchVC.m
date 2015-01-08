@@ -7,53 +7,195 @@
 //
 
 #import "BbsSearchVC.h"
+#import "BbsSearchResultVC.h"
+#import "CustomSearchCell.h"
 
-@interface BbsSearchVC ()
-
+@interface BbsSearchVC ()<UITextFieldDelegate>
+{
+    /**
+     *  历史搜索数组
+     */
+    NSArray *historyAry;
+}
 @end
 
 @implementation BbsSearchVC
-+ (UINavigationController *)navigationControllerContainSelf{
-    
-    
-    BbsSearchVC *vc = [[BbsSearchVC alloc] initWithNibName:@"BbsSearchVC" bundle:nil];
-    UINavigationController *nav = [[UINavigationController alloc]initWithRootViewController:vc];
-    return nav;
 
-    
-}
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    //将自定义的视图作为导航条leftBarButtonItem
-    UISearchBar *searchBar= [[UISearchBar alloc] initWithFrame:CGRectMake(0, 0, 250, 44)];
+    //设置搜索栏位置
+    [self.searchNavView setFrame:CGRectMake(0, 0, self.searchNavView.frame.size.width, self.searchNavView.frame.size.height)];
     
-    searchBar.placeholder =@"请输入关键字";
-//    UIButton *searchBtn = [UIButton buttonWithType:UIButtonTypeCustom];
-//    searchBtn.frame = CGRectMake(10,2.0,35,35);
-//    [searchBtn setImage:[UIImage imageWithContentFileName:@"search_btn"] forState:UIControlStateNormal];
-//    [searchBtn addTarget:self action:@selector(searchClick) forControlEvents:UIControlEventTouchUpInside];
-//    [searchBtn setImage:[UIImage imageWithContentFileName:@"serarch_btn_selected"] forState:UIControlStateHighlighted];
-    UIBarButtonItem *leftItem = [[UIBarButtonItem alloc] initWithCustomView:searchBar];
-    self.navigationItem.leftBarButtonItem = leftItem;
+    [self setViewLayer:self.searchView andCornerRadius:3 andBorderColor:[UIColor whiteColor] andBorderWidth:0.6f];
     
-    
-    UIButton *addBtn = [UIButton buttonWithType:UIButtonTypeCustom];
-    addBtn.frame = CGRectMake(0,2.0,40,35);
-    [addBtn setTitle:@"取消" forState:UIControlStateNormal];
-    [addBtn setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
-    [addBtn addTarget:self action:@selector(cancel) forControlEvents:UIControlEventTouchUpInside];
-    UIBarButtonItem *rightItem = [[UIBarButtonItem alloc] initWithCustomView:addBtn];
-    self.navigationItem.rightBarButtonItem = rightItem;
-    // Do any additional setup after loading the view from its nib.
+    //设置tableview的footview
+    self.hisStoryTableView.tableFooterView = self.clearSearchView;
+    self.searchTextField.delegate = self;
 }
 
--(void)cancel{
+- (void)viewWillAppear:(BOOL)animated
+{
+    [super viewWillAppear:animated];
     
-    [self dismissViewControllerAnimated:YES completion:nil];
+    [self.navigationController.navigationBar addSubview:self.searchNavView];
     
+    historyAry = [self getTheSearchKeys];
+    [self.hisStoryTableView reloadData];
+    
+    //取消响应状态
+    [self.searchTextField resignFirstResponder];
+    [self.searchTextField setText:@""];
+}
+
+- (void)viewWillDisappear:(BOOL)animated
+{
+    [super viewWillDisappear:animated];
+    
+    [self.searchNavView removeFromSuperview];
     
 }
+
+#pragma mark - UITableView DataSource Delegate
+- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
+{
+    return 1;
+}
+
+- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
+{
+    if(historyAry.count > 20){
+        return 20;
+    }
+    else{
+        return [historyAry count];
+    }
+    
+}
+
+- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    NSArray *nibArr = [[NSBundle mainBundle] loadNibNamed:@"CustomSearchCell" owner:self options:nil];
+    CustomSearchCell *cell = [nibArr objectAtIndex:0];
+    
+    return cell.frame.size.height;
+    
+}
+
+- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    CustomSearchCell *cell = [tableView dequeueReusableCellWithIdentifier:[CustomSearchCell cellIdentifier]];
+    
+    if (cell == nil) {
+        
+        cell =  (CustomSearchCell *)[[[NSBundle mainBundle] loadNibNamed:@"CustomSearchCell" owner:self options:nil] lastObject];
+        
+        UIImageView *lineImgV=[[UIImageView alloc]initWithFrame:CGRectMake(0, cell.frame.size.height-1, cell.frame.size.width, 0.5)];
+        [cell.contentView addSubview:lineImgV];
+        
+        [lineImgV setBackgroundColor:RGBACOLOR(199, 199, 204, 1.0)];
+    }
+    
+    if (historyAry.count > indexPath.row) {
+        
+        [cell.searchNameLabel setText:[historyAry objectAtIndex:indexPath.row]];
+        
+    }
+    
+    return cell;
+}
+
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    
+    [self.searchTextField resignFirstResponder];
+    
+    BbsSearchResultVC *vc = [[BbsSearchResultVC alloc]initWithNibName:@"BbsSearchResultVC" bundle:nil];
+    
+    vc.currentKeyWords = [historyAry objectAtIndex:indexPath.row];
+    
+    [self.navigationController pushViewController:vc animated:YES];
+}
+
+- (void)setResultPush:(NSString *)contentString
+{
+    NSString *replaceString = [contentString stringByReplacingOccurrencesOfString:@" " withString:@""];//用空字符串代替空格
+    if (replaceString.length > 0) {
+        [self saveTheSearchKey:replaceString];
+        
+        BbsSearchResultVC *vc = [[BbsSearchResultVC alloc]initWithNibName:@"BbsSearchResultVC" bundle:nil];
+        vc.currentKeyWords = contentString;
+        [self.navigationController pushViewController:vc animated:YES];
+        
+    }
+    else{
+        contentString=@"";
+    }
+    
+}
+
+#pragma mark - 按钮事件
+//保存搜索历史
+- (void)saveTheSearchKey:(NSString *)searchKey
+{
+    NSUserDefaults *userDefualt = [NSUserDefaults standardUserDefaults];
+    NSArray *history = [userDefualt objectForKey:CIRCLE_SEARCH_KEY];
+    NSMutableArray *array = [[NSMutableArray alloc]initWithArray:history];
+    if (!array) {
+        array = [[NSMutableArray alloc]initWithCapacity:0];
+    }
+    if (![array containsObject:searchKey] && [array isKindOfClass:[NSMutableArray class]]) {
+        [array insertObject:searchKey atIndex:0];
+    }
+    history = [NSArray arrayWithArray:array];
+    [userDefualt setObject:history forKey:CIRCLE_SEARCH_KEY];
+}
+
+//获取搜索历史数组
+- (NSArray *)getTheSearchKeys
+{
+    return [[NSUserDefaults standardUserDefaults]objectForKey:CIRCLE_SEARCH_KEY];
+}
+
+//清除历史记录
+- (IBAction)dissmissHistory:(id)sender
+{
+    
+    NSUserDefaults *userDefualt = [NSUserDefaults standardUserDefaults];
+    NSArray *history = [userDefualt objectForKey:CIRCLE_SEARCH_KEY];
+    NSMutableArray *array = [[NSMutableArray alloc]initWithArray:history];
+    [array removeAllObjects];
+    history = [NSArray arrayWithArray:array];
+    [userDefualt setObject:history forKey:CIRCLE_SEARCH_KEY];
+    
+    historyAry =[NSArray array];
+    [self.hisStoryTableView reloadData];
+    
+}
+
+- (IBAction)popToNavigation:(id)sender
+{
+    
+    if ([self.searchTextField isFirstResponder]) {
+        
+        [self.searchTextField resignFirstResponder];
+        [self.searchTextField setText:@""];
+        
+    }
+    else{
+        [self.navigationController popViewControllerAnimated:YES];
+    }
+    
+}
+
+- (BOOL)textFieldShouldReturn:(UITextField *)textField
+{
+    [textField resignFirstResponder];
+    [self setResultPush:textField.text];
+    return YES;
+}
+
+
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.

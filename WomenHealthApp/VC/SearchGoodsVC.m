@@ -158,14 +158,6 @@
     return [[NSUserDefaults standardUserDefaults]objectForKey:GOODS_SEARCH_KEY];
 }
 
-//本地保存热搜词
-- (void)saveHotKeyWords:(NSDictionary *)dictionary
-{
-    NSUserDefaults *defaultHotKey = [NSUserDefaults standardUserDefaults];
-    [defaultHotKey setObject:dictionary forKey:@"hotKeyWords"];
-    [defaultHotKey synchronize];
-}
-
 //清除历史记录
 - (IBAction)dissmissHistory:(id)sender
 {
