@@ -29,8 +29,8 @@
     
     _logisticsArray = [[NSMutableArray alloc]initWithCapacity:0];
     
-    self.logisticsIdLabel.text = [NSString stringWithFormat:@"物流单号：%@",self.logistisId];
-    self.logisticsNameLabel.text = [NSString stringWithFormat:@"物流公司：%@",self.logistisName];
+    self.logisticsIdLabel.text = [NSString stringWithFormat:@"物流单号:%@",self.logistisId];
+    self.logisticsNameLabel.text = [NSString stringWithFormat:@"物流公司:%@",self.logistisName];
     
     [self getTheLogisticsDataWithOrderId:self.orderId];
 }
@@ -42,7 +42,7 @@
 
     NSString *path = [NSString stringWithFormat:@"/api/ec/user.php?mod=express&uid=%@&order_id=%@",USERINFO.uid,self.orderId];
     
-    [NETWORK_ENGINE requestWithPath:path Params:nil CompletionHandler:^(MKNetworkOperation *completedOperation) {
+    [NETWORK_ENGINE requestWithPath:path Params:self.params CompletionHandler:^(MKNetworkOperation *completedOperation) {
         
         NSDictionary *dic = [completedOperation responseDecodeToDic];
         

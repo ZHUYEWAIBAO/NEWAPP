@@ -16,6 +16,7 @@
 #import <ShareSDK/ShareSDK.h>
 #import <QZoneConnection/ISSQZoneApp.h>
 #import "WXApi.h"
+#import "LoginDataModel.h"
 #import <TencentOpenAPI/QQApi.h>
 #import <TencentOpenAPI/QQApiInterface.h>
 #import <TencentOpenAPI/TencentOAuth.h>
@@ -76,9 +77,65 @@
     
     self.window.rootViewController = self.tabCtrl;
     
+    
+    LoginDataModel *loginData = GetTheSavedUserPhoneNumAndPassword();
+    if (loginData.loginType.length > 0) {
+        
+        [self loginActionWithUid:loginData];
+    }
+
     [self.window makeKeyAndVisible];
     
     return YES;
+}
+
+- (void)loginActionWithUid:(LoginDataModel *)data
+{
+    //设置请求参数
+    NSMutableDictionary *params = [NSMutableDictionary dictionary];
+    
+    if ([@"3" isEqualToString:data.loginType]) {
+        
+        [params setObject:CHECK_VALUE(data.loginPassword) forKey:@"password"];
+        [params setObject:CHECK_VALUE(data.loginPhoneNum) forKey:@"username"];
+    }
+    else{
+        [params setObject:@"" forKey:@"password"];
+        [params setObject:@"Nick" forKey:@"username"];
+    }
+    
+    
+    [SVProgressHUD showWithStatus:@"正在登录" maskType:SVProgressHUDMaskTypeClear];
+    
+    NSString *path = [NSString stringWithFormat:@"/api/ec/user.php?mod=logging&action=login&loginsubmit=yes&handlekey=login&inajax=1&logintype=%@&other_code=%@",data.loginType,data.thirdUid];
+    
+    [NETWORK_ENGINE requestWithPath:path Params:params CompletionHandler:^(MKNetworkOperation *completedOperation) {
+        
+        NSDictionary *dic=[completedOperation responseDecodeToDic];
+        
+        NSDictionary *statusDic = [dic objectForKey:@"status"];
+        
+        if ([@"1" isEqualToString:CHECK_VALUE([statusDic objectForKey:@"statu"])]) {
+            
+            USERINFO.isLogin = YES;
+            USERINFO.loginType = data.loginType;
+            USERINFO.thirdId = data.thirdUid;
+          
+            //登录
+            [USERINFO parseDicToUserInfoModel:[dic objectForKey:@"data"]];
+        
+            [SVProgressHUD dismiss];
+                
+
+        }
+        else{
+            [SVProgressHUD showErrorWithStatus:CHECK_VALUE([statusDic objectForKey:@"msg"])];
+        }
+        
+    } ErrorHandler:^(MKNetworkOperation *completedOperation, NSError *error) {
+        [SVProgressHUD showErrorWithStatus:@"服务器忙，请稍候再试"];
+    }];
+    
 }
 
 - (void)initializePlat
@@ -89,7 +146,7 @@
      **/
     [ShareSDK connectSinaWeiboWithAppKey:@"79554925"
                                appSecret:@"eb24938cb9628fb682622d5e21da979d"
-                             redirectUri:@"http://www.sharesdk.cn"];
+                             redirectUri:@"http://www.thatdays.com/"];
 
     
     /**
@@ -98,19 +155,13 @@
      
      如果需要实现SSO，需要导入TencentOpenAPI.framework,并引入QQApiInterface.h和TencentOAuth.h，将QQApiInterface和TencentOAuth的类型传入接口
      **/
-    [ShareSDK connectQZoneWithAppKey:@"1103507357"
-                           appSecret:@"aed9b0303e3ed1e27bae87c33761161d"
+    [ShareSDK connectQZoneWithAppKey:@"1103957599"
+                           appSecret:@"xt7YrOjfZn8EWMw7"
                    qqApiInterfaceCls:[QQApiInterface class]
                      tencentOAuthCls:[TencentOAuth class]];
     
-    /**
-     连接微信应用以使用相关功能，此应用需要引用WeChatConnection.framework和微信官方SDK
-     http://open.weixin.qq.com上注册应用，并将相关信息填写以下字段
-     **/
-    //    [ShareSDK connectWeChatWithAppId:@"wx4868b35061f87885" wechatCls:[WXApi class]];
-    [ShareSDK connectWeChatWithAppId:@"wx4868b35061f87885"
-                           appSecret:@"64020361b8ec4c99936c0e3999a9f249"
-                           wechatCls:[WXApi class]];
+    //导入QQ互联和QQ好友分享需要的外部库类型，如果不需要QQ空间SSO和QQ好友分享可以不调用此方法
+//    [ShareSDK importQQClass:[QQApiInterface class] tencentOAuthCls:[TencentOAuth class]];
     
     /**
      连接QQ应用以使用相关功能，此应用需要引用QQConnection.framework和QQApi.framework库
@@ -119,25 +170,23 @@
     //旧版中申请的AppId（如：QQxxxxxx类型），可以通过下面方法进行初始化
     //    [ShareSDK connectQQWithAppId:@"QQ075BCD15" qqApiCls:[QQApi class]];
     
-    [ShareSDK connectQQWithQZoneAppKey:@"1103507357"
-                     qqApiInterfaceCls:[QQApiInterface class]
-                       tencentOAuthCls:[TencentOAuth class]];
+//    [ShareSDK connectQQWithQZoneAppKey:@"1103507357"
+//                     qqApiInterfaceCls:[QQApiInterface class]
+//                       tencentOAuthCls:[TencentOAuth class]];
     
 }
-//
-///**
-// *	@brief	托管模式下的初始化平台
-// */
-//- (void)initializePlatForTrusteeship
-//{
-//    
-//    //导入QQ互联和QQ好友分享需要的外部库类型，如果不需要QQ空间SSO和QQ好友分享可以不调用此方法
-//    [ShareSDK importQQClass:[QQApiInterface class] tencentOAuthCls:[TencentOAuth class]];
-//
-//    //导入微信需要的外部库类型，如果不需要微信分享可以不调用此方法
-//    [ShareSDK importWeChatClass:[WXApi class]];
-//    
-//}
+
+/**
+ *	@brief	托管模式下的初始化平台
+ */
+- (void)initializePlatForTrusteeship
+{
+    
+    //导入QQ互联和QQ好友分享需要的外部库类型，如果不需要QQ空间SSO和QQ好友分享可以不调用此方法
+    [ShareSDK importQQClass:[QQApiInterface class] tencentOAuthCls:[TencentOAuth class]];
+
+    
+}
 
 - (BOOL)application:(UIApplication *)application
       handleOpenURL:(NSURL *)url
@@ -152,17 +201,42 @@
 {
     //跳转支付宝钱包进行支付，需要将支付宝钱包的支付结果回传给SDK
     if ([url.host isEqualToString:@"safepay"]) {
-//        [[AlipaySDK defaultService]
-//         processOrderWithPaymentResult:url
-//         standbyCallback:^(NSDictionary *resultDic) {
-//             NSLog(@"result = %@", resultDic);
-//         }];
+        [[AlipaySDK defaultService]
+         processOrderWithPaymentResult:url
+         standbyCallback:^(NSDictionary *resultDic) {
+             NSLog(@"result = %@", resultDic);
+             
+             if (resultDic){
+                 if ([@"9000" isEqualToString:[resultDic objectForKey:@"resultStatus"]]){
+                     
+                     [SVProgressHUD showSuccessWithStatus:@"支付成功"];
+                     
+                     [[NSNotificationCenter defaultCenter]postNotificationName:NOTIFICATION_ALIPAY object:nil];
+
+                 }
+                 else{
+                     //交易失败
+                     [SVProgressHUD showErrorWithStatus:@"支付失败"];
+                 }
+             }
+             else{
+                 //交易失败
+                 [SVProgressHUD showErrorWithStatus:@"支付失败"];
+
+             }
+
+         }];
+    }
+    else{
+        
+        return [ShareSDK handleOpenURL:url
+                     sourceApplication:sourceApplication
+                            annotation:annotation
+                            wxDelegate:self];
     }
     
-    return [ShareSDK handleOpenURL:url
-                 sourceApplication:sourceApplication
-                        annotation:annotation
-                        wxDelegate:self];
+    return YES;
+
 }
 
 - (void)applicationWillResignActive:(UIApplication *)application {

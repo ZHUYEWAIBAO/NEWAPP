@@ -31,15 +31,13 @@
 
 - (void)loginOutForUserInfoModel
 {
-//    self.user_id = @"";
-//    self.username = @"";
-//    self.code = @"";
-//    self.head_pic = @"";
-//    self.nicheng = @"";
-//    self.lastlogintime = @"";
-//    self.email = @"";
-//    self.realname = @"";
-//    self.money = @"";
+    self.uid = @"";
+    self.username = @"";
+    self.user_icon = @"";
+    self.thirdId = @"";
+    self.loginType = @"";
+    self.isLogin = NO;
+
     
 }
 

@@ -203,10 +203,10 @@
         AdModal *modal = [array objectAtIndex:pageIndex];
  
         if ([@"url" isEqualToString:modal.adType]) {
-            [vc action:modal.adType withJumpId:modal.adUrl];
+            [vc action:modal.adType withJumpId:modal.adUrl withTitle:modal.adText];
         }
         else if ([@"goods" isEqualToString:modal.adType]) {
-            [vc action:modal.adType withJumpId:modal.adGoods_id];
+            [vc action:modal.adType withJumpId:modal.adGoods_id withTitle:nil];
         }
     };
     [self.headView addSubview:self.mainScorllView];
@@ -304,7 +304,7 @@
         path = [path stringByAppendingString:@"&is_new=1"];
     }
     
-    [NETWORK_ENGINE requestWithPath:path Params:nil CompletionHandler:^(MKNetworkOperation *completedOperation) {
+    [NETWORK_ENGINE requestWithPath:path Params:self.params CompletionHandler:^(MKNetworkOperation *completedOperation) {
         
         NSDictionary *dic=[completedOperation responseDecodeToDic];
         
@@ -402,7 +402,7 @@
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    
+
     return ceil(self.shopArray.count/2.0);
     
 }

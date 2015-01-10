@@ -45,6 +45,8 @@
 
 - (void)B2CSelectCountView:(B2CSelectCountView *)view dismiss:(BOOL)dismiss;
 
+- (void)B2CSelectCountView:(B2CSelectCountView *)view pushToShopCart:(BOOL)isPush;
+
 @end
 
 @interface B2CSelectCountView : UIView

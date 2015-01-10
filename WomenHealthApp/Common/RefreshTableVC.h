@@ -10,7 +10,7 @@
 #import "EGORefreshTableHeaderView.h"
 #import "MJRefreshFooterView.h"
 
-@interface RefreshTableVC : BasicVC<UITableViewDataSource,UITableViewDelegate,EGORefreshTableHeaderDelegate,MJRefreshBaseViewDelegate>
+@interface RefreshTableVC : BasicVC<EGORefreshTableHeaderDelegate,MJRefreshBaseViewDelegate>
 
 
 @property (nonatomic,strong) UITableView* tableView;  //列表
@@ -31,5 +31,4 @@
 - (void)scrollViewDidScroll:(UIScrollView *)scrollView;
 - (void)scrollViewDidEndDragging:(UIScrollView *)scrollView willDecelerate:(BOOL)decelerate;
 
-- (NSString *)distanceChange:(NSString *)distance;
 @end

@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="6254" systemVersion="14A389" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="6254" systemVersion="14B25" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none">
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6247"/>
@@ -13,7 +13,7 @@
                 <outlet property="priceSortLogoImageView" destination="pwZ-8a-SsA" id="Xju-CR-w6I"/>
                 <outlet property="saleButton" destination="C0E-Jf-QL4" id="ZJA-s6-Zmg"/>
                 <outlet property="shopTableView" destination="xlx-dS-sfW" id="o4X-7h-qKW"/>
-                <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
+                <outlet property="view" destination="i5M-Pr-FkT" id="oQd-1Z-xev"/>
                 <outlet property="zongheButton" destination="X39-nb-mb8" id="YcJ-cL-VMX"/>
             </connections>
         </placeholder>

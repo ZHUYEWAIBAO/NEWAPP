@@ -252,9 +252,9 @@
 {
     NSMutableDictionary *dictionary = [[NSMutableDictionary alloc]init];
     
-    NSString *minStr = [self.minTextField.text integerValue] <= [self.maxTextField.text integerValue]?self.minTextField.text:self.maxTextField.text;
+    NSString *minStr = self.minTextField.text;
     
-    NSString *maxStr = [self.minTextField.text integerValue] <= [self.maxTextField.text integerValue]?self.maxTextField.text:self.minTextField.text;
+    NSString *maxStr = self.maxTextField.text;
 
     [dictionary setObject:minStr forKey:@"minPrice"];
     [dictionary setObject:maxStr forKey:@"maxPrice"];

@@ -21,4 +21,9 @@
 
 @property (strong,nonatomic) NSMutableArray *setDataArray;
 
+/**
+ *  退出登录View
+ */
+@property (strong,nonatomic) IBOutlet UIView *setExitView;
+
 @end

@@ -7,6 +7,7 @@
 //
 
 #import "ShoppingOrderSuccessVC.h"
+#import "ShoppingPaySuccessVC.h"
 #import "OrderPayModel.h"
 #import "DataSigner.h"
 #import <AlipaySDK/AlipaySDK.h>
@@ -26,6 +27,8 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(payCallBackAction:) name:NOTIFICATION_ALIPAY object:nil];
     
     if ([@"4" isEqualToString:self.payTypeId]) {
         [self.payButton setImage:[UIImage imageWithContentFileName:@"zhifubao_btn"] forState:UIControlStateNormal];
@@ -68,9 +71,36 @@
         
         [[AlipaySDK defaultService] payOrder:orderString fromScheme:appScheme callback:^(NSDictionary *resultDic) {
             NSLog(@"reslut = %@",resultDic);
+            
+            if (resultDic){
+                if ([@"9000" isEqualToString:[resultDic objectForKey:@"resultStatus"]]){
+                    
+                    [SVProgressHUD showSuccessWithStatus:@"支付成功"];
+                
+                    ShoppingPaySuccessVC *vc = [[ShoppingPaySuccessVC alloc]initWithNibName:@"ShoppingPaySuccessVC" bundle:nil];
+                    [self.navigationController pushViewController:vc animated:YES];
+
+                }
+                else{
+                    //交易失败
+                    [SVProgressHUD showErrorWithStatus:@"支付失败"];
+                }
+            }
+            else{
+                //交易失败
+                [SVProgressHUD showErrorWithStatus:@"支付失败"];
+                
+            }
+
         }];
  
     }
+}
+
+- (void)payCallBackAction:(NSNotification *)notifi
+{
+    ShoppingPaySuccessVC *vc = [[ShoppingPaySuccessVC alloc]initWithNibName:@"ShoppingPaySuccessVC" bundle:nil];
+    [self.navigationController pushViewController:vc animated:YES];
 }
 
 - (void)didReceiveMemoryWarning {
