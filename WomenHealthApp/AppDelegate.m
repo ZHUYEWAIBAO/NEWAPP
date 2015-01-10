@@ -45,39 +45,38 @@
     UINavigationController *record_vc;
     if ([COMMONDSHARE getTheLocalAddressKey]) {
         record_vc = [RecordViewController navigationControllerContainSelf];
+        
+        //圈子
+        UINavigationController *bbs_vc = [BBSViewController navigationControllerContainSelf];
+        //购物
+        UINavigationController *shopping_vc = [ShoppingViewController navigationControllerContainSelf];
+        //设置
+        UINavigationController *set_vc = [SetViewController navigationControllerContainSelf];
+        
+        NSArray *ctrs = [NSArray arrayWithObjects:record_vc,bbs_vc,shopping_vc,set_vc,nil];
+        
+        NSArray *imgs = [NSArray  arrayWithObjects:[UIImage imageWithContentFileName:@"new_record_btn.png"],[UIImage imageWithContentFileName:@"new_circle_btn.png"],[UIImage imageWithContentFileName:@"new_buy_btn.png"],[UIImage imageWithContentFileName:@"new_set_btn.png"],nil];
+        
+        NSArray *sImgs = [NSArray arrayWithObjects:[UIImage imageWithContentFileName:@"new_record_btn_selected.png"],[UIImage imageWithContentFileName:@"new_circle_btn_selected.png"],[UIImage imageWithContentFileName:@"new_buy_btn_selected.png"],[UIImage imageWithContentFileName:@"new_set_btn_selected.png"],nil];
+        
+        NSArray *tits = [NSArray arrayWithObjects:@"记录",@"圈子",@"购物",@"设置",nil];
+        
+        self.tabCtrl.viewControllers = ctrs;
+        self.tabCtrl.images = imgs;
+        self.tabCtrl.selectImages = sImgs;
+        self.tabCtrl.titles = tits;
+        
+        [WHSinger share].customTabbr = self.tabCtrl;
+        
+        self.window.rootViewController = self.tabCtrl;
+        
     }
     else{
         record_vc = [FirstRecordVC navigationControllerContainSelf];
+        
+        self.window.rootViewController = record_vc;
     }
-    
-    //圈子
-    UINavigationController *bbs_vc = [BBSViewController navigationControllerContainSelf];
-    //购物
-    UINavigationController *shopping_vc = [ShoppingViewController navigationControllerContainSelf];
-    //设置
-    UINavigationController *set_vc = [SetViewController navigationControllerContainSelf];
-    
-    NSArray *ctrs = [NSArray arrayWithObjects:record_vc,bbs_vc,shopping_vc,set_vc,nil];
-    
-    NSArray *imgs = [NSArray  arrayWithObjects:[UIImage imageWithContentFileName:@"new_record_btn.png"],[UIImage imageWithContentFileName:@"new_circle_btn.png"],[UIImage imageWithContentFileName:@"new_buy_btn.png"],[UIImage imageWithContentFileName:@"new_set_btn.png"],nil];
-    
-    NSArray *sImgs = [NSArray arrayWithObjects:[UIImage imageWithContentFileName:@"new_record_btn_selected.png"],[UIImage imageWithContentFileName:@"new_circle_btn_selected.png"],[UIImage imageWithContentFileName:@"new_buy_btn_selected.png"],[UIImage imageWithContentFileName:@"new_set_btn_selected.png"],nil];
-    
-    
-    
-    
-    NSArray *tits = [NSArray arrayWithObjects:@"记录",@"圈子",@"购物",@"设置",nil];
-    
-    self.tabCtrl.viewControllers = ctrs;
-    self.tabCtrl.images = imgs;
-    self.tabCtrl.selectImages = sImgs;
-    self.tabCtrl.titles = tits;
 
-    [WHSinger share].customTabbr = self.tabCtrl;
-    
-    self.window.rootViewController = self.tabCtrl;
-    
-    
     LoginDataModel *loginData = GetTheSavedUserPhoneNumAndPassword();
     if (loginData.loginType.length > 0) {
         

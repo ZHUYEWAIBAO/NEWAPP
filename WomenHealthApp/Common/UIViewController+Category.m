@@ -13,10 +13,9 @@
 
 - (UITabbarCommonViewController *)tabbarController
 {
-    AppDelegate *app = (AppDelegate *)[[UIApplication sharedApplication] delegate];
-    UITabbarCommonViewController *controller =  app.tabCtrl;
+    
 
-    return controller;
+    return [WHSinger share].customTabbr;
     
 }
 

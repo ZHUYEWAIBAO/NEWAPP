@@ -139,7 +139,10 @@
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
+    BBSMenuModal *modal = [self.circleArray objectAtIndex:indexPath.row];
+    
     BbsCircleDetailVC *vc = [[BbsCircleDetailVC alloc]initWithNibName:@"BbsCircleDetailVC" bundle:nil];
+    vc.currentFid = modal.bbsFid;
     [self.navigationController pushViewController:vc animated:YES];
 }
 

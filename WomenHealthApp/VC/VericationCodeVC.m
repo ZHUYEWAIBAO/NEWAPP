@@ -124,7 +124,9 @@
 
     [SVProgressHUD showWithStatus:@"正在获取验证码" maskType:SVProgressHUDMaskTypeClear];
     
-    [NETWORK_ENGINE requestWithPath:[GLOBALSHARE.CIRCLE_BIGMENU_PATH stringByAppendingFormat:@"?mod=code&phone=%@&type=register",self.registerModel.registerPhoneNum] Params:self.params CompletionHandler:^(MKNetworkOperation *completedOperation) {
+    NSString *path = [NSString stringWithFormat:@"/api/ec/user.php?mod=code&phone=%@&type=register",self.registerModel.registerPhoneNum];
+    
+    [NETWORK_ENGINE requestWithPath:path Params:self.params CompletionHandler:^(MKNetworkOperation *completedOperation) {
         
         NSDictionary *dic=[completedOperation responseDecodeToDic];
         

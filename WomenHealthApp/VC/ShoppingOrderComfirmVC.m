@@ -10,6 +10,7 @@
 #import "AddressViewController.h"
 #import "ShoppingDetailVC.h"
 #import "ShoppingOrderSuccessVC.h"
+#import "ShoppingPaySuccessVC.h"
 #import "PayTypeChooseVC.h"
 #import "OrderGoodsCell.h"
 #import "OrderSuccessModel.h"
@@ -348,12 +349,21 @@
         
         if ([@"1" isEqualToString:CHECK_VALUE([statusDic objectForKey:@"statu"])]) {
             
-            OrderSuccessModel *model = [OrderSuccessModel parseDicToOrderSuccessObject:[dic objectForKey:@"data"]];
-            
-            ShoppingOrderSuccessVC *vc = [[ShoppingOrderSuccessVC alloc]initWithNibName:@"ShoppingOrderSuccessVC" bundle:nil];
-            vc.successModel = model;
-            vc.payTypeId = currentPayTypeId;
-            [self.navigationController pushViewController:vc animated:YES];
+            if ([@"0.00" isEqualToString:self.totalPriceLabel.text]) {
+                
+                ShoppingPaySuccessVC *vc = [[ShoppingPaySuccessVC alloc]initWithNibName:@"ShoppingPaySuccessVC" bundle:nil];
+                [self.navigationController pushViewController:vc animated:YES];
+                
+            }
+            else{
+                OrderSuccessModel *model = [OrderSuccessModel parseDicToOrderSuccessObject:[dic objectForKey:@"data"]];
+                
+                ShoppingOrderSuccessVC *vc = [[ShoppingOrderSuccessVC alloc]initWithNibName:@"ShoppingOrderSuccessVC" bundle:nil];
+                vc.successModel = model;
+                vc.payTypeId = currentPayTypeId;
+                [self.navigationController pushViewController:vc animated:YES];
+            }
+
             
             [SVProgressHUD dismiss];
             

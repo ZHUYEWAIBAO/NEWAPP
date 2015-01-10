@@ -8,6 +8,10 @@
 
 #import "FirstRecordVC.h"
 #import "RecordViewController.h"
+#import "BBSViewController.h"
+#import "ShoppingViewController.h"
+#import "SetViewController.h"
+#import "UITabbarCommonViewController.h"
 
 #define TAG_CHOOSE 100
 #define TAG_CANCEL 101
@@ -65,7 +69,7 @@
 //    currentMonth = [[array objectAtIndex:1] integerValue];
 //    currentDay = [[array objectAtIndex:2] integerValue];
     
-    currentYear = 2014;
+    currentYear = 2015;
     currentMonth = 1;
     currentDay = 1;
     
@@ -321,9 +325,33 @@
                 NSString *time = [NSString stringWithFormat:@"%ld%@%@000000",currentYear,month,day];
                 NSString *recordKey = [NSString stringWithFormat:@"%@_%@_%@",[self getTheWomanTime:time],currentMenstrual,currentCycle];
                 [COMMONDSHARE saveTheRecordKey:recordKey];
+   
+                UITabbarCommonViewController *tabCtrl = [[UITabbarCommonViewController alloc]initWithNibName:@"UITabbarCommonViewController" bundle:nil];
+                UINavigationController *record_vc = [RecordViewController navigationControllerContainSelf];
+                //圈子
+                UINavigationController *bbs_vc = [BBSViewController navigationControllerContainSelf];
+                //购物
+                UINavigationController *shopping_vc = [ShoppingViewController navigationControllerContainSelf];
+                //设置
+                UINavigationController *set_vc = [SetViewController navigationControllerContainSelf];
                 
-                RecordViewController *vc = [[RecordViewController alloc]initWithNibName:@"RecordViewController" bundle:nil];
-                [self.navigationController pushViewController:vc animated:YES];
+                NSArray *ctrs = [NSArray arrayWithObjects:record_vc,bbs_vc,shopping_vc,set_vc,nil];
+                
+                NSArray *imgs = [NSArray  arrayWithObjects:[UIImage imageWithContentFileName:@"new_record_btn.png"],[UIImage imageWithContentFileName:@"new_circle_btn.png"],[UIImage imageWithContentFileName:@"new_buy_btn.png"],[UIImage imageWithContentFileName:@"new_set_btn.png"],nil];
+                
+                NSArray *sImgs = [NSArray arrayWithObjects:[UIImage imageWithContentFileName:@"new_record_btn_selected.png"],[UIImage imageWithContentFileName:@"new_circle_btn_selected.png"],[UIImage imageWithContentFileName:@"new_buy_btn_selected.png"],[UIImage imageWithContentFileName:@"new_set_btn_selected.png"],nil];
+                
+                NSArray *tits = [NSArray arrayWithObjects:@"记录",@"圈子",@"购物",@"设置",nil];
+                
+                tabCtrl.viewControllers = ctrs;
+                tabCtrl.images = imgs;
+                tabCtrl.selectImages = sImgs;
+                tabCtrl.titles = tits;
+                
+                [WHSinger share].customTabbr = tabCtrl;
+                
+                [self.navigationController pushViewController:tabCtrl animated:YES];
+                [self.navigationController setNavigationBarHidden:YES animated:YES];
             }
             
         }

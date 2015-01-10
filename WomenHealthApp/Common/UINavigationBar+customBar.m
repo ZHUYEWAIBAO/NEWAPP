@@ -12,9 +12,7 @@
 - (void)customNavigationBar:(UIViewController *)controller {
 
     //设置导航条背景图片
-    //[self.navigationController.navigationBar setBackgroundImage:[UIImage imageWithContentFileName:@"head_bg.png"] forBarMetrics:UIBarMetricsDefault];
     if ([self respondsToSelector:@selector(setBackgroundImage:forBarMetrics:)]) {
-//        NSString *classStr = NSStringFromClass([controller class]);
 
             if (IOS7) {
 

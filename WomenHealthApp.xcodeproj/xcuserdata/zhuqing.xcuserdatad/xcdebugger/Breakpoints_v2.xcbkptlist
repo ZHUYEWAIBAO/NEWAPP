@@ -131,7 +131,7 @@
                   symbolName = "-[ShoppingOrderSuccessVC payButtonAction:]"
                   moduleName = "WomenHealthApp"
                   urlString = "file:///Users/zhuqing/Desktop/NEWAPP/WomenHealthApp/VC/ShoppingOrderSuccessVC.m"
-                  timestampString = "442412913.655077"
+                  timestampString = "442573744.787659"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "72"
@@ -145,7 +145,7 @@
                   symbolName = "__42-[ShoppingOrderSuccessVC payButtonAction:]_block_invoke"
                   moduleName = "WomenHealthApp"
                   urlString = "file:///Users/zhuqing/Desktop/NEWAPP/WomenHealthApp/VC/ShoppingOrderSuccessVC.m"
-                  timestampString = "442412913.655407"
+                  timestampString = "442573744.787809"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "72"
@@ -177,7 +177,7 @@
                   symbolName = "__39-[LoginViewController upLoadTheUseName]_block_invoke"
                   moduleName = "WomenHealthApp"
                   urlString = "file:///Users/zhuqing/Desktop/NEWAPP/WomenHealthApp/VC/LoginViewController.m"
-                  timestampString = "442412913.656379"
+                  timestampString = "442573744.789175"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "306"
@@ -191,7 +191,7 @@
                   symbolName = "__39-[LoginViewController upLoadTheUseName]_block_invoke_2"
                   moduleName = "WomenHealthApp"
                   urlString = "file:///Users/zhuqing/Desktop/NEWAPP/WomenHealthApp/VC/LoginViewController.m"
-                  timestampString = "442412913.656639"
+                  timestampString = "442573744.789448"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "306"
@@ -384,11 +384,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "WomenHealthApp/VC/ShoppingOrderComfirmVC.m"
-            timestampString = "442248060.350195"
+            timestampString = "442571345.033369"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "106"
-            endingLineNumber = "106"
+            startingLineNumber = "107"
+            endingLineNumber = "107"
             landmarkName = "-getTheOrderInfo:"
             landmarkType = "5">
          </BreakpointContent>
@@ -400,11 +400,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "WomenHealthApp/VC/ShoppingOrderComfirmVC.m"
-            timestampString = "442248121.640539"
+            timestampString = "442571345.033369"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "112"
-            endingLineNumber = "112"
+            startingLineNumber = "113"
+            endingLineNumber = "113"
             landmarkName = "-getTheOrderInfo:"
             landmarkType = "5">
          </BreakpointContent>
@@ -438,6 +438,22 @@
             startingLineNumber = "57"
             endingLineNumber = "57"
             landmarkName = "-getTheListData"
+            landmarkType = "5">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "WomenHealthApp/VC/RegisterViewController.m"
+            timestampString = "442568793.990882"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "98"
+            endingLineNumber = "98"
+            landmarkName = "-getVerificationCodeAction"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>

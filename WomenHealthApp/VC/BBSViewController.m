@@ -257,7 +257,9 @@
     }
     else{
         
+        BBSMenuModal *modal = [self.bigMenuArray objectAtIndex:indexPath.row];
         BbsCircleDetailVC *vc = [[BbsCircleDetailVC alloc]initWithNibName:@"BbsCircleDetailVC" bundle:nil];
+        vc.currentFid = modal.bbsFid;
         [self.navigationController pushViewController:vc animated:YES];
         
     }
@@ -319,42 +321,6 @@
     //    indexRow=path.row;
 }
 
-- (void)getTheCircleWithFid:(NSString *)fid
-{
-    //测试固定写成2
-    [SVProgressHUD showWithMaskType:SVProgressHUDMaskTypeClear];
-    
-    [NETWORK_ENGINE requestWithPath:[GLOBALSHARE.CIRCLE_BIGMENU_PATH stringByAppendingFormat:@"?mod=collect&action=add&fid=%@&uid=%@",@"2",@"1"]  Params:self.params CompletionHandler:^(MKNetworkOperation *completedOperation) {
-        
-        [self.subMenuArray removeAllObjects];
-        
-        NSDictionary *dic = [completedOperation responseDecodeToDic];
-        
-        NSDictionary *statusDic = [dic objectForKey:@"status"];
-        //        NSDictionary *dataDic = [dic objectForKey:@"data"];
-        if ([@"1" isEqualToString:CHECK_VALUE([statusDic objectForKey:@"statu"])]){
-            
-            //            NSArray *array = CHECK_ARRAY_VALUE([dataDic objectForKey:@"forumlist"]);
-            //
-            //            for (NSDictionary *subDic in array) {
-            //                BBSMenuModal *modal = [BBSMenuModal parseDicToMenuListObject:subDic];
-            //                [self.subMenuArray addObject:modal];
-            //            }
-            //            [self.secondMenuTableView reloadData];
-            [SVProgressHUD dismiss];
-        }
-        else{
-            [SVProgressHUD showErrorWithStatus:CHECK_VALUE([statusDic objectForKey:@"msg"])];
-        }
-        
-        
-    } ErrorHandler:^(MKNetworkOperation *completedOperation, NSError *error) {
-        
-        [SVProgressHUD showErrorWithStatus:@"服务器忙，请稍候再试"];
-        
-    }];
-    
-}
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];

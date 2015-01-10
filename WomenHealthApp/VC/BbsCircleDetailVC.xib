@@ -7,7 +7,10 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="BbsCircleDetailVC">
             <connections>
+                <outlet property="allBtn" destination="ip4-43-88x" id="rIR-Et-e9W"/>
+                <outlet property="bestBtn" destination="Xau-Pp-ZsG" id="E2V-wt-48M"/>
                 <outlet property="circleTableView" destination="KYA-At-0X1" id="mcN-Oc-vGQ"/>
+                <outlet property="freshBtn" destination="1Pl-9K-4rR" id="ewO-SW-nh7"/>
                 <outlet property="titleView" destination="pgY-aj-KKh" id="J79-xd-raF"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
@@ -17,10 +20,14 @@
             <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" id="KYA-At-0X1">
+                <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="plain" separatorStyle="none" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" id="KYA-At-0X1">
                     <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                    <connections>
+                        <outlet property="dataSource" destination="-1" id="B1H-0t-ah4"/>
+                        <outlet property="delegate" destination="-1" id="8Ys-fE-LrQ"/>
+                    </connections>
                 </tableView>
             </subviews>
             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
@@ -30,31 +37,43 @@
             <rect key="frame" x="0.0" y="0.0" width="186" height="44"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
             <subviews>
-                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="ip4-43-88x">
+                <button opaque="NO" tag="100" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="ip4-43-88x">
                     <rect key="frame" x="0.0" y="7" width="62" height="30"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                    <state key="normal" backgroundImage="all_btn_active.png">
+                    <state key="normal" backgroundImage="all_btn_normal.png">
                         <color key="titleShadowColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </state>
+                    <state key="selected" backgroundImage="all_btn_active.png"/>
                     <state key="highlighted" backgroundImage="all_btn_normal.png">
                         <color key="titleShadowColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </state>
+                    <connections>
+                        <action selector="changeBtnModelAction:" destination="-1" eventType="touchUpInside" id="J4I-cP-CMi"/>
+                    </connections>
                 </button>
-                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="Xau-Pp-ZsG">
-                    <rect key="frame" x="124" y="7" width="62" height="30"/>
-                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                    <state key="normal" backgroundImage="jinhua_btn_normal.png"/>
-                    <state key="highlighted" backgroundImage="jinhua_btn_normal.png"/>
-                </button>
-                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="1Pl-9K-4rR">
+                <button opaque="NO" tag="101" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="1Pl-9K-4rR">
                     <rect key="frame" x="62" y="7" width="62" height="30"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                     <state key="normal" backgroundImage="fresh_btn_noraml.png">
                         <color key="titleShadowColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </state>
+                    <state key="selected" backgroundImage="fresh_btn_active.png"/>
                     <state key="highlighted" backgroundImage="fresh_btn_noraml.png">
                         <color key="titleShadowColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </state>
+                    <connections>
+                        <action selector="changeBtnModelAction:" destination="-1" eventType="touchUpInside" id="4Tc-gW-kk2"/>
+                    </connections>
+                </button>
+                <button opaque="NO" tag="102" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="Xau-Pp-ZsG">
+                    <rect key="frame" x="124" y="7" width="62" height="30"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                    <state key="normal" backgroundImage="jinhua_btn_normal.png"/>
+                    <state key="selected" backgroundImage="jinhua_btn_active.png"/>
+                    <state key="highlighted" backgroundImage="jinhua_btn_normal.png"/>
+                    <connections>
+                        <action selector="changeBtnModelAction:" destination="-1" eventType="touchUpInside" id="7Fu-yG-AF8"/>
+                    </connections>
                 </button>
             </subviews>
             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
@@ -65,7 +84,9 @@
     <resources>
         <image name="all_btn_active.png" width="62" height="30"/>
         <image name="all_btn_normal.png" width="62" height="30"/>
+        <image name="fresh_btn_active.png" width="62" height="30"/>
         <image name="fresh_btn_noraml.png" width="62" height="30"/>
+        <image name="jinhua_btn_active.png" width="62" height="30"/>
         <image name="jinhua_btn_normal.png" width="62" height="30"/>
     </resources>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">
