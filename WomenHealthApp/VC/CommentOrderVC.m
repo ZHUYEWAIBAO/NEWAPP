@@ -184,12 +184,6 @@
     [currentBtn setBackgroundImage:photoImg forState:UIControlStateNormal];
 }
 
-- (void)upLoaduserPhoto:(NSData *)imgData
-{
-
-    
-}
-
 #pragma mark - UITextViewDelegate
 - (void)textViewDidBeginEditing:(UITextView *)textView
 {

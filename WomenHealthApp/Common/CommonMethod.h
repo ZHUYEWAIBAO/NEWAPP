@@ -23,6 +23,7 @@ NSArray * NSArrayexchangeTheReturnValueToArray(id value);
  @result float 返回的宽度
  */
 float HeightForString(NSString *value,float fontSize,float width);
+float WidthForString(NSString *value,float fontSize,float height);
 
 /**
  *  显示用户手机号，中间几位用星号代替

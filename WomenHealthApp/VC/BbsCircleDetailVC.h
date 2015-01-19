@@ -19,6 +19,17 @@ typedef enum CircleType_
 @interface BbsCircleDetailVC : RefreshTableVC
 
 @property (strong, nonatomic) IBOutlet UIView *titleView;
+@property (strong, nonatomic) IBOutlet UIView *headView;
+
+@property (weak, nonatomic) IBOutlet UIView *nameView;
+@property (weak, nonatomic) IBOutlet UIImageView *headImageView;
+@property (weak, nonatomic) IBOutlet UILabel *nameLabel;
+@property (weak, nonatomic) IBOutlet UILabel *nameDesLabel;
+@property (weak, nonatomic) IBOutlet UILabel *totalLabel;
+@property (weak, nonatomic) IBOutlet UILabel *todayLabel;
+@property (weak, nonatomic) IBOutlet UIButton *searchBtn;
+
+@property (weak, nonatomic) IBOutlet UIView *hotView;
 
 @property (weak, nonatomic) IBOutlet UITableView *circleTableView;
 

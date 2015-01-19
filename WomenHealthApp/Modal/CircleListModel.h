@@ -8,6 +8,19 @@
 
 #import <Foundation/Foundation.h>
 
+@interface CircleHeadModel : NSObject
+
+@property (strong, nonatomic) NSString *total_subject;
+@property (strong, nonatomic) NSString *circle_description;
+@property (strong, nonatomic) NSString *name;
+@property (strong, nonatomic) NSString *today_subject;
+@property (strong, nonatomic) NSString *icon;
+@property (strong, nonatomic) NSMutableArray *headArray;
+
++ (CircleHeadModel *)parseDicToCircleHeadObject:(NSDictionary*)dataDic;
+
+@end
+
 @interface CircleListModel : NSObject
 
 @property (strong, nonatomic) NSString *fid;

@@ -18,4 +18,6 @@
 
 @property (strong, nonatomic) IBOutlet UIView *clearSearchView;
 
+@property (assign, nonatomic) BOOL isFromPost;
+
 @end

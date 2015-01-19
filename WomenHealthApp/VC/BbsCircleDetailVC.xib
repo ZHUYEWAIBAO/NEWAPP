@@ -11,7 +11,16 @@
                 <outlet property="bestBtn" destination="Xau-Pp-ZsG" id="E2V-wt-48M"/>
                 <outlet property="circleTableView" destination="KYA-At-0X1" id="mcN-Oc-vGQ"/>
                 <outlet property="freshBtn" destination="1Pl-9K-4rR" id="ewO-SW-nh7"/>
+                <outlet property="headImageView" destination="zkb-gf-SBr" id="2pN-JU-Vcd"/>
+                <outlet property="headView" destination="BCk-07-vsY" id="lJ9-Jf-Y6C"/>
+                <outlet property="hotView" destination="BfC-Kd-wTQ" id="zVH-ba-Xzl"/>
+                <outlet property="nameDesLabel" destination="Zl7-t0-Dyr" id="3ej-Wa-Vce"/>
+                <outlet property="nameLabel" destination="Ith-tR-PC8" id="7Wi-IQ-GlR"/>
+                <outlet property="nameView" destination="IFV-UC-WYA" id="4vb-zV-5zR"/>
+                <outlet property="searchBtn" destination="wXc-CI-CeC" id="OP5-kF-FJY"/>
                 <outlet property="titleView" destination="pgY-aj-KKh" id="J79-xd-raF"/>
+                <outlet property="todayLabel" destination="hsj-X0-rL0" id="aLy-3l-21q"/>
+                <outlet property="totalLabel" destination="YYl-Ww-5LA" id="WO0-Hq-ONJ"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
         </placeholder>
@@ -80,14 +89,114 @@
             <nil key="simulatedStatusBarMetrics"/>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
         </view>
+        <view contentMode="scaleToFill" id="BCk-07-vsY">
+            <rect key="frame" x="0.0" y="0.0" width="320" height="250"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <subviews>
+                <view contentMode="scaleToFill" id="IFV-UC-WYA">
+                    <rect key="frame" x="0.0" y="0.0" width="320" height="110"/>
+                    <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
+                    <subviews>
+                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" id="t11-LV-dDV" customClass="LineImageView">
+                            <rect key="frame" x="0.0" y="70" width="320" height="1"/>
+                            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        </imageView>
+                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" id="cpH-4A-EeH">
+                            <rect key="frame" x="106" y="81" width="1" height="15"/>
+                            <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
+                            <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                        </imageView>
+                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" id="UZ1-fd-Cr9">
+                            <rect key="frame" x="214" y="81" width="1" height="15"/>
+                            <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
+                            <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                        </imageView>
+                        <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Circle_menu_default_image.png" id="zkb-gf-SBr">
+                            <rect key="frame" x="10" y="10" width="50" height="50"/>
+                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        </imageView>
+                        <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="circle_todays_logo.png" id="msf-eA-zwp">
+                            <rect key="frame" x="25" y="79" width="20" height="20"/>
+                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        </imageView>
+                        <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="circle_all_logo.png" id="DRi-YB-6tb">
+                            <rect key="frame" x="131" y="79" width="20" height="20"/>
+                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        </imageView>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="Ith-tR-PC8">
+                            <rect key="frame" x="68" y="11" width="211" height="21"/>
+                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                            <color key="textColor" red="1" green="0.52941176469999995" blue="0.62745098040000002" alpha="1" colorSpace="calibratedRGB"/>
+                            <nil key="highlightedColor"/>
+                        </label>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="Zl7-t0-Dyr">
+                            <rect key="frame" x="68" y="37" width="244" height="21"/>
+                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                            <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                            <nil key="highlightedColor"/>
+                        </label>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="hsj-X0-rL0">
+                            <rect key="frame" x="51" y="78" width="47" height="21"/>
+                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                            <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                            <nil key="highlightedColor"/>
+                        </label>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="YYl-Ww-5LA">
+                            <rect key="frame" x="157" y="78" width="49" height="21"/>
+                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                            <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                            <nil key="highlightedColor"/>
+                        </label>
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="wXc-CI-CeC">
+                            <rect key="frame" x="219" y="74" width="106" height="30"/>
+                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                            <state key="normal" title="搜索">
+                                <color key="titleColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                                <color key="titleShadowColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                            </state>
+                            <connections>
+                                <action selector="searchPostAction:" destination="-1" eventType="touchUpInside" id="Q6u-oA-xmi"/>
+                            </connections>
+                        </button>
+                        <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="circle_reseach_logo.png" id="lgm-5E-Fh4">
+                            <rect key="frame" x="237" y="79" width="20" height="20"/>
+                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        </imageView>
+                    </subviews>
+                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                </view>
+                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="line.png" id="Pfs-rL-Z0y">
+                    <rect key="frame" x="0.0" y="110" width="320" height="6"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                </imageView>
+                <view contentMode="scaleToFill" id="BfC-Kd-wTQ" customClass="OrderCellDetailView">
+                    <rect key="frame" x="0.0" y="120" width="320" height="132"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                </view>
+            </subviews>
+            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+            <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+            <point key="canvasLocation" x="217" y="669"/>
+        </view>
     </objects>
     <resources>
+        <image name="Circle_menu_default_image.png" width="100" height="100"/>
         <image name="all_btn_active.png" width="62" height="30"/>
         <image name="all_btn_normal.png" width="62" height="30"/>
+        <image name="circle_all_logo.png" width="20" height="20"/>
+        <image name="circle_reseach_logo.png" width="20" height="20"/>
+        <image name="circle_todays_logo.png" width="20" height="20"/>
         <image name="fresh_btn_active.png" width="62" height="30"/>
         <image name="fresh_btn_noraml.png" width="62" height="30"/>
         <image name="jinhua_btn_active.png" width="62" height="30"/>
         <image name="jinhua_btn_normal.png" width="62" height="30"/>
+        <image name="line.png" width="320" height="6"/>
     </resources>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">
         <simulatedStatusBarMetrics key="statusBar"/>

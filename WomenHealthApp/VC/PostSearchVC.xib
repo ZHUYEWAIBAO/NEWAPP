@@ -5,10 +5,10 @@
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6247"/>
     </dependencies>
     <objects>
-        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="BbsSearchResultVC">
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="PostSearchVC">
             <connections>
-                <outlet property="searchEmptyView" destination="x2H-0e-gvN" id="Wjb-yF-Z3P"/>
-                <outlet property="searchTableView" destination="4i6-4l-MIL" id="eIO-2c-48B"/>
+                <outlet property="searchEmptyView" destination="gg7-WT-7xd" id="19X-xc-4ED"/>
+                <outlet property="searchTableView" destination="RsJ-w1-P9N" id="ABR-Vy-Yo7"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
         </placeholder>
@@ -17,24 +17,24 @@
             <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <view hidden="YES" contentMode="scaleToFill" id="x2H-0e-gvN">
+                <view hidden="YES" contentMode="scaleToFill" id="gg7-WT-7xd">
                     <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
                     <subviews>
-                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="search_empty_icon.png" id="8Ik-0I-rwh">
+                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="search_empty_icon.png" id="AkJ-0J-8B0">
                             <rect key="frame" x="94" y="205" width="133" height="77"/>
                             <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
                         </imageView>
                     </subviews>
                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                 </view>
-                <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="plain" separatorStyle="none" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" id="4i6-4l-MIL">
+                <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="plain" separatorStyle="none" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" id="RsJ-w1-P9N">
                     <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                     <connections>
-                        <outlet property="dataSource" destination="-1" id="JYg-Ju-EeQ"/>
-                        <outlet property="delegate" destination="-1" id="42G-8V-4LQ"/>
+                        <outlet property="dataSource" destination="-1" id="OsB-zw-S2T"/>
+                        <outlet property="delegate" destination="-1" id="4yD-XN-Ul0"/>
                     </connections>
                 </tableView>
             </subviews>
