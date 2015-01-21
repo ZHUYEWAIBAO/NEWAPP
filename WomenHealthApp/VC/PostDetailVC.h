@@ -13,6 +13,8 @@
 @property (weak, nonatomic) IBOutlet UITableView *postTableView;
 
 @property (strong, nonatomic) IBOutlet UIView *headView;
+@property (weak, nonatomic) IBOutlet UIView *inputView;
+@property (weak, nonatomic) IBOutlet UITextField *inputTextField;
 
 @property (weak, nonatomic) IBOutlet UIImageView *jingImageView;
 @property (weak, nonatomic) IBOutlet UIImageView *lineImageView;

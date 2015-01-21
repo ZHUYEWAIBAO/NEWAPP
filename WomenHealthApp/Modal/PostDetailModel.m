@@ -31,6 +31,24 @@
     for (NSDictionary *imgDic in CHECK_ARRAY_VALUE([dataDic objectForKey:@"view_threadlist"])) {
         [model.listArray addObject:[PostListModel parseDicToPostListObject:imgDic]];
     }
+
+    
+    return model;
+}
+
+@end
+
+
+@implementation ReplayInfoModel
+
++ (ReplayInfoModel *)parseDicToReplyInfoObject:(NSDictionary*)dataDic
+{
+    ReplayInfoModel *model = [[ReplayInfoModel alloc]init];
+    
+    model.author= CHECK_VALUE([dataDic objectForKey:@"author"]);
+    model.sub_time = CHECK_VALUE([dataDic objectForKey:@"sub_time"]);
+    model.message = CHECK_VALUE([dataDic objectForKey:@"message"]);
+    model.is_replay = CHECK_VALUE([dataDic objectForKey:@"is_replay"]);
     
     return model;
 }
@@ -55,8 +73,11 @@
     model.position = CHECK_VALUE([dataDic objectForKey:@"position"]);
     model.avatar = CHECK_VALUE([dataDic objectForKey:@"avatar"]);
     model.imgInfosArray = CHECK_ARRAY_VALUE([dataDic objectForKey:@"img_infos"]);
+    
+    model.replyModel = [ReplayInfoModel parseDicToReplyInfoObject:[dataDic objectForKey:@"replay_info"]];
  
     return model;
 }
 
 @end
+

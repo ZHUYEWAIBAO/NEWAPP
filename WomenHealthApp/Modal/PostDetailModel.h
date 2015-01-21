@@ -21,6 +21,17 @@
 
 @end
 
+@interface ReplayInfoModel : NSObject
+
+@property (strong, nonatomic) NSString *is_replay;
+@property (strong, nonatomic) NSString *message;
+@property (strong, nonatomic) NSString *sub_time;
+@property (strong, nonatomic) NSString *author;
+
++ (ReplayInfoModel *)parseDicToReplyInfoObject:(NSDictionary*)dataDic;
+
+@end
+
 @interface PostListModel : NSObject
 
 @property (strong, nonatomic) NSString *tid;
@@ -37,6 +48,9 @@
 
 @property (strong, nonatomic) NSArray *imgInfosArray;
 
+@property (strong, nonatomic) ReplayInfoModel *replyModel;
+
 + (PostListModel *)parseDicToPostListObject:(NSDictionary*)dataDic;
 
 @end
+

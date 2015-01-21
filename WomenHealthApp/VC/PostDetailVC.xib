@@ -11,9 +11,12 @@
                 <outlet property="circleBtn" destination="tht-eh-twb" id="Vhj-gk-4lQ"/>
                 <outlet property="circleLabel" destination="kBY-f8-mJQ" id="Ooa-1z-pVX"/>
                 <outlet property="headView" destination="aps-f0-iJP" id="7MW-NY-uxy"/>
+                <outlet property="inputTextField" destination="atT-I3-4y4" id="A3s-yv-GgM"/>
+                <outlet property="inputView" destination="oM9-rU-oba" id="afN-K1-jKj"/>
                 <outlet property="jingImageView" destination="3xy-x8-ppd" id="75i-Dl-8Zc"/>
                 <outlet property="lineImageView" destination="B0V-Yd-THk" id="2Oo-eO-VdY"/>
                 <outlet property="nameLabel" destination="SpR-za-CY6" id="6H5-49-3jd"/>
+                <outlet property="photoBtn" destination="kYZ-vi-Xjo" id="c3M-Qz-xAz"/>
                 <outlet property="postTableView" destination="c41-jZ-0Ws" id="kTC-ZF-3sd"/>
                 <outlet property="topView" destination="woQ-un-dxJ" id="Hha-Po-F0F"/>
                 <outlet property="totalLabel" destination="hb9-Y9-ilx" id="8Yn-Os-aEc"/>
@@ -26,7 +29,7 @@
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
                 <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="plain" separatorStyle="none" allowsSelection="NO" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" id="c41-jZ-0Ws">
-                    <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                    <rect key="frame" x="0.0" y="0.0" width="320" height="524"/>
                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                     <connections>
@@ -34,6 +37,33 @@
                         <outlet property="delegate" destination="-1" id="68c-0r-e4e"/>
                     </connections>
                 </tableView>
+                <view contentMode="scaleToFill" id="oM9-rU-oba" customClass="OrderCellDetailView">
+                    <rect key="frame" x="0.0" y="524" width="320" height="44"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                    <subviews>
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="kYZ-vi-Xjo" customClass="CustomButton">
+                            <rect key="frame" x="6" y="6" width="32" height="32"/>
+                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <state key="normal" backgroundImage="camer_btn.png">
+                                <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                            </state>
+                            <connections>
+                                <action selector="photoBtnAction:" destination="-1" eventType="touchUpInside" id="FXR-4h-sHE"/>
+                            </connections>
+                        </button>
+                        <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" minimumFontSize="17" id="atT-I3-4y4">
+                            <rect key="frame" x="46" y="7" width="266" height="30"/>
+                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                            <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
+                            <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                            <textInputTraits key="textInputTraits" returnKeyType="send"/>
+                            <connections>
+                                <action selector="sendPostAction:" destination="-1" eventType="editingDidEndOnExit" id="Q1K-JY-be2"/>
+                            </connections>
+                        </textField>
+                    </subviews>
+                    <color key="backgroundColor" red="0.94117647058823528" green="0.94117647058823528" blue="0.94117647058823528" alpha="1" colorSpace="calibratedRGB"/>
+                </view>
             </subviews>
             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
             <point key="canvasLocation" x="217" y="226"/>
@@ -86,7 +116,7 @@
                             <nil key="highlightedColor"/>
                         </label>
                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="hb9-Y9-ilx">
-                            <rect key="frame" x="267" y="0.0" width="45" height="21"/>
+                            <rect key="frame" x="273" y="0.0" width="45" height="21"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                             <fontDescription key="fontDescription" type="system" pointSize="12"/>
@@ -94,7 +124,7 @@
                             <nil key="highlightedColor"/>
                         </label>
                         <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="comment_reply_btn.png" id="ssK-5C-Qc8">
-                            <rect key="frame" x="246" y="2" width="20" height="20"/>
+                            <rect key="frame" x="252" y="2" width="20" height="20"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         </imageView>
                     </subviews>
@@ -107,6 +137,7 @@
         </view>
     </objects>
     <resources>
+        <image name="camer_btn.png" width="32" height="32"/>
         <image name="comment_reply_btn.png" width="20" height="20"/>
         <image name="jin_flag.png" width="16" height="16"/>
         <image name="line.png" width="320" height="6"/>
