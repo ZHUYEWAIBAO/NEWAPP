@@ -22,6 +22,11 @@
 		65134D0B1A1A26710011BCF7 /* UIColor+RGBCo.m in Sources */ = {isa = PBXBuildFile; fileRef = 65134D071A1A26710011BCF7 /* UIColor+RGBCo.m */; };
 		65134D0C1A1A26710011BCF7 /* calendarView.m in Sources */ = {isa = PBXBuildFile; fileRef = 65134D091A1A26710011BCF7 /* calendarView.m */; };
 		65134D0D1A1A26710011BCF7 /* calendarView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 65134D0A1A1A26710011BCF7 /* calendarView.xib */; };
+		653A864A1A6FDC8100EDE181 /* libBPush.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 653A863B1A6FDC8100EDE181 /* libBPush.a */; };
+		653A864C1A6FDC8200EDE181 /* BPushClass.m in Sources */ = {isa = PBXBuildFile; fileRef = 653A86411A6FDC8100EDE181 /* BPushClass.m */; };
+		653A864D1A6FDC8200EDE181 /* GzipCompressor.m in Sources */ = {isa = PBXBuildFile; fileRef = 653A86431A6FDC8100EDE181 /* GzipCompressor.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
+		653A864F1A6FDC8200EDE181 /* OpenUDID.m in Sources */ = {isa = PBXBuildFile; fileRef = 653A86471A6FDC8100EDE181 /* OpenUDID.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
+		653A86521A6FDC9D00EDE181 /* BPushConfig.plist in Resources */ = {isa = PBXBuildFile; fileRef = 653A86511A6FDC9D00EDE181 /* BPushConfig.plist */; };
 		653AAFAA1A59723C005E87CE /* NoOrder.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 653AAFA91A59723C005E87CE /* NoOrder.jpg */; };
 		6560F4041A2B137E004B2847 /* CMSinger.m in Sources */ = {isa = PBXBuildFile; fileRef = 6560F4031A2B137E004B2847 /* CMSinger.m */; };
 		656B0EE71A484DFA00669852 /* OMGToast.m in Sources */ = {isa = PBXBuildFile; fileRef = 656B0EE61A484DFA00669852 /* OMGToast.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
@@ -488,6 +493,16 @@
 		65134D081A1A26710011BCF7 /* calendarView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = calendarView.h; sourceTree = "<group>"; };
 		65134D091A1A26710011BCF7 /* calendarView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = calendarView.m; sourceTree = "<group>"; };
 		65134D0A1A1A26710011BCF7 /* calendarView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = calendarView.xib; sourceTree = "<group>"; };
+		653A863A1A6FDC8100EDE181 /* BPush.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BPush.h; sourceTree = "<group>"; };
+		653A863B1A6FDC8100EDE181 /* libBPush.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libBPush.a; sourceTree = "<group>"; };
+		653A863F1A6FDC8100EDE181 /* Base64Defines.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Base64Defines.h; sourceTree = "<group>"; };
+		653A86401A6FDC8100EDE181 /* BPushClass.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BPushClass.h; sourceTree = "<group>"; };
+		653A86411A6FDC8100EDE181 /* BPushClass.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BPushClass.m; sourceTree = "<group>"; };
+		653A86421A6FDC8100EDE181 /* GzipCompressor.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GzipCompressor.h; sourceTree = "<group>"; };
+		653A86431A6FDC8100EDE181 /* GzipCompressor.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GzipCompressor.m; sourceTree = "<group>"; };
+		653A86461A6FDC8100EDE181 /* OpenUDID.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OpenUDID.h; sourceTree = "<group>"; };
+		653A86471A6FDC8100EDE181 /* OpenUDID.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OpenUDID.m; sourceTree = "<group>"; };
+		653A86511A6FDC9D00EDE181 /* BPushConfig.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = BPushConfig.plist; sourceTree = "<group>"; };
 		653AAFA91A59723C005E87CE /* NoOrder.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = NoOrder.jpg; sourceTree = "<group>"; };
 		6560F4021A2B137E004B2847 /* CMSinger.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CMSinger.h; sourceTree = "<group>"; };
 		6560F4031A2B137E004B2847 /* CMSinger.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CMSinger.m; sourceTree = "<group>"; };
@@ -1202,6 +1217,7 @@
 				BA6A43F81A2C0BC000BAC95F /* libSinaWeiboSDK.a in Frameworks */,
 				BA6A43FF1A2C0BC000BAC95F /* ShareSDKShareActionSheet.framework in Frameworks */,
 				BA6A43ED1A2C0BC000BAC95F /* QQConnection.framework in Frameworks */,
+				653A864A1A6FDC8100EDE181 /* libBPush.a in Frameworks */,
 				BA6A43FE1A2C0BC000BAC95F /* ShareSDKFlatShareViewUI.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -1231,6 +1247,30 @@
 				65134CFB1A1A24F50011BCF7 /* top_bg@2x.png */,
 			);
 			path = recordsHome;
+			sourceTree = "<group>";
+		};
+		653A86391A6FDC8100EDE181 /* LibBPush */ = {
+			isa = PBXGroup;
+			children = (
+				653A863A1A6FDC8100EDE181 /* BPush.h */,
+				653A863B1A6FDC8100EDE181 /* libBPush.a */,
+				653A863C1A6FDC8100EDE181 /* opensource */,
+			);
+			path = LibBPush;
+			sourceTree = "<group>";
+		};
+		653A863C1A6FDC8100EDE181 /* opensource */ = {
+			isa = PBXGroup;
+			children = (
+				653A863F1A6FDC8100EDE181 /* Base64Defines.h */,
+				653A86401A6FDC8100EDE181 /* BPushClass.h */,
+				653A86411A6FDC8100EDE181 /* BPushClass.m */,
+				653A86421A6FDC8100EDE181 /* GzipCompressor.h */,
+				653A86431A6FDC8100EDE181 /* GzipCompressor.m */,
+				653A86461A6FDC8100EDE181 /* OpenUDID.h */,
+				653A86471A6FDC8100EDE181 /* OpenUDID.m */,
+			);
+			path = opensource;
 			sourceTree = "<group>";
 		};
 		656B0EE41A484DFA00669852 /* OTG */ = {
@@ -1707,6 +1747,7 @@
 				BA6A44081A2C0D0800BAC95F /* QuartzCore.framework */,
 				BA6A44061A2C0CFA00BAC95F /* SystemConfiguration.framework */,
 				BA59D72E19F884560098BDCF /* Info.plist */,
+				653A86511A6FDC9D00EDE181 /* BPushConfig.plist */,
 				BA59D72F19F884560098BDCF /* main.m */,
 				BA59D75819F893520098BDCF /* WomenHealthApp.pch */,
 			);
@@ -1791,6 +1832,7 @@
 		BA59D76B19F894620098BDCF /* Libs */ = {
 			isa = PBXGroup;
 			children = (
+				653A86391A6FDC8100EDE181 /* LibBPush */,
 				BA0F32661A58E9690012E699 /* Alipay */,
 				656B0EE41A484DFA00669852 /* OTG */,
 				BA6A43CA1A2C0BC000BAC95F /* ShareSDK */,
@@ -2637,6 +2679,7 @@
 				BA3739461A42C0EB00164B85 /* add_photo@2x.png in Resources */,
 				BA13C1A91A1793EE003B1313 /* new_buy_btn.png in Resources */,
 				65134D031A1A24F50011BCF7 /* record_instruction_bg@2x.png in Resources */,
+				653A86521A6FDC9D00EDE181 /* BPushConfig.plist in Resources */,
 				BA12B9ED1A664EDA00C06007 /* camer_btn@2x.png in Resources */,
 				657B415A1A1732270057F5AE /* line@2x.png in Resources */,
 				BACD63E31A2C3D8500683E38 /* user_register_step2@2x.png in Resources */,
@@ -2749,6 +2792,7 @@
 				BA59D7BC19F894620098BDCF /* SDWebImageDecoder.m in Sources */,
 				BADD9FE21A3ADA57009DDBBE /* AddressListModel.m in Sources */,
 				BA47EC061A1C9F0300ACBA05 /* UserInfo.m in Sources */,
+				653A864D1A6FDC8200EDE181 /* GzipCompressor.m in Sources */,
 				BA59D7A819F894620098BDCF /* Global.m in Sources */,
 				BA769CA61A30115300574267 /* SearchGoodsVC.m in Sources */,
 				BAD35F501A3143B50065369F /* ChannelModelView.m in Sources */,
@@ -2839,6 +2883,7 @@
 				BA0F32831A58E9FB0012E699 /* RSADataSigner.m in Sources */,
 				BACD63E91A2C6BC000683E38 /* ShoppingWebVC.m in Sources */,
 				65EE0A2B1A17845E00F6F38E /* WHSinger.m in Sources */,
+				653A864C1A6FDC8200EDE181 /* BPushClass.m in Sources */,
 				65EE0A4A1A178D2B00F6F38E /* MJRefreshBaseView.m in Sources */,
 				BACEABC91A6415C5003B94D7 /* PostSearchModel.m in Sources */,
 				BA6C1FD91A3C828100BA5E7F /* OrderComfirmModel.m in Sources */,
@@ -2901,6 +2946,7 @@
 				BADD9FF01A3AEAC5009DDBBE /* UIPlaceHolderTextView.m in Sources */,
 				BA6230E31A2F181200F471A6 /* CategoryViewController.m in Sources */,
 				BA6230D81A2EF53300F471A6 /* StrikeThroughLabel.m in Sources */,
+				653A864F1A6FDC8200EDE181 /* OpenUDID.m in Sources */,
 				656B0EE71A484DFA00669852 /* OMGToast.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -3042,10 +3088,10 @@
 					"$(PROJECT_DIR)/WomenHealthApp/Libs/ShareSDK/Extend/TencentWeiboSDK",
 					"$(PROJECT_DIR)/WomenHealthApp/Libs/ShareSDK/Extend/WeChatSDK",
 					"$(PROJECT_DIR)/WomenHealthApp/Libs",
+					"$(PROJECT_DIR)/WomenHealthApp/Libs/LibBPush",
 				);
 				ONLY_ACTIVE_ARCH = YES;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-
 				PROVISIONING_PROFILE = "7460819f-0b2f-4c6f-b5a4-27024572e668";
 				VALID_ARCHS = "arm64 armv7 armv7s";
 			};
@@ -3081,12 +3127,11 @@
 					"$(PROJECT_DIR)/WomenHealthApp/Libs/ShareSDK/Extend/TencentWeiboSDK",
 					"$(PROJECT_DIR)/WomenHealthApp/Libs/ShareSDK/Extend/WeChatSDK",
 					"$(PROJECT_DIR)/WomenHealthApp/Libs",
+					"$(PROJECT_DIR)/WomenHealthApp/Libs/LibBPush",
 				);
 				ONLY_ACTIVE_ARCH = NO;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-
 				PROVISIONING_PROFILE = "7460819f-0b2f-4c6f-b5a4-27024572e668";
-
 				VALID_ARCHS = "arm64 armv7 armv7s";
 			};
 			name = Release;

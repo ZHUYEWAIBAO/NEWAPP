@@ -12,12 +12,11 @@
 #import "CycleScrollView.h"
 #import "BBSMenuModal.h"
 #import "BbsFenLeiCell.h"
-<<<<<<< HEAD
+
 #import "SurveyVC.h"
-=======
+
 #import "AdModal.h"
 
->>>>>>> FETCH_HEAD
 @interface BBSViewController ()
 {
     BOOL isShowSecMenu;
