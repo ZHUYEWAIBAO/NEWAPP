@@ -18,6 +18,12 @@
 //=======================圈子模块=============================
 //圈子大分类
 @property (nonatomic,strong) NSString * CIRCLE_BIGMENU_PATH;
+
+
+//调查问卷题目
+@property(nonatomic,strong)   NSString *CIRCLE_SURVEY;
+//调查问卷答案
+@property(nonatomic,strong)   NSString *CIRCLE_ASNWER;
 //===========================================================
 
 //=======================订单模块=============================
@@ -76,6 +82,9 @@
 
 //重设密码
 @property (nonatomic,strong) NSString * USER_RESETPASSWORD_PATH;
+
+
+
 //============================================================
 
 //获取最新版本信息

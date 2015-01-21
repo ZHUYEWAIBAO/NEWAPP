@@ -58,6 +58,9 @@
         
         self.GB_LIST_PATH = @"/app.php/order/get_tuan_coupon_list/";
         
+        self.CIRCLE_SURVEY =@"/api/ec/vote.php?act=list";
+        self.CIRCLE_ASNWER =@"/api/ec/vote.php?act=submit";
+        
     }
     return self;
 }

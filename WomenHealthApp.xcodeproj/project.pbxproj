@@ -87,6 +87,16 @@
 		65EE0A4C1A178D2B00F6F38E /* MJRefreshHeaderView.m in Sources */ = {isa = PBXBuildFile; fileRef = 65EE0A491A178D2B00F6F38E /* MJRefreshHeaderView.m */; };
 		65F53EAC1A372A590079CC4B /* ShopCartTabCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 65F53EAA1A372A590079CC4B /* ShopCartTabCell.m */; };
 		65F53EAD1A372A590079CC4B /* ShopCartTabCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 65F53EAB1A372A590079CC4B /* ShopCartTabCell.xib */; };
+		65FC7E9B1A68E8C70079988B /* choose_active_btn@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 65FC7E971A68E8C70079988B /* choose_active_btn@2x.png */; };
+		65FC7E9C1A68E8C70079988B /* choose_normal_btn@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 65FC7E981A68E8C70079988B /* choose_normal_btn@2x.png */; };
+		65FC7E9D1A68E8C70079988B /* single_active_btn@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 65FC7E991A68E8C70079988B /* single_active_btn@2x.png */; };
+		65FC7E9E1A68E8C70079988B /* single_normal_btn@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 65FC7E9A1A68E8C70079988B /* single_normal_btn@2x.png */; };
+		65FC7EA61A68EB720079988B /* SurveyVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 65FC7EA21A68EB720079988B /* SurveyVC.m */; };
+		65FC7EA71A68EB720079988B /* SurveyVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 65FC7EA31A68EB720079988B /* SurveyVC.xib */; };
+		65FC7EAA1A68EB8E0079988B /* SurveyModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 65FC7EA91A68EB8E0079988B /* SurveyModel.m */; };
+		65FC7EAD1A68EE0C0079988B /* SurveyTool.m in Sources */ = {isa = PBXBuildFile; fileRef = 65FC7EAC1A68EE0C0079988B /* SurveyTool.m */; };
+		65FC7EB11A68EF530079988B /* SurveyTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 65FC7EAF1A68EF530079988B /* SurveyTableViewCell.m */; };
+		65FC7EB21A68EF530079988B /* SurveyTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 65FC7EB01A68EF530079988B /* SurveyTableViewCell.xib */; };
 		BA07DBA01A353AE100CB872D /* share_btn@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BA07DB9F1A353AE100CB872D /* share_btn@2x.png */; };
 		BA07DBA31A353CFF00CB872D /* add_cart_btn@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BA07DBA11A353CFF00CB872D /* add_cart_btn@2x.png */; };
 		BA07DBA41A353CFF00CB872D /* buy_now_btn@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BA07DBA21A353CFF00CB872D /* buy_now_btn@2x.png */; };
@@ -535,6 +545,20 @@
 		65F53EA91A372A590079CC4B /* ShopCartTabCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ShopCartTabCell.h; sourceTree = "<group>"; };
 		65F53EAA1A372A590079CC4B /* ShopCartTabCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ShopCartTabCell.m; sourceTree = "<group>"; };
 		65F53EAB1A372A590079CC4B /* ShopCartTabCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ShopCartTabCell.xib; sourceTree = "<group>"; };
+		65FC7E971A68E8C70079988B /* choose_active_btn@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "choose_active_btn@2x.png"; sourceTree = "<group>"; };
+		65FC7E981A68E8C70079988B /* choose_normal_btn@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "choose_normal_btn@2x.png"; sourceTree = "<group>"; };
+		65FC7E991A68E8C70079988B /* single_active_btn@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "single_active_btn@2x.png"; sourceTree = "<group>"; };
+		65FC7E9A1A68E8C70079988B /* single_normal_btn@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "single_normal_btn@2x.png"; sourceTree = "<group>"; };
+		65FC7EA11A68EB720079988B /* SurveyVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SurveyVC.h; sourceTree = "<group>"; };
+		65FC7EA21A68EB720079988B /* SurveyVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SurveyVC.m; sourceTree = "<group>"; };
+		65FC7EA31A68EB720079988B /* SurveyVC.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SurveyVC.xib; sourceTree = "<group>"; };
+		65FC7EA81A68EB8E0079988B /* SurveyModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SurveyModel.h; sourceTree = "<group>"; };
+		65FC7EA91A68EB8E0079988B /* SurveyModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SurveyModel.m; sourceTree = "<group>"; };
+		65FC7EAB1A68EE0B0079988B /* SurveyTool.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SurveyTool.h; sourceTree = "<group>"; };
+		65FC7EAC1A68EE0C0079988B /* SurveyTool.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SurveyTool.m; sourceTree = "<group>"; };
+		65FC7EAE1A68EF530079988B /* SurveyTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SurveyTableViewCell.h; sourceTree = "<group>"; };
+		65FC7EAF1A68EF530079988B /* SurveyTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SurveyTableViewCell.m; sourceTree = "<group>"; };
+		65FC7EB01A68EF530079988B /* SurveyTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SurveyTableViewCell.xib; sourceTree = "<group>"; };
 		BA07DB9F1A353AE100CB872D /* share_btn@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "share_btn@2x.png"; sourceTree = "<group>"; };
 		BA07DBA11A353CFF00CB872D /* add_cart_btn@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "add_cart_btn@2x.png"; sourceTree = "<group>"; };
 		BA07DBA21A353CFF00CB872D /* buy_now_btn@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "buy_now_btn@2x.png"; sourceTree = "<group>"; };
@@ -1164,6 +1188,7 @@
 		657B41301A1729100057F5AE /* BBSview */ = {
 			isa = PBXGroup;
 			children = (
+				65FC7E961A68E8C70079988B /* survey */,
 				65134CF11A1A24F50011BCF7 /* recordsHome */,
 				65EE0A311A17897400F6F38E /* fenlei */,
 				657B414A1A1732270057F5AE /* center */,
@@ -1270,6 +1295,58 @@
 				65EE0A491A178D2B00F6F38E /* MJRefreshHeaderView.m */,
 			);
 			path = MJ;
+			sourceTree = "<group>";
+		};
+		65FC7E961A68E8C70079988B /* survey */ = {
+			isa = PBXGroup;
+			children = (
+				65FC7E971A68E8C70079988B /* choose_active_btn@2x.png */,
+				65FC7E981A68E8C70079988B /* choose_normal_btn@2x.png */,
+				65FC7E991A68E8C70079988B /* single_active_btn@2x.png */,
+				65FC7E9A1A68E8C70079988B /* single_normal_btn@2x.png */,
+			);
+			path = survey;
+			sourceTree = "<group>";
+		};
+		65FC7E9F1A68EB720079988B /* SurveyVC */ = {
+			isa = PBXGroup;
+			children = (
+				65FC7EA01A68EB720079988B /* Controller */,
+				65FC7EA41A68EB720079988B /* model */,
+				65FC7EA51A68EB720079988B /* View */,
+			);
+			path = SurveyVC;
+			sourceTree = "<group>";
+		};
+		65FC7EA01A68EB720079988B /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				65FC7EA11A68EB720079988B /* SurveyVC.h */,
+				65FC7EA21A68EB720079988B /* SurveyVC.m */,
+				65FC7EA31A68EB720079988B /* SurveyVC.xib */,
+			);
+			path = Controller;
+			sourceTree = "<group>";
+		};
+		65FC7EA41A68EB720079988B /* model */ = {
+			isa = PBXGroup;
+			children = (
+				65FC7EA81A68EB8E0079988B /* SurveyModel.h */,
+				65FC7EA91A68EB8E0079988B /* SurveyModel.m */,
+				65FC7EAB1A68EE0B0079988B /* SurveyTool.h */,
+				65FC7EAC1A68EE0C0079988B /* SurveyTool.m */,
+			);
+			path = model;
+			sourceTree = "<group>";
+		};
+		65FC7EA51A68EB720079988B /* View */ = {
+			isa = PBXGroup;
+			children = (
+				65FC7EAE1A68EF530079988B /* SurveyTableViewCell.h */,
+				65FC7EAF1A68EF530079988B /* SurveyTableViewCell.m */,
+				65FC7EB01A68EF530079988B /* SurveyTableViewCell.xib */,
+			);
+			path = View;
 			sourceTree = "<group>";
 		};
 		BA0F32661A58E9690012E699 /* Alipay */ = {
@@ -1806,6 +1883,7 @@
 		BA59D82619F8AAB10098BDCF /* BBS */ = {
 			isa = PBXGroup;
 			children = (
+				65FC7E9F1A68EB720079988B /* SurveyVC */,
 				BA59D82719F8AAC30098BDCF /* BBSViewController.h */,
 				BA59D82819F8AAC30098BDCF /* BBSViewController.m */,
 				BA59D82919F8AAC30098BDCF /* BBSViewController.xib */,
@@ -2305,6 +2383,7 @@
 				BA6230D31A2EE93B00F471A6 /* B2CShopItemView.xib in Resources */,
 				657B41561A1732270057F5AE /* flag@2x.png in Resources */,
 				BA6C1FE81A3DA22300BA5E7F /* finish_order_bg@2x.png in Resources */,
+				65FC7E9D1A68E8C70079988B /* single_active_btn@2x.png in Resources */,
 				BAD7B38A1A497315006F3614 /* ShoppingDetailVC.xib in Resources */,
 				BA6A43FD1A2C0BC000BAC95F /* ShareSDKFlatShareViewUI.bundle in Resources */,
 				BA1ADFB21A3DD21A00CAB2B4 /* weixing_logo@2x.png in Resources */,
@@ -2326,6 +2405,7 @@
 				BADD9FDD1A3ADA31009DDBBE /* AddressEditVC.xib in Resources */,
 				BA6230D51A2EE93B00F471A6 /* B2CShoppingListCell.xib in Resources */,
 				BA95CAF41A198B8C00FAE262 /* Record_detail_btn.png in Resources */,
+				65FC7EB21A68EF530079988B /* SurveyTableViewCell.xib in Resources */,
 				65E0C9D01A1DEAF4005FD5B8 /* pickerCell.xib in Resources */,
 				65134CFE1A1A24F50011BCF7 /* next_month_btn@2x.png in Resources */,
 				BA6230DD1A2F0A8B00F471A6 /* jinping_flag@2x.png in Resources */,
@@ -2350,6 +2430,7 @@
 				BA6C1FF61A3DB8BF00BA5E7F /* MyOrderDetailVC.xib in Resources */,
 				BA34956A1A480EC400AF3013 /* UserDetailVC.xib in Resources */,
 				BA30AA8D1A5EA9FB00EBA469 /* fresh_btn_active@2x.png in Resources */,
+				65FC7EA71A68EB720079988B /* SurveyVC.xib in Resources */,
 				BA3739491A42C0EB00164B85 /* fabiao_btn@2x.png in Resources */,
 				BACD63DC1A2C3D8500683E38 /* login_btn@2x.png in Resources */,
 				657B41391A1729160057F5AE /* search_btn@2x.png in Resources */,
@@ -2459,6 +2540,7 @@
 				BACD63E31A2C3D8500683E38 /* user_register_step2@2x.png in Resources */,
 				BA3739331A4265E700164B85 /* fahuo_btn@2x.png in Resources */,
 				BA7E7FA11A41C24000F3AAE3 /* LogisticsCell.xib in Resources */,
+				65FC7E9C1A68E8C70079988B /* choose_normal_btn@2x.png in Resources */,
 				65CD13DF1A1C96FB000A4F8E /* weight_logo@2x.png in Resources */,
 				BAC751A71A232A53006F85DD /* Circle_menu_default_image.png in Resources */,
 				BAEE7F121A5C1EC800BCA3F8 /* zhuxiao_btn@2x.png in Resources */,
@@ -2526,6 +2608,7 @@
 				BA1BB6331A1D84C9000742EC /* SetTableViewCell.xib in Resources */,
 				BA91F3C41A4309D500BBFB47 /* OrderCommentListVC.xib in Resources */,
 				65EE0A301A1788F000F6F38E /* BbsFenLeiCell.xib in Resources */,
+				65FC7E9E1A68E8C70079988B /* single_normal_btn@2x.png in Resources */,
 				BAC751A51A232919006F85DD /* search_long_bg@2x.png in Resources */,
 				BA3739321A4265E700164B85 /* delete_order_btn@2x.png in Resources */,
 				657B41371A1729160057F5AE /* add_btn@2x.png in Resources */,
@@ -2533,6 +2616,7 @@
 				BACD63E51A2C3D8500683E38 /* xinlang_btn@2x.png in Resources */,
 				657B413A1A1729160057F5AE /* serarch_btn_selected@2x.png in Resources */,
 				BA1A2B921A6115640046ECEA /* finishlogo@2x.png in Resources */,
+				65FC7E9B1A68E8C70079988B /* choose_active_btn@2x.png in Resources */,
 				BACD63DB1A2C3D8500683E38 /* icon_user@2x.png in Resources */,
 				657B415B1A1732270057F5AE /* publish_btn@2x.png in Resources */,
 				65CD13D71A1C96FB000A4F8E /* dialog_line@2x.png in Resources */,
@@ -2598,6 +2682,7 @@
 				BA59D7C319F894620098BDCF /* UIImage+MultiFormat.m in Sources */,
 				BA59A1741A36C59F00C8D0B7 /* ShoppingParameterView.m in Sources */,
 				BA1A2B8D1A6106EF0046ECEA /* WritePostVC.m in Sources */,
+				65FC7EAD1A68EE0C0079988B /* SurveyTool.m in Sources */,
 				65DE130C1A4314E1009A0203 /* ShoppingDetailVC.m in Sources */,
 				BAB1879C1A3E76E2004FC0D9 /* OrderSuccessModel.m in Sources */,
 				BA5543E31A5FBEEF0069B3E3 /* CircleListModel.m in Sources */,
@@ -2620,6 +2705,7 @@
 				BA59D7A919F894620098BDCF /* MKNetworkOperation+category.m in Sources */,
 				BA1BB6321A1D84C9000742EC /* SetTableViewCell.m in Sources */,
 				BA6230D21A2EE93B00F471A6 /* B2CShopItemView.m in Sources */,
+				65FC7EAA1A68EB8E0079988B /* SurveyModel.m in Sources */,
 				BA59D7A619F894620098BDCF /* BasicVC.m in Sources */,
 				BA59D7AF19F894620098BDCF /* NSData+MKBase64.m in Sources */,
 				BA1D46FE1A3EBA13002223BC /* MyOrderListModel.m in Sources */,
@@ -2637,6 +2723,7 @@
 				BA7E7FA01A41C24000F3AAE3 /* LogisticsCell.m in Sources */,
 				BABD589A1A5A76C600A3EFED /* ShoppingPaySuccessVC.m in Sources */,
 				BA59D7B019F894620098BDCF /* NSDate+RFC1123.m in Sources */,
+				65FC7EA61A68EB720079988B /* SurveyVC.m in Sources */,
 				BA0F32831A58E9FB0012E699 /* RSADataSigner.m in Sources */,
 				BACD63E91A2C6BC000683E38 /* ShoppingWebVC.m in Sources */,
 				65EE0A2B1A17845E00F6F38E /* WHSinger.m in Sources */,
@@ -2678,6 +2765,7 @@
 				65E0C9CE1A1DEAE6005FD5B8 /* pickerCell.m in Sources */,
 				BA59D7B319F894620098BDCF /* UIAlertView+MKNetworkKitAdditions.m in Sources */,
 				BA4FB3271A14CB9E00DFECC4 /* FirstRecordVC.m in Sources */,
+				65FC7EB11A68EF530079988B /* SurveyTableViewCell.m in Sources */,
 				BA59D7AD19F894620098BDCF /* UITableViewCell+Category.m in Sources */,
 				BA491B711A0523CE0065DB16 /* UINavigationBar+customBar.m in Sources */,
 				BAB1832B1A2DB89100D25A20 /* BannerImageView.m in Sources */,
@@ -2815,7 +2903,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = "AppIcon-2";
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = "LaunchImage-2";
-				CODE_SIGN_IDENTITY = "iPhone Distribution: Suzhou Repai Information Technology CO.,Ltd.";
+				CODE_SIGN_IDENTITY = "iPhone Developer: zhang zhiyong (5RUGM4A2HF)";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/WomenHealthApp/Libs/ShareSDK/Connection",
@@ -2843,9 +2931,7 @@
 				);
 				ONLY_ACTIVE_ARCH = YES;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-
 				PROVISIONING_PROFILE = "7460819f-0b2f-4c6f-b5a4-27024572e668";
-
 				VALID_ARCHS = "arm64 armv7 armv7s";
 			};
 			name = Debug;
@@ -2855,7 +2941,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = "AppIcon-2";
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = "LaunchImage-2";
-				CODE_SIGN_IDENTITY = "iPhone Distribution: Suzhou Repai Information Technology CO.,Ltd.";
+				CODE_SIGN_IDENTITY = "iPhone Developer: zhang zhiyong (5RUGM4A2HF)";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/WomenHealthApp/Libs/ShareSDK/Connection",
@@ -2883,9 +2969,7 @@
 				);
 				ONLY_ACTIVE_ARCH = NO;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-
 				PROVISIONING_PROFILE = "7460819f-0b2f-4c6f-b5a4-27024572e668";
-
 				VALID_ARCHS = "arm64 armv7 armv7s";
 			};
 			name = Release;
