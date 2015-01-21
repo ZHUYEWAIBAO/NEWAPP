@@ -9,6 +9,9 @@
 #import "BbsSearchVC.h"
 #import "BbsSearchResultVC.h"
 #import "CustomSearchCell.h"
+#import "PostSearchVC.h"
+
+#define CIRCLE_SEARCH_KEY self.isFromPost? @"postSearchKey":@"circleSearchKey"
 
 @interface BbsSearchVC ()<UITextFieldDelegate>
 {
@@ -110,11 +113,17 @@
     
     [self.searchTextField resignFirstResponder];
     
-    BbsSearchResultVC *vc = [[BbsSearchResultVC alloc]initWithNibName:@"BbsSearchResultVC" bundle:nil];
+    if (self.isFromPost) {
+        PostSearchVC *vc = [[PostSearchVC alloc]initWithNibName:@"PostSearchVC" bundle:nil];
+        vc.currentKeyWords = [historyAry objectAtIndex:indexPath.row];
+        [self.navigationController pushViewController:vc animated:YES];
+    }
+    else{
+        BbsSearchResultVC *vc = [[BbsSearchResultVC alloc]initWithNibName:@"BbsSearchResultVC" bundle:nil];
+        vc.currentKeyWords = [historyAry objectAtIndex:indexPath.row];
+        [self.navigationController pushViewController:vc animated:YES];
+    }
     
-    vc.currentKeyWords = [historyAry objectAtIndex:indexPath.row];
-    
-    [self.navigationController pushViewController:vc animated:YES];
 }
 
 - (void)setResultPush:(NSString *)contentString
@@ -123,10 +132,16 @@
     if (replaceString.length > 0) {
         [self saveTheSearchKey:replaceString];
         
-        BbsSearchResultVC *vc = [[BbsSearchResultVC alloc]initWithNibName:@"BbsSearchResultVC" bundle:nil];
-        vc.currentKeyWords = contentString;
-        [self.navigationController pushViewController:vc animated:YES];
-        
+        if (self.isFromPost) {
+            PostSearchVC *vc = [[PostSearchVC alloc]initWithNibName:@"PostSearchVC" bundle:nil];
+            vc.currentKeyWords = contentString;
+            [self.navigationController pushViewController:vc animated:YES];
+        }
+        else{
+            BbsSearchResultVC *vc = [[BbsSearchResultVC alloc]initWithNibName:@"BbsSearchResultVC" bundle:nil];
+            vc.currentKeyWords = contentString;
+            [self.navigationController pushViewController:vc animated:YES];
+        }
     }
     else{
         contentString=@"";

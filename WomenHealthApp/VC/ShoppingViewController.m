@@ -10,7 +10,6 @@
 #import "B2CShoppingListCell.h"
 #import "GoodsListModel.h"
 #import "CalculateHigh.h"
-#import "BannerImageView.h"
 #import "ShoppingDetailVC.h"
 #import "CategoryViewController.h"
 #import "SearchResultVC.h"
@@ -166,7 +165,7 @@
     for (int i = 0; i < adArray.count; ++i) {
         
         AdModal *model = [adArray objectAtIndex:i];
-        BannerImageView *imageView = [[BannerImageView alloc]initWithFrame:CGRectMake(0, 0, 320, 120)];
+        UIImageView *imageView = [[UIImageView alloc]initWithFrame:CGRectMake(0, 0, SCREEN_SIZE.width, 120)];
         [imageView setContentMode:UIViewContentModeScaleAspectFit];
         //下载图片
         UIActivityIndicatorView *myac=[[UIActivityIndicatorView alloc]initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleGray];

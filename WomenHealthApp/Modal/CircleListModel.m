@@ -8,6 +8,35 @@
 
 #import "CircleListModel.h"
 
+@implementation CircleHeadModel
+
+- (id)init
+{
+    if (self = [super init]) {
+        _headArray = [[NSMutableArray alloc]initWithCapacity:0];
+    }
+    return self;
+}
+
++ (CircleHeadModel *)parseDicToCircleHeadObject:(NSDictionary*)dataDic
+{
+    CircleHeadModel *model = [[CircleHeadModel alloc]init];
+    
+    model.total_subject= CHECK_VALUE([dataDic objectForKey:@"total_subject"]);
+    model.circle_description = CHECK_VALUE([dataDic objectForKey:@"description"]);
+    model.name = CHECK_VALUE([dataDic objectForKey:@"name"]);
+    model.today_subject = CHECK_VALUE([dataDic objectForKey:@"today_subject"]);
+    model.icon = CHECK_VALUE([dataDic objectForKey:@"icon"]);
+    
+    for (NSDictionary *imgDic in CHECK_ARRAY_VALUE([dataDic objectForKey:@"forum_threadlist"])) {
+        [model.headArray addObject:[CircleListModel parseDicToCircleListObject:imgDic]];
+    }
+    
+    return model;
+}
+
+@end
+
 @implementation CircleListModel
 
 + (CircleListModel *)parseDicToCircleListObject:(NSDictionary*)dataDic

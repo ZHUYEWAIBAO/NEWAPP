@@ -51,6 +51,7 @@
 #define NOTIFICATION_ADDRESS_REQUEST                 @"NOTIFICATION_ADDRESS_REQUEST" //收货地址保存
 #define NOTIFICATION_ADDRESS_SELECT                  @"NOTIFICATION_ADDRESS_SELECT" //收货地址选择
 #define NOTIFICATION_PAYTYPE_SELECT                  @"NOTIFICATION_PAYTYPE_SELECT" //支付方式选择
+#define NOTIFICATION_IMAGE_DELETE                    @"NOTIFICATION_IMAGE_DELETE" //删除图片
 //====================================
 
 
@@ -90,7 +91,7 @@
 
 //搜索本地保存的key
 #define GOODS_SEARCH_KEY @"goodsSearchKey"
-#define CIRCLE_SEARCH_KEY @"circleSearchKey"
+
 
 /**
  *  检查数据有效性
