@@ -323,9 +323,6 @@
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    //FIXME: 零时  为了调试
-    SurveyVC *vc =[[SurveyVC alloc] initWithNibName:@"SurveyVC" bundle:nil];
-    [self.navigationController pushViewController:vc animated:YES];
     
     
     if (tableView.tag==100) {

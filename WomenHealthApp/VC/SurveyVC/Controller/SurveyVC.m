@@ -10,6 +10,7 @@
 #import "SurveyModel.h"
 #import "SurveyTool.h"
 #import "SurveyTableViewCell.h"
+#import "CommWebView.h"
 @interface SurveyVC (){
     
     NSMutableArray *dataAry;//数据源
@@ -106,7 +107,10 @@
             
             NSLog(@"%@",dataDic);
             [OMGToast showWithText:@"提交成功"];
-            [self.navigationController popViewControllerAnimated:YES];
+
+            CommWebView *vc =[[CommWebView alloc] initWithNibName:@"CommWebView" bundle:nil];
+            vc.webUrl =[[dic objectForKey:@"data"] objectForKey:@"url"];
+            [self.navigationController pushViewController:vc animated:YES];
             [SVProgressHUD dismiss];
             
         }
