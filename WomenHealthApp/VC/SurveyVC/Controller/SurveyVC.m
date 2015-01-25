@@ -51,9 +51,7 @@
             NSLog(@"%@",dataDic);
             
             dataAry  =[SurveyTool getDataAryWithDic:dataDic];
-            //FIXME: 为了看多点数据显示
-            [dataAry addObject:[dataAry objectAtIndex:0]];
-            [dataAry addObject:[dataAry objectAtIndex:0]];
+            
             [dataTableview reloadData];
             [SVProgressHUD dismiss];
             
@@ -151,15 +149,28 @@
         cell = (SurveyTableViewCell *)[[[NSBundle mainBundle] loadNibNamed:@"SurveyTableViewCell" owner:self options:nil] lastObject];
     }
     
+    SurveyModel *suModel =[dataAry objectAtIndex:indexPath.section];
+    
     //取出每个订单下的 每件商品 model
     OptionModel *model = [[[dataAry objectAtIndex:indexPath.section] optionAry] objectAtIndex:indexPath.row];
     
     cell.nameLab.text =[NSString stringWithFormat:@"%i.  %@",indexPath.row+1 ,model.option_name];
+    
     if (model.selectBool) {
-        cell.selectImg.image =[UIImage imageNamed:@"choose_active_btn.png"];
+        if ([suModel.can_multi integerValue] ==1) {
+            cell.selectImg.image =[UIImage imageNamed:@"choose_active_btn.png"];
+        }else{
+            cell.selectImg.image =[UIImage imageNamed:@"single_active_btn.png"];
+        }
+        
         
     }else{
-        cell.selectImg.image =[UIImage imageNamed:@"choose_normal_btn.png"];
+        if ([suModel.can_multi integerValue] ==1) {
+            cell.selectImg.image =[UIImage imageNamed:@"choose_normal_btn.png"];
+        }else{
+            cell.selectImg.image =[UIImage imageNamed:@"single_normal_btn.png"];
+        }
+        
     }
     
     
@@ -208,15 +219,27 @@
     int rowN =btn.tag%10000;
     int sectionN =(btn.tag-rowN)/10000;
     
+    SurveyModel *suModel =[dataAry objectAtIndex:sectionN];
+    
     OptionModel *model =[[[dataAry objectAtIndex:sectionN] optionAry] objectAtIndex:rowN];
 
-    if(model.selectBool){
-        
-        model.selectBool =NO;
+    if ([suModel.can_multi integerValue] ==1) {
+        if(model.selectBool){
+            
+            model.selectBool =NO;
+        }else{
+            
+            model.selectBool =YES;
+        }
     }else{
         
+        [[[dataAry objectAtIndex:sectionN] optionAry] enumerateObjectsUsingBlock:^(id obj, NSUInteger idx, BOOL *stop) {
+            ((OptionModel *)obj).selectBool =NO;
+        }];
         model.selectBool =YES;
+        
     }
+    
     
     [dataTableview reloadData];
 }
