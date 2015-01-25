@@ -30,7 +30,7 @@
 
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
-    
+
     [ShareSDK registerApp:@"46ddb4d7bdeb"];
 //    [ShareSDK registerApp:@"iosv1101"];
     [self initializePlat];

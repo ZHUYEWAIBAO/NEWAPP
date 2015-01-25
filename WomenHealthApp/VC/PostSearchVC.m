@@ -10,6 +10,7 @@
 #import "PostSearchListCell.h"
 #import "PostSearchModel.h"
 #import "LineImageView.h"
+#import "PostDetailVC.h"
 
 @interface PostSearchVC ()
 
@@ -152,7 +153,13 @@
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
+    PostSearchModel *model = [self.postArray objectAtIndex:indexPath.row];
     
+    PostDetailVC *vc = [[PostDetailVC alloc]initWithNibName:@"PostDetailVC" bundle:nil];
+    
+    vc.currentTid = model.tid;
+    
+    [self.navigationController pushViewController:vc animated:YES];
     
 }
 

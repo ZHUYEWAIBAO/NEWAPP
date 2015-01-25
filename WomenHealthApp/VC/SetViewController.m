@@ -11,8 +11,11 @@
 #import "SetTableViewCell.h"
 #import "ShoppingCartVC.h"
 #import "MyOrderListVC.h"
+#import "FeedBackVC.h"
 #import "UserDetailVC.h"
+#import "MyCircleListVC.h"
 #import "AboutUsVC.h"
+#import "NewVersionModel.h"
 #import <ShareSDK/ShareSDK.h>
 
 @interface SetViewController ()<UIActionSheetDelegate>
@@ -22,6 +25,7 @@
      */
     NSInteger sectionNum;
 }
+@property (strong,nonatomic)NewVersionModel *versionModel;
 
 @end
 
@@ -189,6 +193,8 @@
             
         case 103:{
             //我的圈子
+            MyCircleListVC *vc = [[MyCircleListVC alloc]initWithNibName:@"MyCircleListVC" bundle:nil];
+            [self.navigationController pushViewController:vc animated:YES];
 
             
         }
@@ -196,6 +202,8 @@
         
         case 104:{
             //意见反馈
+            FeedBackVC *vc = [[FeedBackVC alloc]initWithNibName:@"FeedBackVC" bundle:nil];
+            [self.navigationController pushViewController:vc animated:YES];
             
         }
             break;
@@ -282,8 +290,8 @@
     else{
         
         if (buttonIndex == 1) {
-//            NSURL *URL = [NSURL URLWithString:self.versionModel.url];
-//            [[UIApplication sharedApplication]openURL:URL];
+            NSURL *URL = [NSURL URLWithString:self.versionModel.link];
+            [[UIApplication sharedApplication]openURL:URL];
         }
         
     }
@@ -307,41 +315,50 @@
 #pragma mark 版本更新
 - (void)getAppVersionInfo
 {
-//    [SVProgressHUD showWithStatus:@"正在获取最新版本信息" maskType:SVProgressHUDMaskTypeClear];
-//    
-//    [NETWORK_ENGINE requestWithPath:GLOBALSHARE.SET_NEWVERSION_PATH Params:nil CompletionHandler:^(MKNetworkOperation *completedOperation) {
-//        
-//        NSDictionary *dic=[completedOperation responseDecodeToDic];
-//        
-//        if ([@"0" isEqualToString:CHECK_VALUE([dic objectForKey:@"errorid"])]) {
-//            
-//            if (![CLIENT_VERSION isEqualToString:CHECK_VALUE([dic objectForKey:@"version"])]) {
-//                
-//                NewVersionModel *model = [NewVersionModel parseDicToNewVersionModel:dic];
-//                
-//                self.versionModel = model;
-//                
-//                UIAlertView *alertView = [[UIAlertView alloc]initWithTitle:[NSString stringWithFormat:@"发现新版本V%@",model.version] message:model.explain delegate:self cancelButtonTitle:@"下次再说" otherButtonTitles:@"立即更新", nil];
-//                alertView.tag = 101;
-//                [alertView show];
-//                
-//                [SVProgressHUD dismiss];
-//                
-//            }
-//            else{
-//                [SVProgressHUD showSuccessWithStatus:@"当前为最新版本"];
-//            }
-//            
-//            
-//        }
-//        else{
-//            [SVProgressHUD showErrorWithStatus:CHECK_VALUE([dic objectForKey:@"msg"])];
-//        }
-//        
-//    } ErrorHandler:^(MKNetworkOperation *completedOperation, NSError *error) {
-//        [SVProgressHUD showErrorWithStatus:@"服务器忙，请稍候再试"];
-//    }];
-//    
+  
+    [SVProgressHUD showWithMaskType:SVProgressHUDMaskTypeClear];
+    
+    NSString *path = [NSString stringWithFormat:@"/api/ec/update.php?v=%@&s=ios",CLIENT_VERSION];
+
+    [NETWORK_ENGINE requestWithPath:path Params:self.params CompletionHandler:^(MKNetworkOperation *completedOperation) {
+        
+        NSDictionary *dic=[completedOperation responseDecodeToDic];
+        
+        NSDictionary *statusDic = [dic objectForKey:@"status"];
+        
+        if ([@"1" isEqualToString:CHECK_VALUE([statusDic objectForKey:@"statu"])]) {
+            
+            NSDictionary *data = [dic objectForKey:@"data"];
+            
+            if (![CLIENT_VERSION isEqualToString:CHECK_VALUE([data objectForKey:@"version"])]) {
+                
+                NewVersionModel *model = [NewVersionModel parseDicToNewVersionModel:dic];
+                
+                self.versionModel = model;
+                
+                UIAlertView *alertView = [[UIAlertView alloc]initWithTitle:[NSString stringWithFormat:@"发现新版本V%@",model.version] message:model.content delegate:self cancelButtonTitle:@"下次再说" otherButtonTitles:@"立即更新", nil];
+                alertView.tag = 101;
+                [alertView show];
+                
+                [SVProgressHUD dismiss];
+                
+            }
+            else{
+                [SVProgressHUD showSuccessWithStatus:@"当前为最新版本"];
+            }
+
+    
+        }
+        else{
+            [SVProgressHUD showErrorWithStatus:CHECK_VALUE([statusDic objectForKey:@"msg"])];
+        }
+        
+    } ErrorHandler:^(MKNetworkOperation *completedOperation, NSError *error) {
+        
+        [SVProgressHUD showErrorWithStatus:@"服务器忙，请稍候再试"];
+  
+    }];
+    
 }
 
 - (void)didReceiveMemoryWarning {

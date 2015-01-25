@@ -21,6 +21,19 @@
     return [regex evaluateWithObject:self];
 }
 
+//邮箱正则表达式
+-(BOOL)isValidateEmail{
+    
+    NSString *atom = @"[a-z0-9!#$%&'*+/=?^_`{|}~-]";
+    NSString *domain = [NSString stringWithFormat:@"(%@+(\\.%@+)*",atom,atom];
+    NSString *ip_domain = @"\\[[0-9]{1,3}\\.[0-9]{1,3}\\.[0-9]{1,3}\\.[0-9]{1,3}\\]";
+    
+    NSString *emailRegex =[NSString stringWithFormat:@"^%@+(\\.%@+)*@%@|%@)$",atom,atom,domain,ip_domain];
+    
+    NSPredicate *emailTest = [NSPredicate predicateWithFormat:@"SELF MATCHES %@", emailRegex];
+    return [emailTest evaluateWithObject:self];
+}
+
 - (NSString *)priceStringWithUnit:(BOOL)unit
 {
     if (self.length == 0) {
