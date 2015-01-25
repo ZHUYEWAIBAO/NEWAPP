@@ -18,6 +18,9 @@
 #import "RecordViewController.h"
 #import "RecordDetailVC.h"
 #import "calendarView.h"
+#import "SurveyVC.h"
+#import "BPush.h"
+
 @interface RecordViewController (){
     NSDate *muBiaoDate;
 }
@@ -39,6 +42,7 @@
     [super loadView];
     
     self.title = @"我的记录";
+    [BPush bindChannel];
 }
 
 - (void)viewDidLoad {
@@ -92,6 +96,16 @@
     }
     
 }
+
+- (IBAction)goToDaTiClick:(id)sender {
+    
+    //FIXME: 零时  为了调试
+    SurveyVC *vc =[[SurveyVC alloc] initWithNibName:@"SurveyVC" bundle:nil];
+    [self.navigationController pushViewController:vc animated:YES];
+    
+    
+}
+
 - (void)recordDetailAction:(id)sender
 {
     RecordDetailVC *vc = [[RecordDetailVC alloc]initWithNibName:@"RecordDetailVC" bundle:nil];

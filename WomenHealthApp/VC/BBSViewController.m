@@ -12,6 +12,9 @@
 #import "CycleScrollView.h"
 #import "BBSMenuModal.h"
 #import "BbsFenLeiCell.h"
+
+#import "SurveyVC.h"
+
 #import "AdModal.h"
 
 @interface BBSViewController ()
@@ -320,6 +323,7 @@
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
+    
     
     if (tableView.tag==100) {
         BBSMenuModal *modal = [self.bigMenuArray objectAtIndex:indexPath.row];
