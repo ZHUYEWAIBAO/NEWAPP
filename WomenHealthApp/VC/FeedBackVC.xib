@@ -11,6 +11,11 @@
                 <outlet property="contentView" destination="faW-QO-3Tb" id="UC8-L7-Idc"/>
                 <outlet property="emailTextField" destination="iMm-Dt-6WV" id="EOa-0M-1FK"/>
                 <outlet property="emailView" destination="rLO-ni-MHZ" id="exN-yD-UcK"/>
+                <outlet property="selectImageV0" destination="6dZ-NG-3O1" id="bWI-Id-ggx"/>
+                <outlet property="selectImageV1" destination="Lg2-Up-6AJ" id="gwz-vt-4fQ"/>
+                <outlet property="selectImageV2" destination="I8q-T6-8oc" id="VMp-yj-5hy"/>
+                <outlet property="selectImageV3" destination="eeQ-ub-WmJ" id="5FU-wF-GwH"/>
+                <outlet property="selectImageV4" destination="Qqv-dx-XkL" id="IkB-eE-Tdj"/>
                 <outlet property="suggestScrollView" destination="qJD-FF-AGn" id="6Dm-Nd-0Te"/>
                 <outlet property="titleTextField" destination="1lI-Ez-7iQ" id="DGb-iI-Ivq"/>
                 <outlet property="titleView" destination="xw4-cL-t9z" id="AWK-fM-X5e"/>
@@ -125,6 +130,26 @@
                                         <action selector="chooseTypeAction:" destination="-1" eventType="touchUpInside" id="gX4-C1-Zqf"/>
                                     </connections>
                                 </button>
+                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="suggest_chose_active.png" id="6dZ-NG-3O1">
+                                    <rect key="frame" x="261" y="18" width="23" height="23"/>
+                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                </imageView>
+                                <imageView hidden="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="suggest_chose_active.png" id="Lg2-Up-6AJ">
+                                    <rect key="frame" x="261" y="56" width="23" height="23"/>
+                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                </imageView>
+                                <imageView hidden="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="suggest_chose_active.png" id="I8q-T6-8oc">
+                                    <rect key="frame" x="261" y="94" width="23" height="23"/>
+                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                </imageView>
+                                <imageView hidden="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="suggest_chose_active.png" id="eeQ-ub-WmJ">
+                                    <rect key="frame" x="261" y="132" width="23" height="23"/>
+                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                </imageView>
+                                <imageView hidden="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="suggest_chose_active.png" id="Qqv-dx-XkL">
+                                    <rect key="frame" x="261" y="170" width="23" height="23"/>
+                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                </imageView>
                             </subviews>
                             <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         </view>
@@ -160,6 +185,7 @@
     <resources>
         <image name="chose_list.png" width="300" height="192"/>
         <image name="email_list.png" width="300" height="42"/>
+        <image name="suggest_chose_active.png" width="23" height="23"/>
         <image name="suggest_text.png" width="300" height="158"/>
     </resources>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">

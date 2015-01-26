@@ -8,6 +8,7 @@
 
 #import <Foundation/Foundation.h>
 #import "LoginDataModel.h"
+#import "TotalInfoModel.h"
 
 //把返回字段转换成string类型
 NSString * NSStringExchangeTheReturnValueToString(id value);
@@ -58,6 +59,9 @@ void SaveTheUserPhoneNumAndPassword(LoginDataModel *loginModel);
  *  @return 登录数据类
  */
 LoginDataModel * GetTheSavedUserPhoneNumAndPassword();
+
+void SaveTheAppTotalInfoModel(TotalInfoModel *loginModel);
+TotalInfoModel * GetTheAppTotalInfoModel();
 
 @interface CommonMethod : NSObject
 

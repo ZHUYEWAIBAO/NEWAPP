@@ -74,7 +74,7 @@
         [SVProgressHUD showWithMaskType:SVProgressHUDMaskTypeClear];
     }
     
-    NSString *path = [NSString stringWithFormat:@"/api/dz/index.php?mod=viewthread&tid=%@&page=%ld",self.currentTid,self.page];
+    NSString *path = [NSString stringWithFormat:@"/api/dz/index.php?mod=viewthread&tid=%@&offset=%ld",self.currentTid,self.postListArray.count];
     
     [NETWORK_ENGINE requestWithPath:path Params:self.params CompletionHandler:^(MKNetworkOperation *completedOperation) {
         
@@ -99,7 +99,7 @@
                 //如果是第一页，清空数组
                 if (self.page == 1) {
                     [self.postListArray removeAllObjects];
-                    self.footview.hidden=NO;
+                   
                 }
                 
                 for (NSDictionary *dic in ary) {
@@ -114,26 +114,23 @@
                     self.postTableView.contentSize = CGSizeMake(SCREEN_SIZE.width, 0);
                     
                 }
-                //当前数据小于总数据的时候页数++
-                if (self.postListArray.count < self.totalRowNum) {
-                    self.page++;
-                }
-                else{
-                    self.footview.hidden=YES;
-                }
+
+                self.page++;
+ 
                 
             }
             [self.postTableView reloadData];
             
             [SVProgressHUD dismiss];
-            
-            [self doneLoadingTableViewData];
-            [self.footview endRefreshing];
+
             
         }
         else{
             [SVProgressHUD showErrorWithStatus:CHECK_VALUE([statusDic objectForKey:@"msg"])];
         }
+        
+        [self doneLoadingTableViewData];
+        [self.footview endRefreshing];
         
     } ErrorHandler:^(MKNetworkOperation *completedOperation, NSError *error) {
         [SVProgressHUD showErrorWithStatus:@"服务器忙，请稍候再试"];
@@ -249,6 +246,19 @@
     }
     else{
         cell.louZhuLabel.text = [NSString stringWithFormat:@"%@楼",model.position];
+        
+        //如果是用户自己发表的帖子，显示删除按钮
+        if ([USERINFO.uid isEqualToString:model.authorid]) {
+            [cell.deletePostButton setHidden:NO];
+            [cell.deletePostImageV setHidden:NO];
+            
+            [cell.deletePostButton addTarget:self action:@selector(deleteThePostAction:) forControlEvents:UIControlEventTouchUpInside];
+            [cell.deletePostButton setTag:2000+indexPath.row];
+        }
+        else{
+            [cell.deletePostButton setHidden:YES];
+            [cell.deletePostImageV setHidden:YES];
+        }
     }
     
     CGRect rect3 = cell.postLabel.frame;
@@ -609,8 +619,7 @@
             
             [self.inputTextField resignFirstResponder];
             [self.inputTextField setText:@""];
-            
-            [self reloadTableViewDataSource];
+     
         }
         else{
             
@@ -658,8 +667,7 @@
             
             [self.inputTextField resignFirstResponder];
             [self.inputTextField setText:@""];
-            
-            [self reloadTableViewDataSource];
+     
         }
         else{
             
@@ -687,6 +695,49 @@
         [_photoBtn setBackgroundImage:[UIImage imageWithContentFileName:@"camer_btn"] forState:UIControlStateNormal];
     }
     
+}
+
+//删除跟帖或回复
+- (void)deleteThePostAction:(id)sender
+{
+    UIButton *button = (UIButton *)sender;
+    PostListModel *model = [self.postListArray objectAtIndex:button.tag - 2000];
+    //删除回复
+    [self.params removeAllObjects];
+    [self.params setObject:CHECK_VALUE(model.fid) forKey:@"fid"];
+    [self.params setObject:CHECK_VALUE(model.tid) forKey:@"tid"];
+    
+    NSArray *array = [NSArray arrayWithObject:model.pid];
+    [self.params setObject:CHECK_VALUE([array JSONString]) forKey:@"topiclist"];
+    
+    NSString *path = [NSString stringWithFormat:@"/api/dz/index.php?mod=topicadmin&action=delpost&modsubmit=yes&infloat=yes&modclick=yes&inajax=1&duid=%@",USERINFO.uid];
+    
+    [NETWORK_ENGINE requestWithPath:path Params:self.params CompletionHandler:^(MKNetworkOperation *completedOperation) {
+        
+        NSDictionary *dic=[completedOperation responseDecodeToDic];
+        
+        NSDictionary *statusDic = [dic objectForKey:@"status"];
+        
+        if ([@"1" isEqualToString:CHECK_VALUE([statusDic objectForKey:@"statu"])]) {
+            
+            [self.postListArray removeObject:model];
+            [self.postTableView reloadData];
+            
+            [SVProgressHUD showSuccessWithStatus:@"已删除"];
+  
+        }
+        else{
+            
+            [SVProgressHUD showErrorWithStatus:CHECK_VALUE([statusDic objectForKey:@"msg"])];
+        }
+        
+        
+    } ErrorHandler:^(MKNetworkOperation *completedOperation, NSError *error) {
+        
+        [SVProgressHUD showErrorWithStatus:@"服务器忙，请稍候再试"];
+        
+    }];
+
 }
 
 - (IBAction)photoBtnAction:(id)sender

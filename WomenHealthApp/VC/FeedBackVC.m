@@ -9,6 +9,9 @@
 #import "FeedBackVC.h"
 
 @interface FeedBackVC ()
+{
+    NSInteger currentIndex;
+}
 
 @end
 
@@ -31,6 +34,9 @@
 //    tapGestureRecognizer.cancelsTouchesInView = NO;
 //    //将触摸事件添加到当前view
 //    [self.layOutView addGestureRecognizer:tapGestureRecognizer];
+    
+    _imageArray = [NSMutableArray arrayWithObjects:_selectImageV0,_selectImageV1,_selectImageV2,_selectImageV3,_selectImageV4, nil];
+    currentIndex = 0;
     
     UIButton *sendBtn = [UIButton buttonWithType:UIButtonTypeCustom];
     sendBtn.frame = CGRectMake(0,0,30,30);
@@ -72,6 +78,15 @@
 
 - (IBAction)chooseTypeAction:(id)sender
 {
+    [_imageArray enumerateObjectsUsingBlock:^(id obj, NSUInteger idx, BOOL *stop) {
+        UIImageView *imageView = (UIImageView *)obj;
+        [imageView setHidden:YES];
+    }];
+    
+    UIImageView *selectImageView = [_imageArray objectAtIndex:([(UIButton *)sender tag] - 100)];
+    [selectImageView setHidden:NO];
+    
+    currentIndex = [(UIButton *)sender tag] - 100;
     
 }
 
@@ -96,7 +111,7 @@
     [self.params setObject:self.titleTextField.text forKey:@"msg_title"];
     [self.params setObject:self.contentTextView.text forKey:@"msg_content"];
     [self.params setObject:self.emailTextField.text forKey:@"user_email"];
-    [self.params setObject:@"1" forKey:@"msg_type"];
+    [self.params setObject:[NSString stringWithFormat:@"%ld",currentIndex] forKey:@"msg_type"];
 
     NSString *path = [NSString stringWithFormat:@"/api/ec/message.php"];
 

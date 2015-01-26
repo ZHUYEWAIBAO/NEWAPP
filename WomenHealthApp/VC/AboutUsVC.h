@@ -10,4 +10,6 @@
 
 @interface AboutUsVC : BasicVC
 
+@property (weak, nonatomic) IBOutlet UILabel *phoneLabel;
+
 @end

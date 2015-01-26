@@ -7,8 +7,11 @@
 //
 
 #import "AboutUsVC.h"
+#import "TotalInfoModel.h"
 
 @interface AboutUsVC ()
+
+@property (strong, nonatomic) TotalInfoModel *totalModel;
 
 @end
 
@@ -18,6 +21,19 @@
     [super viewDidLoad];
     
     self.title = @"关于我们";
+    
+    _totalModel = GetTheAppTotalInfoModel();
+    self.phoneLabel.text = [NSString stringWithFormat:@"电话：%@",_totalModel.service_phone];
+    
+    if (self.phoneLabel.text.length > 0) {
+        UITapGestureRecognizer *tapGestureRecognizer = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(phoneCallAction)];
+        //设置成NO表示当前控件响应后会传播到其他控件上，默认为YES。
+        tapGestureRecognizer.cancelsTouchesInView = NO;
+        //将触摸事件添加到当前view
+        [self.phoneLabel addGestureRecognizer:tapGestureRecognizer];
+    }
+
+
 }
 
 - (void)viewWillAppear:(BOOL)animated
@@ -27,19 +43,43 @@
     self.view.backgroundColor = [UIColor whiteColor];
 }
 
+- (void)phoneCallAction
+{
+    [self callTheSystemTelephone:_totalModel.service_phone];
+
+}
+
+//拨打系统电话
+- (void)callTheSystemTelephone:(NSString *)telNum
+{
+    NSString *deviceType = [UIDevice currentDevice].model;
+    if([deviceType  isEqualToString:@"iPod touch"]||[deviceType  isEqualToString:@"iPad"]||[deviceType  isEqualToString:@"iPhone Simulator"]){
+        [SVProgressHUD showErrorWithStatus:@"您的设备不能拨打电话"];
+  
+    }
+    else{
+     
+        NSString *str = [NSString stringWithFormat:@"您确定要打电话给%@吗",telNum];
+        UIAlertView *infoAlert = [[UIAlertView alloc] initWithTitle:@"提示" message:str delegate:self cancelButtonTitle:@"否" otherButtonTitles:@"是",nil];
+        
+        [infoAlert show];
+        
+    }
+}
+
+- (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex
+{
+
+    if (buttonIndex == 1) {
+        NSString *callStr = [NSString stringWithFormat:@"tel://%@",_totalModel.service_phone];
+        [[UIApplication sharedApplication] openURL:[NSURL URLWithString:callStr]];
+    }
+    
+}
+
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
 }
-
-/*
-#pragma mark - Navigation
-
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
-}
-*/
 
 @end

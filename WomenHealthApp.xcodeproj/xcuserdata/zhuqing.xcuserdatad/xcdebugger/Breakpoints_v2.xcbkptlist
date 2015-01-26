@@ -131,7 +131,7 @@
                   symbolName = "-[ShoppingOrderSuccessVC payButtonAction:]"
                   moduleName = "WomenHealthApp"
                   urlString = "file:///Users/zhuqing/Desktop/NEWAPP/WomenHealthApp/VC/ShoppingOrderSuccessVC.m"
-                  timestampString = "443768496.960885"
+                  timestampString = "443951252.894148"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "72"
@@ -145,7 +145,7 @@
                   symbolName = "__42-[ShoppingOrderSuccessVC payButtonAction:]_block_invoke"
                   moduleName = "WomenHealthApp"
                   urlString = "file:///Users/zhuqing/Desktop/NEWAPP/WomenHealthApp/VC/ShoppingOrderSuccessVC.m"
-                  timestampString = "443768496.961596"
+                  timestampString = "443951252.894665"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "72"
@@ -177,7 +177,7 @@
                   symbolName = "__39-[LoginViewController upLoadTheUseName]_block_invoke"
                   moduleName = "WomenHealthApp"
                   urlString = "file:///Users/zhuqing/Desktop/NEWAPP/WomenHealthApp/VC/LoginViewController.m"
-                  timestampString = "443768496.97125"
+                  timestampString = "443951252.905438"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "306"
@@ -191,7 +191,7 @@
                   symbolName = "__39-[LoginViewController upLoadTheUseName]_block_invoke_2"
                   moduleName = "WomenHealthApp"
                   urlString = "file:///Users/zhuqing/Desktop/NEWAPP/WomenHealthApp/VC/LoginViewController.m"
-                  timestampString = "443768496.971634"
+                  timestampString = "443951252.905725"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "306"
@@ -377,28 +377,12 @@
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "WomenHealthApp/VC/MyCircleListVC.m"
-            timestampString = "443768496.395677"
+            filePath = "WomenHealthApp/VC/PostDetailVC.m"
+            timestampString = "443951252.271445"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "359"
-            endingLineNumber = "359"
-            landmarkName = "-deleteThePostAction:"
-            landmarkType = "5">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "WomenHealthApp/VC/MyCircleListVC.m"
-            timestampString = "443768496.395677"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "321"
-            endingLineNumber = "321"
+            startingLineNumber = "723"
+            endingLineNumber = "723"
             landmarkName = "-deleteThePostAction:"
             landmarkType = "5">
          </BreakpointContent>

@@ -116,6 +116,27 @@ LoginDataModel * GetTheSavedUserPhoneNumAndPassword()
     
 }
 
+void SaveTheAppTotalInfoModel(TotalInfoModel *loginModel)
+{
+    NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
+    
+    NSData *data = [NSKeyedArchiver archivedDataWithRootObject:loginModel];
+    [userDefaults setObject:data forKey:@"totalInfoModel"];
+    //将数据即时写入
+    [userDefaults synchronize];
+}
+
+TotalInfoModel * GetTheAppTotalInfoModel()
+{
+    NSUserDefaults *defaults =[NSUserDefaults standardUserDefaults];
+    
+    NSData *data = [defaults objectForKey:@"totalInfoModel"];
+    
+    TotalInfoModel *loginInfo = (TotalInfoModel *)[NSKeyedUnarchiver unarchiveObjectWithData:data];
+    
+    return loginInfo;
+}
+
 @implementation CommonMethod
 
 + (CommonMethod *)share

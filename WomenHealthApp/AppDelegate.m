@@ -22,6 +22,7 @@
 #import <TencentOpenAPI/TencentOAuth.h>
 #import <AlipaySDK/AlipaySDK.h>
 #import "BPush.h"
+#import "TotalInfoModel.h"
 @interface AppDelegate ()
 
 @end
@@ -87,6 +88,8 @@
         [self loginActionWithUid:loginData];
     }
 
+    [self getServiceData];
+    
     [self.window makeKeyAndVisible];
     
     return YES;
@@ -215,6 +218,35 @@
         [SVProgressHUD showErrorWithStatus:@"服务器忙，请稍候再试"];
     }];
     
+}
+
+//获取商城公共信息
+- (void)getServiceData
+{
+    //设置请求参数
+    NSMutableDictionary *params = [NSMutableDictionary dictionary];
+    
+    NSString *path = [NSString stringWithFormat:@"/api/ec/"];
+    
+    [NETWORK_ENGINE requestWithPath:path Params:params CompletionHandler:^(MKNetworkOperation *completedOperation) {
+        
+        NSDictionary *dic=[completedOperation responseDecodeToDic];
+        
+        NSDictionary *statusDic = [dic objectForKey:@"status"];
+        
+        if ([@"1" isEqualToString:CHECK_VALUE([statusDic objectForKey:@"statu"])]) {
+           
+            SaveTheAppTotalInfoModel([TotalInfoModel parseDicToTotalInfoModelObject:[dic objectForKey:@"data"]]);
+            
+        }
+        else{
+            [SVProgressHUD showErrorWithStatus:CHECK_VALUE([statusDic objectForKey:@"msg"])];
+        }
+        
+    } ErrorHandler:^(MKNetworkOperation *completedOperation, NSError *error) {
+        [SVProgressHUD showErrorWithStatus:@"服务器忙，请稍候再试"];
+    }];
+
 }
 
 - (void)initializePlat

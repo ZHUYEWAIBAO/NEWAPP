@@ -99,6 +99,7 @@
             break;
     }
     
+    [self.params removeAllObjects];
     [NETWORK_ENGINE requestWithPath:path Params:self.params CompletionHandler:^(MKNetworkOperation *completedOperation) {
         
         NSDictionary *dic=[completedOperation responseDecodeToDic];
@@ -326,6 +327,8 @@
                 [SVProgressHUD showSuccessWithStatus:@"已删除"];
                 
                 [self.circleArray removeObject:model];
+                
+                self.totalRowNum--;
                 
                 [self.circleTableView reloadData];
                 

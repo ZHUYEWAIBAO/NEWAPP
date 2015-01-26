@@ -70,11 +70,24 @@
                                         <rect key="frame" x="252" y="8" width="20" height="20"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                     </imageView>
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="my_circle_delete_btn.png" id="8gA-Mc-cXm">
+                                        <rect key="frame" x="195" y="10" width="15" height="15"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                    </imageView>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="sFV-dd-Yfw">
                                         <rect key="frame" x="267" y="7" width="45" height="21"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                         <state key="normal" title="回复">
+                                            <color key="titleColor" red="1" green="0.52941176469999995" blue="0.62745098040000002" alpha="1" colorSpace="calibratedRGB"/>
+                                            <color key="titleShadowColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                        </state>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="eEm-ka-FNd">
+                                        <rect key="frame" x="207" y="7" width="45" height="21"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                        <state key="normal" title="删除">
                                             <color key="titleColor" red="1" green="0.52941176469999995" blue="0.62745098040000002" alpha="1" colorSpace="calibratedRGB"/>
                                             <color key="titleShadowColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                         </state>
@@ -172,6 +185,8 @@
                 <outlet property="authorLabel" destination="Ebu-qt-cff" id="3pc-SH-8tF"/>
                 <outlet property="bigView" destination="E41-cS-E3n" id="1FG-lL-zNS"/>
                 <outlet property="buttonView" destination="EiG-uI-b0a" id="4T1-DG-2jg"/>
+                <outlet property="deletePostButton" destination="eEm-ka-FNd" id="oP4-39-B6x"/>
+                <outlet property="deletePostImageV" destination="8gA-Mc-cXm" id="oXV-W9-HGK"/>
                 <outlet property="headImageView" destination="148-zV-o06" id="XAb-PY-czC"/>
                 <outlet property="louZhuImageView" destination="lol-PG-Ouk" id="0c6-bq-2VO"/>
                 <outlet property="louZhuLabel" destination="3hW-m0-oe4" id="9gX-jl-lMN"/>
@@ -199,6 +214,7 @@
         <image name="comment_reply_btn.png" width="20" height="20"/>
         <image name="little_face.png" width="12" height="12"/>
         <image name="louzhu_flag.png" width="28" height="16"/>
+        <image name="my_circle_delete_btn.png" width="46" height="46"/>
     </resources>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">
         <simulatedStatusBarMetrics key="statusBar"/>

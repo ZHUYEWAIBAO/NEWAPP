@@ -154,7 +154,7 @@
     //取出每个订单下的 每件商品 model
     OptionModel *model = [[[dataAry objectAtIndex:indexPath.section] optionAry] objectAtIndex:indexPath.row];
     
-    cell.nameLab.text =[NSString stringWithFormat:@"%i.  %@",indexPath.row+1 ,model.option_name];
+    cell.nameLab.text =[NSString stringWithFormat:@"%ld.  %@",indexPath.row+1 ,model.option_name];
     
     if (model.selectBool) {
         if ([suModel.can_multi integerValue] ==1) {
@@ -194,7 +194,7 @@
     UILabel *laber =[[UILabel alloc] initWithFrame:CGRectMake(12, 10, 265, 20)];
     
     NSString *opionName =[[dataAry objectAtIndex:section] vote_name];
-    laber.text =[NSString stringWithFormat:@"问题%i :  %@",section+1,opionName];
+    laber.text =[NSString stringWithFormat:@"问题%ld :  %@",section+1,opionName];
     laber.font =[UIFont systemFontOfSize:12];
     laber.backgroundColor =[UIColor clearColor];
     [vc addSubview:laber];
@@ -216,8 +216,8 @@
     
     UIButton *btn =(UIButton *)sender;
     
-    int rowN =btn.tag%10000;
-    int sectionN =(btn.tag-rowN)/10000;
+    NSInteger rowN =btn.tag%10000;
+    NSInteger sectionN =(btn.tag-rowN)/10000;
     
     SurveyModel *suModel =[dataAry objectAtIndex:sectionN];
     

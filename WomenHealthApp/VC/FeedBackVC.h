@@ -24,4 +24,12 @@
 @property (weak, nonatomic) IBOutlet UITextField *emailTextField;
 //@property (weak, nonatomic) IBOutlet UITextField *titleTextField;
 
+@property (weak, nonatomic) IBOutlet UIImageView *selectImageV0;
+@property (weak, nonatomic) IBOutlet UIImageView *selectImageV1;
+@property (weak, nonatomic) IBOutlet UIImageView *selectImageV2;
+@property (weak, nonatomic) IBOutlet UIImageView *selectImageV3;
+@property (weak, nonatomic) IBOutlet UIImageView *selectImageV4;
+
+@property (strong, nonatomic) NSMutableArray *imageArray;
+
 @end

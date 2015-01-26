@@ -413,6 +413,7 @@
 		BAC751A71A232A53006F85DD /* Circle_menu_default_image.png in Resources */ = {isa = PBXBuildFile; fileRef = BAC751A61A232A53006F85DD /* Circle_menu_default_image.png */; };
 		BAC751AA1A233279006F85DD /* Circle_menu_delete_btn.png in Resources */ = {isa = PBXBuildFile; fileRef = BAC751A81A233279006F85DD /* Circle_menu_delete_btn.png */; };
 		BAC751AB1A233279006F85DD /* Circle_menu_plus_btn.png in Resources */ = {isa = PBXBuildFile; fileRef = BAC751A91A233279006F85DD /* Circle_menu_plus_btn.png */; };
+		BAC9FA631A75CB3C00C0FB5A /* TotalInfoModel.m in Sources */ = {isa = PBXBuildFile; fileRef = BAC9FA621A75CB3C00C0FB5A /* TotalInfoModel.m */; };
 		BACD639A1A2C3A3700683E38 /* libstdc++.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = BACD63991A2C3A3600683E38 /* libstdc++.dylib */; };
 		BACD639C1A2C3A4900683E38 /* libsqlite3.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = BACD639B1A2C3A4900683E38 /* libsqlite3.dylib */; };
 		BACD63D41A2C3D8500683E38 /* back_bt.png in Resources */ = {isa = PBXBuildFile; fileRef = BACD63C21A2C3D8500683E38 /* back_bt.png */; };
@@ -1167,6 +1168,8 @@
 		BAC751A61A232A53006F85DD /* Circle_menu_default_image.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Circle_menu_default_image.png; sourceTree = "<group>"; };
 		BAC751A81A233279006F85DD /* Circle_menu_delete_btn.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Circle_menu_delete_btn.png; sourceTree = "<group>"; };
 		BAC751A91A233279006F85DD /* Circle_menu_plus_btn.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Circle_menu_plus_btn.png; sourceTree = "<group>"; };
+		BAC9FA611A75CB3C00C0FB5A /* TotalInfoModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TotalInfoModel.h; sourceTree = "<group>"; };
+		BAC9FA621A75CB3C00C0FB5A /* TotalInfoModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TotalInfoModel.m; sourceTree = "<group>"; };
 		BACD63991A2C3A3600683E38 /* libstdc++.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = "libstdc++.dylib"; path = "usr/lib/libstdc++.dylib"; sourceTree = SDKROOT; };
 		BACD639B1A2C3A4900683E38 /* libsqlite3.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libsqlite3.dylib; path = usr/lib/libsqlite3.dylib; sourceTree = SDKROOT; };
 		BACD63C21A2C3D8500683E38 /* back_bt.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = back_bt.png; sourceTree = "<group>"; };
@@ -1725,6 +1728,8 @@
 				BA6A44031A2C0BE500BAC95F /* RegisterModel.m */,
 				BA47EC041A1C9F0300ACBA05 /* UserInfo.h */,
 				BA47EC051A1C9F0300ACBA05 /* UserInfo.m */,
+				BAC9FA611A75CB3C00C0FB5A /* TotalInfoModel.h */,
+				BAC9FA621A75CB3C00C0FB5A /* TotalInfoModel.m */,
 				BABD58A01A5AA8E000A3EFED /* LoginDataModel.h */,
 				BABD58A11A5AA8E000A3EFED /* LoginDataModel.m */,
 				BA47EC071A1CA10000ACBA05 /* SettingDataModel.h */,
@@ -1948,11 +1953,8 @@
 		BA59D76B19F894620098BDCF /* Libs */ = {
 			isa = PBXGroup;
 			children = (
-
 				BA35C22C1A70DA0600DB56DF /* IQKeyBoardManager */,
-
 				653A86391A6FDC8100EDE181 /* LibBPush */,
-
 				BA0F32661A58E9690012E699 /* Alipay */,
 				656B0EE41A484DFA00669852 /* OTG */,
 				BA6A43CA1A2C0BC000BAC95F /* ShareSDK */,
@@ -3007,6 +3009,7 @@
 				BABB18AE1A25BDDA00B46081 /* AboutUsVC.m in Sources */,
 				BA59D7BA19F894620098BDCF /* SDImageCache.m in Sources */,
 				BA59A1791A36DEE500C8D0B7 /* ShoppingCommentView.m in Sources */,
+				BAC9FA631A75CB3C00C0FB5A /* TotalInfoModel.m in Sources */,
 				BAFA06151A6F98B9002CC577 /* MyCircleListVC.m in Sources */,
 				BA35C2491A70DA0600DB56DF /* NSArray+Sort.m in Sources */,
 				BA07DBAB1A35566F00CB872D /* GoodDetailModel.m in Sources */,
@@ -3041,11 +3044,8 @@
 				BA1BB6321A1D84C9000742EC /* SetTableViewCell.m in Sources */,
 				BA12B9E71A664C0300C06007 /* PostDetailVC.m in Sources */,
 				BA6230D21A2EE93B00F471A6 /* B2CShopItemView.m in Sources */,
-
 				BA35C24B1A70DA0600DB56DF /* UIView+IQKeyboardToolbar.m in Sources */,
-
 				65FC7EAA1A68EB8E0079988B /* SurveyModel.m in Sources */,
-
 				BA59D7A619F894620098BDCF /* BasicVC.m in Sources */,
 				BA12B9F81A66589E00C06007 /* PostDetailModel.m in Sources */,
 				BA59D7AF19F894620098BDCF /* NSData+MKBase64.m in Sources */,
