@@ -14,4 +14,6 @@
 
 @property (strong, nonatomic) NSMutableArray *buttonArray;
 
+@property (strong, nonatomic) NSString *addPriceStr;
+
 @end

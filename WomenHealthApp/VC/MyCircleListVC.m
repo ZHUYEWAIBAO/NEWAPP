@@ -45,6 +45,7 @@
     UIBarButtonItem *rightItem = [[UIBarButtonItem alloc] initWithCustomView:_editBtn];
     self.navigationItem.rightBarButtonItem = rightItem;
 
+    
     self.circleType = circleType_myPost;
     [self getThePostData];
     
@@ -187,7 +188,8 @@
     cell.fidLabel.text = model.fid_name;
     cell.postLabel.text = model.subject;
     cell.timeLabel.text = model.lastpost;
-    cell.numberLabel.text = model.replies;
+
+    [cell.replyButton setTitle:model.replies forState:UIControlStateNormal];
     
     if (!isChooseEdit) {
 

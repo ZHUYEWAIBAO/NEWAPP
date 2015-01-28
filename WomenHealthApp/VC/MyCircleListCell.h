@@ -14,8 +14,9 @@
 @property (weak, nonatomic) IBOutlet UILabel *fidLabel;
 @property (weak, nonatomic) IBOutlet UILabel *postLabel;
 @property (weak, nonatomic) IBOutlet UILabel *timeLabel;
-@property (weak, nonatomic) IBOutlet UILabel *numberLabel;
 
 @property (weak, nonatomic) IBOutlet UIImageView *fidImageView;
+
+@property (weak, nonatomic) IBOutlet UIButton *replyButton;
 
 @end

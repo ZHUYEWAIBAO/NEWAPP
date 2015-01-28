@@ -73,6 +73,7 @@
     self.view.backgroundColor = [UIColor whiteColor];
     
     [[IQKeyboardManager sharedManager]setEnableAutoToolbar:YES];
+    [[IQKeyboardManager sharedManager] setEnable:YES];
  
 }
 

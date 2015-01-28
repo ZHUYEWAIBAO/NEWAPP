@@ -19,10 +19,11 @@
 
 @property (weak, nonatomic) IBOutlet UIImageView *userImageView;
 
-@property (weak, nonatomic) IBOutlet UIImageView *commentImageView0;
-@property (weak, nonatomic) IBOutlet UIImageView *commentImageView1;
-@property (weak, nonatomic) IBOutlet UIImageView *commentImageView2;
-@property (weak, nonatomic) IBOutlet UIImageView *commentImageView3;
-@property (weak, nonatomic) IBOutlet UIImageView *commentImageView4;
+
+@property (weak, nonatomic) IBOutlet UIButton *commentButton0;
+@property (weak, nonatomic) IBOutlet UIButton *commentButton1;
+@property (weak, nonatomic) IBOutlet UIButton *commentButton2;
+@property (weak, nonatomic) IBOutlet UIButton *commentButton3;
+@property (weak, nonatomic) IBOutlet UIButton *commentButton4;
 
 @end

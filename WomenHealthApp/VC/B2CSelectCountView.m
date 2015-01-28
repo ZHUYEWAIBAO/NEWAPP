@@ -25,18 +25,7 @@
 - (void)awakeFromNib
 {
     [super awakeFromNib];
-    
-    //顶部加一条线
-//    UIImageView *topLineImgV = [[UIImageView alloc]initWithFrame:CGRectMake(15, 0, self.frame.size.width, 0.5)];
-//    [topLineImgV setBackgroundColor:[UIColor colorWithRed:199.0/255.0 green:199.0/255.0 blue:204.0/255.0 alpha:1.0]];
-//    [self addSubview:topLineImgV];
-//    
-//    //底部加一条线
-//    UIImageView *bottomLineImgV = [[UIImageView alloc]initWithFrame:CGRectMake(15, self.frame.size.height - 0.5, self.frame.size.width, 0.5)];
-//    [bottomLineImgV setBackgroundColor:[UIColor colorWithRed:199.0/255.0 green:199.0/255.0 blue:204.0/255.0 alpha:1.0]];
-//    bottomLineImgV.autoresizingMask = UIViewAutoresizingFlexibleTopMargin;
-//    [self addSubview:bottomLineImgV];
-    
+ 
     _totalNum = 1;
 }
 
@@ -49,6 +38,10 @@
     if (_totalNum < maxNum) {
         _totalNum++;
         self.countTextField.text = [NSString stringWithFormat:@"%ld",_totalNum];
+
+        float price = _oneTotalPrice * _totalNum;
+
+        _selectPriceLabel.text = [NSString stringWithFormat:@"%.2f",price];
         
     }
     else if (_totalNum == [_detailModel.infoModel.goods_number integerValue]) {
@@ -62,6 +55,10 @@
     if (_totalNum > 1) {
         _totalNum--;
         self.countTextField.text=[NSString stringWithFormat:@"%ld",_totalNum];
+        
+        float price = _oneTotalPrice * _totalNum;
+        
+        _selectPriceLabel.text = [NSString stringWithFormat:@"%.2f",price];
         
     }
     else if (_totalNum == 1) {
@@ -111,12 +108,13 @@
     
     _paramDic = [[NSMutableDictionary alloc]initWithCapacity:0];
     _goodsDic = [NSMutableDictionary dictionaryWithObjectsAndKeys:@"1",@"quick",@"0",@"parent", nil];
-    
+
 }
 
 - (void)layOutTheCountView
 {
     _countView = (CountView *)[[[NSBundle mainBundle] loadNibNamed:@"B2CSelectCountView" owner:self options:nil] lastObject];
+ 
     self.selectTableView.tableFooterView = _countView;
 
 }
@@ -125,10 +123,32 @@
 {
     _detailModel = model;
     _countView.detailModel = model;
+    
+    //现价
+    if (_detailModel.infoModel.promote_price.length > 0 && ![@"0" isEqualToString:_detailModel.infoModel.promote_price]) {
+        
+        _countView.oneTotalPrice = [model.infoModel.promote_price floatValue];
+    }
+    else{
+        
+        _countView.oneTotalPrice = [model.infoModel.shop_price floatValue];
+        
+    }
+    
 
     //库存
     _countView.selectStockLabel.text = [NSString stringWithFormat:@"库存: %@件",model.infoModel.goods_number];
     
+    //现价
+    if (model.infoModel.promote_price.length > 0 && ![@"0" isEqualToString:model.infoModel.promote_price]) {
+
+        _countView.selectPriceLabel.text = [NSString stringWithFormat:@"%@",model.infoModel.promote_price];
+    }
+    else{
+
+        _countView.selectPriceLabel.text = [NSString stringWithFormat:@"%@",model.infoModel.shop_price];
+        
+    }
     
 }
 
@@ -261,21 +281,30 @@
     
     UIButton *button = (UIButton *)sender;
     
-    SelectCountCell *cell=(SelectCountCell *)[self.selectTableView cellForRowAtIndexPath:[NSIndexPath indexPathForRow:button.tag/100 - 1 inSection:0]];
-    
-    for (UIButton *btn in cell.buttonArray) {
-        btn.selected = NO;
+    if (!button.selected) {
+        SelectCountCell *cell=(SelectCountCell *)[self.selectTableView cellForRowAtIndexPath:[NSIndexPath indexPathForRow:button.tag/100 - 1 inSection:0]];
+        
+        for (UIButton *btn in cell.buttonArray) {
+            btn.selected = NO;
+        }
+        
+        button.selected = YES;
+        
+        GoodSpecificationModel *model = [self.detailModel.specificationModel.specificationArray objectAtIndex:button.tag/100 - 1];
+        
+        GoodValuesModel *value = [model.valuesArray objectAtIndex:button.tag%100];
+        
+        //计算总价
+        _countView.oneTotalPrice = [value.format_price floatValue] + _countView.oneTotalPrice - [cell.addPriceStr floatValue];
+        
+        float price = _countView.oneTotalPrice * _countView.totalNum;
+        cell.addPriceStr = value.format_price;
+        
+        _countView.selectPriceLabel.text = [NSString stringWithFormat:@"%.2f",price];
+        
+        [_paramDic setObject:CHECK_VALUE(value.value_id) forKey:[NSString stringWithFormat:@"%ld",button.tag/100 - 1]];
     }
-   
-    button.selected = YES;
-    
-    GoodSpecificationModel *model = [self.detailModel.specificationModel.specificationArray objectAtIndex:button.tag/100 - 1];
-    
-    GoodValuesModel *value = [model.valuesArray objectAtIndex:button.tag%100];
-    
-    NSLog(@"uuu-----%@",value.value_id);
-    
-    [_paramDic setObject:CHECK_VALUE(value.value_id) forKey:[NSString stringWithFormat:@"%ld",button.tag/100 - 1]];
+
 }
 
 #pragma mark - 按钮事件

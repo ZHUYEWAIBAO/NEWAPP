@@ -58,6 +58,8 @@
         self.scrollView.contentSize = CGSizeMake(3 * CGRectGetWidth(self.scrollView.frame), CGRectGetHeight(self.scrollView.frame));
         self.scrollView.delegate = self;
         self.scrollView.contentOffset = CGPointMake(CGRectGetWidth(self.scrollView.frame), 0);
+//        self.scrollView.contentOffset = CGPointMake(0, 0);
+
         self.scrollView.pagingEnabled = YES;
         [self addSubview:self.scrollView];
         self.currentPageIndex = 0;
@@ -92,7 +94,9 @@
         contentView.frame = rightRect;
         [self.scrollView addSubview:contentView];
     }
+//    _scrollView.contentSize = CGSizeMake(_totalPageCount * CGRectGetWidth(self.scrollView.frame), CGRectGetHeight(self.scrollView.frame));
     [_scrollView setContentOffset:CGPointMake(_scrollView.frame.size.width, 0)];
+   
 }
 
 /**
@@ -100,6 +104,7 @@
  */
 - (void)setScrollViewContentDataSource
 {
+
     NSInteger previousPageIndex = [self getValidNextPageIndexWithPageIndex:self.currentPageIndex - 1];
     NSInteger rearPageIndex = [self getValidNextPageIndexWithPageIndex:self.currentPageIndex + 1];
     if (self.contentViews == nil) {
@@ -108,12 +113,13 @@
     [self.contentViews removeAllObjects];
     
     if (self.fetchContentViewAtIndex) {
-
+        
         [self.contentViews addObject:self.fetchContentViewAtIndex(previousPageIndex)];
         [self.contentViews addObject:self.fetchContentViewAtIndex(_currentPageIndex)];
         [self.contentViews addObject:self.fetchContentViewAtIndex(rearPageIndex)];
     }
     
+
     [self.pageControl setNumberOfPages:_totalPageCount];
 }
 

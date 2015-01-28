@@ -270,7 +270,8 @@
     cell.authorLabel.text = model.author;
     cell.postLabel.text = model.subject;
     cell.timeLabel.text = [NSString stringWithFormat:@"回复:%@",model.lastpost];
-    cell.numberLabel.text = model.replies;
+    
+    [cell.numButton setTitle:model.replies forState:UIControlStateNormal];
     
     if ([@"1" isEqualToString:model.digest]) {
         [cell.hotImageView setHidden:NO];

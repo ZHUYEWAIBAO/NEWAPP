@@ -13,6 +13,7 @@
 - (void)awakeFromNib {
     
     _buttonArray = [[NSMutableArray alloc]initWithCapacity:0];
+    _addPriceStr = @"0.00";
 }
 
 - (void)setSelected:(BOOL)selected animated:(BOOL)animated {

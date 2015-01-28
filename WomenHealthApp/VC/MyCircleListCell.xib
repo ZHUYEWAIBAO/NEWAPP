@@ -26,24 +26,12 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="E8r-xY-8v2">
-                                <rect key="frame" x="132" y="33" width="125" height="21"/>
+                                <rect key="frame" x="142" y="33" width="125" height="21"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="12"/>
                                 <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="N0M-oZ-dSA">
-                                <rect key="frame" x="280" y="32" width="40" height="21"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="12"/>
-                                <color key="textColor" red="1" green="0.52941176469999995" blue="0.62745098040000002" alpha="1" colorSpace="calibratedRGB"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="comment_reply_btn.png" id="R6I-Vc-S87">
-                                <rect key="frame" x="259" y="33" width="20" height="20"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                            </imageView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="lYk-Kb-q9b">
                                 <rect key="frame" x="30" y="5" width="280" height="21"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -59,6 +47,17 @@
                                 <rect key="frame" x="18" y="18" width="23" height="23"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             </imageView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="Hlo-p7-EIV">
+                                <rect key="frame" x="264" y="32" width="55" height="22"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                                <state key="normal" image="comment_reply_btn.png">
+                                    <color key="titleColor" red="1" green="0.52941176469999995" blue="0.62745098040000002" alpha="1" colorSpace="calibratedRGB"/>
+                                    <color key="titleShadowColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                </state>
+                                <state key="selected" image="comment_reply_btn.png"/>
+                                <state key="highlighted" image="comment_reply_btn.png"/>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
@@ -68,9 +67,9 @@
             <connections>
                 <outlet property="fidImageView" destination="2RA-pb-GJW" id="o6p-Xo-f9t"/>
                 <outlet property="fidLabel" destination="YTZ-h7-n3z" id="Zv3-or-2UY"/>
-                <outlet property="numberLabel" destination="N0M-oZ-dSA" id="fCa-OV-XMJ"/>
                 <outlet property="postDeleteImageView" destination="F4k-k9-UgN" id="A7g-yG-LB2"/>
                 <outlet property="postLabel" destination="lYk-Kb-q9b" id="NJb-L0-aSm"/>
+                <outlet property="replyButton" destination="Hlo-p7-EIV" id="NTh-Tz-Km0"/>
                 <outlet property="timeLabel" destination="E8r-xY-8v2" id="ZyI-WR-bKh"/>
             </connections>
             <point key="canvasLocation" x="228" y="178"/>

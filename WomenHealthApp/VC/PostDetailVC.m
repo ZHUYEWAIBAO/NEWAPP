@@ -147,8 +147,9 @@
         [self.jingImageView setHidden:NO];
     }
     self.nameLabel.text = self.detailModel.subject;
-    self.totalLabel.text = self.detailModel.total_subject;
     self.circleLabel.text = self.detailModel.fid_name;
+    
+    [self.totalButton setTitle:self.detailModel.total_subject forState:UIControlStateNormal];
     
     CGRect rect1 =  self.nameLabel.frame;
     rect1.size.height = HeightForString(self.detailModel.subject, 14.0, 260) + 10;
@@ -693,6 +694,7 @@
         [_imageDataArray removeObjectAtIndex:index];
         
         [_photoBtn setBackgroundImage:[UIImage imageWithContentFileName:@"camer_btn"] forState:UIControlStateNormal];
+        _photoBtn.isLoadImage = NO;
     }
     
 }

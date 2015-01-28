@@ -25,18 +25,6 @@
                                 <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="Qry-tB-Buv">
-                                <rect key="frame" x="275" y="53" width="45" height="21"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="12"/>
-                                <color key="textColor" red="1" green="0.52941176470588236" blue="0.62745098039215685" alpha="1" colorSpace="calibratedRGB"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="comment_reply_btn.png" id="53A-zQ-tYD">
-                                <rect key="frame" x="254" y="54" width="20" height="20"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                            </imageView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="COH-MG-59M">
                                 <rect key="frame" x="32" y="29" width="196" height="21"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -59,6 +47,17 @@
                                 <rect key="frame" x="10" y="34" width="12" height="12"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                             </imageView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="zAI-N4-ear">
+                                <rect key="frame" x="262" y="53" width="55" height="22"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                                <state key="normal" image="comment_reply_btn.png">
+                                    <color key="titleColor" red="1" green="0.52941176469999995" blue="0.62745098040000002" alpha="1" colorSpace="calibratedRGB"/>
+                                    <color key="titleShadowColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                </state>
+                                <state key="selected" image="comment_reply_btn.png"/>
+                                <state key="highlighted" image="comment_reply_btn.png"/>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
@@ -68,7 +67,7 @@
             <connections>
                 <outlet property="authorLabel" destination="COH-MG-59M" id="xlJ-kN-53j"/>
                 <outlet property="hotImageView" destination="Flu-Jb-78R" id="nOI-1v-GPF"/>
-                <outlet property="numberLabel" destination="Qry-tB-Buv" id="k9a-SU-tkr"/>
+                <outlet property="numButton" destination="zAI-N4-ear" id="6bZ-bG-hBw"/>
                 <outlet property="postLabel" destination="ZcE-pV-Ie0" id="LFD-hg-5KN"/>
                 <outlet property="timeLabel" destination="LtS-3Y-6SP" id="hHg-uW-xaT"/>
             </connections>
