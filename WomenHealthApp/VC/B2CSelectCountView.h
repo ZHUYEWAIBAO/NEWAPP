@@ -24,6 +24,9 @@
 
 @property (weak, nonatomic) IBOutlet UILabel *selectStockLabel;   //商品库存
 @property (strong, nonatomic) GoodDetailModel *detailModel;
+@property (assign, nonatomic) float oneTotalPrice;
+
+@property (weak, nonatomic) IBOutlet UILabel *selectPriceLabel;
 
 /**
  *  数量值

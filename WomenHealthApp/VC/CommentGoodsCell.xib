@@ -44,26 +44,41 @@
                         <rect key="frame" x="0.0" y="60" width="320" height="50"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
                         <subviews>
-                            <imageView hidden="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" id="vTX-2I-16x">
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="5VP-mP-dcn">
                                 <rect key="frame" x="54" y="3" width="44" height="44"/>
-                                <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
-                            </imageView>
-                            <imageView hidden="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" id="J19-kx-hfD">
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="IZa-LM-6Wa">
                                 <rect key="frame" x="101" y="3" width="44" height="44"/>
-                                <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
-                            </imageView>
-                            <imageView hidden="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" id="yeM-eg-qaC">
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="Pgg-qk-rQJ">
                                 <rect key="frame" x="148" y="3" width="44" height="44"/>
-                                <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
-                            </imageView>
-                            <imageView hidden="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" id="Klq-KD-OR2">
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="s0g-a6-7nY">
                                 <rect key="frame" x="195" y="3" width="44" height="44"/>
-                                <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
-                            </imageView>
-                            <imageView hidden="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" id="qw0-YR-Tbs">
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="cJp-rg-dMg">
                                 <rect key="frame" x="242" y="3" width="44" height="44"/>
-                                <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
-                            </imageView>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
@@ -71,11 +86,11 @@
                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
             </tableViewCellContentView>
             <connections>
-                <outlet property="commentImageView0" destination="vTX-2I-16x" id="g8C-fv-ND4"/>
-                <outlet property="commentImageView1" destination="J19-kx-hfD" id="vpr-t0-Mzq"/>
-                <outlet property="commentImageView2" destination="yeM-eg-qaC" id="V0G-6f-5kz"/>
-                <outlet property="commentImageView3" destination="Klq-KD-OR2" id="H0U-GV-3vg"/>
-                <outlet property="commentImageView4" destination="qw0-YR-Tbs" id="ZPQ-yg-uN4"/>
+                <outlet property="commentButton0" destination="5VP-mP-dcn" id="pYg-r6-mvs"/>
+                <outlet property="commentButton1" destination="IZa-LM-6Wa" id="NH4-jW-Bqx"/>
+                <outlet property="commentButton2" destination="Pgg-qk-rQJ" id="OKQ-gN-6D6"/>
+                <outlet property="commentButton3" destination="s0g-a6-7nY" id="9t4-ym-pES"/>
+                <outlet property="commentButton4" destination="cJp-rg-dMg" id="EvA-mt-Z7d"/>
                 <outlet property="contenLabel" destination="lpu-ym-a5x" id="MWg-YN-aHR"/>
                 <outlet property="nameLabel" destination="keS-VI-jGf" id="OcE-Wr-gnx"/>
                 <outlet property="secondView" destination="E0r-8U-7wu" id="PYT-rb-PKk"/>

@@ -22,6 +22,9 @@
     BOOL isShowSecMenu;
     
     NSMutableArray *adArray;
+    
+    UIButton *backBtn;
+    
 }
 @property (nonatomic , strong) CycleScrollView *mainScorllView;
 
@@ -73,6 +76,15 @@
     adArray = [[NSMutableArray alloc]initWithCapacity:5];
 
     [self getTheBannerData];
+    
+    //将自定义的视图作为导航条leftBarButtonItem
+    backBtn = [UIButton buttonWithType:UIButtonTypeCustom];
+    backBtn.frame = CGRectMake(10,2.0,32,25);
+    [backBtn setImage:[UIImage imageNamed:@"back_bt.png"] forState:UIControlStateNormal];
+    [backBtn addTarget:self action:@selector(leftBackClick:) forControlEvents:UIControlEventTouchUpInside];
+    [backBtn setHidden:YES];
+    UIBarButtonItem *Item = [[UIBarButtonItem alloc] initWithCustomView:backBtn];
+    self.navigationItem.leftBarButtonItem = Item;
     
 }
 
@@ -280,6 +292,8 @@
 
             cell.bbsTitleLabel.text = modal.bbsName;
             cell.bbsSubLabel.text = modal.bbsDescription;
+            [cell.bbsSubLabel setHidden:NO];
+            cell.bbsTitleLabel.textColor = RGBACOLOR(190, 169, 130, 1.0);
             
             UIImageView *imageView = (UIImageView *)[cell.contentView viewWithTag:1000];
             [imageView setHidden:NO];
@@ -324,9 +338,9 @@
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    
-    
+
     if (tableView.tag==100) {
+        
         BBSMenuModal *modal = [self.bigMenuArray objectAtIndex:indexPath.row];
         
         [self getTheSecondCategory:modal.bbsFid];
@@ -358,6 +372,8 @@
 - (void)layOutTableView:(BBSMenuModal *)model firstCatAndArrow:(NSIndexPath *)path
 {
     if (isShowSecMenu==NO) {
+        
+        [backBtn setHidden:NO];
         
         isShowSecMenu=YES;
         
@@ -402,6 +418,25 @@
     //    indexRow=path.row;
 }
 
+
+- (void)leftBackClick:(id)sender
+{
+
+    isShowSecMenu=NO;
+    [backBtn setHidden:YES];
+    
+    [self.cateArrowImgV setHidden:YES];
+    
+    [UIView animateWithDuration:0.2f animations:^{
+        self.menuBigTableView.frame=CGRectMake(0, self.menuBigTableView.frame.origin.y, self.menuBigTableView.frame.size.width, self.menuBigTableView.frame.size.height);
+        self.secondMenuView.frame=CGRectMake(self.view.frame.size.width, self.secondMenuView.frame.origin.y, self.secondMenuView.frame.size.width, self.menuBigTableView.frame.size.height);
+    }];
+
+    
+    [self.menuBigTableView reloadData];
+    
+    
+}
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];

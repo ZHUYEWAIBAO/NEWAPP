@@ -116,6 +116,27 @@ LoginDataModel * GetTheSavedUserPhoneNumAndPassword()
     
 }
 
+void SaveTheAppTotalInfoModel(TotalInfoModel *loginModel)
+{
+    NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
+    
+    NSData *data = [NSKeyedArchiver archivedDataWithRootObject:loginModel];
+    [userDefaults setObject:data forKey:@"totalInfoModel"];
+    //将数据即时写入
+    [userDefaults synchronize];
+}
+
+TotalInfoModel * GetTheAppTotalInfoModel()
+{
+    NSUserDefaults *defaults =[NSUserDefaults standardUserDefaults];
+    
+    NSData *data = [defaults objectForKey:@"totalInfoModel"];
+    
+    TotalInfoModel *loginInfo = (TotalInfoModel *)[NSKeyedUnarchiver unarchiveObjectWithData:data];
+    
+    return loginInfo;
+}
+
 @implementation CommonMethod
 
 + (CommonMethod *)share
@@ -143,6 +164,22 @@ LoginDataModel * GetTheSavedUserPhoneNumAndPassword()
     NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
 
     return [userDefaults objectForKey:@"RecordHealthId"];
+}
+
+- (void)saveTheGuideKey:(BOOL)isShowGuide
+{
+    NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
+    [userDefaults setBool:isShowGuide forKey:@"guide"];
+    //将数据即时写入
+    [userDefaults synchronize];
+    
+}
+
+- (BOOL)getTheLocalGuideKey
+{
+    NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
+    
+    return [userDefaults boolForKey:@"guide"];
 }
 
 - (NSInteger)getDayNumberWithYear:(NSInteger)year month:(NSInteger)month

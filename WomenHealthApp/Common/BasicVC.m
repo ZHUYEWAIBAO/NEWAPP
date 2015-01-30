@@ -7,6 +7,7 @@
 //
 
 #import "BasicVC.h"
+#import "IQKeyboardManager.h"
 #import "UITabbarCommonViewController.h"
 #import "UIViewController+Category.h"
 #import "LoginViewController.h"
@@ -70,6 +71,10 @@
     [self setTheBackItemButton];
     [self setTabBarHiddenAction];
     self.view.backgroundColor =[UIColor colorWithRed:243/255.0f green:240/255.0f blue:234/255.0f alpha:1];
+    
+    [[IQKeyboardManager sharedManager] setEnable:NO];
+    [[IQKeyboardManager sharedManager]setEnableAutoToolbar:NO];
+    [IQKeyboardManager sharedManager].shouldShowTextFieldPlaceholder = NO;
 }
 
 
@@ -116,7 +121,7 @@
         //        UIButton *bt=[UIButton buttonWithType:UIButtonTypeCustom];
         //        [bt setBackgroundImage:backImg forState:UIControlStateNormal];
         //        bt.frame=CGRectMake(0, 0, 25, 25);
-        UIBarButtonItem* backItem=[[UIBarButtonItem alloc] initWithTitle:@" " style:UIBarButtonItemStylePlain target:self action:nil];
+        UIBarButtonItem *backItem=[[UIBarButtonItem alloc] initWithTitle:@" " style:UIBarButtonItemStylePlain target:self action:nil];
         
         [backItem setBackButtonBackgroundImage:backImg forState:UIControlStateNormal barMetrics:UIBarMetricsDefault];
         //        UIBarButtonItem *backItem=[[UIBarButtonItem alloc]initWithCustomView:bt];

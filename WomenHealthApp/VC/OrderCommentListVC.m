@@ -9,6 +9,7 @@
 #import "OrderCommentListVC.h"
 #import "CommentListModel.h"
 #import "CommentGoodsCell.h"
+#import "ImageScrollVC.h"
 #import "LineImageView.h"
 
 @interface OrderCommentListVC ()
@@ -175,13 +176,30 @@
     
     
     for (NSInteger i = 0; i < model.imageArray.count; i++) {
-        UIImageView *commentImageView = (UIImageView *)[cell valueForKey:[NSString stringWithFormat:@"commentImageView%ld",i]];
+        UIButton *commentImageView = (UIButton *)[cell valueForKey:[NSString stringWithFormat:@"commentButton%ld",i]];
         [commentImageView setHidden:NO];
-        [commentImageView setImageWithURL:[NSURL URLWithString:[model.imageArray objectAtIndex:i]]];
+        [commentImageView setTag:indexPath.row * 100 +i];
+        [commentImageView setImageWithURL:[NSURL URLWithString:[model.imageArray objectAtIndex:i]] forState:UIControlStateNormal];
+        [commentImageView addTarget:self action:@selector(imageClickAction:) forControlEvents:UIControlEventTouchUpInside];
         
     }
   
     return cell;
+    
+    
+}
+
+- (void)imageClickAction:(id)sender
+{
+    UIButton *button = (UIButton *)sender;
+    
+    CommentListModel *model = [self.commentArray objectAtIndex:button.tag/100];
+    
+    ImageScrollVC *vc = [[ImageScrollVC alloc]initWithNibName:@"ImageScrollVC" bundle:nil];
+    vc.imagesArray = [NSMutableArray arrayWithArray:model.imageArray];
+    vc.selectIndex = button.tag%100;
+    vc.isFromPostDetail = YES;
+    [self.navigationController pushViewController:vc animated:YES];
     
     
 }

@@ -19,7 +19,7 @@
                 <outlet property="photoBtn" destination="kYZ-vi-Xjo" id="c3M-Qz-xAz"/>
                 <outlet property="postTableView" destination="c41-jZ-0Ws" id="kTC-ZF-3sd"/>
                 <outlet property="topView" destination="woQ-un-dxJ" id="Hha-Po-F0F"/>
-                <outlet property="totalLabel" destination="hb9-Y9-ilx" id="8Yn-Os-aEc"/>
+                <outlet property="totalButton" destination="Txb-km-oei" id="2gC-Y6-vIu"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
         </placeholder>
@@ -115,18 +115,17 @@
                             <color key="textColor" red="1" green="0.52941176469999995" blue="0.62745098040000002" alpha="1" colorSpace="calibratedRGB"/>
                             <nil key="highlightedColor"/>
                         </label>
-                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="hb9-Y9-ilx">
-                            <rect key="frame" x="273" y="0.0" width="45" height="21"/>
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="Txb-km-oei">
+                            <rect key="frame" x="260" y="1" width="55" height="22"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                             <fontDescription key="fontDescription" type="system" pointSize="12"/>
-                            <color key="textColor" red="1" green="0.52941176469999995" blue="0.62745098040000002" alpha="1" colorSpace="calibratedRGB"/>
-                            <nil key="highlightedColor"/>
-                        </label>
-                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="comment_reply_btn.png" id="ssK-5C-Qc8">
-                            <rect key="frame" x="252" y="2" width="20" height="20"/>
-                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                        </imageView>
+                            <state key="normal" image="comment_reply_btn.png">
+                                <color key="titleColor" red="1" green="0.52941176469999995" blue="0.62745098040000002" alpha="1" colorSpace="calibratedRGB"/>
+                                <color key="titleShadowColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                            </state>
+                            <state key="selected" image="comment_reply_btn.png"/>
+                            <state key="highlighted" image="comment_reply_btn.png"/>
+                        </button>
                     </subviews>
                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                 </view>

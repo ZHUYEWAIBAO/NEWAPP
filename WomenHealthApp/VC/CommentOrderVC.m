@@ -155,9 +155,9 @@
 - (void)imagePickerController:(UIImagePickerController *)picker didFinishPickingMediaWithInfo:(NSDictionary *)info
 {
     [picker dismissViewControllerAnimated:YES completion:nil];
-    UIImage *photoImg = [info objectForKey:UIImagePickerControllerEditedImage];
+    UIImage *photoImg = [info objectForKey:UIImagePickerControllerOriginalImage];
     
-    NSData *data = UIImageJPEGRepresentation(UIImageScaleToSize(photoImg, CGSizeMake(200, 200)), 0.5);
+    NSData *data = UIImageJPEGRepresentation(photoImg,0.5);
   
     CommentImageModel *model = [[CommentImageModel alloc]init];
     model.commentImageData = data;

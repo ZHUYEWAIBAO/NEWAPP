@@ -8,6 +8,7 @@
 
 #import <Foundation/Foundation.h>
 #import "LoginDataModel.h"
+#import "TotalInfoModel.h"
 
 //把返回字段转换成string类型
 NSString * NSStringExchangeTheReturnValueToString(id value);
@@ -59,6 +60,9 @@ void SaveTheUserPhoneNumAndPassword(LoginDataModel *loginModel);
  */
 LoginDataModel * GetTheSavedUserPhoneNumAndPassword();
 
+void SaveTheAppTotalInfoModel(TotalInfoModel *loginModel);
+TotalInfoModel * GetTheAppTotalInfoModel();
+
 @interface CommonMethod : NSObject
 
 +(CommonMethod *)share;
@@ -67,6 +71,12 @@ LoginDataModel * GetTheSavedUserPhoneNumAndPassword();
  */
 - (void)saveTheRecordKey:(NSString *)recordKey;
 - (NSString *)getTheLocalAddressKey;
+
+/**
+ *  保存已展示引导图
+ */
+- (void)saveTheGuideKey:(BOOL)isShowGuide;
+- (BOOL)getTheLocalGuideKey;
 
 /**
  *  获取当前月份的天数
