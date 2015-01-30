@@ -126,7 +126,8 @@
         [backItem setBackButtonBackgroundImage:backImg forState:UIControlStateNormal barMetrics:UIBarMetricsDefault];
         //        UIBarButtonItem *backItem=[[UIBarButtonItem alloc]initWithCustomView:bt];
         self.navigationItem.backBarButtonItem = backItem;
-    }else{
+    }
+    else{
         backImg=[[UIImage imageWithContentFileName:@"back_bt.png"] resizableImageWithCapInsets:UIEdgeInsetsMake(0, 15, 0, 0)resizingMode:UIImageResizingModeStretch];
         UIBarButtonItem* backItem=[[UIBarButtonItem alloc] initWithTitle:@" " style:UIBarButtonItemStylePlain target:self action:nil];
         
