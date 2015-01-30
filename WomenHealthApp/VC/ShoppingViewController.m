@@ -165,7 +165,7 @@
     for (int i = 0; i < adArray.count; ++i) {
         
         AdModal *model = [adArray objectAtIndex:i];
-        UIImageView *imageView = [[UIImageView alloc]initWithFrame:CGRectMake(0, 0, SCREEN_SIZE.width, 120)];
+        UIImageView *imageView = [[UIImageView alloc]initWithFrame:CGRectMake(SCREEN_SIZE.width*i, 0, SCREEN_SIZE.width, 120)];
         [imageView setContentMode:UIViewContentModeScaleAspectFit];
         //下载图片
         UIActivityIndicatorView *myac=[[UIActivityIndicatorView alloc]initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleGray];
@@ -186,16 +186,17 @@
         [viewsArray addObject:imageView];
     }
     
-    self.mainScorllView = [[CycleScrollView alloc] initWithFrame:CGRectMake(0, 0, 320, 120) animationDuration:3];
-    
-    self.mainScorllView.fetchContentViewAtIndex = ^UIView *(NSInteger pageIndex){
-        return viewsArray[pageIndex];
-    };
-    
-    self.mainScorllView.totalPagesCount = ^NSInteger(void){
-        return array.count;
-    };
-    
+//    self.mainScorllView = [[CycleScrollView alloc] initWithFrame:CGRectMake(0, 0, 320, 120) animationDuration:3];
+//    
+//    self.mainScorllView.fetchContentViewAtIndex = ^UIView *(NSInteger pageIndex){
+//        return viewsArray[pageIndex];
+//    };
+//    
+//    self.mainScorllView.totalPagesCount = ^NSInteger(void){
+//        return array.count;
+//    };
+    AdModal *model1 = [adArray objectAtIndex:0];
+    self.mainScorllView = [[CycleScrollView alloc] initWithFrame:CGRectMake(0, 0, SCREEN_SIZE.width, 120) animationDuration:5 withAry:viewsArray andfirstImageUrl:model1.adSrc];
     __block ShoppingViewController *vc = self;
     self.mainScorllView.TapActionBlock = ^(NSInteger pageIndex){
         

@@ -236,10 +236,10 @@
         [[[dataAry objectAtIndex:sectionN] optionAry] enumerateObjectsUsingBlock:^(id obj, NSUInteger idx, BOOL *stop) {
             ((OptionModel *)obj).selectBool =NO;
         }];
+        
         model.selectBool =YES;
         
     }
-    
     
     [dataTableview reloadData];
 }

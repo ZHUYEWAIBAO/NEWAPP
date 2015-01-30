@@ -140,19 +140,20 @@
         [viewsArray addObject:imageView];
     }
     
-    self.mainScorllView = [[CycleScrollView alloc] initWithFrame:CGRectMake(0, 0, SCREEN_SIZE.width, 120) animationDuration:3];
-    [self.mainScorllView setBackgroundColor:[UIColor whiteColor]];
-    [self.lineImgV setHidden:NO];
-    
-    self.mainScorllView.fetchContentViewAtIndex = ^UIView *(NSInteger pageIndex){
-        return viewsArray[pageIndex];
-    };
-    
-    self.mainScorllView.totalPagesCount = ^NSInteger(void){
-        return array.count;
-    };
-    
-    __block BBSViewController *vc = self;
+//    self.mainScorllView = [[CycleScrollView alloc] initWithFrame:CGRectMake(0, 0, SCREEN_SIZE.width, 120) animationDuration:3];
+//    [self.mainScorllView setBackgroundColor:[UIColor whiteColor]];
+//    [self.lineImgV setHidden:NO];
+//    
+//    self.mainScorllView.fetchContentViewAtIndex = ^UIView *(NSInteger pageIndex){
+//        return viewsArray[pageIndex];
+//    };
+//    
+//    self.mainScorllView.totalPagesCount = ^NSInteger(void){
+//        return array.count;
+//    };
+    AdModal *model1 = [adArray objectAtIndex:0];
+    self.mainScorllView = [[CycleScrollView alloc] initWithFrame:CGRectMake(0, 0, SCREEN_SIZE.width, 120) animationDuration:5 withAry:viewsArray andfirstImageUrl:model1.adSrc];
+        __block BBSViewController *vc = self;
     self.mainScorllView.TapActionBlock = ^(NSInteger pageIndex){
         
         AdModal *modal = [array objectAtIndex:pageIndex];

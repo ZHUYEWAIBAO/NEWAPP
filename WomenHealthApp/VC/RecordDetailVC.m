@@ -50,6 +50,8 @@
     NSString *TodayStr;
     
     NSMutableArray *shujuAry;
+    
+    NSMutableArray *ziAry;//显示cell上
 }
 @end
 
@@ -59,6 +61,7 @@
     liuliangData =@"平均";
     tongjingData =@"轻度";
     shujuAry =[NSMutableArray array];
+    ziAry =[NSMutableArray arrayWithObjects:@"头疼",@"眩晕",@"粉刺",@"呕吐",@"失眠",@"贪冷饮",@"腹泻",@"小腹坠胀",@"头疼",@"食欲不振",@"腰酸",@"便秘",@"发热",@"身体酸痛",@"乳房胀痛",@"白带异常", nil];
     NSDateFormatter  *formater =[[NSDateFormatter alloc]init];
     [formater setDateFormat:@"yyyyMMdd"];
     TodayStr =[formater stringFromDate:self.passDate];
@@ -110,6 +113,22 @@
         [tizhongAry1 addObject:[NSString stringWithFormat:@".%iKG",i]];
         
     }
+    
+    
+    
+    
+    //取出症状数据 新增功能
+    
+    NSDateFormatter  *formateraaaa =[[NSDateFormatter alloc]init];
+    [formateraaaa setDateFormat:@"yyyyMMdd"];
+    NSString * TodayStra =[formater stringFromDate:[CMSinger share].singerDate];
+    NSDictionary* totalDica =[NSMutableDictionary dictionaryWithDictionary:[[[NSUserDefaults standardUserDefaults] objectForKey:@"resultDic"] objectForKey:TodayStra]];
+    shujuAry=[NSMutableArray arrayWithArray:[totalDica objectForKey:@"shujuAry"]];
+    [self.detailTableView reloadData];
+    
+    
+    
+    
 }
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -236,7 +255,7 @@
 //    totalDic =[NSMutableDictionary dictionaryWithDictionary:[[NSUserDefaults standardUserDefaults] objectForKey:@"totalDic"]];
     
     [self dismissWindow];
-    
+    [self.detailTableView reloadData];
     
     
 }
@@ -412,8 +431,26 @@
         [lineImgV setBackgroundColor:RGBACOLOR(199, 199, 204, 1.0)];
         
     }
+    
+    
     cell.detailTitleLabel.text = [self.dataArray objectAtIndex:indexPath.row];
     [cell.detailImageView setImage:[UIImage imageWithContentFileName:[self.imageArray objectAtIndex:indexPath.row]]];
+    if (indexPath.row ==2) {
+        __block NSString *temozhengz=@"";
+        [shujuAry enumerateObjectsUsingBlock:^(id obj, NSUInteger idx, BOOL *stop) {
+            
+            temozhengz =[temozhengz stringByAppendingString:[ziAry objectAtIndex:([obj intValue]-1000)]];
+            if (idx<shujuAry.count-1) {
+                temozhengz =[temozhengz stringByAppendingString:@","];
+            }
+            
+        }];
+        cell.zhengzhuangLab.text =temozhengz;
+        cell.zhengzhuangLab.textColor =FENSERGB;
+        cell.zhengzhuangLab.hidden =NO;
+    }else{
+        cell.zhengzhuangLab.hidden =YES;
+    }
     
     return cell;
     

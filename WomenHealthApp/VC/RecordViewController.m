@@ -87,11 +87,16 @@
 -(void)setTitleLab:(NSString *)title1 withnumber:(int)numberDay{
     
     self.titleLab1.text =title1;
-    if ([title1 isEqualToString:@"亲，您的大姨妈还没来嘛。"]) {
+    if ([title1 isEqualToString:@"亲，您的大姨妈还没来嘛。"] ) {
         self.titleLab2.text =@"";
 
     }else{
-        self.titleLab2.text =[NSString stringWithFormat:@"距离大姨妈来还有%i天~",numberDay];
+        if (numberDay>0) {
+            self.titleLab2.text =[NSString stringWithFormat:@"距离大姨妈来还有%i天~",numberDay];
+        }else{
+            self.titleLab2.text =@"";
+        }
+        
 
     }
     

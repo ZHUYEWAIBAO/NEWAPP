@@ -14,4 +14,7 @@
 
 @property (weak, nonatomic) IBOutlet UIImageView *detailImageView;
 
+@property (weak, nonatomic) IBOutlet UILabel *zhengzhuangLab;
+
+
 @end
