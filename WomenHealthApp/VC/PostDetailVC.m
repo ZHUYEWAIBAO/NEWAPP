@@ -618,6 +618,8 @@
             
             [SVProgressHUD showSuccessWithStatus:@"发表成功"];
             
+            [self refreshViewBeginRefreshing:self.footview];
+            
             [self.inputTextField resignFirstResponder];
             [self.inputTextField setText:@""];
      
@@ -665,6 +667,8 @@
         if ([@"1" isEqualToString:CHECK_VALUE([statusDic objectForKey:@"statu"])]) {
             
             [SVProgressHUD showSuccessWithStatus:@"发表成功"];
+            
+            [self refreshViewBeginRefreshing:self.footview];
             
             [self.inputTextField resignFirstResponder];
             [self.inputTextField setText:@""];

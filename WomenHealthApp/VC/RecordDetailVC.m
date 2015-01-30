@@ -124,14 +124,14 @@
     NSString * TodayStra =[formater stringFromDate:[CMSinger share].singerDate];
     NSDictionary* totalDica =[NSMutableDictionary dictionaryWithDictionary:[[[NSUserDefaults standardUserDefaults] objectForKey:@"resultDic"] objectForKey:TodayStra]];
     shujuAry=[NSMutableArray arrayWithArray:[totalDica objectForKey:@"shujuAry"]];
-    [self.detailTableView reloadData];
     
-    
-    
+
     
 }
 - (void)viewDidLoad {
     [super viewDidLoad];
+    
+    
     
     UIButton *rightButton=[[UIButton alloc]initWithFrame:CGRectMake(0, 0, 30, 30)];
     [rightButton addTarget:self action:@selector(recordDetailSureAction:) forControlEvents:UIControlEventTouchUpInside];
@@ -209,7 +209,7 @@
     [STViewTwo addSubview:detailTwo];
     
 
-
+//    [self.detailTableView reloadData];
  
 }
 #pragma mark recordProtocal
