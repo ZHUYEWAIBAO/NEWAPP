@@ -73,6 +73,12 @@ TotalInfoModel * GetTheAppTotalInfoModel();
 - (NSString *)getTheLocalAddressKey;
 
 /**
+ *  保存已展示引导图
+ */
+- (void)saveTheGuideKey:(BOOL)isShowGuide;
+- (BOOL)getTheLocalGuideKey;
+
+/**
  *  获取当前月份的天数
  *
  *  @param year  当前年数

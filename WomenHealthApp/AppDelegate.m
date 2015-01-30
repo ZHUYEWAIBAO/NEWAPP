@@ -11,6 +11,7 @@
 #import "RecordViewController.h"
 #import "BBSViewController.h"
 #import "ShoppingViewController.h"
+#import "GuideViewController.h"
 #import "SetViewController.h"
 #import "UITabbarCommonViewController.h"
 #import <ShareSDK/ShareSDK.h>
@@ -46,40 +47,47 @@
     [BPush setDelegate:self];
     [self setBaiDu];
     
-    //记录
-    UINavigationController *record_vc;
-    if ([COMMONDSHARE getTheLocalAddressKey]) {
-        record_vc = [RecordViewController navigationControllerContainSelf];
-        
-        //圈子
-        UINavigationController *bbs_vc = [BBSViewController navigationControllerContainSelf];
-        //购物
-        UINavigationController *shopping_vc = [ShoppingViewController navigationControllerContainSelf];
-        //设置
-        UINavigationController *set_vc = [SetViewController navigationControllerContainSelf];
-        
-        NSArray *ctrs = [NSArray arrayWithObjects:record_vc,bbs_vc,shopping_vc,set_vc,nil];
-        
-        NSArray *imgs = [NSArray  arrayWithObjects:[UIImage imageWithContentFileName:@"new_record_btn.png"],[UIImage imageWithContentFileName:@"new_circle_btn.png"],[UIImage imageWithContentFileName:@"new_buy_btn.png"],[UIImage imageWithContentFileName:@"new_set_btn.png"],nil];
-        
-        NSArray *sImgs = [NSArray arrayWithObjects:[UIImage imageWithContentFileName:@"new_record_btn_selected.png"],[UIImage imageWithContentFileName:@"new_circle_btn_selected.png"],[UIImage imageWithContentFileName:@"new_buy_btn_selected.png"],[UIImage imageWithContentFileName:@"new_set_btn_selected.png"],nil];
-        
-        NSArray *tits = [NSArray arrayWithObjects:@"记录",@"圈子",@"购物",@"设置",nil];
-        
-        self.tabCtrl.viewControllers = ctrs;
-        self.tabCtrl.images = imgs;
-        self.tabCtrl.selectImages = sImgs;
-        self.tabCtrl.titles = tits;
-        
-        [WHSinger share].customTabbr = self.tabCtrl;
-        
-        self.window.rootViewController = self.tabCtrl;
-        
+    if ([COMMONDSHARE getTheLocalGuideKey]) {
+        //记录
+        UINavigationController *record_vc;
+        if ([COMMONDSHARE getTheLocalAddressKey]) {
+            record_vc = [RecordViewController navigationControllerContainSelf];
+            
+            //圈子
+            UINavigationController *bbs_vc = [BBSViewController navigationControllerContainSelf];
+            //购物
+            UINavigationController *shopping_vc = [ShoppingViewController navigationControllerContainSelf];
+            //设置
+            UINavigationController *set_vc = [SetViewController navigationControllerContainSelf];
+            
+            NSArray *ctrs = [NSArray arrayWithObjects:record_vc,bbs_vc,shopping_vc,set_vc,nil];
+            
+            NSArray *imgs = [NSArray  arrayWithObjects:[UIImage imageWithContentFileName:@"new_record_btn.png"],[UIImage imageWithContentFileName:@"new_circle_btn.png"],[UIImage imageWithContentFileName:@"new_buy_btn.png"],[UIImage imageWithContentFileName:@"new_set_btn.png"],nil];
+            
+            NSArray *sImgs = [NSArray arrayWithObjects:[UIImage imageWithContentFileName:@"new_record_btn_selected.png"],[UIImage imageWithContentFileName:@"new_circle_btn_selected.png"],[UIImage imageWithContentFileName:@"new_buy_btn_selected.png"],[UIImage imageWithContentFileName:@"new_set_btn_selected.png"],nil];
+            
+            NSArray *tits = [NSArray arrayWithObjects:@"记录",@"圈子",@"购物",@"设置",nil];
+            
+            self.tabCtrl.viewControllers = ctrs;
+            self.tabCtrl.images = imgs;
+            self.tabCtrl.selectImages = sImgs;
+            self.tabCtrl.titles = tits;
+            
+            [WHSinger share].customTabbr = self.tabCtrl;
+            
+            self.window.rootViewController = self.tabCtrl;
+            
+        }
+        else{
+            record_vc = [FirstRecordVC navigationControllerContainSelf];
+            
+            self.window.rootViewController = record_vc;
+        }
+
     }
     else{
-        record_vc = [FirstRecordVC navigationControllerContainSelf];
-        
-        self.window.rootViewController = record_vc;
+        GuideViewController *vc = [[GuideViewController alloc]initWithNibName:@"GuideViewController" bundle:nil];
+        self.window.rootViewController = vc;
     }
 
     LoginDataModel *loginData = GetTheSavedUserPhoneNumAndPassword();

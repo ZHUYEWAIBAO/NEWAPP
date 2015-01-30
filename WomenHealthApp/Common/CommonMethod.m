@@ -166,6 +166,22 @@ TotalInfoModel * GetTheAppTotalInfoModel()
     return [userDefaults objectForKey:@"RecordHealthId"];
 }
 
+- (void)saveTheGuideKey:(BOOL)isShowGuide
+{
+    NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
+    [userDefaults setBool:isShowGuide forKey:@"guide"];
+    //将数据即时写入
+    [userDefaults synchronize];
+    
+}
+
+- (BOOL)getTheLocalGuideKey
+{
+    NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
+    
+    return [userDefaults boolForKey:@"guide"];
+}
+
 - (NSInteger)getDayNumberWithYear:(NSInteger)year month:(NSInteger)month
 {
     NSInteger days[] = { 31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31 };
