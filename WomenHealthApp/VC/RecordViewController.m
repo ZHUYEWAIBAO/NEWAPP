@@ -92,13 +92,13 @@
     NSArray *TodayAry =[TodayStrsss componentsSeparatedByString:@"_"];
     NSString *TodayYear =[TodayAry objectAtIndex:0];
     NSString *Todaymonth=[TodayAry objectAtIndex:1];
-    NSString *TodayDay=[TodayAry objectAtIndex:1];
+    NSString *TodayDay=[TodayAry objectAtIndex:2];
     
     int day =([TodayYear intValue]-[currentDateYear intValue])*365 +([Todaymonth intValue]-[currentDatemonth intValue])*30 +([TodayDay intValue]-[currentDateDay intValue]);
     
     
     
-    if (day>1) {
+    if (day>0) {
         [OMGToast showWithText:@"请回过去设置"];
         return ;
     }
