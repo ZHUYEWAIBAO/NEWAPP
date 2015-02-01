@@ -64,17 +64,23 @@
     _imageArray = [[NSMutableArray alloc]initWithCapacity:0];
     _imageIdArray = [[NSMutableArray alloc]initWithCapacity:0];
     
-    [self getThePostDetailWithTid:self.currentTid];
+    [self getThePostDetailWithTid:self.currentTid lastPage:NO];
     
 }
 
-- (void)getThePostDetailWithTid:(NSString *)tid
+- (void)getThePostDetailWithTid:(NSString *)tid lastPage:(BOOL)isLastPage
 {
     if (self.page == 1) {
         [SVProgressHUD showWithMaskType:SVProgressHUDMaskTypeClear];
     }
     
-    NSString *path = [NSString stringWithFormat:@"/api/dz/index.php?mod=viewthread&tid=%@&offset=%ld",self.currentTid,self.postListArray.count];
+    NSString *path;
+    if (isLastPage) {
+        path = [NSString stringWithFormat:@"/api/dz/index.php?mod=viewthread&tid=%@&offset=%ld",self.currentTid,self.postListArray.count];
+    }
+    else{
+        path = [NSString stringWithFormat:@"/api/dz/index.php?mod=viewthread&tid=%@&page=%ld",self.currentTid,self.page];
+    }
     
     [NETWORK_ENGINE requestWithPath:path Params:self.params CompletionHandler:^(MKNetworkOperation *completedOperation) {
         
@@ -92,12 +98,14 @@
             [self layOutTheHeadView];
             
             self.totalRowNum = [CHECK_VALUE([data objectForKey:@"total_subject"]) integerValue];
+            self.totalPage = [CHECK_VALUE([data objectForKey:@"total_page"]) integerValue];
             
             NSArray *ary = CHECK_ARRAY_VALUE([data objectForKey:@"view_threadlist"]);
             
             if (ary.count>0) {
                 //如果是第一页，清空数组
                 if (self.page == 1) {
+                    
                     [self.postListArray removeAllObjects];
                    
                 }
@@ -115,9 +123,15 @@
                     
                 }
 
-                self.page++;
- 
-                
+                //当前数据小于总数据的时候页数++
+                if (self.postListArray.count < self.totalRowNum) {
+                    self.page++;
+                    self.footview.hidden=NO;
+                }
+                else{
+                    self.footview.hidden=YES;
+                }
+    
             }
             [self.postTableView reloadData];
             
@@ -617,8 +631,12 @@
         if ([@"1" isEqualToString:CHECK_VALUE([statusDic objectForKey:@"statu"])]) {
             
             [SVProgressHUD showSuccessWithStatus:@"发表成功"];
-            
-            [self refreshViewBeginRefreshing:self.footview];
+  
+            if (self.page == self.totalPage) {
+                
+                [self getThePostDetailWithTid:self.currentTid lastPage:YES];
+                
+            }
             
             [self.inputTextField resignFirstResponder];
             [self.inputTextField setText:@""];
@@ -667,9 +685,12 @@
         if ([@"1" isEqualToString:CHECK_VALUE([statusDic objectForKey:@"statu"])]) {
             
             [SVProgressHUD showSuccessWithStatus:@"发表成功"];
-            
-            [self refreshViewBeginRefreshing:self.footview];
-            
+   
+            if (self.page == self.totalPage) {
+                
+                [self getThePostDetailWithTid:self.currentTid lastPage:YES];
+                
+            }
             [self.inputTextField resignFirstResponder];
             [self.inputTextField setText:@""];
      
@@ -824,7 +845,7 @@
 - (void)refreshViewBeginRefreshing:(MJRefreshBaseView *)refreshView
 {
     if (refreshView == self.footview){
-        [self getThePostDetailWithTid:self.currentTid];
+        [self getThePostDetailWithTid:self.currentTid lastPage:NO];
     }
 }
 
@@ -833,7 +854,7 @@
 {
     if (self.isLoading) { return;}
     self.page = 1;
-    [self getThePostDetailWithTid:self.currentTid];
+    [self getThePostDetailWithTid:self.currentTid lastPage:NO];
     [super reloadTableViewDataSource];
 }
 

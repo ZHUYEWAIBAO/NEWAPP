@@ -131,7 +131,7 @@
                   symbolName = "-[ShoppingOrderSuccessVC payButtonAction:]"
                   moduleName = "WomenHealthApp"
                   urlString = "file:///Users/zhuqing/Desktop/NEWAPP/WomenHealthApp/VC/ShoppingOrderSuccessVC.m"
-                  timestampString = "444299401.952194"
+                  timestampString = "444497523.441321"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "72"
@@ -145,7 +145,7 @@
                   symbolName = "__42-[ShoppingOrderSuccessVC payButtonAction:]_block_invoke"
                   moduleName = "WomenHealthApp"
                   urlString = "file:///Users/zhuqing/Desktop/NEWAPP/WomenHealthApp/VC/ShoppingOrderSuccessVC.m"
-                  timestampString = "444299401.952455"
+                  timestampString = "444497523.441806"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "72"
@@ -177,7 +177,7 @@
                   symbolName = "__39-[LoginViewController upLoadTheUseName]_block_invoke"
                   moduleName = "WomenHealthApp"
                   urlString = "file:///Users/zhuqing/Desktop/NEWAPP/WomenHealthApp/VC/LoginViewController.m"
-                  timestampString = "444299401.953673"
+                  timestampString = "444497523.443204"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "306"
@@ -191,7 +191,7 @@
                   symbolName = "__39-[LoginViewController upLoadTheUseName]_block_invoke_2"
                   moduleName = "WomenHealthApp"
                   urlString = "file:///Users/zhuqing/Desktop/NEWAPP/WomenHealthApp/VC/LoginViewController.m"
-                  timestampString = "444299401.953861"
+                  timestampString = "444497523.443488"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "306"
@@ -378,12 +378,44 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "WomenHealthApp/VC/PostDetailVC.m"
-            timestampString = "444293590.044862"
+            timestampString = "444497239.095641"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "729"
-            endingLineNumber = "729"
+            startingLineNumber = "750"
+            endingLineNumber = "750"
             landmarkName = "-deleteThePostAction:"
+            landmarkType = "5">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "WomenHealthApp/VC/PostDetailVC.m"
+            timestampString = "444497547.114232"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "691"
+            endingLineNumber = "691"
+            landmarkName = "-continueToSendThePost"
+            landmarkType = "5">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "WomenHealthApp/VC/PostDetailVC.m"
+            timestampString = "444497712.740846"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "688"
+            endingLineNumber = "688"
+            landmarkName = "-continueToSendThePost"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>
