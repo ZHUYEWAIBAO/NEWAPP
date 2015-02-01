@@ -19,5 +19,16 @@
     
     return shared;
 }
-
+-(id)init{
+    
+    if (self =[super init]) {
+        self.currenYuejingDayAry =[NSMutableArray array];
+        self.paiRuanDateAry =[NSMutableArray array];
+        self.yueJingDayAry =[NSMutableArray array];
+        self.weixianqiDayAry =[NSMutableArray array];
+        
+        
+    }
+    return self;
+}
 @end

@@ -89,6 +89,14 @@
     }else{
         //  do nothing
         NSLog(@"%@",totalDic);
+        aiaiIndex =[[totalDic objectForKey:@"aiaiIndex"] intValue];
+        tiwenRow0 =[[totalDic objectForKey:@"tiwenRow0"] intValue];
+        tiwenRow1 =[[totalDic objectForKey:@"tiwenRow1"] intValue];
+        tizhongRow0 =[[totalDic objectForKey:@"tizhongRow0"] intValue];
+        tizhongRow1 =[[totalDic objectForKey:@"tizhongRow1"] intValue];
+        
+        shujuAry =[totalDic objectForKey:@"shujuAry"];
+        
     }
 
     aiaiAry =@[@"没带套套",@"带了套套"];
@@ -208,6 +216,12 @@
     }];
     [STViewTwo addSubview:detailTwo];
     
+    
+    //passDate
+    NSDateFormatter  *formateraaaa =[[NSDateFormatter alloc]init];
+    [formateraaaa setDateFormat:@"yyyy年M月dd"];
+    NSString * TodayStra =[formateraaaa stringFromDate:self.passDate];
+    self.title =TodayStra;
 
 
  
@@ -262,9 +276,9 @@
 
 -(void)setLiuLiang:(NSString *)liuliang AndTongjing:(NSString *)tongjing{
     
-
+    
+    
     liuliangData =liuliang;
-
     tongjingData =tongjing;
     
 }
@@ -435,7 +449,18 @@
     
     cell.detailTitleLabel.text = [self.dataArray objectAtIndex:indexPath.row];
     [cell.detailImageView setImage:[UIImage imageWithContentFileName:[self.imageArray objectAtIndex:indexPath.row]]];
-    if (indexPath.row ==2) {
+    if (indexPath.row ==0) {
+        
+        cell.zhengzhuangLab.text =[aiaiAry objectAtIndex:aiaiIndex];
+        cell.zhengzhuangLab.textColor =FENSERGB;
+        cell.zhengzhuangLab.hidden =NO;
+    }else if(indexPath.row ==1){
+        
+        
+        cell.zhengzhuangLab.text =[[tiwenAry0 objectAtIndex:tiwenRow0] stringByAppendingString:[tiwenAry1 objectAtIndex:tiwenRow1]];
+        cell.zhengzhuangLab.textColor =FENSERGB;
+        cell.zhengzhuangLab.hidden =NO;
+    }else if(indexPath.row ==2){
         __block NSString *temozhengz=@"";
         [shujuAry enumerateObjectsUsingBlock:^(id obj, NSUInteger idx, BOOL *stop) {
             
@@ -449,7 +474,9 @@
         cell.zhengzhuangLab.textColor =FENSERGB;
         cell.zhengzhuangLab.hidden =NO;
     }else{
-        cell.zhengzhuangLab.hidden =YES;
+        cell.zhengzhuangLab.text =[[tizhongAry0 objectAtIndex:tizhongRow0] stringByAppendingString:[tizhongAry1 objectAtIndex:tizhongRow1]];
+        cell.zhengzhuangLab.textColor =FENSERGB;
+        cell.zhengzhuangLab.hidden =NO;
     }
     
     return cell;
@@ -460,11 +487,11 @@
     
     NSLog(@"%li",(long)indexPath.row);
     
-    aiaiIndex =[[totalDic objectForKey:@"aiaiIndex"] intValue];
-    tiwenRow0=  [[totalDic objectForKey:@"tiwenRow0"] intValue];
-    tiwenRow0=  [[totalDic objectForKey:@"tiwenRow0"] intValue];
-    tizhongRow0=  [[totalDic objectForKey:@"tizhongRow0"] intValue];
-    tizhongRow1=  [[totalDic objectForKey:@"tizhongRow1"] intValue];
+//    aiaiIndex =[[totalDic objectForKey:@"aiaiIndex"] intValue];
+//    tiwenRow0=  [[totalDic objectForKey:@"tiwenRow0"] intValue];
+//    tiwenRow1=  [[totalDic objectForKey:@"tiwenRow1"] intValue];
+//    tizhongRow0=  [[totalDic objectForKey:@"tizhongRow0"] intValue];
+//    tizhongRow1=  [[totalDic objectForKey:@"tizhongRow1"] intValue];
     switch (indexPath.row) {
         case 0:{
             
@@ -798,8 +825,48 @@
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
 }
+-(NSDate *)getTheDate:(NSDate *)theDate afterDays:(int)days{
+    
+    NSCalendar *calendar = [[NSCalendar alloc] initWithCalendarIdentifier:NSGregorianCalendar];
+    NSDateComponents *comps = nil;
+    comps = [calendar components:NSYearCalendarUnit|NSMonthCalendarUnit|NSDayCalendarUnit fromDate:theDate];
+    NSDateComponents *adcomps = [[NSDateComponents alloc] init];
+    [adcomps setYear:0];
+    [adcomps setMonth:0];
+    [adcomps setDay:days];
+    NSDate *resultDate;
+    resultDate = [calendar dateByAddingComponents:adcomps toDate:theDate options:0];
+    //    NSLog(@"resultDate--------%@",resultDate);
+    
+    return resultDate;
+}
 
 - (IBAction)startSwitchClick:(id)sender {
+    //
+//    for (int i=[CMSinger share].durationDay; i>0; i--) {
+//
+//        if ([[CMSinger share].yueJingDayAry containsObject:[self getTheDate:[CMSinger share].singerDate afterDays:i]]) {
+//            
+//            [OMGToast showWithText:@"您不能设置开始"];
+//            starSwitch.on =NO;
+//            return ;
+//        }
+//    }
+//
+//
+    
+
+    
+    if ([[CMSinger share].yueJingDayAry containsObject:[CMSinger share].singerDate] ||[[CMSinger share].currenYuejingDayAry containsObject:[CMSinger share].singerDate]) {
+        
+        [OMGToast showWithText:@"您不能设置开始"];
+        starSwitch.on =NO;
+    }else{
+        
+        
+        
+        
+    }
     
     [[NSUserDefaults standardUserDefaults] setBool:((UISwitch *)sender).on forKey:@"startSwitchClick"];
     
@@ -808,6 +875,21 @@
 }
 
 - (IBAction)endSwitchClick:(id)sender {
+    if ([[CMSinger share].yueJingDayAry containsObject:[CMSinger share].singerDate] ||[[CMSinger share].currenYuejingDayAry containsObject:[CMSinger share].singerDate] ) {
+        
+        
+        
+        
+    }else{
+        
+        
+        [OMGToast showWithText:@"您不能设置结束"];
+        endSwitch.on =NO;
+        
+    }
+    
+    
+    
      [[NSUserDefaults standardUserDefaults] setBool:((UISwitch *)sender).on forKey:@"startSwitchClicktwo"];
 }
 @end

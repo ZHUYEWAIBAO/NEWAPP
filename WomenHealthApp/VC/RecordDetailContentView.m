@@ -64,6 +64,14 @@
     
 }
 - (IBAction)tocalClcik:(id)sender {
+    
+    if (![[CMSinger share].yueJingDayAry containsObject:[CMSinger share].singerDate]) {
+        
+        [OMGToast showWithText:@"您当前不处于月经期，无法设置"];
+        
+        return;
+    }
+    
    UIButton *btn =  (UIButton *)sender;
     [self.typeBtn0 setBackgroundImage:[UIImage imageWithContentFileName:@"Record_detail_detail_text.png"] forState:UIControlStateNormal];
     [self.typeBtn1 setBackgroundImage:[UIImage imageWithContentFileName:@"Record_detail_detail_text.png"] forState:UIControlStateNormal];
@@ -84,8 +92,31 @@
     
     
 }
-
+-(NSDate *)getTheDate:(NSDate *)theDate afterDays:(int)days{
+    
+    NSCalendar *calendar = [[NSCalendar alloc] initWithCalendarIdentifier:NSGregorianCalendar];
+    NSDateComponents *comps = nil;
+    comps = [calendar components:NSYearCalendarUnit|NSMonthCalendarUnit|NSDayCalendarUnit fromDate:theDate];
+    NSDateComponents *adcomps = [[NSDateComponents alloc] init];
+    [adcomps setYear:0];
+    [adcomps setMonth:0];
+    [adcomps setDay:days];
+    NSDate *resultDate;
+    resultDate = [calendar dateByAddingComponents:adcomps toDate:theDate options:0];
+    //    NSLog(@"resultDate--------%@",resultDate);
+    
+    return resultDate;
+}
 - (IBAction)tocalClcikTwo:(id)sender{
+    
+    
+    if (![[CMSinger share].yueJingDayAry containsObject:[CMSinger share].singerDate]) {
+        
+        [OMGToast showWithText:@"您当前不处于月经期，无法设置"];
+        
+        return;
+    }
+    
     UIButton *btn =  (UIButton *)sender;
     [self.typeBtnNew0 setBackgroundImage:[UIImage imageWithContentFileName:@"Record_detail_detail_text.png"] forState:UIControlStateNormal];
     [self.typeBtnNew1 setBackgroundImage:[UIImage imageWithContentFileName:@"Record_detail_detail_text.png"] forState:UIControlStateNormal];

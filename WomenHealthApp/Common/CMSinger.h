@@ -13,4 +13,13 @@
 +(CMSinger *) share ;
 @property(nonatomic,strong) NSDate *singerDate;
 
+
+@property(nonatomic,strong)   NSMutableArray *currenYuejingDayAry;
+@property(nonatomic,strong)   NSMutableArray *paiRuanDateAry;
+
+@property(nonatomic,strong)   NSMutableArray *yueJingDayAry;
+@property(nonatomic,strong)   NSMutableArray *weixianqiDayAry;
+
+@property(nonatomic)    int durationDay;
+
 @end

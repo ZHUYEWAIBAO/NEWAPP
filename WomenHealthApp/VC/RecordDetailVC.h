@@ -21,6 +21,7 @@
 @property (strong, nonatomic) NSMutableArray *dataArray;
 @property (strong, nonatomic) NSMutableArray *imageArray;
 
+
 @property(nonatomic,strong) NSDate *passDate;//上个页面传来的数据 记录当天的情况
 
 - (IBAction)startSwitchClick:(id)sender;

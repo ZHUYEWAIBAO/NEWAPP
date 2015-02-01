@@ -71,8 +71,10 @@
     NSArray *dataAry =[[[NSUserDefaults standardUserDefaults] objectForKey:RecordHealthId] componentsSeparatedByString:@"_"];
     NSString *timeStr =[dataAry objectAtIndex:0];
     NSDate *confromTimesp = [NSDate dateWithTimeIntervalSince1970:[timeStr doubleValue]];
+    
+    
     confromTimesp =[self getTheDate:confromTimesp afterDays:1];
-
+    
     currentDate =[self getTheDate:confromTimesp afterDays:1-(int)[self getDayFromDate:confromTimesp]];
     
 
@@ -84,18 +86,21 @@
     zhouqiDay =[[dataAry objectAtIndex:2] intValue];//周期时间
     NSDate *paiRuanDate =[self getTheDate:confromTimesp afterDays:zhouqiDay-14]; //第一个排卵日
     
+    [CMSinger share].durationDay =durationDay;
 
     /**
      *  迭代一年时间
      */
     //红色的线
     
-    if ([[NSUserDefaults standardUserDefaults] objectForKey:@"addYueJingAry"]) {
+    if ([(NSMutableArray *)[[NSUserDefaults standardUserDefaults] objectForKey:@"addYueJingAry"] count] !=0) {
+        
         currenYuejingDayAry=[[NSUserDefaults standardUserDefaults] objectForKey:@"addYueJingAry"];
     }else{
         for (int ii =0; ii<durationDay; ii++) {
             
             [currenYuejingDayAry addObject:[self getTheDate:confromTimesp afterDays:ii]];
+            
         }
     }
     
@@ -126,7 +131,11 @@
         }
         
     }
-
+    [CMSinger share].currenYuejingDayAry =currenYuejingDayAry;
+    [CMSinger share].paiRuanDateAry =paiRuanDateAry;
+    [CMSinger share].yueJingDayAry =yueJingDayAry;
+    [CMSinger share].weixianqiDayAry =weixianqiDayAry;
+    
     
     daysAry =[NSMutableArray array];
     formater =[[NSDateFormatter alloc]init];
@@ -304,6 +313,13 @@
 -(void)calanderReloadData{
     
     
+    static dispatch_once_t onceToken;
+    dispatch_once(&onceToken, ^{
+        [self backNowCalendar];
+    });
+
+    
+    
     NSInteger totayDays =(unsigned long)[self getNumberForDate:currentDate];
     
     
@@ -382,6 +398,7 @@
         }
     }
     
+    
 }
 
 /**
@@ -405,26 +422,84 @@
         
         
         for (int iii =0; iii<durationDay; iii++) {
-            [currenYuejingDayAry addObject:[self getTheDate:[CMSinger share].singerDate afterDays:iii+1]];
+            NSDate *sss =[self getTheDate:[CMSinger share].singerDate afterDays:iii+1];
+            if ([currenYuejingDayAry containsObject:sss]) {
+                
+            }else{
+                NSMutableArray *ssssAry =[NSMutableArray arrayWithArray:currenYuejingDayAry];
+                
+                [ssssAry addObject:sss];
+                currenYuejingDayAry =ssssAry ;
+            }
+            
+            
         }
         
         for (int xxx=0; xxx<9; xxx++) {
-            [weixianqiDayAry addObject:[self getTheDate:[CMSinger share].singerDate afterDays:xxx-14-5]];
+            
+            NSDate *dfdfdf =[self getTheDate:[CMSinger share].singerDate afterDays:xxx-14-5];
+            if ([weixianqiDayAry containsObject:dfdfdf]) {
+                
+            }else{
+                NSMutableArray *dfdfdfAry =[NSMutableArray arrayWithArray:weixianqiDayAry];
+                
+                [dfdfdfAry addObject:dfdfdf];
+                weixianqiDayAry =dfdfdfAry;
+            }
+            
+            
         }
+        
         [paiRuanDateAry addObject:[self getTheDate:[CMSinger share].singerDate afterDays:-14]];
         
         
     }else if([yesOrNo intValue] ==0){
         //如果是结束传递过来
         //移除月经期  移除危险期 移除拍软日
+        
         for (int iii =0; iii<durationDay; iii++) {
-            [currenYuejingDayAry removeObject:[self getTheDate:[CMSinger share].singerDate afterDays:iii+1]];
+            NSDate *dsfdsf =[self getTheDate:[CMSinger share].singerDate afterDays:iii+1];
+            
+            if ([currenYuejingDayAry containsObject:dsfdsf]) {
+                NSMutableArray *dfdfdfAry =[NSMutableArray arrayWithArray:currenYuejingDayAry];
+                
+                [dfdfdfAry removeObject:dsfdsf];
+                currenYuejingDayAry =dfdfdfAry;
+                
+
+            }
+            
+            if ([yueJingDayAry containsObject:dsfdsf]) {
+                
+                NSMutableArray *dfdfdfAry =[NSMutableArray arrayWithArray:yueJingDayAry];
+                
+                [dfdfdfAry removeObject:dsfdsf];
+                yueJingDayAry =dfdfdfAry;
+                
+            
+            }
+
+            
         }
         
         for (int xxx=0; xxx<9; xxx++) {
-            [weixianqiDayAry removeObject:[self getTheDate:[CMSinger share].singerDate afterDays:xxx-14-5]];
+           NSDate *dsfdsf =[self getTheDate:[CMSinger share].singerDate afterDays:xxx-14-5];
+            if ([weixianqiDayAry containsObject:dsfdsf]) {
+                
+                NSMutableArray *dfdfdfAry =[NSMutableArray arrayWithArray:weixianqiDayAry];
+                [dfdfdfAry removeObject:dsfdsf];
+                weixianqiDayAry =dfdfdfAry;
+                
+            }
+            
+            
         }
-        [paiRuanDateAry removeObject:[self getTheDate:[CMSinger share].singerDate afterDays:-14]];
+//
+        
+        if ([paiRuanDateAry containsObject:[self getTheDate:[CMSinger share].singerDate afterDays:-14]]) {
+             [paiRuanDateAry removeObject:[self getTheDate:[CMSinger share].singerDate afterDays:-14]];
+        }
+       
         
         
     }else if([yesOrNo intValue] ==-1){
@@ -441,19 +516,24 @@
         
     }else{
         
-        for (int iii =0; iii<durationDay; iii++) {
-            [currenYuejingDayAry removeObject:[self getTheDate:[CMSinger share].singerDate afterDays:iii+1]];
-        }
-        
-        for (int xxx=0; xxx<9; xxx++) {
-            [weixianqiDayAry removeObject:[self getTheDate:[CMSinger share].singerDate afterDays:xxx-14-5]];
-        }
-        
-        [paiRuanDateAry removeObject:[self getTheDate:[CMSinger share].singerDate afterDays:-14]];
+//        for (int iii =0; iii<durationDay; iii++) {
+//            [currenYuejingDayAry removeObject:[self getTheDate:[CMSinger share].singerDate afterDays:iii+1]];
+//        }
+//        
+//        for (int xxx=0; xxx<9; xxx++) {
+//            [weixianqiDayAry removeObject:[self getTheDate:[CMSinger share].singerDate afterDays:xxx-14-5]];
+//        }
+//        
+//        [paiRuanDateAry removeObject:[self getTheDate:[CMSinger share].singerDate afterDays:-14]];
         
     }
 
 
+    [CMSinger share].currenYuejingDayAry =currenYuejingDayAry;
+    [CMSinger share].paiRuanDateAry =paiRuanDateAry;
+    [CMSinger share].yueJingDayAry =yueJingDayAry;
+    [CMSinger share].weixianqiDayAry =weixianqiDayAry;
+    
     
     [[NSUserDefaults standardUserDefaults] setObject:currenYuejingDayAry forKey:@"addYueJingAry"];
     [[NSUserDefaults standardUserDefaults] synchronize];
@@ -520,8 +600,6 @@
 
 - (IBAction)rightBtnClick:(id)sender {
     
-    
-    
     NSCalendar *calendar = [[NSCalendar alloc] initWithCalendarIdentifier:NSGregorianCalendar];
     NSDateComponents *comps = nil;
     comps = [calendar components:NSYearCalendarUnit|NSMonthCalendarUnit|NSDayCalendarUnit fromDate:currentDate];
@@ -533,10 +611,53 @@
     [formater setDateFormat:@"yyyy年MM月"];
     NSString *TodayStr =[formater stringFromDate:currentDate];
     self.titleLab.text =TodayStr;
-
     [self calanderReloadData];
     
 }
+/**
+ * 显示当前日期
+ */
+-(void)backNowCalendar{
+    
+    [formater setDateFormat:@"yyyy_M"];
+    NSString *currentDateStr =[formater stringFromDate:currentDate];
+    
+    NSDateFormatter *formaterNew =[[NSDateFormatter alloc]init];
+    [formaterNew setDateFormat:@"yyyy_M"];
+    NSDate *date =[NSDate date];
+    NSString *TodayStr =[formaterNew stringFromDate:date];
+    
+    NSArray *currentDateAry =[currentDateStr componentsSeparatedByString:@"_"];
+    NSString *currentDateYear =[currentDateAry objectAtIndex:0];
+    NSString *currentDatemonth=[currentDateAry objectAtIndex:1];
+    
+    NSArray *TodayAry =[TodayStr componentsSeparatedByString:@"_"];
+    NSString *TodayYear =[TodayAry objectAtIndex:0];
+    NSString *Todaymonth=[TodayAry objectAtIndex:1];
+    
+    int month =([TodayYear intValue]-[currentDateYear intValue])*12 +([Todaymonth intValue]-[currentDatemonth intValue]);
+    
+    [self getSeverMonthAfterDate:month];
+    
+
+}
+-(void)getSeverMonthAfterDate:(int)month{
+    NSCalendar *calendar = [[NSCalendar alloc] initWithCalendarIdentifier:NSGregorianCalendar];
+    NSDateComponents *comps = nil;
+    comps = [calendar components:NSYearCalendarUnit|NSMonthCalendarUnit|NSDayCalendarUnit fromDate:currentDate];
+    NSDateComponents *adcomps = [[NSDateComponents alloc] init];
+    [adcomps setYear:0];
+    [adcomps setMonth:month];
+    [adcomps setDay:0];
+    currentDate = [calendar dateByAddingComponents:adcomps toDate:currentDate options:0];
+    [formater setDateFormat:@"yyyy年MM月"];
+    NSString *TodayStr =[formater stringFromDate:currentDate];
+    self.titleLab.text =TodayStr;
+//    [self calanderReloadData];
+}
+
+
+
 /**
  *  判断 date是星期几
  

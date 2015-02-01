@@ -72,6 +72,38 @@
 
 -(void)gotoRecordDetailwith:(NSDate *)currenDateNew{
     
+    
+    NSDate *date =[NSDate date];
+    NSDateFormatter *formaterNew =[[NSDateFormatter alloc]init];
+    [formaterNew setDateFormat:@"yyyy_M_d"];
+    
+    NSString *currentDateStr =[formaterNew stringFromDate:date];
+    
+    
+    
+    NSString *TodayStrsss =[formaterNew stringFromDate:currenDateNew];
+    
+    NSArray *currentDateAry =[currentDateStr componentsSeparatedByString:@"_"];
+    NSString *currentDateYear =[currentDateAry objectAtIndex:0];
+    NSString *currentDatemonth=[currentDateAry objectAtIndex:1];
+    NSString *currentDateDay=[currentDateAry objectAtIndex:2];
+    
+    
+    NSArray *TodayAry =[TodayStrsss componentsSeparatedByString:@"_"];
+    NSString *TodayYear =[TodayAry objectAtIndex:0];
+    NSString *Todaymonth=[TodayAry objectAtIndex:1];
+    NSString *TodayDay=[TodayAry objectAtIndex:1];
+    
+    int day =([TodayYear intValue]-[currentDateYear intValue])*365 +([Todaymonth intValue]-[currentDatemonth intValue])*30 +([TodayDay intValue]-[currentDateDay intValue]);
+    
+    
+    
+    if (day>1) {
+        [OMGToast showWithText:@"请回过去设置"];
+        return ;
+    }
+    
+    
     RecordDetailVC *vc = [[RecordDetailVC alloc]initWithNibName:@"RecordDetailVC" bundle:nil];
     vc.passDate =currenDateNew;
     [self.navigationController pushViewController:vc animated:YES];
@@ -110,11 +142,15 @@
     
     
 }
-
+/**
+ *  右上角按钮
+ *
+ *  @param sender <#sender description#>
+ */
 - (void)recordDetailAction:(id)sender
 {
     RecordDetailVC *vc = [[RecordDetailVC alloc]initWithNibName:@"RecordDetailVC" bundle:nil];
-    vc.passDate =muBiaoDate;
+    vc.passDate =[NSDate date];
     [self.navigationController pushViewController:vc animated:YES];
     
 }
