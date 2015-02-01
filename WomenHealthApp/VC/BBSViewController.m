@@ -153,9 +153,8 @@
     }
     
 //    self.mainScorllView = [[CycleScrollView alloc] initWithFrame:CGRectMake(0, 0, SCREEN_SIZE.width, 120) animationDuration:3];
-//    [self.mainScorllView setBackgroundColor:[UIColor whiteColor]];
-//    [self.lineImgV setHidden:NO];
-//    
+
+//
 //    self.mainScorllView.fetchContentViewAtIndex = ^UIView *(NSInteger pageIndex){
 //        return viewsArray[pageIndex];
 //    };
@@ -177,6 +176,8 @@
             [vc action:modal.adType withJumpId:modal.adGoods_id withTitle:nil];
         }
     };
+    [self.mainScorllView setBackgroundColor:[UIColor whiteColor]];
+    [self.lineImgV setHidden:NO];
     [self.view addSubview:self.mainScorllView];
     
 }
