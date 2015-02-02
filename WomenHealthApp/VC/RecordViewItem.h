@@ -14,7 +14,7 @@
 
 -(void)comfirmSelect:(NSMutableArray *)zzzAry;
 
-
+-(void)comfirmSelectNew;
 @end
 
 @interface RecordViewItem : UIView{

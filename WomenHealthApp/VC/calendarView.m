@@ -552,7 +552,7 @@
         return;
     }
     
-    NSDate *panduanDate =[self getTheDate:currentDate afterDays:[btn.titleLabel.text intValue]-1];
+    NSDate *panduanDate =[self getTheDate:currentDate afterDays:[btn.titleLabel.text intValue]];
     if([self.CPdelegede respondsToSelector:@selector(setCurrentdate:)]){
         
         [self.CPdelegede setCurrentdate:panduanDate];

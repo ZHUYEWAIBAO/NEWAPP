@@ -69,7 +69,7 @@
 //    currentMonth = [[array objectAtIndex:1] integerValue];
 //    currentDay = [[array objectAtIndex:2] integerValue];
     
-    currentYear = 2015;
+    currentYear = 2010;
     currentMonth = 1;
     currentDay = 1;
     
@@ -93,7 +93,7 @@
             [cycleArray addObject:cycleStr];
         }
         
-        for (int x = 2014; x < 2025; x++) {
+        for (int x = 2010; x < 2016; x++) {
             NSString *recontYearStr = [NSString stringWithFormat:@"%d",x];
             [recentYearArray addObject:recontYearStr];
         }
@@ -294,6 +294,27 @@
             else{
                 currentTextField.text = [currentCycle stringByAppendingString:@"天"];
             }
+            
+            
+            NSDate *date =[NSDate date];
+            NSDateFormatter *formaterNew =[[NSDateFormatter alloc]init];
+            [formaterNew setDateFormat:@"yyyy_M_d"];
+            NSString *currentDateStr =[formaterNew stringFromDate:date];
+            NSArray *currentDateAry =[currentDateStr componentsSeparatedByString:@"_"];
+            NSString *currentDateYear =[currentDateAry objectAtIndex:0];
+            NSString *currentDatemonth=[currentDateAry objectAtIndex:1];
+            NSString *currentDateDay=[currentDateAry objectAtIndex:2];
+            
+            int day =(currentYear-[currentDateYear intValue])*365 +(currentMonth-[currentDatemonth intValue])*30 +(currentDay-[currentDateDay intValue]);
+            
+            
+            
+            if (day>0) {
+                [OMGToast showWithText:@"不能超过当前日期"];
+                return ;
+            }
+            
+            
             [currentTextField resignFirstResponder];
         }
             break;
@@ -306,6 +327,9 @@
         case TAG_SAVE:{
             
             if ([self ifCanSaveTheDate]) {
+                
+                
+                
                 
                 NSString *month;
                 NSString *day;
