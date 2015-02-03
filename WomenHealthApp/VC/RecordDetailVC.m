@@ -52,6 +52,12 @@
     NSMutableArray *shujuAry;
     
     NSMutableArray *ziAry;//显示cell上
+    
+    
+    BOOL aiaiBool;
+    BOOL tiwenBool;
+    BOOL zhengzhuangBool;
+    BOOL tizhongBool;
 }
 @end
 
@@ -97,6 +103,10 @@
         
         shujuAry =[totalDic objectForKey:@"shujuAry"];
         
+        aiaiBool =[[totalDic objectForKey:@"aiaiBool"] boolValue];
+        tizhongBool =[[totalDic objectForKey:@"tizhongBool"] boolValue];
+        zhengzhuangBool =[[totalDic objectForKey:@"zhengzhuangBool"] boolValue];
+        tiwenBool =[[totalDic objectForKey:@"tiwenBool"] boolValue];
     }
 
     aiaiAry =@[@"没带套套",@"带了套套"];
@@ -261,8 +271,10 @@
     [self dismissWindow];
 }
 -(void)comfirmSelect:(NSMutableArray *)zzzAry{
-    
+  
     shujuAry =zzzAry;
+
+    
     /**
      *  保存数据
      */
@@ -273,7 +285,12 @@
     
     
 }
-
+-(void)comfirmSelectNew{
+    
+    [self dismissWindow];
+    [self.detailTableView reloadData];
+    
+}
 -(void)setLiuLiang:(NSString *)liuliang AndTongjing:(NSString *)tongjing{
     
     
@@ -320,6 +337,11 @@
     }
     [totalDic setObject:tongjingData forKey:@"tongjing"];
     [totalDic setObject:liuliangData forKey:@"liuliang"];
+    
+    [totalDic setValue:[NSNumber numberWithBool:aiaiBool] forKey:@"aiaiBool"];
+    [totalDic setValue:[NSNumber numberWithBool:tiwenBool] forKey:@"tiwenBool"];
+    [totalDic setValue:[NSNumber numberWithBool:zhengzhuangBool] forKey:@"zhengzhuangBool"];
+    [totalDic setValue:[NSNumber numberWithBool:tizhongBool] forKey:@"tizhongBool"];
     
     NSMutableDictionary *resultDic = [NSMutableDictionary dictionaryWithDictionary: [[NSUserDefaults standardUserDefaults] objectForKey:@"resultDic"]];
     if (totalDic ==nil) {
@@ -450,13 +472,17 @@
     cell.detailTitleLabel.text = [self.dataArray objectAtIndex:indexPath.row];
     [cell.detailImageView setImage:[UIImage imageWithContentFileName:[self.imageArray objectAtIndex:indexPath.row]]];
     if (indexPath.row ==0) {
+        if (aiaiBool) {
+            cell.zhengzhuangLab.text =[aiaiAry objectAtIndex:aiaiIndex];
+        }else{
+            
+        }
         
-        cell.zhengzhuangLab.text =[aiaiAry objectAtIndex:aiaiIndex];
         cell.zhengzhuangLab.textColor =FENSERGB;
         cell.zhengzhuangLab.hidden =NO;
     }else if(indexPath.row ==1){
         
-        
+        if (tiwenBool)
         cell.zhengzhuangLab.text =[[tiwenAry0 objectAtIndex:tiwenRow0] stringByAppendingString:[tiwenAry1 objectAtIndex:tiwenRow1]];
         cell.zhengzhuangLab.textColor =FENSERGB;
         cell.zhengzhuangLab.hidden =NO;
@@ -470,10 +496,12 @@
             }
             
         }];
+        if (zhengzhuangBool)
         cell.zhengzhuangLab.text =temozhengz;
         cell.zhengzhuangLab.textColor =FENSERGB;
         cell.zhengzhuangLab.hidden =NO;
     }else{
+        if (tizhongBool)
         cell.zhengzhuangLab.text =[[tizhongAry0 objectAtIndex:tizhongRow0] stringByAppendingString:[tizhongAry1 objectAtIndex:tizhongRow1]];
         cell.zhengzhuangLab.textColor =FENSERGB;
         cell.zhengzhuangLab.hidden =NO;
@@ -494,7 +522,7 @@
 //    tizhongRow1=  [[totalDic objectForKey:@"tizhongRow1"] intValue];
     switch (indexPath.row) {
         case 0:{
-            
+            aiaiBool =YES;
            
             detail.titleNameLab.text =@"爱爱";
            detail.tishiLab.text =@"";
@@ -526,7 +554,7 @@
             break;
         }
         case 1:{
-            
+            tiwenBool =YES;
 
             detail.titleNameLab.text =@"体温";
             detail.tishiLab.text =@"记录体温能够帮助你监控生理周期状况,有利于避孕和备孕哦！测口腔温度哦！";
@@ -564,7 +592,7 @@
             break;
         }
         case 2:{
-            
+            zhengzhuangBool  =YES;
             pickerChose =2;
             [detailTwo.pickerView reloadAllComponents];
             [detailTwo.alterScrollview setContentSize:CGSizeMake(280, 680)];
@@ -584,6 +612,7 @@
             break;
         }
         case 3:{
+            tizhongBool  =YES;
             detail.titleNameLab.text =@"体重";
             detail.tishiLab.text =@"";
             pickerChose =3;

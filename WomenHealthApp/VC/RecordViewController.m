@@ -81,7 +81,7 @@
     
     
     
-    NSString *TodayStrsss =[formaterNew stringFromDate:currenDateNew];
+    NSString *TodayStrsss =[formaterNew stringFromDate:[self getTheDate:currenDateNew afterDays:-1]];
     
     NSArray *currentDateAry =[currentDateStr componentsSeparatedByString:@"_"];
     NSString *currentDateYear =[currentDateAry objectAtIndex:0];
@@ -110,6 +110,27 @@
     
 }
 
+/**
+ *  判断theDate 过了days天后是 什么日子
+ *
+ *
+ *  @return <#return value description#>
+ */
+-(NSDate *)getTheDate:(NSDate *)theDate afterDays:(int)days{
+    
+    NSCalendar *calendar = [[NSCalendar alloc] initWithCalendarIdentifier:NSGregorianCalendar];
+    NSDateComponents *comps = nil;
+    comps = [calendar components:NSYearCalendarUnit|NSMonthCalendarUnit|NSDayCalendarUnit fromDate:theDate];
+    NSDateComponents *adcomps = [[NSDateComponents alloc] init];
+    [adcomps setYear:0];
+    [adcomps setMonth:0];
+    [adcomps setDay:days];
+    NSDate *resultDate;
+    resultDate = [calendar dateByAddingComponents:adcomps toDate:theDate options:0];
+    //    NSLog(@"resultDate--------%@",resultDate);
+    
+    return resultDate;
+}
 -(void)setCurrentdate:(NSDate *)curentDate{
     
     muBiaoDate =curentDate;

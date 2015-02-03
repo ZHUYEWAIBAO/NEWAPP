@@ -25,6 +25,15 @@
     self.liuliang =[dataDic objectForKey:@"liuliang"];
     
     self.tongjing =[dataDic objectForKey:@"tongjing"];
+    if ([[CMSinger share].yueJingDayAry containsObject:[CMSinger share].singerDate]||[[CMSinger share].currenYuejingDayAry containsObject:[CMSinger share].singerDate]) {
+        
+        
+    }else{
+        self.liuliang =@"";
+        
+        self.tongjing =@"";
+    }
+    
     
     [self.subviews enumerateObjectsUsingBlock:^(id obj, NSUInteger idx, BOOL *stop) {
         if ([obj class] ==[UIButton class]) {
@@ -65,8 +74,10 @@
 }
 - (IBAction)tocalClcik:(id)sender {
     
-    if (![[CMSinger share].yueJingDayAry containsObject:[CMSinger share].singerDate]) {
+    if ([[CMSinger share].yueJingDayAry containsObject:[CMSinger share].singerDate]||[[CMSinger share].currenYuejingDayAry containsObject:[CMSinger share].singerDate]) {
         
+        
+    }else{
         [OMGToast showWithText:@"您当前不处于月经期，无法设置"];
         
         return;
@@ -110,8 +121,10 @@
 - (IBAction)tocalClcikTwo:(id)sender{
     
     
-    if (![[CMSinger share].yueJingDayAry containsObject:[CMSinger share].singerDate]) {
+    if ([[CMSinger share].yueJingDayAry containsObject:[CMSinger share].singerDate]||[[CMSinger share].currenYuejingDayAry containsObject:[CMSinger share].singerDate]) {
         
+        
+    }else{
         [OMGToast showWithText:@"您当前不处于月经期，无法设置"];
         
         return;

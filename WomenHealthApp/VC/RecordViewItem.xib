@@ -32,14 +32,14 @@
                         <action selector="cancel:" destination="iN0-l3-epB" eventType="touchUpInside" id="GXn-Gw-B0p"/>
                     </connections>
                 </button>
-                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="S8w-xB-m7N">
+                <button opaque="NO" tag="999" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="S8w-xB-m7N">
                     <rect key="frame" x="156" y="314" width="107" height="41"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                     <state key="normal" backgroundImage="love_sure_btn.png">
                         <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                     </state>
                     <connections>
-                        <action selector="confirm:" destination="iN0-l3-epB" eventType="touchUpInside" id="stl-cH-gbR"/>
+                        <action selector="confirmNewClick:" destination="iN0-l3-epB" eventType="touchUpInside" id="Kde-Ae-qxG"/>
                     </connections>
                 </button>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="N53-0r-HXW">
@@ -94,7 +94,7 @@
                         <action selector="cancel:" destination="W2y-7Z-2O2" eventType="touchUpInside" id="gh0-H9-5T5"/>
                     </connections>
                 </button>
-                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="SEb-Jd-X8g">
+                <button opaque="NO" tag="888" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="SEb-Jd-X8g">
                     <rect key="frame" x="158" y="333" width="107" height="41"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                     <state key="normal" backgroundImage="love_sure_btn.png">

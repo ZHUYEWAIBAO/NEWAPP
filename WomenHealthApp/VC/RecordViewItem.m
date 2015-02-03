@@ -102,6 +102,15 @@
     
     
 }
+- (IBAction)confirmNewClick:(id)sender {
+    
+    if ([self.delegete respondsToSelector:@selector(comfirmSelectNew)]) {
+        [self.delegete comfirmSelectNew];
+        
+    }
+    
+    
+}
 
 - (IBAction)click:(id)sender {
     NSLog(@"s");

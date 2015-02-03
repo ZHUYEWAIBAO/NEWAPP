@@ -18,3 +18,5 @@ WomenHealthApp/VC/BBSViewController.m
 WomenHealthApp/VC/ShoppingViewController.m
 
 WomenHealthApp/VC/SurveyVC/Controller/SurveyVC.m
+
+WomenHealthApp/VC/RecordDetailCell.xib
