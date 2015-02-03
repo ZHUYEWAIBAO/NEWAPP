@@ -31,12 +31,11 @@
     dataAry =[NSMutableArray array];
     indexSectionCustom =0;
     
-    //创建右上角按钮
-    UIButton *rightButton=[[UIButton alloc]initWithFrame:CGRectMake(0, 0, 60, 20)];
-    [rightButton addTarget:self action:@selector(pushResult) forControlEvents:UIControlEventTouchUpInside];
-    [rightButton setTitle:@"提交答案" forState:UIControlStateNormal];
-    rightButton.titleLabel.font =[UIFont systemFontOfSize:14];
-    UIBarButtonItem *rightButtonItem=[[UIBarButtonItem alloc]initWithCustomView:rightButton];
+    UIButton *sendBtn = [UIButton buttonWithType:UIButtonTypeCustom];
+    sendBtn.frame = CGRectMake(0,0,30,30);
+    [sendBtn setBackgroundImage:[UIImage imageWithContentFileName:@"Record_detail_sure_btn.png"] forState:UIControlStateNormal];
+    [sendBtn addTarget:self action:@selector(pushResult) forControlEvents:UIControlEventTouchUpInside];
+    UIBarButtonItem *rightButtonItem=[[UIBarButtonItem alloc]initWithCustomView:sendBtn];
     self.navigationItem.rightBarButtonItem = rightButtonItem;
     
     [self.params removeAllObjects];
@@ -73,6 +72,9 @@
 }
 
 -(void)pushResult{
+    
+    [SVProgressHUD showWithMaskType:SVProgressHUDMaskTypeClear];
+    
     [self.params removeAllObjects];
     NSMutableDictionary *dics =[NSMutableDictionary dictionary];
     [dataAry enumerateObjectsUsingBlock:^(id obj, NSUInteger idx, BOOL *stop) {
@@ -104,12 +106,13 @@
         if ([@"1" isEqualToString:CHECK_VALUE([statusDic objectForKey:@"statu"])]){
             
             NSLog(@"%@",dataDic);
-            [OMGToast showWithText:@"提交成功"];
+    
+            [SVProgressHUD showSuccessWithStatus:@"提交成功"];
 
             CommWebView *vc =[[CommWebView alloc] initWithNibName:@"CommWebView" bundle:nil];
             vc.webUrl =[[dic objectForKey:@"data"] objectForKey:@"url"];
             [self.navigationController pushViewController:vc animated:YES];
-            [SVProgressHUD dismiss];
+            
             
         }
         else{

@@ -36,6 +36,7 @@
     self.user_icon = @"";
     self.thirdId = @"";
     self.loginType = @"";
+    self.baiduUid = @"";
     self.isLogin = NO;
 
     

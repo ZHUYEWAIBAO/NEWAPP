@@ -76,7 +76,7 @@
     
     NSString *path;
     if (isLastPage) {
-        path = [NSString stringWithFormat:@"/api/dz/index.php?mod=viewthread&tid=%@&offset=%ld",self.currentTid,self.postListArray.count];
+        path = [NSString stringWithFormat:@"/api/dz/index.php?mod=viewthread&tid=%@&offset=%ld",self.currentTid,self.totalRowNum];
     }
     else{
         path = [NSString stringWithFormat:@"/api/dz/index.php?mod=viewthread&tid=%@&page=%ld",self.currentTid,self.page];
@@ -124,8 +124,8 @@
                 }
 
                 //当前数据小于总数据的时候页数++
-                if (self.postListArray.count < self.totalRowNum) {
-                    self.page++;
+                if (self.page < self.totalPage) {
+                    
                     self.footview.hidden=NO;
                 }
                 else{
@@ -235,8 +235,9 @@
     for (NSInteger i = 0; i < model.imgInfosArray.count; i++) {
         
         UIButton *button = [cell valueForKey:[NSString stringWithFormat:@"photoButton%ld",i ]];
-        [button setImageWithURL:[model.imgInfosArray objectAtIndex:i] forState:UIControlStateNormal];
+        [button setImageWithURL:[model.imgInfosArray objectAtIndex:i] forState:UIControlStateNormal placeholderImage:[UIImage imageWithContentFileName:@"loading_default_bg.png"]];
         [button addTarget:self action:@selector(imageClickAction:) forControlEvents:UIControlEventTouchUpInside];
+        [button.imageView setContentMode:UIViewContentModeScaleAspectFit];
         [button setTag:indexPath.row * 100 +i];
         [button setHidden:NO];
     }
@@ -572,9 +573,7 @@
         
         if ([@"1" isEqualToString:CHECK_VALUE([statusDic objectForKey:@"statu"])]) {
             
-            
             [self sendTheTextAction:[dic objectForKey:@"data"]];
-            
             
         }
         else{
@@ -640,6 +639,9 @@
             
             [self.inputTextField resignFirstResponder];
             [self.inputTextField setText:@""];
+            
+            [_photoBtn setBackgroundImage:[UIImage imageWithContentFileName:@"camer_btn"] forState:UIControlStateNormal];
+            _photoBtn.isLoadImage = NO;
      
         }
         else{
@@ -693,6 +695,9 @@
             }
             [self.inputTextField resignFirstResponder];
             [self.inputTextField setText:@""];
+            
+            [_photoBtn setBackgroundImage:[UIImage imageWithContentFileName:@"camer_btn"] forState:UIControlStateNormal];
+            _photoBtn.isLoadImage = NO;
      
         }
         else{
@@ -845,6 +850,7 @@
 - (void)refreshViewBeginRefreshing:(MJRefreshBaseView *)refreshView
 {
     if (refreshView == self.footview){
+        self.page++;
         [self getThePostDetailWithTid:self.currentTid lastPage:NO];
     }
 }

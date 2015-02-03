@@ -353,7 +353,7 @@
     }
     else{
         
-        BBSMenuModal *modal = [self.bigMenuArray objectAtIndex:indexPath.row];
+        BBSMenuModal *modal = [self.subMenuArray objectAtIndex:indexPath.row];
         BbsCircleDetailVC *vc = [[BbsCircleDetailVC alloc]initWithNibName:@"BbsCircleDetailVC" bundle:nil];
         vc.currentFid = modal.bbsFid;
         [self.navigationController pushViewController:vc animated:YES];

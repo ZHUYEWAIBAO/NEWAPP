@@ -15,6 +15,7 @@
 @property (strong, nonatomic) NSString * user_icon;       //用户头像
 @property (strong, nonatomic) NSString * thirdId;         //如果是第三方登录，第三方登录的uid
 @property (strong, nonatomic) NSString * loginType;       //登录方式
+@property (strong, nonatomic) NSString * baiduUid;        //百度推送user_id
 @property (assign, nonatomic) BOOL isLogin;               //判断用户是否登录
 
 /**

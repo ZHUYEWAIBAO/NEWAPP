@@ -231,7 +231,17 @@
         [self.params setObject:@"" forKey:@"password"];
         [self.params setObject:@"Nick" forKey:@"username"];
     }
+    
+    //百度推送uid
+    if (USERINFO.baiduUid.length > 0) {
+        [self.params setObject:USERINFO.baiduUid forKey:@"pushid"];
+    }
+    else{
+        [self.params setObject:@"" forKey:@"pushid"];
+    }
 
+    //系统版本
+    [self.params setObject:@"ios" forKey:@"pushos"];
     
     [SVProgressHUD showWithStatus:@"正在登录" maskType:SVProgressHUDMaskTypeClear];
     

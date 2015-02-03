@@ -462,6 +462,7 @@
 		BAD35F571A317C990065369F /* CategoryModel.m in Sources */ = {isa = PBXBuildFile; fileRef = BAD35F561A317C990065369F /* CategoryModel.m */; };
 		BAD35F5C1A3187BA0065369F /* screening_btn_active@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BAD35F5A1A3187BA0065369F /* screening_btn_active@2x.png */; };
 		BAD35F5D1A3187BA0065369F /* screening_btn_noraml@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BAD35F5B1A3187BA0065369F /* screening_btn_noraml@2x.png */; };
+		BAD3EDEF1A7FA42600A16A74 /* loading_default_bg.png in Resources */ = {isa = PBXBuildFile; fileRef = BAD3EDEE1A7FA42600A16A74 /* loading_default_bg.png */; };
 		BAD7B3861A4972D3006F3614 /* LoginViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = BAD7B3851A4972D3006F3614 /* LoginViewController.xib */; };
 		BAD7B38A1A497315006F3614 /* ShoppingDetailVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = BAD7B3891A497315006F3614 /* ShoppingDetailVC.xib */; };
 		BAD7B38E1A497347006F3614 /* ShoppingCommentView.xib in Resources */ = {isa = PBXBuildFile; fileRef = BAD7B38D1A497347006F3614 /* ShoppingCommentView.xib */; };
@@ -1235,6 +1236,7 @@
 		BAD35F561A317C990065369F /* CategoryModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CategoryModel.m; sourceTree = "<group>"; };
 		BAD35F5A1A3187BA0065369F /* screening_btn_active@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "screening_btn_active@2x.png"; sourceTree = "<group>"; };
 		BAD35F5B1A3187BA0065369F /* screening_btn_noraml@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "screening_btn_noraml@2x.png"; sourceTree = "<group>"; };
+		BAD3EDEE1A7FA42600A16A74 /* loading_default_bg.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = loading_default_bg.png; sourceTree = "<group>"; };
 		BAD7B3851A4972D3006F3614 /* LoginViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = LoginViewController.xib; sourceTree = "<group>"; };
 		BAD7B3891A497315006F3614 /* ShoppingDetailVC.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ShoppingDetailVC.xib; sourceTree = "<group>"; };
 		BAD7B38D1A497347006F3614 /* ShoppingCommentView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ShoppingCommentView.xib; sourceTree = "<group>"; };
@@ -1826,6 +1828,7 @@
 		BA491B721A0524110065DB16 /* other */ = {
 			isa = PBXGroup;
 			children = (
+				BAD3EDEE1A7FA42600A16A74 /* loading_default_bg.png */,
 				BA6230DE1A2F0FAF00F471A6 /* arrow.png */,
 				BAD0AE6B1A1F1AB200F2D001 /* nav_back_bt@2x.png */,
 				BA13C19F1A1793EE003B1313 /* new_buy_btn_selected.png */,
@@ -2813,6 +2816,7 @@
 				65CD13D81A1C96FB000A4F8E /* end_logo@2x.png in Resources */,
 				BA6230C81A2EBB4200F471A6 /* notice_logo@2x.png in Resources */,
 				BA1ADFB31A3DD21A00CAB2B4 /* zhifubao_logo@2x.png in Resources */,
+				BAD3EDEF1A7FA42600A16A74 /* loading_default_bg.png in Resources */,
 				BA3739481A42C0EB00164B85 /* comment_text_bg@2x.png in Resources */,
 				BA59D82B19F8AAC30098BDCF /* BBSViewController.xib in Resources */,
 				BACD63DD1A2C3D8500683E38 /* qq_btn@2x.png in Resources */,
@@ -3311,7 +3315,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = "AppIcon-2";
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = "LaunchImage-2";
-				CODE_SIGN_IDENTITY = "iPhone Developer: zhang zhiyong (5RUGM4A2HF)";
+				CODE_SIGN_IDENTITY = "iPhone Distribution: Suzhou Repai Information Technology CO.,Ltd.";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/WomenHealthApp/Libs/ShareSDK/Connection",
@@ -3340,7 +3344,7 @@
 				);
 				ONLY_ACTIVE_ARCH = YES;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "7460819f-0b2f-4c6f-b5a4-27024572e668";
+				PROVISIONING_PROFILE = "B1E58399-8390-4652-AFA7-DF3A50449C2C";
 				VALID_ARCHS = "arm64 armv7 armv7s";
 			};
 			name = Debug;
@@ -3350,8 +3354,8 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = "AppIcon-2";
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = "LaunchImage-2";
-				CODE_SIGN_IDENTITY = "iPhone Developer: zhang zhiyong (5RUGM4A2HF)";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: zhang zhiyong (5RUGM4A2HF)";
+				CODE_SIGN_IDENTITY = "iPhone Distribution: Suzhou Repai Information Technology CO.,Ltd.";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: Suzhou Repai Information Technology CO.,Ltd.";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/WomenHealthApp/Libs/ShareSDK/Connection",
@@ -3380,7 +3384,7 @@
 				);
 				ONLY_ACTIVE_ARCH = NO;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "7460819f-0b2f-4c6f-b5a4-27024572e668";
+				PROVISIONING_PROFILE = "B1E58399-8390-4652-AFA7-DF3A50449C2C";
 				VALID_ARCHS = "arm64 armv7 armv7s";
 			};
 			name = Release;

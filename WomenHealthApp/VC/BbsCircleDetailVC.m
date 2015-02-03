@@ -269,7 +269,7 @@
     
     cell.authorLabel.text = model.author;
     cell.postLabel.text = model.subject;
-    cell.timeLabel.text = [NSString stringWithFormat:@"回复:%@",model.lastpost];
+    cell.timeLabel.text = [NSString stringWithFormat:@"最后回复:%@",model.lastpost];
     
     [cell.numButton setTitle:model.replies forState:UIControlStateNormal];
     

@@ -42,7 +42,7 @@
     [super loadView];
     
     self.title = @"我的记录";
-    [BPush bindChannel];
+    
 }
 
 - (void)viewDidLoad {

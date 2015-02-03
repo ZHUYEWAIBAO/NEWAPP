@@ -131,7 +131,7 @@
                   symbolName = "-[ShoppingOrderSuccessVC payButtonAction:]"
                   moduleName = "WomenHealthApp"
                   urlString = "file:///Users/zhuqing/Desktop/NEWAPP/WomenHealthApp/VC/ShoppingOrderSuccessVC.m"
-                  timestampString = "444497523.441321"
+                  timestampString = "444575838.408133"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "72"
@@ -145,7 +145,7 @@
                   symbolName = "__42-[ShoppingOrderSuccessVC payButtonAction:]_block_invoke"
                   moduleName = "WomenHealthApp"
                   urlString = "file:///Users/zhuqing/Desktop/NEWAPP/WomenHealthApp/VC/ShoppingOrderSuccessVC.m"
-                  timestampString = "444497523.441806"
+                  timestampString = "444575838.408288"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "72"
@@ -169,36 +169,6 @@
             endingLineNumber = "303"
             landmarkName = "-upLoadTheUseName"
             landmarkType = "5">
-            <Locations>
-               <Location
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "__39-[LoginViewController upLoadTheUseName]_block_invoke"
-                  moduleName = "WomenHealthApp"
-                  urlString = "file:///Users/zhuqing/Desktop/NEWAPP/WomenHealthApp/VC/LoginViewController.m"
-                  timestampString = "444497523.443204"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "306"
-                  endingLineNumber = "306"
-                  offsetFromSymbolStart = "58">
-               </Location>
-               <Location
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "__39-[LoginViewController upLoadTheUseName]_block_invoke_2"
-                  moduleName = "WomenHealthApp"
-                  urlString = "file:///Users/zhuqing/Desktop/NEWAPP/WomenHealthApp/VC/LoginViewController.m"
-                  timestampString = "444497523.443488"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "306"
-                  endingLineNumber = "306"
-                  offsetFromSymbolStart = "81">
-               </Location>
-            </Locations>
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -213,7 +183,7 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "317"
             endingLineNumber = "317"
-            landmarkName = "-upLoaduserPhoto:"
+            landmarkName = "-upLoadTheUseName"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>
@@ -230,38 +200,6 @@
             startingLineNumber = "327"
             endingLineNumber = "327"
             landmarkName = "-upLoaduserPhoto:"
-            landmarkType = "5">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "WomenHealthApp/VC/LoginViewController.m"
-            timestampString = "442245300.391018"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "270"
-            endingLineNumber = "270"
-            landmarkName = "-loginActionWithUid:"
-            landmarkType = "5">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "WomenHealthApp/VC/LoginViewController.m"
-            timestampString = "442245300.391018"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "278"
-            endingLineNumber = "278"
-            landmarkName = "-loginActionWithUid:"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>
@@ -378,11 +316,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "WomenHealthApp/VC/PostDetailVC.m"
-            timestampString = "444497239.095641"
+            timestampString = "444574836.667272"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "750"
-            endingLineNumber = "750"
+            startingLineNumber = "755"
+            endingLineNumber = "755"
             landmarkName = "-deleteThePostAction:"
             landmarkType = "5">
          </BreakpointContent>
@@ -393,13 +331,29 @@
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "WomenHealthApp/VC/PostDetailVC.m"
-            timestampString = "444497547.114232"
+            filePath = "WomenHealthApp/AppDelegate.m"
+            timestampString = "444554228.305372"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "691"
-            endingLineNumber = "691"
-            landmarkName = "-continueToSendThePost"
+            startingLineNumber = "136"
+            endingLineNumber = "136"
+            landmarkName = "-onMethod:response:"
+            landmarkType = "5">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "WomenHealthApp/AppDelegate.m"
+            timestampString = "444554228.305372"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "127"
+            endingLineNumber = "127"
+            landmarkName = "-application:didRegisterForRemoteNotificationsWithDeviceToken:"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>
@@ -410,11 +364,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "WomenHealthApp/VC/PostDetailVC.m"
-            timestampString = "444497712.740846"
+            timestampString = "444574836.667272"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "688"
-            endingLineNumber = "688"
+            startingLineNumber = "689"
+            endingLineNumber = "689"
             landmarkName = "-continueToSendThePost"
             landmarkType = "5">
          </BreakpointContent>
