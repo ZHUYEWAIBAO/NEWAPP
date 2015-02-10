@@ -14,6 +14,7 @@
 @interface CommentOrderVC : BasicVC
 
 @property (strong, nonatomic) NSString  *payTime;
+@property (strong, nonatomic) NSString  *orderId;
 
 @property (strong, nonatomic) MyOrderGoodsModel  *goodsModel;
 

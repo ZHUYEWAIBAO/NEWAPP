@@ -33,7 +33,7 @@
         [self.phoneLabel addGestureRecognizer:tapGestureRecognizer];
     }
 
-
+    self.versionLabel.text = [NSString stringWithFormat:@"V%@",CLIENT_VERSION];
 }
 
 - (void)viewWillAppear:(BOOL)animated

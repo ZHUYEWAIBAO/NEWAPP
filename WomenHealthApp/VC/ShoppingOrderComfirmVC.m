@@ -23,6 +23,8 @@
     NSString *currentPayTypeId;
     
     NSString *isUseTimeBuy;
+    
+    float totalPrice;
 }
 
 @end
@@ -45,6 +47,8 @@
     }
     isUseTimeBuy = @"0";
     currentPayTypeId = @"4";
+    
+    totalPrice = 0.00;//默认
   
 }
 
@@ -153,7 +157,7 @@
     [self layOutTheTableView];
     
     self.totalTitleLabel.text = [NSString stringWithFormat:@"合计(含运费%@元):",self.comfirmModel.shipping_fee];
-    float totalPrice = [self.comfirmModel.goods_price floatValue] + [self.comfirmModel.shipping_fee floatValue];
+    totalPrice = [self.comfirmModel.goods_price floatValue] + [self.comfirmModel.shipping_fee floatValue];
     self.totalPriceLabel.text = [NSString priceStringWithOneFloat:[NSString stringWithFormat:@"%.2f",totalPrice]];
     
     //最外层
@@ -221,7 +225,7 @@
 - (IBAction)scoreSwitchChangeAction:(id)sender
 {
     UISwitch *swit = (UISwitch *)sender;
-    float totalPrice;
+   
     if (swit.on) {
         totalPrice = [self.comfirmModel.goods_price floatValue] + [self.comfirmModel.shipping_fee floatValue] - [self.comfirmModel.order_reduce_moeny floatValue];
     }
@@ -349,18 +353,20 @@
         
         if ([@"1" isEqualToString:CHECK_VALUE([statusDic objectForKey:@"statu"])]) {
             
-            if ([@"0.00" isEqualToString:self.totalPriceLabel.text]) {
+            if (totalPrice > 0) {
                 
-                ShoppingPaySuccessVC *vc = [[ShoppingPaySuccessVC alloc]initWithNibName:@"ShoppingPaySuccessVC" bundle:nil];
-                [self.navigationController pushViewController:vc animated:YES];
-                
-            }
-            else{
                 OrderSuccessModel *model = [OrderSuccessModel parseDicToOrderSuccessObject:[dic objectForKey:@"data"]];
                 
                 ShoppingOrderSuccessVC *vc = [[ShoppingOrderSuccessVC alloc]initWithNibName:@"ShoppingOrderSuccessVC" bundle:nil];
                 vc.successModel = model;
                 vc.payTypeId = currentPayTypeId;
+                [self.navigationController pushViewController:vc animated:YES];
+                
+                
+            }
+            else{
+
+                ShoppingPaySuccessVC *vc = [[ShoppingPaySuccessVC alloc]initWithNibName:@"ShoppingPaySuccessVC" bundle:nil];
                 [self.navigationController pushViewController:vc animated:YES];
             }
 

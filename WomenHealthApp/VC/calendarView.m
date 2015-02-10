@@ -105,7 +105,7 @@
     }
     
     
-    for (int timeNumber =-12*2; timeNumber <12*2; timeNumber++) {
+    for (int timeNumber =-12*3; timeNumber <12*3; timeNumber++) {
         
         //所有的排卵日
         [paiRuanDateAry addObject:[self getTheDate:paiRuanDate afterDays:zhouqiDay*timeNumber]];

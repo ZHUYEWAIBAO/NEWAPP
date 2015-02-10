@@ -69,7 +69,7 @@
 //    currentMonth = [[array objectAtIndex:1] integerValue];
 //    currentDay = [[array objectAtIndex:2] integerValue];
     
-    currentYear = 2010;
+    currentYear = 2013;
     currentMonth = 1;
     currentDay = 1;
     
@@ -93,7 +93,7 @@
             [cycleArray addObject:cycleStr];
         }
         
-        for (int x = 2010; x < 2016; x++) {
+        for (int x = 2013; x < 2019; x++) {
             NSString *recontYearStr = [NSString stringWithFormat:@"%d",x];
             [recentYearArray addObject:recontYearStr];
         }
@@ -294,22 +294,19 @@
             else{
                 currentTextField.text = [currentCycle stringByAppendingString:@"天"];
             }
+
             
+            NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
+            NSTimeZone *timeZone = [NSTimeZone localTimeZone];
             
-            NSDate *date =[NSDate date];
-            NSDateFormatter *formaterNew =[[NSDateFormatter alloc]init];
-            [formaterNew setDateFormat:@"yyyy_M_d"];
-            NSString *currentDateStr =[formaterNew stringFromDate:date];
-            NSArray *currentDateAry =[currentDateStr componentsSeparatedByString:@"_"];
-            NSString *currentDateYear =[currentDateAry objectAtIndex:0];
-            NSString *currentDatemonth=[currentDateAry objectAtIndex:1];
-            NSString *currentDateDay=[currentDateAry objectAtIndex:2];
+            [formatter setTimeZone:timeZone];
+            [formatter setDateFormat : @"yyyy_M_d"];
             
-            int day =(currentYear-[currentDateYear intValue])*365 +(currentMonth-[currentDatemonth intValue])*30 +(currentDay-[currentDateDay intValue]);
+            NSString *stringTime = [NSString stringWithFormat:@"%ld_%ld_%ld",currentYear,currentMonth,currentDay];
             
+            NSDate *dateTime = [formatter dateFromString:stringTime];
             
-            
-            if (day>0) {
+            if ([[dateTime laterDate:[NSDate date]] isEqualToDate:dateTime]) {
                 [OMGToast showWithText:@"不能超过当前日期"];
                 return ;
             }

@@ -190,6 +190,7 @@
     [SVProgressHUD showWithStatus:@"正在登录" maskType:SVProgressHUDMaskTypeClear];
     
     NSString *path = [NSString stringWithFormat:@"/api/ec/user.php?mod=logging&action=login&loginsubmit=yes&handlekey=login&inajax=1&logintype=%@&other_code=%@",data.loginType,data.thirdUid];
+//    NSString *path = [NSString stringWithFormat:@"/1.0/users/login"];
     
     [NETWORK_ENGINE requestWithPath:path Params:params CompletionHandler:^(MKNetworkOperation *completedOperation) {
         

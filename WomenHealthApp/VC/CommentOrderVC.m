@@ -14,6 +14,7 @@
 {
     NSInteger currentBtnTag;
     UIButton *currentBtn;
+    
 }
 
 @end
@@ -78,6 +79,7 @@
     [dictionery setObject:@"1" forKey:@"enabled_captcha"];
     [dictionery setObject:@"" forKey:@"captcha"];
     [dictionery setObject:@"5" forKey:@"rank"];
+    [dictionery setObject:self.orderId forKey:@"order_id"];
     
     [SVProgressHUD showWithMaskType:SVProgressHUDMaskTypeClear];
     
@@ -164,7 +166,8 @@
     model.commentImageTag = [NSString stringWithFormat:@"%ld",currentBtnTag];
     
     if (_imageDataArray.count > 0) {
-        BOOL isReplace;
+        BOOL isReplace = NO;
+ 
         for (NSInteger i=0;i<_imageDataArray.count; i++) {
             CommentImageModel *subModel = [_imageDataArray objectAtIndex:i];
             if ([subModel.commentImageTag isEqualToString:[NSString stringWithFormat:@"%ld",currentBtnTag]]) {

@@ -444,6 +444,7 @@
     
     CommentOrderVC *vc = [[CommentOrderVC alloc]initWithNibName:@"CommentOrderVC" bundle:nil];
     vc.goodsModel = model;
+    vc.orderId = self.orderId;
     vc.payTime = self.orderDetailModel.pay_time;
     [self.navigationController pushViewController:vc animated:YES];
 }

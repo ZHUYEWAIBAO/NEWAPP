@@ -104,7 +104,7 @@
             
             if (ary.count>0) {
                 //如果是第一页，清空数组
-                if (self.page == 1) {
+                if (self.page == 1 && !isLastPage) {
                     
                     [self.postListArray removeAllObjects];
                    
@@ -234,12 +234,15 @@
 
     for (NSInteger i = 0; i < model.imgInfosArray.count; i++) {
         
-        UIButton *button = [cell valueForKey:[NSString stringWithFormat:@"photoButton%ld",i ]];
-        [button setImageWithURL:[model.imgInfosArray objectAtIndex:i] forState:UIControlStateNormal placeholderImage:[UIImage imageWithContentFileName:@"loading_default_bg.png"]];
-        [button addTarget:self action:@selector(imageClickAction:) forControlEvents:UIControlEventTouchUpInside];
-        [button.imageView setContentMode:UIViewContentModeScaleAspectFit];
-        [button setTag:indexPath.row * 100 +i];
-        [button setHidden:NO];
+        if (i < 3) {
+            UIButton *button = [cell valueForKey:[NSString stringWithFormat:@"photoButton%ld",i ]];
+            [button setImageWithURL:[model.imgInfosArray objectAtIndex:i] forState:UIControlStateNormal placeholderImage:[UIImage imageWithContentFileName:@"loading_default_bg.png"]];
+            [button addTarget:self action:@selector(imageClickAction:) forControlEvents:UIControlEventTouchUpInside];
+            [button.imageView setContentMode:UIViewContentModeScaleAspectFit];
+            [button setTag:indexPath.row * 100 +i];
+            [button setHidden:NO];
+        }
+
     }
     
     CGRect rect1 = cell.authorLabel.frame;

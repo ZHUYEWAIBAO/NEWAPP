@@ -41,6 +41,7 @@
     [super viewDidLoad];
     
     [self setViewLayer:self.textBgImageView andCornerRadius:3 andBorderColor:[UIColor lightGrayColor] andBorderWidth:0.6f];
+    [self setViewLayer:self.textAgainBgImageView andCornerRadius:3 andBorderColor:[UIColor lightGrayColor] andBorderWidth:0.6f];
     
 }
 
@@ -54,6 +55,7 @@
 - (IBAction)btnClickAction:(id)sender
 {
     [self.passwordTextField resignFirstResponder];
+    [self.passwordAgainTextField resignFirstResponder];
     [self checkPasswordAndGetTheRegisterDone];
 }
 
@@ -63,12 +65,16 @@
         [SVProgressHUD showErrorWithStatus:@"请输入密码"];
         return;
     }
+    if (![self.passwordTextField.text isEqualToString:self.passwordAgainTextField.text]) {
+        [SVProgressHUD showErrorWithStatus:@"两次密码不一致"];
+        return;
+    }
 
     //设置请求参数
     [self.params removeAllObjects];
     
     [self.params setObject:CHECK_VALUE(self.passwordTextField.text) forKey:@"password"];
-    [self.params setObject:CHECK_VALUE(self.passwordTextField.text) forKey:@"password2"];
+    [self.params setObject:CHECK_VALUE(self.passwordAgainTextField.text) forKey:@"password2"];
     [self.params setObject:CHECK_VALUE(self.vertifiCode) forKey:@"code"];
     [self.params setObject:CHECK_VALUE(self.registerModel.registerPhoneNum) forKey:@"username"];
     

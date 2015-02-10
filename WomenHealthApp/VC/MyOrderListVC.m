@@ -12,6 +12,10 @@
 #import "MyOrderDetailVC.h"
 #import "LogisticsViewController.h"
 #import "CommentOrderVC.h"
+#import "OrderPayModel.h"
+#import "DataSigner.h"
+#import "ShoppingPaySuccessVC.h"
+#import <AlipaySDK/AlipaySDK.h>
 
 @interface MyOrderListVC ()
 
@@ -38,6 +42,7 @@
     [super viewDidLoad];
     
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(refreshTheListAction:) name:NOTIFICATION_REFRESH_ORDERRECORD object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(payCallBackAction:) name:NOTIFICATION_ALIPAY object:nil];
     
     _orderListArray = [[NSMutableArray alloc]initWithCapacity:0];
     
@@ -245,7 +250,7 @@
     MyOrderListModel *model = [self.orderListArray objectAtIndex:[(UIButton *)sender tag]-100];
     switch ([model.order_status integerValue]) {
         case 2:{
-            [self continueToPayOrderAction:model.order_id];
+            [self continueToPayOrderAction:model.order_id withPrice:model.total_fee];
         }
             break;
             
@@ -340,9 +345,69 @@
 }
 
 //继续支付
-- (void)continueToPayOrderAction:(NSString *)orderId
+- (void)continueToPayOrderAction:(NSString *)orderId withPrice:(NSString *)price
 {
     
+    /*
+     *生成订单信息及签名
+     */
+    //将商品信息赋予AlixPayOrder的成员变量
+    OrderPayModel *order = [[OrderPayModel alloc] init];
+    order.tradeNO = orderId; //订单ID（由商家自行制定）
+    order.amount = price; //商品价格
+    
+    //应用注册scheme,在AlixPayDemo-Info.plist定义URL types
+    NSString *appScheme = @"WomenHealthApp";
+    
+    //将商品信息拼接成字符串
+    NSString *orderSpec = [order description];
+    
+    //获取私钥并将商户信息签名,外部商户可以根据情况存放私钥和签名,只需要遵循RSA签名规范,并将签名字符串base64编码和UrlEncode
+    id<DataSigner> signer = CreateRSADataSigner(ALI_PRIVATE_KEY);
+    NSString *signedString = [signer signString:orderSpec];
+    
+    //将签名成功字符串格式化为订单字符串,请严格按照该格式
+    NSString *orderString = nil;
+    if (signedString != nil) {
+        orderString = [NSString stringWithFormat:@"%@&sign=\"%@\"&sign_type=\"%@\"",
+                       orderSpec, signedString, @"RSA"];
+        
+        [[AlipaySDK defaultService] payOrder:orderString fromScheme:appScheme callback:^(NSDictionary *resultDic) {
+            
+            //如果没安装支付宝客户端走这边
+            NSLog(@"reslut = %@",resultDic);
+            
+            if (resultDic){
+                if ([@"9000" isEqualToString:[resultDic objectForKey:@"resultStatus"]]){
+                    
+                    [SVProgressHUD showSuccessWithStatus:@"支付成功"];
+                    
+                    ShoppingPaySuccessVC *vc = [[ShoppingPaySuccessVC alloc]initWithNibName:@"ShoppingPaySuccessVC" bundle:nil];
+                    [self.navigationController pushViewController:vc animated:YES];
+                    
+                }
+                else{
+                    //交易失败
+                    [SVProgressHUD showErrorWithStatus:@"支付失败"];
+                }
+            }
+            else{
+                //交易失败
+                [SVProgressHUD showErrorWithStatus:@"支付失败"];
+                
+            }
+            
+        }];
+        
+    }
+
+}
+
+//安装支付宝客户端走这边
+- (void)payCallBackAction:(NSNotification *)notifi
+{
+    ShoppingPaySuccessVC *vc = [[ShoppingPaySuccessVC alloc]initWithNibName:@"ShoppingPaySuccessVC" bundle:nil];
+    [self.navigationController pushViewController:vc animated:YES];
 }
 
 //提醒发货
@@ -407,6 +472,7 @@
     
     CommentOrderVC *vc = [[CommentOrderVC alloc]initWithNibName:@"CommentOrderVC" bundle:nil];
     vc.goodsModel = goodModel;
+    vc.orderId = model.order_id;
     vc.payTime = model.pay_time;
     [self.navigationController pushViewController:vc animated:YES];
 }

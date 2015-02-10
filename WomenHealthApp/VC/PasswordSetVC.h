@@ -25,4 +25,8 @@
 
 @property (weak,nonatomic) IBOutlet UIImageView *textBgImageView;
 
+@property (weak,nonatomic) IBOutlet UITextField *passwordAgainTextField;
+
+@property (weak,nonatomic) IBOutlet UIImageView *textAgainBgImageView;
+
 @end

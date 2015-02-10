@@ -37,7 +37,12 @@
 - (IBAction)changeTheUseNameAction:(id)sender
 {
     [self.headTitleField resignFirstResponder];
+    
     if ([USERINFO.username isEqualToString:_headTitleField.text]) {
+        return;
+    }
+    if ([@"" isEqualToString:_headTitleField.text]) {
+        [SVProgressHUD showErrorWithStatus:@"请输入新昵称"];
         return;
     }
     
