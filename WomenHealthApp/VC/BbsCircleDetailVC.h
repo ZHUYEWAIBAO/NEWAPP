@@ -47,4 +47,6 @@ typedef enum CircleType_
 @property (strong, nonatomic) NSMutableArray *circleArray3;//精华数组
 @property (strong, nonatomic) NSMutableArray *circleArray;
 
+@property (weak, nonatomic) IBOutlet UIView *searchEmptyView;
+
 @end

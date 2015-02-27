@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="6254" systemVersion="14B25" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="6254" systemVersion="14C109" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none">
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6247"/>
@@ -12,6 +12,7 @@
                 <outlet property="priceButton" destination="G8f-z0-OwP" id="sjp-DB-eH4"/>
                 <outlet property="priceSortLogoImageView" destination="pwZ-8a-SsA" id="Xju-CR-w6I"/>
                 <outlet property="saleButton" destination="C0E-Jf-QL4" id="ZJA-s6-Zmg"/>
+                <outlet property="searchEmptyView" destination="VGG-15-siY" id="138-1c-eGs"/>
                 <outlet property="shopTableView" destination="xlx-dS-sfW" id="o4X-7h-qKW"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="oQd-1Z-xev"/>
                 <outlet property="zongheButton" destination="X39-nb-mb8" id="YcJ-cL-VMX"/>
@@ -22,6 +23,17 @@
             <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
+                <view hidden="YES" contentMode="scaleToFill" id="VGG-15-siY">
+                    <rect key="frame" x="0.0" y="123" width="320" height="445"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
+                    <subviews>
+                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="network_flag.png" id="x0I-P9-YlL">
+                            <rect key="frame" x="89" y="168" width="142" height="110"/>
+                            <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
+                        </imageView>
+                    </subviews>
+                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                </view>
                 <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="plain" separatorStyle="none" allowsSelection="NO" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" id="xlx-dS-sfW">
                     <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -148,6 +160,7 @@
         </view>
     </objects>
     <resources>
+        <image name="network_flag.png" width="142" height="110"/>
         <image name="notice_logo.png" width="15" height="15"/>
         <image name="price_logo.png" width="15" height="15"/>
         <image name="shaixuan_logo.png" width="15" height="15"/>

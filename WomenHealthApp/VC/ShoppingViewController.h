@@ -21,4 +21,7 @@
 
 @property (strong, nonatomic) CycleScrollView *mainScorllView;
 
+@property (weak, nonatomic) IBOutlet UIView *searchEmptyView;
+
+
 @end

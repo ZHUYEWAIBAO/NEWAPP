@@ -371,8 +371,15 @@
         [SVProgressHUD showErrorWithStatus:@"服务器忙，请稍候再试"];
         [self doneLoadingTableViewData];
         [self.footview endRefreshing];
+        [self showSearchEmpty];
     }];
 
+}
+
+- (void)showSearchEmpty
+{
+    [self.shopTableView setHidden:YES];
+    [self.searchEmptyView setHidden:NO];
 }
 
 - (void)showNothingViewForView:(UIView *)aView

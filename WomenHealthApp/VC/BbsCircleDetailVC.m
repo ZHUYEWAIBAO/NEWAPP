@@ -115,7 +115,7 @@
         
     } ErrorHandler:^(MKNetworkOperation *completedOperation, NSError *error) {
         [SVProgressHUD showErrorWithStatus:@"服务器忙，请稍候再试"];
-
+        [self showSearchEmpty];
     }];
     
 }
@@ -206,8 +206,15 @@
         [SVProgressHUD showErrorWithStatus:@"服务器忙，请稍候再试"];
         [self doneLoadingTableViewData];
         [self.footview endRefreshing];
+        
     }];
 
+}
+
+- (void)showSearchEmpty
+{
+    [self.circleTableView setHidden:YES];
+    [self.searchEmptyView setHidden:NO];
 }
 
 - (void)layOutTheHeadView
