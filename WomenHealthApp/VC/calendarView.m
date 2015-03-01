@@ -105,7 +105,9 @@
     }
     
     
+
     for (int timeNumber =-12*3; timeNumber <12*3; timeNumber++) {
+
         
         //所有的排卵日
         [paiRuanDateAry addObject:[self getTheDate:paiRuanDate afterDays:zhouqiDay*timeNumber]];
@@ -131,6 +133,7 @@
         }
         
     }
+    
     [CMSinger share].currenYuejingDayAry =currenYuejingDayAry;
     [CMSinger share].paiRuanDateAry =paiRuanDateAry;
     [CMSinger share].yueJingDayAry =yueJingDayAry;
