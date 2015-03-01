@@ -11,6 +11,7 @@
 #import "SurveyTool.h"
 #import "SurveyTableViewCell.h"
 #import "CommWebView.h"
+#import "JSONKit.h"
 @interface SurveyVC (){
     
     NSMutableArray *dataAry;//数据源
@@ -95,7 +96,9 @@
    
 //    paramesAry
     
-    [self.params setObject:dics forKey:@"options"];
+    [self.params setObject:[dics JSONString] forKey:@"options"];
+
+    
     
     [NETWORK_ENGINE requestWithPath:GLOBALSHARE.CIRCLE_ASNWER Params:self.params CompletionHandler:^(MKNetworkOperation *completedOperation) {
         

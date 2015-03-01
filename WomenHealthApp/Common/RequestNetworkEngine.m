@@ -51,6 +51,7 @@
         op = [self operationWithPath:path params:nil httpMethod:@"GET"];
     }
     
+    NSLog(@"%@",[params jsonEncodedKeyValueString]);
     
     //处理句柄
     [op addCompletionHandler:response errorHandler:error];
