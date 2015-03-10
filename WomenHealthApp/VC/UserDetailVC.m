@@ -163,7 +163,8 @@
             USERINFO.user_icon = [array objectAtIndex:0];
             
             [[NSNotificationCenter defaultCenter]postNotificationName:NOTIFICATION_USER_LOGIN object:nil];
-           
+    
+            
         }
         else{
             

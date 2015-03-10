@@ -15,6 +15,7 @@
 #import "OrderPayModel.h"
 #import "DataSigner.h"
 #import "ShoppingPaySuccessVC.h"
+#import "CannelOrderVC.h"
 #import <AlipaySDK/AlipaySDK.h>
 
 @interface MyOrderListVC ()
@@ -210,7 +211,7 @@
             break;
             
         case 3:{
-            cell.headView.statusLabel.text = @"未发货";
+            cell.headView.statusLabel.text = @"待发货";
             [cell.footView.firstButton setBackgroundImage:[UIImage imageWithContentFileName:@"order_fahuo_btn"] forState:UIControlStateNormal];
             [cell.footView.secondButton setHidden:YES];
         }
@@ -225,14 +226,16 @@
             
         case 5:{
             cell.headView.statusLabel.text = @"交易关闭";
-            [cell.footView.firstButton setBackgroundImage:[UIImage imageWithContentFileName:@"order_delete_btn"] forState:UIControlStateNormal];
+//            [cell.footView.firstButton setBackgroundImage:[UIImage imageWithContentFileName:@"order_delete_btn"] forState:UIControlStateNormal];
+            [cell.footView.firstButton setHidden:YES];
             [cell.footView.secondButton setHidden:YES];
         }
             break;
             
         case 7:{
             cell.headView.statusLabel.text = @"已完成";
-            [cell.footView.firstButton setBackgroundImage:[UIImage imageWithContentFileName:@"order_delete_btn"] forState:UIControlStateNormal];
+//            [cell.footView.firstButton setBackgroundImage:[UIImage imageWithContentFileName:@"order_delete_btn"] forState:UIControlStateNormal];
+            [cell.footView.firstButton setHidden:YES];
             [cell.footView.secondButton setHidden:YES];
         }
             break;
@@ -310,37 +313,40 @@
 //取消订单
 - (void)cancelOrderAction:(NSString *)orderId
 {
-    [SVProgressHUD showWithMaskType:SVProgressHUDMaskTypeClear];
-    
-    [self.params removeAllObjects];
-    
-    NSString *path = [NSString stringWithFormat:@"/api/ec/user.php?mod=cancel_order&uid=%@&order_id=%@",USERINFO.uid,orderId];
-    
-    [NETWORK_ENGINE requestWithPath:path Params:self.params CompletionHandler:^(MKNetworkOperation *completedOperation) {
-        
-        NSDictionary *dic=[completedOperation responseDecodeToDic];
-        
-        NSDictionary *statusDic = [dic objectForKey:@"status"];
-        
-        if ([@"1" isEqualToString:CHECK_VALUE([statusDic objectForKey:@"statu"])]) {
-            
-            [SVProgressHUD dismiss];
-            
-            self.page = 1;
-            [self getTheListData];
-            
-        }
-        else{
-            
-            [SVProgressHUD showErrorWithStatus:CHECK_VALUE([statusDic objectForKey:@"msg"])];
-        }
-        
-        
-    } ErrorHandler:^(MKNetworkOperation *completedOperation, NSError *error) {
-        
-        [SVProgressHUD showErrorWithStatus:@"服务器忙，请稍候再试"];
-        
-    }];
+//    [SVProgressHUD showWithMaskType:SVProgressHUDMaskTypeClear];
+//    
+//    [self.params removeAllObjects];
+//    
+//    NSString *path = [NSString stringWithFormat:@"/api/ec/user.php?mod=cancel_order&uid=%@&order_id=%@",USERINFO.uid,orderId];
+//    
+//    [NETWORK_ENGINE requestWithPath:path Params:self.params CompletionHandler:^(MKNetworkOperation *completedOperation) {
+//        
+//        NSDictionary *dic=[completedOperation responseDecodeToDic];
+//        
+//        NSDictionary *statusDic = [dic objectForKey:@"status"];
+//        
+//        if ([@"1" isEqualToString:CHECK_VALUE([statusDic objectForKey:@"statu"])]) {
+//            
+//            [SVProgressHUD dismiss];
+//            
+//            self.page = 1;
+//            [self getTheListData];
+//            
+//        }
+//        else{
+//            
+//            [SVProgressHUD showErrorWithStatus:CHECK_VALUE([statusDic objectForKey:@"msg"])];
+//        }
+//        
+//        
+//    } ErrorHandler:^(MKNetworkOperation *completedOperation, NSError *error) {
+//        
+//        [SVProgressHUD showErrorWithStatus:@"服务器忙，请稍候再试"];
+//        
+//    }];
+    CannelOrderVC *vc = [[CannelOrderVC alloc]initWithNibName:@"CannelOrderVC" bundle:nil];
+    vc.orderId = orderId;
+    [self.navigationController pushViewController:vc animated:YES];
     
 }
 

@@ -29,7 +29,7 @@
 @property (weak, nonatomic) IBOutlet UIView *bigView;
 
 @property (weak, nonatomic) IBOutlet UIButton *replyButton;
-@property (weak, nonatomic) IBOutlet UIButton *deletePostButton;
+//@property (weak, nonatomic) IBOutlet UIButton *deletePostButton;
 @property (weak, nonatomic) IBOutlet UIImageView *deletePostImageV;
 
 @property (weak, nonatomic) IBOutlet UILabel *replyNameLabel;

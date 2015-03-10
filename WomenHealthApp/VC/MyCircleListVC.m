@@ -42,8 +42,8 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
 
-    UIBarButtonItem *rightItem = [[UIBarButtonItem alloc] initWithCustomView:_editBtn];
-    self.navigationItem.rightBarButtonItem = rightItem;
+//    UIBarButtonItem *rightItem = [[UIBarButtonItem alloc] initWithCustomView:_editBtn];
+//    self.navigationItem.rightBarButtonItem = rightItem;
 
     
     self.circleType = circleType_myPost;

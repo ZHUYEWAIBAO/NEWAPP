@@ -53,6 +53,7 @@
 #define NOTIFICATION_ADDRESS_SELECT                  @"NOTIFICATION_ADDRESS_SELECT" //收货地址选择
 #define NOTIFICATION_PAYTYPE_SELECT                  @"NOTIFICATION_PAYTYPE_SELECT" //支付方式选择
 #define NOTIFICATION_IMAGE_DELETE                    @"NOTIFICATION_IMAGE_DELETE" //删除图片
+#define NOTIFICATION_CANCELORDER_REQUEST             @"NOTIFICATION_CANCELORDER_REQUEST"//取消订单
 //====================================
 
 

@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="6254" systemVersion="14B25" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="6254" systemVersion="14C109" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none">
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6247"/>
@@ -9,7 +9,6 @@
             <connections>
                 <outlet property="contentTextView" destination="CUl-R4-HMH" id="plF-K9-SAr"/>
                 <outlet property="contentView" destination="faW-QO-3Tb" id="UC8-L7-Idc"/>
-                <outlet property="emailTextField" destination="iMm-Dt-6WV" id="EOa-0M-1FK"/>
                 <outlet property="emailView" destination="rLO-ni-MHZ" id="exN-yD-UcK"/>
                 <outlet property="selectImageV0" destination="6dZ-NG-3O1" id="bWI-Id-ggx"/>
                 <outlet property="selectImageV1" destination="Lg2-Up-6AJ" id="gwz-vt-4fQ"/>
@@ -17,7 +16,6 @@
                 <outlet property="selectImageV3" destination="eeQ-ub-WmJ" id="5FU-wF-GwH"/>
                 <outlet property="selectImageV4" destination="Qqv-dx-XkL" id="IkB-eE-Tdj"/>
                 <outlet property="suggestScrollView" destination="qJD-FF-AGn" id="6Dm-Nd-0Te"/>
-                <outlet property="titleTextField" destination="1lI-Ez-7iQ" id="DGb-iI-Ivq"/>
                 <outlet property="titleView" destination="xw4-cL-t9z" id="AWK-fM-X5e"/>
                 <outlet property="typeView" destination="lCH-hF-51O" id="mvX-i7-kX6"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
@@ -32,25 +30,12 @@
                     <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                     <subviews>
-                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" id="Efn-R6-3ws" customClass="LineImageView">
-                            <rect key="frame" x="0.0" y="43" width="320" height="1"/>
-                            <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
-                        </imageView>
-                        <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="请输入主题" minimumFontSize="17" id="1lI-Ez-7iQ">
-                            <rect key="frame" x="10" y="7" width="300" height="30"/>
-                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                            <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                            <textInputTraits key="textInputTraits"/>
-                            <connections>
-                                <outlet property="delegate" destination="-1" id="msu-ZN-856"/>
-                            </connections>
-                        </textField>
                         <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="suggest_text.png" id="cTO-kb-kPO">
-                            <rect key="frame" x="10" y="53" width="300" height="158"/>
+                            <rect key="frame" x="10" y="11" width="300" height="158"/>
                             <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
                         </imageView>
                         <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" id="CUl-R4-HMH" customClass="UIPlaceHolderTextView">
-                            <rect key="frame" x="10" y="53" width="300" height="158"/>
+                            <rect key="frame" x="10" y="11" width="300" height="158"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                             <fontDescription key="fontDescription" type="system" pointSize="14"/>
@@ -59,21 +44,8 @@
                                 <outlet property="delegate" destination="-1" id="x1n-oJ-hA3"/>
                             </connections>
                         </textView>
-                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="email_list.png" id="uMf-uA-BPb">
-                            <rect key="frame" x="10" y="223" width="300" height="42"/>
-                            <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
-                        </imageView>
-                        <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" minimumFontSize="17" id="iMm-Dt-6WV">
-                            <rect key="frame" x="80" y="229" width="222" height="30"/>
-                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                            <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                            <textInputTraits key="textInputTraits"/>
-                            <connections>
-                                <outlet property="delegate" destination="-1" id="POU-ND-IVg"/>
-                            </connections>
-                        </textField>
                         <view contentMode="scaleToFill" id="lCH-hF-51O">
-                            <rect key="frame" x="0.0" y="267" width="320" height="212"/>
+                            <rect key="frame" x="0.0" y="170" width="320" height="212"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             <subviews>
                                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="chose_list.png" id="t8I-Uq-kc4">
@@ -184,7 +156,6 @@
     </objects>
     <resources>
         <image name="chose_list.png" width="300" height="192"/>
-        <image name="email_list.png" width="300" height="42"/>
         <image name="suggest_chose_active.png" width="23" height="23"/>
         <image name="suggest_text.png" width="300" height="158"/>
     </resources>

@@ -267,17 +267,17 @@
         cell.louZhuLabel.text = [NSString stringWithFormat:@"%@楼",model.position];
         
         //如果是用户自己发表的帖子，显示删除按钮
-        if ([USERINFO.uid isEqualToString:model.authorid]) {
-            [cell.deletePostButton setHidden:NO];
-            [cell.deletePostImageV setHidden:NO];
-            
-            [cell.deletePostButton addTarget:self action:@selector(deleteThePostAction:) forControlEvents:UIControlEventTouchUpInside];
-            [cell.deletePostButton setTag:2000+indexPath.row];
-        }
-        else{
-            [cell.deletePostButton setHidden:YES];
-            [cell.deletePostImageV setHidden:YES];
-        }
+//        if ([USERINFO.uid isEqualToString:model.authorid]) {
+//            [cell.deletePostButton setHidden:NO];
+//            [cell.deletePostImageV setHidden:NO];
+//            
+//            [cell.deletePostButton addTarget:self action:@selector(deleteThePostAction:) forControlEvents:UIControlEventTouchUpInside];
+//            [cell.deletePostButton setTag:2000+indexPath.row];
+//        }
+//        else{
+//            [cell.deletePostButton setHidden:YES];
+//            [cell.deletePostImageV setHidden:YES];
+//        }
     }
     
     CGRect rect3 = cell.postLabel.frame;

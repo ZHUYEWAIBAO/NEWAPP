@@ -255,7 +255,7 @@
         
     }
     else{
-        UIAlertView *alertView = [[UIAlertView alloc]initWithTitle:@"确定要退出舒服吗" message:@"" delegate:self cancelButtonTitle:@"取消" otherButtonTitles:@"确定", nil];
+        UIAlertView *alertView = [[UIAlertView alloc]initWithTitle:@"确定要退出那几天吗" message:@"" delegate:self cancelButtonTitle:@"取消" otherButtonTitles:@"确定", nil];
         alertView.tag = 100;
         [alertView show];
     }

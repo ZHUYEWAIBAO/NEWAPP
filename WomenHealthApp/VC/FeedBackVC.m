@@ -93,25 +93,16 @@
 
 - (void)sendSuggestAction:(id)sender
 {
-    if ([@"" isEqualToString:self.titleTextField.text]) {
-        [SVProgressHUD showErrorWithStatus:@"请输入主题~"];
-        return;
-    }
+
     if ([@"" isEqualToString:self.contentTextView.text]) {
         [SVProgressHUD showErrorWithStatus:@"请输入留言内容~"];
         return;
     }
-    if (![self.emailTextField.text isValidateEmail]) {
-        [SVProgressHUD showErrorWithStatus:@"请输入正确的邮箱~"];
-        return;
-    }
-    
+
     [SVProgressHUD showWithMaskType:SVProgressHUDMaskTypeClear];
     
     [self.params removeAllObjects];
-    [self.params setObject:self.titleTextField.text forKey:@"msg_title"];
     [self.params setObject:self.contentTextView.text forKey:@"msg_content"];
-    [self.params setObject:self.emailTextField.text forKey:@"user_email"];
     [self.params setObject:[NSString stringWithFormat:@"%ld",currentIndex] forKey:@"msg_type"];
 
     NSString *path = [NSString stringWithFormat:@"/api/ec/message.php"];

@@ -19,9 +19,7 @@
 @property (strong, nonatomic) IBOutlet UIView *emailView;
 @property (strong, nonatomic) IBOutlet UIView *typeView;
 
-@property (weak, nonatomic) IBOutlet UITextField *titleTextField;
 @property (weak, nonatomic) IBOutlet UIPlaceHolderTextView *contentTextView;
-@property (weak, nonatomic) IBOutlet UITextField *emailTextField;
 //@property (weak, nonatomic) IBOutlet UITextField *titleTextField;
 
 @property (weak, nonatomic) IBOutlet UIImageView *selectImageV0;

@@ -75,7 +75,7 @@
 
     if (!isReadProtocol) {
         
-        [SVProgressHUD showErrorWithStatus:@"您必须同意舒服用户协议才能进行下一步操作"];
+        [SVProgressHUD showErrorWithStatus:@"您必须同意那几天用户协议才能进行下一步操作"];
         
         return;
     }

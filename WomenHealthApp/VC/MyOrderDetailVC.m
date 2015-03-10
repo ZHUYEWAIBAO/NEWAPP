@@ -16,6 +16,7 @@
 #import "OrderPayModel.h"
 #import "DataSigner.h"
 #import "ShoppingPaySuccessVC.h"
+#import "CannelOrderVC.h"
 #import <AlipaySDK/AlipaySDK.h>
 
 @interface MyOrderDetailVC ()
@@ -123,7 +124,7 @@
             break;
             
         case 3:{
-            self.statusLabel.text = @"未发货";
+            self.statusLabel.text = @"待发货";
             [self.firstButton setBackgroundImage:[UIImage imageWithContentFileName:@"fahuo_btn"] forState:UIControlStateNormal];
             [self.secondButton setHidden:YES];
             [self.firstButton addTarget:self action:@selector(alertTheShopAction:) forControlEvents:UIControlEventTouchUpInside];
@@ -141,18 +142,20 @@
             
         case 5:{
             self.statusLabel.text = @"交易关闭";
-            [self.firstButton setBackgroundImage:[UIImage imageWithContentFileName:@"delete_order_btn"] forState:UIControlStateNormal];
+//            [self.firstButton setBackgroundImage:[UIImage imageWithContentFileName:@"delete_order_btn"] forState:UIControlStateNormal];
+            [self.firstButton setHidden:YES];
             [self.secondButton setHidden:YES];
-            [self.firstButton addTarget:self action:@selector(deleteTheOrderAction:) forControlEvents:UIControlEventTouchUpInside];
+//            [self.firstButton addTarget:self action:@selector(deleteTheOrderAction:) forControlEvents:UIControlEventTouchUpInside];
             
         }
             break;
             
         case 7:{
             self.statusLabel.text = @"已完成";
-            [self.firstButton setBackgroundImage:[UIImage imageWithContentFileName:@"delete_order_btn"] forState:UIControlStateNormal];
+//            [self.firstButton setBackgroundImage:[UIImage imageWithContentFileName:@"delete_order_btn"] forState:UIControlStateNormal];
+            [self.firstButton setHidden:YES];
             [self.secondButton setHidden:YES];
-            [self.firstButton addTarget:self action:@selector(deleteTheOrderAction:) forControlEvents:UIControlEventTouchUpInside];
+//            [self.firstButton addTarget:self action:@selector(deleteTheOrderAction:) forControlEvents:UIControlEventTouchUpInside];
 
         }
             break;
@@ -278,35 +281,38 @@
 //取消订单
 - (void)cancelOrderAction:(id)sender
 {
-    [SVProgressHUD showWithMaskType:SVProgressHUDMaskTypeClear];
-    
-    [self.params removeAllObjects];
-
-    NSString *path = [NSString stringWithFormat:@"/api/ec/user.php?mod=cancel_order&uid=%@&order_id=%@",USERINFO.uid,self.orderId];
-    
-    [NETWORK_ENGINE requestWithPath:path Params:self.params CompletionHandler:^(MKNetworkOperation *completedOperation) {
-        
-        NSDictionary *dic=[completedOperation responseDecodeToDic];
-        
-        NSDictionary *statusDic = [dic objectForKey:@"status"];
-        
-        if ([@"1" isEqualToString:CHECK_VALUE([statusDic objectForKey:@"statu"])]) {
-            
-            [[NSNotificationCenter defaultCenter]postNotificationName:NOTIFICATION_REFRESH_ORDERRECORD object:nil];
-            [self.navigationController popViewControllerAnimated:YES];
-            [SVProgressHUD dismiss];
-        }
-        else{
-            
-            [SVProgressHUD showErrorWithStatus:CHECK_VALUE([statusDic objectForKey:@"msg"])];
-        }
-        
-        
-    } ErrorHandler:^(MKNetworkOperation *completedOperation, NSError *error) {
-        
-        [SVProgressHUD showErrorWithStatus:@"服务器忙，请稍候再试"];
-        
-    }];
+//    [SVProgressHUD showWithMaskType:SVProgressHUDMaskTypeClear];
+//    
+//    [self.params removeAllObjects];
+//
+//    NSString *path = [NSString stringWithFormat:@"/api/ec/user.php?mod=cancel_order&uid=%@&order_id=%@",USERINFO.uid,self.orderId];
+//    
+//    [NETWORK_ENGINE requestWithPath:path Params:self.params CompletionHandler:^(MKNetworkOperation *completedOperation) {
+//        
+//        NSDictionary *dic=[completedOperation responseDecodeToDic];
+//        
+//        NSDictionary *statusDic = [dic objectForKey:@"status"];
+//        
+//        if ([@"1" isEqualToString:CHECK_VALUE([statusDic objectForKey:@"statu"])]) {
+//            
+//            [[NSNotificationCenter defaultCenter]postNotificationName:NOTIFICATION_REFRESH_ORDERRECORD object:nil];
+//            [self.navigationController popViewControllerAnimated:YES];
+//            [SVProgressHUD dismiss];
+//        }
+//        else{
+//            
+//            [SVProgressHUD showErrorWithStatus:CHECK_VALUE([statusDic objectForKey:@"msg"])];
+//        }
+//        
+//        
+//    } ErrorHandler:^(MKNetworkOperation *completedOperation, NSError *error) {
+//        
+//        [SVProgressHUD showErrorWithStatus:@"服务器忙，请稍候再试"];
+//        
+//    }];
+    CannelOrderVC *vc = [[CannelOrderVC alloc]initWithNibName:@"CannelOrderVC" bundle:nil];
+    vc.orderId = self.orderId;
+    [self.navigationController pushViewController:vc animated:YES];
 
 }
 

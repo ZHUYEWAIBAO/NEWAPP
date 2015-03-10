@@ -369,6 +369,8 @@
 		BA6C1FF61A3DB8BF00BA5E7F /* MyOrderDetailVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = BA6C1FF41A3DB8BF00BA5E7F /* MyOrderDetailVC.xib */; };
 		BA6C1FFA1A3DBEB400BA5E7F /* MyOrderListCell.m in Sources */ = {isa = PBXBuildFile; fileRef = BA6C1FF81A3DBEB400BA5E7F /* MyOrderListCell.m */; };
 		BA6C1FFB1A3DBEB400BA5E7F /* MyOrderListCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = BA6C1FF91A3DBEB400BA5E7F /* MyOrderListCell.xib */; };
+		BA7566621AA9390600FB49C9 /* CannelOrderVC.m in Sources */ = {isa = PBXBuildFile; fileRef = BA7566601AA9390600FB49C9 /* CannelOrderVC.m */; };
+		BA7566631AA9390600FB49C9 /* CannelOrderVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = BA7566611AA9390600FB49C9 /* CannelOrderVC.xib */; };
 		BA769C9D1A3009C200574267 /* price_down_logo@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BA769C9A1A3009C200574267 /* price_down_logo@2x.png */; };
 		BA769C9E1A3009C200574267 /* price_logo@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BA769C9B1A3009C200574267 /* price_logo@2x.png */; };
 		BA769C9F1A3009C200574267 /* price_up_logo@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BA769C9C1A3009C200574267 /* price_up_logo@2x.png */; };
@@ -1120,6 +1122,9 @@
 		BA6C1FF71A3DBEB400BA5E7F /* MyOrderListCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MyOrderListCell.h; sourceTree = "<group>"; };
 		BA6C1FF81A3DBEB400BA5E7F /* MyOrderListCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MyOrderListCell.m; sourceTree = "<group>"; };
 		BA6C1FF91A3DBEB400BA5E7F /* MyOrderListCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MyOrderListCell.xib; sourceTree = "<group>"; };
+		BA75665F1AA9390600FB49C9 /* CannelOrderVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CannelOrderVC.h; sourceTree = "<group>"; };
+		BA7566601AA9390600FB49C9 /* CannelOrderVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CannelOrderVC.m; sourceTree = "<group>"; };
+		BA7566611AA9390600FB49C9 /* CannelOrderVC.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CannelOrderVC.xib; sourceTree = "<group>"; };
 		BA769C9A1A3009C200574267 /* price_down_logo@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "price_down_logo@2x.png"; sourceTree = "<group>"; };
 		BA769C9B1A3009C200574267 /* price_logo@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "price_logo@2x.png"; sourceTree = "<group>"; };
 		BA769C9C1A3009C200574267 /* price_up_logo@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "price_up_logo@2x.png"; sourceTree = "<group>"; };
@@ -2512,6 +2517,9 @@
 				BA37393A1A4287AF00164B85 /* CommentOrderVC.h */,
 				BA37393B1A4287AF00164B85 /* CommentOrderVC.m */,
 				BA37393C1A4287AF00164B85 /* CommentOrderVC.xib */,
+				BA75665F1AA9390600FB49C9 /* CannelOrderVC.h */,
+				BA7566601AA9390600FB49C9 /* CannelOrderVC.m */,
+				BA7566611AA9390600FB49C9 /* CannelOrderVC.xib */,
 			);
 			name = MyOrder;
 			sourceTree = "<group>";
@@ -3002,6 +3010,7 @@
 				BA1ADFAB1A3DD1FC00CAB2B4 /* PayTypeCell.xib in Resources */,
 				BACD63E51A2C3D8500683E38 /* xinlang_btn@2x.png in Resources */,
 				657B413A1A1729160057F5AE /* serarch_btn_selected@2x.png in Resources */,
+				BA7566631AA9390600FB49C9 /* CannelOrderVC.xib in Resources */,
 				BA35C1D71A70819100DB56DF /* chose_list@2x.png in Resources */,
 				BA1A2B921A6115640046ECEA /* finishlogo@2x.png in Resources */,
 				65FC7E9B1A68E8C70079988B /* choose_active_btn@2x.png in Resources */,
@@ -3175,6 +3184,7 @@
 				BA6230CB1A2EDC8600F471A6 /* CalculateHigh.m in Sources */,
 				BA0F327F1A58E9FB0012E699 /* DataVerifier.m in Sources */,
 				BADD9FD71A3AD9F3009DDBBE /* AddressViewController.m in Sources */,
+				BA7566621AA9390600FB49C9 /* CannelOrderVC.m in Sources */,
 				65E0C9CE1A1DEAE6005FD5B8 /* pickerCell.m in Sources */,
 				BA59D7B319F894620098BDCF /* UIAlertView+MKNetworkKitAdditions.m in Sources */,
 				BA35C2451A70DA0600DB56DF /* IQSegmentedNextPrevious.m in Sources */,
