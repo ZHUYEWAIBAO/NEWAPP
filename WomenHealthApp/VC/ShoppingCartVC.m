@@ -347,7 +347,7 @@
         return;
     }
     [self.params removeAllObjects];
-    [self.params setObject:[NSString stringWithFormat:@"{\"%@\":\"%i\"}",tempModel.rec_id,temp+1] forKey:@"goods_number"];
+    [self.params setObject:[NSString stringWithFormat:@"{\"%@\":\"%i\"}",tempModel.rec_id,temp-1] forKey:@"goods_number"];
     
     
     [NETWORK_ENGINE requestWithPath:[NSString stringWithFormat:@"/api/ec/flow.php?uid=%@&step=update_cart",USERINFO.uid]  Params:self.params CompletionHandler:^(MKNetworkOperation *completedOperation) {

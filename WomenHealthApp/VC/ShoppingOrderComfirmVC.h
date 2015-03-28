@@ -46,5 +46,13 @@
 @property (weak, nonatomic) IBOutlet UISwitch *timeSwitch;
 @property (weak, nonatomic) IBOutlet UITextField *numTextField;
 @property (weak, nonatomic) IBOutlet UITextField *monthsTextField;
+/*********************************** 新加需求 ****************************************************/
+@property (strong, nonatomic) IBOutlet UIView *dingQiGouView;
+@property (weak, nonatomic) IBOutlet UILabel *dingQiLabel;
+@property (weak, nonatomic) IBOutlet UIImageView *choseDingQiImg;
+@property (weak, nonatomic) IBOutlet UILabel *choseDingQiLabel;
+@property (weak, nonatomic) IBOutlet UITableView *choseDingQiTableview;
+
+@property (strong, nonatomic) IBOutlet UIView *changeDingQiTwoView;
 
 @end

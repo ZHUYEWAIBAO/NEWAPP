@@ -122,8 +122,22 @@
             self.comfirmModel = model;
             
             self.shopCarId = model.rec_ids;
+            NSMutableArray *array;
+//            if ([[[[dic objectForKey:@"total"] objectForKey:@"user_near_order"] objectForKey:@"order_id"] floatValue]>0) {
+                /*
+                "user_near_order" =             {
+                    "order_id" = 0;
+                    "order_sn" = 0;
+                    "shipping_time" = 0;
+                };
+                */
+
+                array = [[NSMutableArray alloc]initWithObjects:_addressView,_payTypeView,_scoreView,_goodsTableView,_speakView,_dingQiGouView,_timeView, nil];
+                self.dingQiLabel.text =[NSString stringWithFormat:@"您最近一期定期购订单:%@即将于%@发货,请选择是否要跟随此订单一起发货,以节省本次运费：",[[[[dic objectForKey:@"data"] objectForKey:@"total"] objectForKey:@"user_near_order"] objectForKey:@"order_sn"],[[[[dic objectForKey:@"data"] objectForKey:@"total"] objectForKey:@"user_near_order"] objectForKey:@"shipping_time"]];
+//            }else{
+//                array = [[NSMutableArray alloc]initWithObjects:_addressView,_payTypeView,_scoreView,_goodsTableView,_speakView,_timeView, nil];
+//            }
             
-            NSMutableArray *array = [[NSMutableArray alloc]initWithObjects:_addressView,_payTypeView,_scoreView,_goodsTableView,_speakView,_timeView, nil];
 
             if (![@"1" isEqualToString:model.allow_use_integral]) {
                 [array removeObject:_scoreView];
@@ -145,6 +159,25 @@
     }];
     
 }
+/**
+ *  是否选择最近一次定期购订单
+ *
+ *  @param sender <#sender description#>
+ */
+- (IBAction)choseDingQiClick:(id)sender {
+    UIButton *btn =(UIButton *)sender;
+    if (btn.selected) {
+        self.choseDingQiImg.image =[UIImage imageNamed:@"chose_no_btn"];
+        self.choseDingQiLabel.text =@"否";
+    }else{
+        self.choseDingQiImg.image =[UIImage imageNamed:@"chose_yes_btn"];
+        self.choseDingQiLabel.text =@"是";
+    }
+    
+    btn.selected =!btn.selected;
+    
+}
+
 
 //布局整体页面
 -(void)layOutMainView:(NSMutableArray *)viewArr
@@ -391,11 +424,38 @@
 #pragma mark - UITextFiledDelegate
 - (void)textFieldDidBeginEditing:(UITextField *)textField
 {
+    if (self.numTextField ==textField) {
+        
+        [[[UIApplication sharedApplication] keyWindow] addSubview:self.changeDingQiTwoView];
+        self.changeDingQiTwoView.center =CGPointMake(self.view.center.x, SCREEN_SIZE.height-75);
+        [self.choseDingQiTableview reloadData];
+        [self animateTextField:150 up: YES];
+        return ;
+    }else{
+        [self animateTextField:150 up: YES];
+    }
+
     
+}
+
+- (IBAction)showListClick:(id)sender {
+    
+    [[[UIApplication sharedApplication] keyWindow] addSubview:self.changeDingQiTwoView];
+    self.changeDingQiTwoView.center =CGPointMake(self.view.center.x, SCREEN_SIZE.height-75);
+    [self.choseDingQiTableview reloadData];
     [self animateTextField:150 up: YES];
     
 }
 
+- (BOOL)textFieldShouldBeginEditing:(UITextField *)textField{
+    
+    if (self.numTextField ==textField) {
+        return NO;
+    }else{
+        return YES;
+    }
+    
+}
 - (void)textFieldDidEndEditing:(UITextField *)textField
 {
     [self animateTextField:150 up: NO];

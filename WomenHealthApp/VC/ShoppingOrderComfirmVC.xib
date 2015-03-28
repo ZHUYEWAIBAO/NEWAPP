@@ -9,6 +9,12 @@
             <connections>
                 <outlet property="addressLabel" destination="3VO-pn-HKy" id="cgI-dr-Q2n"/>
                 <outlet property="addressView" destination="gBE-uM-eU6" id="OMa-Pl-mqL"/>
+                <outlet property="changeDingQiTwoView" destination="fg3-WV-FVq" id="OQM-i0-rO7"/>
+                <outlet property="choseDingQiImg" destination="nNl-oF-jQA" id="1hg-hZ-8kx"/>
+                <outlet property="choseDingQiLabel" destination="cL6-sA-g9S" id="sfn-WV-z29"/>
+                <outlet property="choseDingQiTableview" destination="ZEg-jE-ftK" id="AAm-go-NVJ"/>
+                <outlet property="dingQiGouView" destination="oPS-dy-NGH" id="VtR-P5-tMi"/>
+                <outlet property="dingQiLabel" destination="PSi-lI-RVd" id="axg-zl-FfR"/>
                 <outlet property="goodsTableView" destination="QvJ-Ji-gtd" id="eMG-Bt-0pG"/>
                 <outlet property="layOutView" destination="XXh-pa-qyI" id="pgQ-Db-uhQ"/>
                 <outlet property="monthsTextField" destination="ngd-Ll-2vP" id="MOl-oQ-aPQ"/>
@@ -271,24 +277,21 @@
                     <nil key="highlightedColor"/>
                 </label>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="期，每" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="APQ-mX-buD">
-                    <rect key="frame" x="108" y="55" width="50" height="21"/>
+                    <rect key="frame" x="135" y="55" width="50" height="21"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
                     <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                     <nil key="highlightedColor"/>
                 </label>
                 <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" enabled="NO" contentHorizontalAlignment="left" contentVerticalAlignment="center" textAlignment="center" minimumFontSize="17" id="QiK-lj-bjn">
-                    <rect key="frame" x="60" y="51" width="40" height="30"/>
+                    <rect key="frame" x="60" y="51" width="68" height="30"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                     <color key="textColor" red="0.99607843139999996" green="0.43529411759999997" blue="0.45882352939999999" alpha="1" colorSpace="calibratedRGB"/>
                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
                     <textInputTraits key="textInputTraits" keyboardType="numberPad"/>
-                    <connections>
-                        <outlet property="delegate" destination="-1" id="l3d-07-Cj6"/>
-                    </connections>
                 </textField>
                 <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" enabled="NO" contentHorizontalAlignment="left" contentVerticalAlignment="center" textAlignment="center" minimumFontSize="17" id="ngd-Ll-2vP">
-                    <rect key="frame" x="156" y="51" width="40" height="30"/>
+                    <rect key="frame" x="198" y="51" width="40" height="30"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                     <color key="textColor" red="0.99607843139999996" green="0.43529411759999997" blue="0.45882352939999999" alpha="1" colorSpace="calibratedRGB"/>
                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
@@ -298,19 +301,85 @@
                     </connections>
                 </textField>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="月购买一次" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="EPi-m1-z5G">
-                    <rect key="frame" x="202" y="55" width="108" height="21"/>
+                    <rect key="frame" x="240" y="55" width="70" height="21"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
                     <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                     <nil key="highlightedColor"/>
                 </label>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="suE-Q1-9Hs">
+                    <rect key="frame" x="60" y="48" width="68" height="35"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                    <state key="normal">
+                        <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                    </state>
+                    <connections>
+                        <action selector="showListClick:" destination="-1" eventType="touchUpInside" id="KNC-5W-a7X"/>
+                    </connections>
+                </button>
             </subviews>
             <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
             <nil key="simulatedStatusBarMetrics"/>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
         </view>
+        <view contentMode="scaleToFill" id="oPS-dy-NGH" userLabel="定时购提醒">
+            <rect key="frame" x="0.0" y="0.0" width="320" height="94"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <subviews>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="您最近一期定期购订单:1000000即将于2015年3月15日发货,请选择是否要跟随此订单一起发货,以节省本次运费：" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="PSi-lI-RVd">
+                    <rect key="frame" x="15" y="8" width="285" height="59"/>
+                    <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="否" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="cL6-sA-g9S">
+                    <rect key="frame" x="61" y="66" width="17" height="21"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="chose_no_btn.png" id="nNl-oF-jQA">
+                    <rect key="frame" x="19" y="68" width="17" height="17"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                </imageView>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="pJH-9y-gw3">
+                    <rect key="frame" x="0.0" y="67" width="58" height="27"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                    <state key="normal">
+                        <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                    </state>
+                    <connections>
+                        <action selector="choseDingQiClick:" destination="-1" eventType="touchUpInside" id="DBo-T5-qfc"/>
+                    </connections>
+                </button>
+            </subviews>
+            <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+            <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+            <point key="canvasLocation" x="201" y="525"/>
+        </view>
+        <view contentMode="scaleToFill" id="fg3-WV-FVq">
+            <rect key="frame" x="0.0" y="0.0" width="320" height="200"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <subviews>
+                <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" id="ZEg-jE-ftK">
+                    <rect key="frame" x="0.0" y="0.0" width="320" height="200"/>
+                    <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    <connections>
+                        <outlet property="dataSource" destination="-1" id="XNi-11-dVw"/>
+                        <outlet property="delegate" destination="-1" id="82e-CF-J3q"/>
+                    </connections>
+                </tableView>
+            </subviews>
+            <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+            <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+            <point key="canvasLocation" x="188" y="388"/>
+        </view>
     </objects>
     <resources>
+        <image name="chose_no_btn.png" width="17" height="17"/>
         <image name="setting_address_btn.png" width="25" height="25"/>
         <image name="sure_address_bg.png" width="320" height="104"/>
         <image name="sure_order_btn.png" width="95" height="36"/>
